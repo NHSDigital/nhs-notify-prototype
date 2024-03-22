@@ -1,0 +1,170 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/manage",
+        text: "Template library"
+      },
+      {
+        href: "/manage/folder-1#sms",
+        text: "Health campaign Mar 2024"
+      }
+    ],
+    classes: "nhsuk-u-padding-bottom-0"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">
+        {% if data['mode'] == 'edit' %}
+        Edit text message template
+        {% else %}
+        New text message template
+        {% endif %}
+      </h1>
+
+      <form action="/manage/folder-1/template-sms-1">
+
+          {% if data['mode'] == 'edit' %}
+
+          {{ input({
+            "label": {
+              "text": "Template name"
+            },
+            "hint": {
+              "text": "This name will not be visible to message recipients"
+            },
+            "id": "template-sms-name-1",
+            "name": "template-sms-name-1",
+            "value": data['template-sms-name-1'] or defaults['template-sms-name-1']
+          }) }}
+
+          {{ textarea({
+            "name": "template-sms-message-1",
+            "id": "template-sms-message-1",
+            "label": {
+              "text": "Message"
+            },
+            "attributes": {
+              "onkeyup": "countChars(this);"
+            },
+            "value": data['template-sms-message-1'] or defaults['template-sms-message-1']
+          }) }}
+
+          {% else %}
+ 
+          {{ input({
+            "label": {
+              "text": "Template name"
+            },
+            "hint": {
+              "text": "This name will not be visible to message recipients"
+            },
+            "id": "template-sms-name-1",
+            "name": "template-sms-name-1"
+          }) }}
+
+          {{ textarea({
+            "name": "template-sms-message-1",
+            "id": "template-sms-message-1",
+            "label": {
+              "text": "Message"
+            },
+            "attributes": {
+              "onkeyup": "countChars(this);"
+            }
+          }) }}
+
+          {% endif %}
+
+        <p id="charNum" class="nhsuk-u-margin-bottom-0">0 characters</p>
+        <p>A single text message is a maximum of 160 characters including <a href="">personalisation</a>.</p>
+
+        <script>
+          function countChars(obj){
+            document.getElementById("charNum").innerHTML = obj.value.length+' characters';
+          }
+        </script>
+
+        <input type="hidden" name="folder-1-sms-templates" value="1">
+
+        {{ button({
+          "text": "Save"
+        }) }}
+
+      </form>
+
+      <h2 class="nhsuk-heading-l nhsuk-u-margin-top-6">How to format message content for text messages</h2>
+
+      <h2 class="nhsuk-heading-m">
+        Personalisation
+      </h2>
+      <p class="">
+        To personalise a message, use double brackets to add a placeholder to your content. For example:
+      </p>
+      <pre class="formatting-example govuk-!-margin-top-0">
+        <code class="lang-md">
+          Hello ((first name)), your reference is ((ref number))
+        </code>
+      </pre>
+                <h2 class="nhsuk-heading-m">
+        Optional content
+      </h2>
+      <p class="">
+        To tailor your messages for different audiences:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+          <li>put the optional content inside double brackets</li>
+          <li>give it a unique placeholder name, followed by 2 question marks</li>
+        </ul>
+      <p class="bottom-gutter-1-3">
+        For example if you only want to show something to people who are under
+        18:
+      </p>
+      <pre class="formatting-example">
+        <code class="lang-md">
+          ((under18??Please get your application signed by a parent or guardian.))
+        </code>
+      </pre>
+      <div class="govuk-inset-text"> 
+          <p class="">You cannot add a placeholder for personalisation within optional content. </p>
+       </div>
+      <p class="">
+        For each person you send this message to, specify ‘yes’ or ‘no’ to
+        show or hide this content.
+      </p>
+                <h2 class="nhsuk-heading-m">Links and URLs</h2>
+      <p class="bottom-gutter-1-3">
+        Write URLs in full, starting with https://
+      </p>
+      <pre class="formatting-example">
+        <code class="lang-md">
+          Apply now at https://www.gov.uk/example
+        </code>
+      </pre>
+                <h2 class="nhsuk-heading-m">Message length</h2>
+      <p class="">
+        If your message is long then it will
+        cost more.
+      </p>
+      <p class="">
+        See <a class="govuk-link govuk-link--no-visited-state" href="">pricing</a> for details.
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+  {{ backLink({
+    "href": "/manage",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        Name this folder
+      </h1>
+
+      <form action="/manage">
+
+        {{ input({
+          "label": {
+            "text": "Enter a name"
+          },
+          "hint": {
+            "text": "This name will not be visible to message recipients"
+          },
+          "id": "folder-name-1",
+          "name": "folder-name-1"
+        }) }}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+        <input type="hidden" name="folders" value="1">
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1>
+        Template library
+      </h1>
+
+      <form action="/manage/create-folder">
+        {{ button({
+          "text": "Create folder"
+        }) }}
+      </form>
+
+      {% if data['folders'] == '0' %}
+        <p>You do not have any folders yet. To start creating templates, you first need to create a folder.</p>
+      {% endif %}
+
+      {% if data['folders'] != '0' %}
+
+      <table role="table" class="nhsuk-table-responsive">
+
+        <caption class="nhsuk-table__caption">Folders</caption>
+
+        <thead role="rowgroup" class="nhsuk-table__head">
+          <tr role="row">
+            <th role="columnheader" class="" scope="col">
+              Name
+            </th>
+            <th role="columnheader" class="" scope="col">
+              No. of templates
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Date created
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+          <tr role="row" class="nhsuk-table__row">
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Name </span><a href="/manage/folder-1">{{ data['folder-name-1'] or defaults['folder-name-1'] }}</a>
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">No. of templates </span>
+              {{ data['folder-1-app-templates'] | float + data['folder-1-email-templates'] | float + data['folder-1-sms-templates'] | float + data['folder-1-letter-templates'] | float }}
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Date created </span>21st Mar 2024
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Action </span>
+              <p><a href=''>Rename</a></p>
+              <p><a href=''>Duplicate</a></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+ 
+      {% endif %}
+
+    </div>
+  </div>
+{% endblock %}

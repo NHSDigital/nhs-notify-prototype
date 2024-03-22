@@ -1,0 +1,133 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {% if data['message-type'] == "sms" %}
+
+      <h1>
+        Send a test text message
+      </h1>
+
+      <p>
+        Preview your message by sending it to up to 5 mobile phone numbers.
+      </p>
+
+      {{ input({
+        "label": {
+          "text": "Mobile phone numbers"
+        },
+        "id": "test-sms-1",
+        "name": "test-sms-1"
+      }) }}
+
+      {{ input({
+        "id": "test-sms-2",
+        "name": "test-sms-2"
+      }) }}
+
+      {{ input({
+        "id": "test-sms-3",
+        "name": "test-sms-3"
+      }) }}
+
+      {{ input({
+        "id": "test-sms-4",
+        "name": "test-sms-4"
+      }) }}
+
+      {{ input({
+        "id": "test-sms-5",
+        "name": "test-sms-5"
+      }) }}
+
+      {{ button({
+        "text": "Send"
+      }) }}
+
+      {% endif %}
+
+
+
+      {% if data['message-type'] == "email" %}
+
+      <h1>
+        Send a test email
+      </h1>
+
+      <p>
+        Preview your message by sending it to up to 5 email addresses.
+      </p>
+
+      {{ input({
+        "label": {
+          "text": "Email addresses"
+        },
+        "id": "test-email-1",
+        "name": "test-email-1"
+      }) }}
+
+      {{ input({
+        "id": "test-email-2",
+        "name": "test-email-2"
+      }) }}
+
+      {{ input({
+        "id": "test-email-3",
+        "name": "test-email-3"
+      }) }}
+
+      {{ input({
+        "id": "test-sms-4",
+        "name": "test-sms-4"
+      }) }}
+
+      {{ input({
+        "id": "test-email-5",
+        "name": "test-email-5"
+      }) }}
+
+      {{ button({
+        "text": "Send"
+      }) }}
+
+      {% endif %}
+
+
+
+      {% if data['message-type'] == "letter" %}
+
+      <h1>
+        Preview the letter
+      </h1>
+
+      <p>Download your letter as a PDF which you can save to your computer and print out.</p>
+      <p>Be aware if you print this letter PDF, the colours may vary from the final letter printed and distributed by our suppliers.</p>
+
+      <p><a href="" class="nhsuk-button">Download letter PDF</a></p>
+
+      <p>To open a PDF file on your computer, you will need to have the free program <a href="">Adobe PDF Reader</a> installed.</p>
+
+      {% endif %}
+
+    </div>
+  </div>
+{% endblock %}

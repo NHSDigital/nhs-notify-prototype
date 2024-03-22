@@ -22,11 +22,37 @@
 {% block header %}
   {{ header({
     "service": {
-        "name": "Prototype kit",
+        "name": "Notify",
         "href": "/"
       },
-      "showNav": "false",
-      "showSearch": "false"
+      "showNav": "true",
+      "showSearch": "false",
+      "primaryLinks": [
+      {
+        "url"  : "/",
+        "label" : "Home"
+      },
+      {
+        'url' : '/',
+        'label' : 'Features'
+      },
+      {
+        'url' : '/',
+        'label' : 'Pricing'
+      },
+      {
+        'url'  : '/',
+        'label' : 'Sign up'
+      },
+      {
+        'url'  : '/',
+        'label' : 'Using Notify'
+      },
+      {
+        'url' : '/login',
+        'label' : 'Log in'
+      }
+    ]
     })
   }}
 {% endblock %}
@@ -41,8 +67,8 @@
         "label": "Home"
       },
       {
-        "URL": "/page-example",
-        "label": "Example page"
+        "URL": "/examples/passing-data/clear-data",
+        "label": "Clear data"
       }
     ]
   })}}

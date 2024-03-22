@@ -1,0 +1,312 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+{{ backLink({
+  "href": "/manage",
+  "text": "Back to template library",
+  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1>
+        {{ data['folder-name-1'] or defaults['folder-name-1'] }}
+      </h1>
+
+      <div class="nhsuk-tabs" data-module="nhsuk-tabs">
+        <h2 class="nhsuk-tabs__title">
+          Contents
+        </h2>
+      
+        <ul class="nhsuk-tabs__list">
+      
+          <li class="nhsuk-tabs__list-item nhsuk-tabs__list-item--selected">
+            <a class="nhsuk-tabs__tab" href="#app">
+              NHS app
+            </a>
+          </li>
+      
+          <li class="nhsuk-tabs__list-item">
+            <a class="nhsuk-tabs__tab" href="#email">
+              Email
+            </a>
+          </li>
+      
+          <li class="nhsuk-tabs__list-item">
+            <a class="nhsuk-tabs__tab" href="#sms">
+              Text message
+            </a>
+          </li>
+      
+          <li class="nhsuk-tabs__list-item">
+            <a class="nhsuk-tabs__tab" href="#letter">
+              Letter
+            </a>
+          </li>
+      
+        </ul>
+      
+        <div class="nhsuk-tabs__panel" id="app">
+
+          <h3 class="nhsuk-heading-m">NHS app templates</h3>
+
+          <form action="">
+            {{ button({
+              "text": "Create template"
+            }) }}
+          </form>
+
+          {% if data['folder-1-email-templates'] == '1' %}
+
+          <!-- missing table of templates -->
+          
+          {% else %}
+
+          <p>There are no NHS app templates. Create a template to get started.</p>
+
+          {% endif %}
+          
+        </div>
+      
+        <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="email">
+      
+          <h3 class="nhsuk-heading-m">Email templates</h3>
+
+          <form action="/manage/folder-1/create-email-template">
+            <input type="hidden" name="mode" value="">
+            {{ button({
+              "text": "Create template"
+            }) }}
+          </form>
+
+          {% if data['folder-1-email-templates'] == '1' %}
+          
+          <table role="table" class="nhsuk-table-responsive">
+
+            <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Email templates</caption>
+
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">
+                  Name
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Status
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Date created
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Name </span><a href="template-email-1">{{ data['template-email-name-1'] or defaults['template-email-name-1'] }}</a>
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Status </span>
+                  {% if data['template-email-name-1-approved'] == '1' %}
+
+                  {{ tag({
+                    text: "Approved",
+                    classes: "nhsuk-tag--grey"
+                  })}}
+
+                  {% else %}
+
+                  {{ tag({
+                    text: "Draft"
+                  })}}
+
+                  {% endif %}
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Date created </span>21st Mar 2024
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Action </span>
+                  <p><a href="">Duplicate</a></p>
+                  <p><a href="">Delete</a></p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          {% else %}
+
+          <p>There are no email templates. Create a template to get started.</p>
+
+          {% endif %}
+      
+        </div>
+      
+        <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="sms">
+      
+          <h3 class="nhsuk-heading-m">Text message (SMS) templates</h3>
+
+          <form action="/manage/folder-1/create-sms-template">
+            <input type="hidden" name="mode" value="">
+            {{ button({
+              "text": "Create template"
+            }) }}
+          </form>
+
+          {% if data['folder-1-sms-templates'] == '1' %}
+
+          <table role="table" class="nhsuk-table-responsive">
+
+            <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Text message templates</caption>
+
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">
+                  Name
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Status
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Date created
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Name </span><a href="template-sms-1">{{ data['template-sms-name-1'] or defaults['template-sms-name-1'] }}</a>
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Status </span>
+                  {% if data['template-sms-name-1-approved'] == '1' %}
+
+                  {{ tag({
+                    text: "Approved",
+                    classes: "nhsuk-tag--grey"
+                  })}}
+
+                  {% else %}
+
+                  {{ tag({
+                    text: "Draft"
+                  })}}
+
+                  {% endif %}
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Date created </span>21st Mar 2024
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Action </span>
+                  <p><a href="#">Duplicate</a></p>
+                  <p><a href="#">Delete</a></p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          {% else %}
+
+          <p>There are no text message templates. Create a template to get started.</p>
+
+          {% endif %}
+      
+        </div>
+      
+        <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="letter">
+      
+          <h3 class="nhsuk-heading-m">Letter templates</h3>
+
+          <form action="/manage/folder-1/create-letter-template">
+            <input type="hidden" name="mode" value="">
+            {{ button({
+              "text": "Create template"
+            }) }}
+          </form>
+
+          {% if data['folder-1-letter-templates'] == '1' %}
+
+          <table role="table" class="nhsuk-table-responsive">
+
+            <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Letter templates</caption>
+
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">
+                  Name
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Status
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Date created
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Name </span><a href="template-letter-1">{{ data['template-letter-name-1'] or defaults['template-letter-name-1'] }}</a>
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Status </span>
+                  {% if data['template-letter-name-1-approved'] == '1' %}
+
+                  {{ tag({
+                    text: "Approved",
+                    classes: "nhsuk-tag--grey"
+                  })}}
+
+                  {% else %}
+
+                  {{ tag({
+                    text: "Draft"
+                  })}}
+
+                  {% endif %}
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Date created </span>21st Mar 2024
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Action </span>
+                  <p><a href="">Duplicate</a></p>
+                  <p><a href="">Delete</a></p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          {% else %}
+
+          <p>There are no letter templates. Create a template to get started.</p>
+
+          {% endif %}
+      
+        </div>
+      
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

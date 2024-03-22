@@ -8,4 +8,43 @@
 ///////////////////////////////////////////
 // Add your custom CSS/Sass styles below...
 ///////////////////////////////////////////
-  
+
+
+a:visited{
+    color:$nhsuk-link-color;
+}
+
+.notify-template-borderbox{
+    border: 4px solid $nhsuk-border-color;
+    padding: 1.5rem 1.5rem 0 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.notify-template-content{
+    background-color: $color_nhsuk-white;
+    border: 1px solid $nhsuk-border-color;
+
+    tr{
+        border-bottom: 1px solid $nhsuk-border-color;
+    }
+
+    th,td{
+        padding: 1rem;
+    }
+
+    th{
+        color: $nhsuk-secondary-text-color;
+    }
+
+    .nhsuk-table__row:hover{
+        background-color: $color_nhsuk-white !important;
+    }
+}
+
+.notify-confirmation-panel{
+    color: $color_nhsuk-white;
+    background-color:  $color_nhsuk-green;
+    text-align: center;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
