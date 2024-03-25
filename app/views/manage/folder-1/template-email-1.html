@@ -17,7 +17,7 @@
       },
       {
         href: "/manage/folder-1#email",
-        text: "Health campaign Mar 2024"
+        text: data['folder-name-1'] or defaults['folder-name-1']
       }
     ],
     classes: "nhsuk-u-padding-bottom-0"
@@ -29,16 +29,28 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
+      {% if data['template-email-name-1-approved'] == '1' %}
+
+      {{ tag({
+        text: "Approved",
+        classes: "nhsuk-tag--grey"
+      })}}
+
+      {% else %}
+
       {{ tag({
         text: "Draft"
       })}}
+
+      {% endif %}
+
       <h1>
         Email: {{ data['template-email-name-1'] or defaults['template-email-name-1'] }}
       </h1>
 
       <p class="nhsuk-body-s">
         <strong>Folder</strong><br />
-        Health campaign Mar 2024<br />
+        {{ data['folder-name-1'] or defaults['folder-name-1'] }}<br />
         <a href="">Move to a different folder</a>
       </p>
 
@@ -83,11 +95,19 @@
 
       </table>
 
+      {% if data['template-email-name-1-approved'] == '1' %}
+
+      <p>This template cannot be edited or deleted because it has been approved.</p>
+
+      {% else %}
+      
       <a href="/manage/template-approve?approve-template-name={{ data['template-email-name-1'] or defaults['template-email-name-1'] }}&template-email-name-1-approved=0" class="nhsuk-button">Approve</a>
 
       <a href="/manage/folder-1/create-email-template?mode=edit" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-left-3">Edit</a>
 
       <p><a href="/manage/template-test?message-type=email">Preview this template</a></p>
+
+      {% endif %}
 
       <p><a href="/manage/template-version-history?message-type=email">View version history</a></p>
 

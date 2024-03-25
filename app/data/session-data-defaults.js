@@ -12,10 +12,10 @@ module.exports = {
     "template-email-subject-1": "The subject line for the email",
     "template-email-message-1": "Here is the message body text.",
 
-    "template-sms-name-1": "Text message for 30 to 50 yr olds",
+    "template-sms-name-1": "North East region over 16s",
     "template-sms-message-1": "Here is the message body text.",
 
-    "template-letter-name-1": "Letter for awareness campaign 60+",
+    "template-letter-name-1": "National 20 to 40 year olds",
     "template-letter-sender-1": "NHS organisation name, 25 Long Lane, Leeds, LS1 2AB",
     "template-letter-heading-1": "The main heading of the letter",
     "template-letter-message-1": "Here is the message body."

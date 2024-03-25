@@ -74,3 +74,8 @@ router.get('*/template-letter-1', function (request, response) {
   response.locals.defaults = require('./data/session-data-defaults.js')
   response.render('manage/folder-1/template-letter-1')
 })
+
+router.get('*/template-approve', function (request, response) {
+  response.locals.defaults = require('./data/session-data-defaults.js')
+  response.render('manage/template-approve')
+})
