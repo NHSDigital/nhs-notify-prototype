@@ -1,87 +1,68 @@
-<!-- Use this page as the index for your project -->
-
-<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-
-<!-- Extends the layout from /views/layout.html -->
 {% extends 'layout.html' %}
-<!-- 
-  In /views/layout.html you can:
-    - change the header and footer 
-    - add custom CSS and JavaScript
--->
 
-<!-- Set the page title -->
 {% block pageTitle %}
   NHS.UK prototype kit
 {% endblock %}
 
-<!-- For adding a breadcrumb -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}
 {% endblock %}
 
-<!-- For adding a back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block outerContent %}
 {% endblock %}
 
-<!-- For adding page content -->
-<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
   <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-grid-column-full">
 
-      <!-- Change the page title here -->
-      <h1>
-        NHS Notify landing page
-      </h1>
+      <div class="app-pane">
 
-      <!-- Add your content here -->
-      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
+        <div class="app-pane__side-bar">
 
-      <!--<p class="nhsuk-lede-text">
-        This kit lets you rapidly create HTML prototypes of NHS services.
-      </p>
+          <nav class="app-side-nav">
 
-      <hr>
+            <div class="nhsuk-back-link app-u-hide-mobile app-side-nav__back nhsuk-u-margin-bottom-4">
+              
+              <a class="nhsuk-back-link__link" href="#">
+                <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+                  <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+                </svg>
+                Content guide
+              </a>
 
-      <h2>
-        About this page
-      </h2>
+            </div>
 
-      <p>
-        Use this page as the index for your project.
-      </p>
-      
-      <p>
-        You'll find the code for this page at <strong>/app/views/index.html</strong>.
-      </p>
+            <h2 class="app-side-nav__heading">
+              Section heading <span class="nhsuk-u-visually-hidden">navigation</span>
+            </h2>
 
-      <p>
-        There is also an <a href="/page-example">example page</a>, which contains a selection of NHS.UK frontend styles and components.
-      </p>
+            <ul class="nhsuk-list app-side-nav__list">
+            
+              <li class="app-side-nav__item">
+                <a class="app-side-nav__link" href="#">Nav item</a>
+              </li>
+            
+              <li class="app-side-nav__item">
+                <a class="app-side-nav__link" href="#">Nav item</a>
+              </li>
 
-      <hr>
+              <li class="app-side-nav__item">
+                <a class="app-side-nav__link" href="#">Nav item</a>
+              </li>
+            
+            </ul>
+            
+          </nav>
 
-      <h2>
-        Get started
-      </h2>
+          
+        </div>
 
-      <p>Get started by using the:</p>
+        <div class="app-pane__main-content">
 
-      <ul>
-        <li>
-          <a href="/docs/how-tos">how to guides</a>
-        </li>
-        <li>
-          <a href="/docs/page-templates">page templates</a>
-        </li>
-        <li>
-          code snippets for styles and components from the <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a>
-        </li>
-      </ul>-->
+          <h1 class="nhsuk-heading-xl">Main heading</h1>
 
-      <!-- End of content -->
+        </div>
+
+      </div>      
 
     </div>
   </div>

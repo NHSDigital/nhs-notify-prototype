@@ -141,7 +141,9 @@
                 <td role="cell" class="nhsuk-table__cell">
                   <span class="nhsuk-table-responsive__heading">Action </span>
                   <p><a href="">Duplicate</a></p>
+                  {% if data['template-email-name-1-approved'] != '1' %}
                   <p><a href="">Delete</a></p>
+                  {% endif %}
                 </td>
               </tr>
             </tbody>
@@ -216,7 +218,9 @@
                 <td role="cell" class="nhsuk-table__cell">
                   <span class="nhsuk-table-responsive__heading">Action </span>
                   <p><a href="#">Duplicate</a></p>
-                  <p><a href="#">Delete</a></p>
+                  {% if data['template-sms-name-1-approved'] != '1' %}
+                  <p><a href="">Delete</a></p>
+                  {% endif %}
                 </td>
               </tr>
             </tbody>
@@ -291,7 +295,9 @@
                 <td role="cell" class="nhsuk-table__cell">
                   <span class="nhsuk-table-responsive__heading">Action </span>
                   <p><a href="">Duplicate</a></p>
+                  {% if data['template-letter-name-1-approved'] != '1' %}
                   <p><a href="">Delete</a></p>
+                  {% endif %}
                 </td>
               </tr>
             </tbody>
