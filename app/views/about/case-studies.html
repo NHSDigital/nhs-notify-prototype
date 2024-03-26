@@ -5,12 +5,27 @@
 {% endblock %}
 
 {% block beforeContent %}
+
+{{ breadcrumb({
+  items: [
+    {
+      href: "/",
+      text: "Home"
+    },
+    {
+      href: "/about/",
+      text: "About"
+    }
+  ]
+}) }}
+
 {% endblock %}
 
 {% block outerContent %}
 {% endblock %}
 
 {% block content %}
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
 
@@ -20,45 +35,40 @@
 
           <nav class="app-side-nav">
 
-            <div class="nhsuk-back-link app-u-hide-mobile app-side-nav__back nhsuk-u-margin-bottom-4">
-              
-              <a class="nhsuk-back-link__link" href="#">
+            <!--<div class="nhsuk-back-link app-u-hide-mobile app-side-nav__back nhsuk-u-margin-bottom-4">
+    
+              <a class="nhsuk-back-link__link" href="{{link}}">
                 <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
                   <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
                 </svg>
-                Content guide
+                {{title}}
               </a>
-
+            
             </div>
 
             <h2 class="app-side-nav__heading">
               Section heading <span class="nhsuk-u-visually-hidden">navigation</span>
-            </h2>
+            </h2>-->
 
             <ul class="nhsuk-list app-side-nav__list">
             
               <li class="app-side-nav__item">
-                <a class="app-side-nav__link" href="#">Nav item</a>
-              </li>
-            
-              <li class="app-side-nav__item">
-                <a class="app-side-nav__link" href="#">Nav item</a>
+                <a class="app-side-nav__link" href="performance">Performance data</a>
               </li>
 
-              <li class="app-side-nav__item">
-                <a class="app-side-nav__link" href="#">Nav item</a>
+              <li class="app-side-nav__item app-side-nav__item--current">
+                <a class="app-side-nav__link" href="case-studies">Case studies</a>
               </li>
-            
+
             </ul>
             
           </nav>
-
           
         </div>
 
         <div class="app-pane__main-content">
 
-          <h1 class="nhsuk-heading-xl">Main heading</h1>
+          <h1 class="nhsuk-heading-xl">Case studies</h1>
 
         </div>
 

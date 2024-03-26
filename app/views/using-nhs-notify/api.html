@@ -1,0 +1,116 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ breadcrumb({
+  items: [
+    {
+      href: "/",
+      text: "Home"
+    },
+    {
+      href: "/using-nhs-notify",
+      text: "Using NHS Notify"
+    },
+    {
+      href: "/using-nhs-notify/access",
+      text: "How to access NHS Notify"
+    }
+  ]
+}) }}
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <div class="app-pane">
+
+        <div class="app-pane__side-bar">
+
+          <nav class="app-side-nav">
+
+            <!--<div class="nhsuk-back-link app-u-hide-mobile app-side-nav__back nhsuk-u-margin-bottom-4">
+    
+              <a class="nhsuk-back-link__link" href="{{link}}">
+                <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+                  <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+                </svg>
+                {{title}}
+              </a>
+            
+            </div>
+
+            <h2 class="app-side-nav__heading">
+              Section heading <span class="nhsuk-u-visually-hidden">navigation</span>
+            </h2>-->
+
+            <ul class="nhsuk-list app-side-nav__list">
+            
+              <li class="app-side-nav__item nhsuk-u-padding-left-2" style="border-left:2px solid #005eb8">
+                <a class="app-side-nav__link" href="/using-nhs-notify/access">How to access NHS Notify</a>
+
+                <ul class="nhsuk-list app-side-nav__list nhsuk-u-margin-top-1 nhsuk-u-margin-left-3 nhsuk-u-margin-bottom-3">
+                  <li class="app-side-nav__item app-side-nav__item--current">
+                    &mdash; <a class="app-side-nav__link" href="/using-nhs-notify/api">API</a>
+                  </li>
+                  <li class="app-side-nav__item">
+                    &mdash; <a class="app-side-nav__link" href="/using-nhs-notify/mesh">Message Exchange for Social Care and Health</a>
+                  </li>
+                  <li class="app-side-nav__item">
+                    &mdash; <a class="app-side-nav__link" href="/using-nhs-notify/ui">User interface</a>
+                  </li>
+                </ul>
+
+              </li>
+
+              <li class="app-side-nav__item">
+                <a class="app-side-nav__link" href="/using-nhs-notify/writing">Writing a message</a>
+              </li>
+
+              <li class="app-side-nav__item">
+                <a class="app-side-nav__link" href="/using-nhs-notify/pds">How we use the Personal Demographics Service (PDS)</a>
+              </li>
+
+              <li class="app-side-nav__item">
+                <a class="app-side-nav__link" href="/using-nhs-notify/routing">Multi-channel routing</a>
+              </li>
+
+              <li class="app-side-nav__item">
+                <a class="app-side-nav__link" href="/using-nhs-notify/delivery">Delivery times</a>
+              </li>
+
+              <li class="app-side-nav__item">
+                <a class="app-side-nav__link" href="/using-nhs-notify/accessible">Sending letters in accessible formats</a>
+              </li>
+
+              <li class="app-side-nav__item">
+                <a class="app-side-nav__link" href="/using-nhs-notify/languages">Sending letters in other languages</a>
+              </li>
+
+            </ul>
+            
+          </nav>
+          
+        </div>
+
+        <div class="app-pane__main-content">
+
+          <h1 class="nhsuk-heading-xl">API</h1>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
