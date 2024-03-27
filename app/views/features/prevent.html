@@ -5,6 +5,20 @@
 {% endblock %}
 
 {% block beforeContent %}
+
+{{ breadcrumb({
+  items: [
+    {
+      href: "/",
+      text: "Home"
+    },
+    {
+      href: "/features",
+      text: "Features"
+    }
+  ]
+}) }}
+
 {% endblock %}
 
 {% block outerContent %}
@@ -39,7 +53,7 @@
 
               {{sideNavItem(title='Reach wider audiences', link='/features/reach', active='0')}}
 
-              {{sideNavItem(title='Prevent sending messages to people who cannot be contacted', link='/features/prevent', active='0')}}
+              {{sideNavItem(title='Prevent sending messages to people who cannot be contacted', link='/features/prevent', active='1')}}
 
               {{sideNavItem(title='See how your messages perform', link='/features/perform', active='0')}}
 
@@ -55,7 +69,7 @@
 
         <div class="app-pane__main-content">
 
-          <h1 class="nhsuk-heading-xl">Features</h1>
+          <h1 class="nhsuk-heading-xl">Prevent sending messages to people who cannot be contacted</h1>
 
         </div>
 

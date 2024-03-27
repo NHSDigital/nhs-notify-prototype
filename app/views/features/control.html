@@ -5,6 +5,20 @@
 {% endblock %}
 
 {% block beforeContent %}
+
+{{ breadcrumb({
+  items: [
+    {
+      href: "/",
+      text: "Home"
+    },
+    {
+      href: "/features",
+      text: "Features"
+    }
+  ]
+}) }}
+
 {% endblock %}
 
 {% block outerContent %}
@@ -33,7 +47,7 @@
             
               {{sideNavItem(title='Send messages to patients and the public', link='/features/send-messages', active='0')}}
 
-              {{sideNavItem(title='Control your message content', link='/features/control', active='0')}}
+              {{sideNavItem(title='Control your message content', link='/features/control', active='1')}}
 
               {{sideNavItem(title='Decide how your messages are sent', link='/features/decide', active='0')}}
 
@@ -55,7 +69,7 @@
 
         <div class="app-pane__main-content">
 
-          <h1 class="nhsuk-heading-xl">Features</h1>
+          <h1 class="nhsuk-heading-xl">Control your message content</h1>
 
         </div>
 

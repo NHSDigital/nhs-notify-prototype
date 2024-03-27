@@ -5,6 +5,20 @@
 {% endblock %}
 
 {% block beforeContent %}
+
+{{ breadcrumb({
+  items: [
+    {
+      href: "/",
+      text: "Home"
+    },
+    {
+      href: "/features",
+      text: "Features"
+    }
+  ]
+}) }}
+
 {% endblock %}
 
 {% block outerContent %}
@@ -35,7 +49,7 @@
 
               {{sideNavItem(title='Control your message content', link='/features/control', active='0')}}
 
-              {{sideNavItem(title='Decide how your messages are sent', link='/features/decide', active='0')}}
+              {{sideNavItem(title='Decide how your messages are sent', link='/features/decide', active='1')}}
 
               {{sideNavItem(title='Reach wider audiences', link='/features/reach', active='0')}}
 
@@ -55,7 +69,7 @@
 
         <div class="app-pane__main-content">
 
-          <h1 class="nhsuk-heading-xl">Features</h1>
+          <h1 class="nhsuk-heading-xl">Decide how your messages are sent</h1>
 
         </div>
 

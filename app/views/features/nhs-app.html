@@ -57,32 +57,36 @@
             <ul class="nhsuk-list app-side-nav__list">
             
               <li class="app-side-nav__item nhsuk-u-padding-left-2" style="border-left:2px solid #005eb8">
-                <a class="app-side-nav__link" href="send-messages">Send messages to patients and the public</a>
+                
+                <a class="app-side-nav__link" href="/features/send-messages">Send messages to patients and the public</a>
 
                 <ul class="nhsuk-list app-side-nav__list nhsuk-u-margin-top-1 nhsuk-u-margin-left-3 nhsuk-u-margin-bottom-3">
-                  <li class="app-side-nav__item app-side-nav__item--current">
-                    &mdash; <a class="app-side-nav__link" href="nhs-app">NHS app messages</a>
-                  </li>
-                  <li class="app-side-nav__item">
-                    &mdash; <a class="app-side-nav__link" href="emails">Emails</a>
-                  </li>
-                  <li class="app-side-nav__item">
-                    &mdash; <a class="app-side-nav__link" href="sms">Text messages</a>
-                  </li>
-                  <li class="app-side-nav__item">
-                    &mdash; <a class="app-side-nav__link" href="letters">Letters</a>
-                  </li>
+
+                  {{sideNavSubItem(title='NHS app messages', link='/features/nhs-app', active='1')}}
+
+                  {{sideNavSubItem(title='Emails', link='/features/emails', active='0')}}
+
+                  {{sideNavSubItem(title='Text messages', link='/features/sms', active='0')}}
+
+                  {{sideNavSubItem(title='Letters', link='/features/letters', active='0')}}
+
                 </ul>
 
               </li>
 
-              <li class="app-side-nav__item">
-                <a class="app-side-nav__link" href="roadmap">Roadmap</a>
-              </li>
+              {{sideNavItem(title='Control your message content', link='/features/control', active='0')}}
 
-              <li class="app-side-nav__item">
-                <a class="app-side-nav__link" href="security">Security features</a>
-              </li>
+              {{sideNavItem(title='Decide how your messages are sent', link='/features/decide', active='0')}}
+
+              {{sideNavItem(title='Reach wider audiences', link='/features/reach', active='0')}}
+
+              {{sideNavItem(title='Prevent sending messages to people who cannot be contacted', link='/features/prevent', active='0')}}
+
+              {{sideNavItem(title='See how your messages perform', link='/features/perform', active='0')}}
+
+              {{sideNavItem(title='Roadmap', link='/features/roadmap', active='0')}}
+
+              {{sideNavItem(title='Security features', link='/features/security', active='0')}}
 
             </ul>
             

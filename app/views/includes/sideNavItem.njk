@@ -1,6 +1,6 @@
-{% macro sideNavItem(title="'title'", link='#' ) %}
+{% macro sideNavItem(title='title', link='#', active='0' ) %}
 
-<li class="app-side-nav__item">
+<li class="app-side-nav__item {% if active == '1' %}app-side-nav__item--current{% endif %}">
   <a class="app-side-nav__link" href="{{link}}">{{title}}</a>
 </li>
 
