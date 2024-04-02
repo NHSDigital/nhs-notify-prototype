@@ -1,11 +1,12 @@
-<!-- 
-  This is the main layout where you can:
-    - change the header and footer 
-    - add custom CSS and JavaScript
--->
+<!-- Custom Notify macros -->
+{% from 'includes/sideNavBackLink.njk' import sideNavBackLink %}
+{% from 'includes/sideNavItem.njk' import sideNavItem %}
+{% from 'includes/sideNavSubItem.njk' import sideNavSubItem %}
+
+{% set protoVersion = 'v1' %}
 
 <!-- Extends the layout from /docs/views/template.html -->
-{% extends "template.html" %}
+{% extends 'template.html' %}
 
 <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 {% block headCSS %}
@@ -21,39 +22,39 @@
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
 {% block header %}
   {{ header({
-    "service": {
-        "name": "Notify",
-        "href": "/"
+    'service': {
+        'name': 'Notify'
       },
-      "showNav": "false",
-      "showSearch": "false",
-      "primaryLinks": [
+      'homeHref': '/' + protoVersion + '/',
+      'showNav': 'true',
+      'showSearch': 'false',
+      'primaryLinks': [
       {
-        'url' : '/about/',
+        'url' : '/' + protoVersion + '/about/',
         'label' : 'About'
       },
       {
-        'url' : '/features',
+        'url' : '/' + protoVersion + '/features/',
         'label' : 'Features'
       },
       {
-        'url'  : '/using-nhs-notify',
+        'url'  : '/' + protoVersion + '/using-nhs-notify/',
         'label' : 'Using NHS Notify'
       },
       {
-        'url'  : '/pricing',
+        'url'  : '/' + protoVersion + '/pricing/',
         'label' : 'Pricing'
       },
       {
-        'url'  : '/support',
+        'url'  : '/' + protoVersion + '/support/',
         'label' : 'Support'
       },
       {
-        'url'  : '/get-started',
+        'url'  : '/' + protoVersion + '/get-started/',
         'label' : 'Get started'
       },
       {
-        'url' : '/login',
+        'url' : '/' + protoVersion + '/login',
         'label' : 'Log in'
       }
     ]
@@ -65,14 +66,18 @@
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 {% block footer %}
   {{ footer({
-    "links": [
+    'links': [
       {
-        "URL": "/",
-        "label": "Home"
+        'URL': '/',
+        'label': 'Home'
       },
       {
-        "URL": "/examples/passing-data/clear-data",
-        "label": "Clear data"
+        'URL': '/examples/passing-data/clear-data',
+        'label': 'Clear data'
+      },
+      {
+        'URL': '/',
+        'label': 'Prototype version: ' + protoVersion + ''
       }
     ]
   })}}
@@ -81,7 +86,7 @@
 {% block bodyEnd %}
   {% block scripts %}
     <!-- Custom JavaScript files can be added to this file -->
-    {% include "includes/scripts.html" %}
+    {% include 'includes/scripts.html' %}
     <!-- For adding page specific JavsScript -->
     {% block pageScripts %}{% endblock %}
   {% endblock %}

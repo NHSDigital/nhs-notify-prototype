@@ -1,0 +1,41 @@
+{% extends 'v1/layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <div class="notify-confirmation-panel">
+        <h1 class="nhsuk-heading-l">Template approved</h1>
+        <p class="nhsuk-body-l nhsuk-u-margin-bottom-0">
+          Template name<br />
+          <strong>{{ data['approve-template-name']}}</strong>
+        </p>
+      </div>
+
+      <p>Now that this template is approved, you need to provide the template ID to the NHS Notify team.</p>
+
+      <p>
+        <strong>Template ID</strong><br />
+        a4b171b5-431f-4a5b-9d7a-9a4903c98e66
+      </p>
+
+      {{ button({
+        "text": "Copy template ID to clipboard",
+        "classes": "nhsuk-button--secondary"
+      }) }}
+
+      <p><a href="/{{ protoVersion }}/manage/folder-1/">Back to folder</a></p>
+
+    </div>
+  </div>
+{% endblock %}

@@ -3,7 +3,7 @@
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
-{% extends 'layout.html' %}
+{% extends 'v1/layout.html' %}
 <!-- 
   In /views/layout.html you can:
     - change the header and footer 
@@ -29,63 +29,17 @@
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
   <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-grid-column-two-thirds">
 
       <!-- Change the page title here -->
       <h1>
-        NHS Notify prototypes
+        NHS Notify
       </h1>
-
-      <a href="/v1/" class="nhsuk-button">Open current version</a>
-
-      <table role="table" class="nhsuk-table-responsive">
-
-        <caption class="nhsuk-table__caption">Prototype versions</caption>
-
-        <thead role="rowgroup" class="nhsuk-table__head">
-          <tr role="row">
-            <th role="columnheader" class="" scope="col">
-              Version
-            </th>
-            <th role="columnheader" class="" scope="col">
-              Sprint(s)
-            </th>
-            <th role="columnheader" class="" scope="col">
-              Date created
-            </th>
-            <th role="columnheader" class="" scope="col">
-              Status
-            </th>
-            <th role="columnheader" class="" scope="col">
-              Links
-            </th>
-          </tr>
-        </thead>
-
-        <tbody class="nhsuk-table__body">
-          <tr role="row" class="nhsuk-table__row">
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Version </span>Version 1 (current)
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Sprint(s) </span>7 &amp; 8
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Date created </span>22nd Mar 2024
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Status </span>
-              {{ tag({
-                text: "In progress",
-                classes: "nhsuk-tag--blue"
-              })}}
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Links </span><a href="/v1/">Open prototype</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      
+      <p>
+        <strong>Prototype version:</strong> {{protoVersion}}
+      </p>
+      
 
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
