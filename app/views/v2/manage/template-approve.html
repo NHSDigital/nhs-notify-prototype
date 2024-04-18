@@ -37,33 +37,11 @@
 
         <p>After you submit, if you need to make any changes then you will need to create and submit a new template.</p>
 
-        <h2 class="nhsuk-heading-m">Your details</h2>
-
-        <p>We need your name and email address so that...</p>
-
-        {{ input({
-          "label": {
-            "text": "Full name"
-          },
-          "id": "template-submit-name",
-          "name": "template-submit-name",
-          "value": data['template-submit-name']
-        }) }}
-
-        {{ input({
-          "label": {
-            "text": "Email address"
-          },
-          "id": "template-submit-email",
-          "name": "template-submit-email",
-          "value": data['template-submit-email']
-        }) }}
-
         {{ button({
           "text": "Submit"
         }) }}
 
-        <p><a href="javascript:history(-1)">Go back</a></p>
+        <p><a href="javascript:history.go(-1)">Go back</a></p>
 
       </form>
 
