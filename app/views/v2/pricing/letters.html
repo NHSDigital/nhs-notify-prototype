@@ -1,0 +1,68 @@
+{% extends 'v2/layout.html' %}
+
+
+
+{% block beforeContent %}
+
+{{ breadcrumb({
+  items: [
+    {
+      href: '/' + protoVersion + '/',
+      text: 'Home'
+    },
+    {
+      href: '/' + protoVersion + '/pricing/',
+      text: 'Pricing'
+    }
+  ]
+}) }}
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <div class="app-pane">
+
+        <div class="app-pane__side-bar">
+
+          <nav class="app-side-nav">
+
+            {#
+            {{sideNavBackLink(title='Back link', link='/')}}
+
+            <h2 class="app-side-nav__heading">
+              Section heading <span class="nhsuk-u-visually-hidden">navigation</span>
+            </h2>
+            #}
+
+            <ul class="nhsuk-list app-side-nav__list">
+
+              {{sideNavItem(title='Text messages', link='sms', active='0')}}
+
+              {{sideNavItem(title='Letters', link='letters', active='1')}}
+
+              {{sideNavItem(title='How to pay', link='pay', active='0')}}
+
+            </ul>
+            
+          </nav>
+          
+        </div>
+
+        <div class="app-pane__main-content">
+
+          <h1 class="nhsuk-heading-xl">Letters</h1>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

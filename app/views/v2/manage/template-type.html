@@ -1,0 +1,52 @@
+{% extends 'v2/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="route-template-type" method="post">
+
+      {{ radios({
+        "name": "radio-template-type",
+        "fieldset": {
+          "legend": {
+            "text": "Choose a template type to create",
+            "classes": "nhsuk-fieldset__legend--l",
+            "isPageHeading": true
+          }
+        },
+        "items": [
+          {
+            "value": "app",
+            "text": "NHS app message"
+          },
+          {
+            "value": "email",
+            "text": "Email"
+          },
+          {
+            "value": "sms",
+            "text": "Text message (SMS)"
+          },
+          {
+            "value": "letter",
+            "text": "Letter"
+          }
+        ]
+      }) }}
+
+      {{ button({
+        'text': 'Continue'
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

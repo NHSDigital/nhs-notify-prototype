@@ -1,0 +1,218 @@
+{% extends 'v2/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {% if data['message-type'] == "sms" %}
+
+      <h1>
+        Send a test text message
+      </h1>
+
+      <p>
+        Preview your message by sending it to a mobile phone.
+      </p>
+
+      
+
+      <div class="nhsuk-form-group">
+
+        <h2 class="nhsuk-heading-m">Enter test personalisation data</h2>
+
+        {{ input({
+          "label": {
+            "text": "First name"
+          },
+          "id": "test-firstname-1",
+          "name": "test-firstname-1",
+          "value": data['template-test-data-firstname']
+        }) }}
+
+        {{ input({
+          "label": {
+            "text": "Last name"
+          },
+          "id": "test-lastname-1",
+          "name": "test-lastname-1",
+          "value": data['template-test-data-lastname']
+        }) }}
+
+        {{ input({
+          "label": {
+            "text": "NHS number"
+          },
+          "id": "test-nhsnumber-1",
+          "name": "test-nhsnumber-1",
+          "value": data['template-test-data-nhsnumber']
+        }) }}
+
+        <p class="nhsuk-u-margin-top-4"><a href="template-test?template-test-data-firstname=Mary&template-test-data-lastname=Poppins&template-test-data-nhsnumber=012%20345%206789">Use default test data</a></p>
+
+      </div>
+
+      <div class="nhsuk-form-group">
+
+        <h2 class="nhsuk-heading-m">Enter a mobile phone number</h2>
+
+        <form action="template-test-confirmation" method="post">
+
+        {{ input({
+          "label": {
+            "text": "Mobile phone number"
+          },
+          "id": "test-sms-1",
+          "name": "test-sms-1"
+        }) }}
+
+      </div>
+
+      {{ button({
+        "text": "Send"
+      }) }}
+
+      </form>
+
+      {% endif %}
+
+
+
+      {% if data['message-type'] == "email" %}
+
+      <h1>
+        Send a test email
+      </h1>
+
+      <p>
+        Preview your message by sending it to an email address.
+      </p>
+
+      
+
+      <div class="nhsuk-form-group">
+
+        <h2 class="nhsuk-heading-m">Enter test personalisation data</h2>
+
+        {{ input({
+          "label": {
+            "text": "First name"
+          },
+          "id": "test-firstname-1",
+          "name": "test-firstname-1",
+          "value": data['template-test-data-firstname']
+        }) }}
+
+        {{ input({
+          "label": {
+            "text": "Last name"
+          },
+          "id": "test-lastname-1",
+          "name": "test-lastname-1",
+          "value": data['template-test-data-lastname']
+        }) }}
+
+        {{ input({
+          "label": {
+            "text": "NHS number"
+          },
+          "id": "test-nhsnumber-1",
+          "name": "test-nhsnumber-1",
+          "value": data['template-test-data-nhsnumber']
+        }) }}
+
+        <p class="nhsuk-u-margin-top-4"><a href="template-test?template-test-data-firstname=Mary&template-test-data-lastname=Poppins&template-test-data-nhsnumber=012%20345%206789">Use default test data</a></p>
+
+      </div>
+
+      <form action="template-test-confirmation" method="post">
+
+        <div class="nhsuk-form-group">
+
+        <h2 class="nhsuk-heading-m">Enter an email address</h2>
+
+        {{ input({
+          "label": {
+            "text": "Email address"
+          },
+          "id": "test-email-1",
+          "name": "test-email-1"
+        }) }}
+
+      </div>
+
+      {{ button({
+        "text": "Send"
+      }) }}
+
+      </form>
+
+      {% endif %}
+
+
+
+      {% if data['message-type'] == "letter" %}
+
+      <h1>
+        Preview letter template
+      </h1>
+
+      <p>Download your letter as a PDF which you can save to your computer and print out.</p>
+      <p>Be aware if you print this letter PDF, the colours may vary from the final letter printed and distributed by our suppliers.</p>
+
+      <div class="nhsuk-form-group">
+
+        <h2 class="nhsuk-heading-m">Enter test personalisation data</h2>
+
+        {{ input({
+          "label": {
+            "text": "First name"
+          },
+          "id": "test-firstname-1",
+          "name": "test-firstname-1",
+          "value": data['template-test-data-firstname']
+        }) }}
+
+        {{ input({
+          "label": {
+            "text": "Last name"
+          },
+          "id": "test-lastname-1",
+          "name": "test-lastname-1",
+          "value": data['template-test-data-lastname']
+        }) }}
+
+        {{ input({
+          "label": {
+            "text": "NHS number"
+          },
+          "id": "test-nhsnumber-1",
+          "name": "test-nhsnumber-1",
+          "value": data['template-test-data-nhsnumber']
+        }) }}
+
+        <p class="nhsuk-u-margin-top-4"><a href="template-test?template-test-data-firstname=Mary&template-test-data-lastname=Poppins&template-test-data-nhsnumber=012%20345%206789">Use default test data</a></p>
+
+      </div>
+
+      <p><a href="" class="nhsuk-button">Download letter PDF</a></p>
+
+      {#<p>To open a PDF file on your computer, you will need to have the free program <a href="">Adobe PDF Reader</a> installed.</p>#}
+
+      {% endif %}
+
+    </div>
+  </div>
+{% endblock %}

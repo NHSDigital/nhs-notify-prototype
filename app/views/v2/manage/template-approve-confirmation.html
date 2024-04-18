@@ -1,0 +1,51 @@
+{% extends 'v2/layout.html' %}
+
+
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <div class="notify-confirmation-panel">
+        <h1 class="nhsuk-heading-l">Template submitted</h1>
+        <p class="nhsuk-body-l nhsuk-u-margin-bottom-0">
+          Template name<br />
+          <strong>{{ data['approve-template-name']}}</strong>
+        </p>
+      </div>
+
+      <p>You will also receive a confirmation email which contains the template ID.</p>
+
+      <h2 class="nhsuk-heading-m">What to do next</h2>
+
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>If you are setting up your message templates for the first time, make a note of the template names and IDs you create. You will need to provide them to the NHS Notify team when setting up your message plans.</li>
+        <li>If you are making a change to an existing template or a live template, create a <a href="">Service Now request</a>.</li>
+      </ul>
+      
+      {#<p>
+        <strong>Template name</strong><br />
+        {{data['approve-template-name'] | default('National over 16s cohort')}}
+      </p>#}
+      
+      <p>
+        <strong>Template ID</strong><br />
+        a4b171b5-431f-4a5b-9d7a-9a4903c98e66
+      </p>
+
+      {{ button({
+        "text": "Copy template ID to clipboard",
+        "classes": "nhsuk-button--secondary"
+      }) }}
+
+      <p><a href="/{{ protoVersion }}/manage/template-type">Create another template</a></p>
+
+    </div>
+  </div>
+{% endblock %}

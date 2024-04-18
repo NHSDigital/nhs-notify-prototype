@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="595px" height="842px" viewBox="0 0 595 842" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>nhs-notify-pdf-letter-spec@1x</title>
+    <g id="nhs-notify-pdf-letter-spec" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#FFFFFF" x="0" y="0" width="595" height="842"></rect>
+        <rect id="Rectangle" fill="#FFBBBB" x="0" y="0" width="595" height="14"></rect>
+        <rect id="Rectangle" fill="#FFBBBB" x="0" y="14" width="43" height="814"></rect>
+        <rect id="Rectangle" fill="#FFBBBB" x="552" y="14" width="43" height="814"></rect>
+        <rect id="Rectangle" fill="#FFBBBB" x="0" y="828" width="595" height="14"></rect>
+        <path d="M410,95 L512,95 L512,54 L410,54 L410,95 Z M451,58 L443.983927,91 L432.972489,91 L426.048828,68.1664183 L425.956416,68.1664183 L421.350268,91 L413,91 L420.073831,58 L431.121366,58 L437.907854,80.8842041 L438.00171,80.8842041 L442.649732,58 L451,58 Z M483,58 L476.139654,91 L467.298231,91 L470.230975,76.8662342 L459.774167,76.8662342 L456.841423,91 L448,91 L454.858906,58 L463.701769,58 L461.103044,70.6252191 L471.555533,70.6252191 L474.158577,58 L483,58 Z M508,58.4592831 L505.888031,65.0037285 C504.202449,64.2056605 501.90652,63.5012287 498.675108,63.5012287 C495.211251,63.5012287 492.397669,64.0140666 492.397669,66.6546055 C492.397669,71.3133633 505.095151,69.5746123 505.095151,79.5576646 C505.095151,88.6432506 496.70717,91 489.117771,91 C485.745181,91 481.856363,90.1961698 479,89.3001441 L481.062057,82.6130836 C482.791847,83.7453606 486.262834,84.5002118 489.117771,84.5002118 C491.838661,84.5002118 496.096823,83.9801712 496.096823,80.5905432 C496.096823,75.313787 483.400767,77.2931108 483.400767,68.0216931 C483.400767,59.5425811 490.80478,57 497.973495,57 C502.004917,57 505.796764,57.4264045 508,58.4592831 L508,58.4592831 Z" id="NHS-logo-for-A4-10mm---CMYK-Blue" fill="#0067A5"></path>
+        <g id="Group" transform="translate(83.000000, 95.000000)">
+            <rect id="Rectangle" fill="#D8DDE0" x="0" y="0" width="185" height="153"></rect>
+            <text id="Sender-address" font-family="Frutiger" font-size="20" font-weight="normal" fill="#212B32">
+                <tspan x="26.6669922" y="84">Sender address</tspan>
+            </text>
+        </g>
+        <g id="Group" transform="translate(83.000000, 268.000000)">
+            <rect id="Rectangle" fill="#D8DDE0" x="0" y="0" width="430" height="49"></rect>
+            <text id="Heading" font-family="Frutiger" font-size="20" font-weight="normal" fill="#212B32">
+                <tspan x="178.183594" y="31.7474747">Heading</tspan>
+            </text>
+        </g>
+        <g id="Group" transform="translate(83.000000, 337.000000)">
+            <rect id="Rectangle" fill="#D8DDE0" x="0" y="0" width="429" height="419"></rect>
+            <text id="Body-text" font-family="Frutiger" font-size="20" font-weight="normal" fill="#212B32">
+                <tspan x="172.3125" y="190">Body text</tspan>
+            </text>
+        </g>
+        <g id="Group" transform="translate(327.000000, 776.000000)">
+            <rect id="Rectangle" fill="#D8DDE0" x="0" y="0" width="185" height="35"></rect>
+            <text id="Page-number" font-family="Frutiger" font-size="20" font-weight="normal" fill="#212B32">
+                <tspan x="33.3476562" y="24">Page number</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
