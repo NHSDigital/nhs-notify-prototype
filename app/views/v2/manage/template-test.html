@@ -31,7 +31,7 @@
 
       <div class="nhsuk-form-group">
 
-        <h2 class="nhsuk-heading-m">Enter test personalisation data</h2>
+        <h2 class="nhsuk-heading-m">Enter test personalisation data (optional)</h2>
 
         {{ input({
           "label": {
@@ -166,15 +166,15 @@
       {% if data['message-type'] == "letter" %}
 
       <h1>
-        Preview letter template
+        Preview '{{data['template-letter-name-1']}}'
       </h1>
 
-      <p>Download your letter as a PDF which you can save to your computer and print out.</p>
-      <p>Be aware if you print this letter PDF, the colours may vary from the final letter printed and distributed by our suppliers.</p>
+      <p>Download your letter as a PDF, which you can save and print.</p>
+      <p>The colours may vary from the final letter.</p>
 
       <div class="nhsuk-form-group">
 
-        <h2 class="nhsuk-heading-m">Enter test personalisation data</h2>
+        <h2 class="nhsuk-heading-m">Enter test personalisation data (optional)</h2>
 
         {{ input({
           "label": {
@@ -208,8 +208,6 @@
       </div>
 
       <p><a href="" class="nhsuk-button">Download letter PDF</a></p>
-
-      {#<p>To open a PDF file on your computer, you will need to have the free program <a href="">Adobe PDF Reader</a> installed.</p>#}
 
       {% endif %}
 

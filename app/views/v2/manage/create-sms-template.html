@@ -33,7 +33,7 @@
             "text": "Template name"
           },
           "hint": {
-            "text": "This name will not be visible to message recipients"
+            "text": "This will not be visible to recipients."
           },
           "id": "template-sms-name-1",
           "name": "template-sms-name-1",
@@ -67,7 +67,7 @@
             "text": "Template name"
           },
           "hint": {
-            "text": "This name will not be visible to message recipients"
+            "text": "This will not be visible to recipients."
           },
           "id": "template-sms-name-1",
           "name": "template-sms-name-1"
@@ -95,11 +95,13 @@
         {% endif %}
 
         <p id="charNum" class="nhsuk-u-margin-bottom-0">0 characters</p>
-        <p>A single text message is a maximum of 160 characters including <a href="">personalisation</a>.</p>
+        <p>This template will be sent as <span id="numMsgs">0</span> text messages. If you're using personalisation fields, it could send as more.</p>
+        <p><a href="">Learn more about character counts and text message pricing.</a></p>
 
         <script>
           function countChars(obj){
             document.getElementById("charNum").innerHTML = obj.value.length+' characters';
+            document.getElementById("numMsgs").innerHTML = Math.ceil(obj.value.length / 160);
           }
         </script>
 
