@@ -165,3 +165,39 @@ function checkFormLetter() {
 
     return ok;
 }
+
+
+function checkFormTestSMS() {
+    var ok = true;
+
+    if (document.getElementById("test-sms-1").value == "") {
+        document.getElementById("test-sms-1").classList.add("nhsuk-input--error");
+        document.getElementById("test-sms-1").closest(".nhsuk-form-group").classList.add("nhsuk-form-group--error");
+        document.getElementById("test-sms-1--error").style.display = "block";
+        ok = false;
+    } else {
+        document.getElementById("test-sms-1").classList.remove("nhsuk-input--error");
+        document.getElementById("test-sms-1").closest(".nhsuk-form-group").classList.remove("nhsuk-form-group--error");
+        document.getElementById("test-sms-1--error").style.display = "none";
+    }
+
+    return ok;
+}
+
+
+function checkFormTestEmail() {
+    var ok = true;
+
+    if (document.getElementById("test-email-1").value == "") {
+        document.getElementById("test-email-1").classList.add("nhsuk-input--error");
+        document.getElementById("test-email-1").closest(".nhsuk-form-group").classList.add("nhsuk-form-group--error");
+        document.getElementById("test-email-1--error").style.display = "block";
+        ok = false;
+    } else {
+        document.getElementById("test-email-1").classList.remove("nhsuk-input--error");
+        document.getElementById("test-email-1").closest(".nhsuk-form-group").classList.remove("nhsuk-form-group--error");
+        document.getElementById("test-semailms-1--error").style.display = "none";
+    }
+
+    return ok;
+}

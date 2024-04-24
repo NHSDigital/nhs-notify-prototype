@@ -21,12 +21,13 @@
 <!-- Edit the header -->
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
 {% block header %}
+
   {{ header({
     'service': {
         'name': 'Notify'
       },
       'homeHref': '/' + protoVersion + '/',
-      'showNav': 'true',
+      'showNav': 'false',
       'showSearch': 'false',
       'primaryLinks': [
       {
@@ -56,6 +57,7 @@
     ]
     })
   }}
+
 {% endblock %}
 
 <!-- Edit the footer -->

@@ -27,8 +27,6 @@
         Preview your message by sending it to a mobile phone.
       </p>
 
-      
-
       <div class="nhsuk-form-group">
 
         <h2 class="nhsuk-heading-m">Enter test personalisation data (optional)</h2>
@@ -68,7 +66,7 @@
 
         <h2 class="nhsuk-heading-m">Enter a mobile phone number</h2>
 
-        <form action="template-test-confirmation" method="post">
+        <form action="template-test-confirmation" method="post" onsubmit="return checkFormTestSMS();">
 
         {{ input({
           "label": {
@@ -77,6 +75,10 @@
           "id": "test-sms-1",
           "name": "test-sms-1"
         }) }}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="test-sms-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a mobile phone number
+        </span>
 
       </div>
 
@@ -137,7 +139,7 @@
 
       </div>
 
-      <form action="template-test-confirmation" method="post">
+      <form action="template-test-confirmation" method="post" onsubmit="return checkFormTestEmail();">
 
         <div class="nhsuk-form-group">
 
@@ -150,6 +152,10 @@
           "id": "test-email-1",
           "name": "test-email-1"
         }) }}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="test-email-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter an email address
+        </span>
 
       </div>
 
