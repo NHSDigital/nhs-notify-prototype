@@ -1,5 +1,19 @@
 {% extends 'v2/layout.html' %}
 
+{% block head %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+<script>
+window.onload = function () {
+  var text = document.getElementById('sourceTA').value,
+      target = document.getElementById('targetDiv'),
+      converter = new showdown.Converter(),
+      html = converter.makeHtml(text);
+    
+    target.innerHTML = html;
+}
+</script>
+{% endblock %}
+
 {% block beforeContent %}
 {% endblock %}
 
@@ -18,7 +32,7 @@
 
 {% block content %}
   <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-grid-column-full-width">
 
       <h1 class="nhsuk-heading-xl">
         <span class="nhsuk-caption-l">Email template</span>
@@ -41,7 +55,8 @@
               Message
             </th>
             <td role="cell" class="nhsuk-table__cell">
-              {{ data['template-email-message-1'] }}
+              <textarea id="sourceTA" style="display: none;">{{ data["template-email-message-1"] }}</textarea>
+              <div id="targetDiv"></div>
             </td>
           </tr>
         </tbody>
