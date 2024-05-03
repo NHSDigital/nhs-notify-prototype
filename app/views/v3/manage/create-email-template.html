@@ -1,0 +1,244 @@
+{% extends 'v3/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+<div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
+  <a class="nhsuk-back-link__link" href="/{{ protoVersion }}/manage/template-type">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back
+  </a>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">
+        {% if data['mode'] == 'edit' %}
+        Edit email template
+        {% else %}
+        Create email template
+        {% endif %}
+      </h1>
+
+      <form action="/{{ protoVersion }}/manage/template-email-1" onsubmit="return checkFormEmail();">
+
+        {% if data['mode'] == 'edit' %}
+        
+        <div class="notify-template-borderbox">
+
+          {{ input({
+            "label": {
+              "text": "Template name"
+            },
+            "hint": {
+              "text": "This will not be visible to recipients."
+            },
+            "id": "template-email-name-1",
+            "name": "template-email-name-1",
+            "value": data['template-email-name-1']
+          }) }}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-email-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>
+
+        </div>
+
+        <div class="notify-template-borderbox">
+
+        {{ input({
+          "label": {
+            "text": "Subject line"
+          },
+          "id": "template-email-subject-1",
+          "name": "template-email-subject-1",
+          "value": data['template-email-subject-1']
+        }) }}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-email-subject-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter an email subject
+        </span>
+
+        {{ textarea({
+          "name": "template-email-message-1",
+          "id": "template-email-message-1",
+          "label": {
+            "text": "Message"
+          },
+          "value": data['template-email-message-1']
+        }) }}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-email-message-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+        </span>
+
+        </div>
+
+        {% else %}
+
+        <div class="notify-template-borderbox">
+
+          {{ input({
+            "label": {
+              "text": "Template name"
+            },
+            "hint": {
+              "text": "This will not be visible to recipients."
+            },
+            "id": "template-email-name-1",
+            "name": "template-email-name-1"
+          }) }}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-email-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>
+
+        </div>
+
+        <div class="notify-template-borderbox">
+
+        {{ input({
+          "label": {
+            "text": "Subject line"
+          },
+          "id": "template-email-subject-1",
+          "name": "template-email-subject-1"
+        }) }}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-email-subject-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter an email subject
+        </span>
+
+        {{ textarea({
+          "name": "template-email-message-1",
+          "id": "template-email-message-1",
+          "label": {
+            "text": "Message"
+          }
+        }) }}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-email-message-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+        </span>
+
+        </div>
+
+        {% endif %}
+
+        <input type="hidden" name="continue-url" value="template-email-1">
+        <input type="hidden" name="message-type" value="email">
+        <input type="hidden" name="folder-1-email-templates" value="1">
+        <input type="hidden" name="template-email-name-1-approved" value="">
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+      <script>
+        function checkform() {
+          var ok = true;
+
+          if (document.getElementById("template-email-name-1").value == "") {
+            document.getElementById("template-email-name-1").classList.add("nhsuk-input--error");
+            document.getElementById("template-email-name-1").closest(".nhsuk-form-group").classList.add("nhsuk-form-group--error");
+            document.getElementById("template-email-name-1--error").style.display = "block";
+            ok = false;
+          } else {
+            document.getElementById("template-email-name-1").classList.remove("nhsuk-input--error");
+            document.getElementById("template-email-name-1").closest(".nhsuk-form-group").classList.remove("nhsuk-form-group--error");
+            document.getElementById("template-email-name-1--error").style.display = "none";
+          }
+
+          if (document.getElementById("template-email-subject-1").value == "") {
+            document.getElementById("template-email-subject-1").classList.add("nhsuk-input--error");
+            document.getElementById("template-email-subject-1").closest(".nhsuk-form-group").classList.add("nhsuk-form-group--error");
+            document.getElementById("template-email-subject-1--error").style.display = "block";
+            ok = false;
+          } else {
+            document.getElementById("template-email-subject-1").classList.remove("nhsuk-input--error");
+            document.getElementById("template-email-subject-1").closest(".nhsuk-form-group").classList.remove("nhsuk-form-group--error");
+            document.getElementById("template-email-subject-1--error").style.display = "none";
+          }
+
+          if (document.getElementById("template-email-message-1").value == "") {
+            document.getElementById("template-email-message-1").classList.add("nhsuk-input--error");
+            document.getElementById("template-email-message-1").closest(".nhsuk-form-group").classList.add("nhsuk-form-group--error");
+            document.getElementById("template-email-message-1--error").style.display = "block";
+            ok = false;
+          } else {
+            document.getElementById("template-email-message-1").classList.remove("nhsuk-input--error");
+            document.getElementById("template-email-message-1").closest(".nhsuk-form-group").classList.remove("nhsuk-form-group--error");
+            document.getElementById("template-email-message-1--error").style.display = "none";
+          }
+
+          return ok;
+        }
+      </script>
+
+    </div>
+
+    <div class="nhsuk-grid-column-one-third">
+
+      <h2 class="nhsuk-heading-m">Personalisation</h2>
+
+      {{ details({
+        "text": "PDS fields",
+        "HTML": ""
+      }) }}
+
+      {{ details({
+        "text": "Your data fields",
+        "HTML": ""
+      }) }}
+
+      <h2 class="nhsuk-heading-m">Message formatting</h2>
+
+      {{ details({
+        "text": "Headings",
+        "HTML": ""
+      }) }}
+
+      {{ details({
+        "text": "Bold text",
+        "HTML": ""
+      }) }}
+
+      {{ details({
+        "text": "Links",
+        "HTML": ""
+      }) }}
+
+      {{ details({
+        "text": "Bulleted lists",
+        "HTML": ""
+      }) }}
+
+      {{ details({
+        "text": "Numbered lists",
+        "HTML": ""
+      }) }}
+
+      {{ details({
+        "text": "QR codes",
+        "HTML": ""
+      }) }}
+
+      {{ details({
+        "text": "Signatures",
+        "HTML": ""
+      }) }}
+
+    </div>
+
+  </div>
+{% endblock %}

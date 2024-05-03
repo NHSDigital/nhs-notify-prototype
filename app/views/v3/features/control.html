@@ -1,0 +1,78 @@
+{% extends 'v3/layout.html' %}
+
+
+
+{% block beforeContent %}
+
+{{ breadcrumb({
+  items: [
+    {
+      href: "/",
+      text: "Home"
+    },
+    {
+      href: "/features",
+      text: "Features"
+    }
+  ]
+}) }}
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <div class="app-pane">
+
+        <div class="app-pane__side-bar">
+
+          <nav class="app-side-nav">
+
+            {#
+            {{sideNavBackLink(title='Go back', link='/')}}
+
+            <h2 class="app-side-nav__heading">
+              Section heading <span class="nhsuk-u-visually-hidden">navigation</span>
+            </h2>
+            #}
+
+            <ul class="nhsuk-list app-side-nav__list">
+            
+              {{sideNavItem(title='Send messages to patients and the public', link='send-messages', active='0')}}
+
+              {{sideNavItem(title='Control your message content', link='control', active='1')}}
+
+              {{sideNavItem(title='Decide how your messages are sent', link='decide', active='0')}}
+
+              {{sideNavItem(title='Reach wider audiences', link='reach', active='0')}}
+
+              {{sideNavItem(title='Prevent sending messages to people who cannot be contacted', link='prevent', active='0')}}
+
+              {{sideNavItem(title='See how your messages perform', link='perform', active='0')}}
+
+              {{sideNavItem(title='Roadmap', link='roadmap', active='0')}}
+
+              {{sideNavItem(title='Security features', link='security', active='0')}}
+
+            </ul>
+            
+          </nav>
+          
+        </div>
+
+        <div class="app-pane__main-content">
+
+          <h1 class="nhsuk-heading-xl">Control your message content</h1>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

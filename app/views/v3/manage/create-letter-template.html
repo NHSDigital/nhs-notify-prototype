@@ -1,0 +1,288 @@
+{% extends 'v3/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+<div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
+  <a class="nhsuk-back-link__link" href="/{{ protoVersion }}/manage/template-type">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back
+  </a>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">
+        {% if data['mode'] == 'edit' %}
+        Edit letter template
+        {% else %}
+        Create letter template
+        {% endif %}
+      </h1>
+
+      <form action="/{{ protoVersion }}/manage/template-letter-1" onsubmit="return checkFormLetter();">
+
+        {% if data['mode'] == 'edit' %}
+
+        <div class="notify-template-borderbox">
+
+          {{ input({
+            "label": {
+              "text": "Template name"
+            },
+            "hint": {
+              "text": "This will not be visible to recipients."
+            },
+            "id": "template-letter-name-1",
+            "name": "template-letter-name-1",
+            "value": data['template-letter-name-1']
+          }) }}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>
+
+        </div>
+
+        <div class="notify-template-borderbox">
+
+        {#
+        {{ textarea({
+          "label": {
+            "text": "Sender address"
+          },
+          "hint": {
+            "text": "This is your organisation's address."
+          },
+          "id": "template-letter-sender-1",
+          "name": "template-letter-sender-1",
+          "value": data['template-letter-sender-1']
+        }) }}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-sender-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a sender address
+        </span>
+        #}
+
+        {{ input({
+          "label": {
+            "text": "Heading"
+          },
+          "hint": {
+            "text": "This is the main heading which appears at the top of the letter."
+          },
+          "id": "template-letter-heading-1",
+          "name": "template-letter-heading-1",
+          "value": data['template-letter-heading-1']
+        }) }}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-heading-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a heading
+        </span>
+
+        {{ textarea({
+          "label": {
+            "text": "Body text"
+          },
+          "hint": {
+            "text": "This is your main letter content."
+          },
+          "name": "template-letter-message-1",
+          "id": "template-letter-message-1",
+          "value": data['template-letter-message-1']
+        }) }}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-message-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+        </span>
+
+        <div class="nhsuk-form-group">
+
+          <label class="nhsuk-label" for="example">
+            Upload a signature image (optional)
+            <span class="nhsuk-hint">Images must be no larger than 500 x 500 pixels and 10MB in file size.</span>
+          </label>
+          <input type="file" class="nhsuk-button nhsuk-button--secondary" />
+
+        </div>
+
+        </div>
+
+        {%else%}
+
+        <div class="notify-template-borderbox">
+
+          {{ input({
+            "label": {
+              "text": "Template name"
+            },
+            "hint": {
+              "text": "This will not be visible to recipients."
+            },
+            "id": "template-letter-name-1",
+            "name": "template-letter-name-1"
+          }) }}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>
+
+        </div>
+
+        <div class="notify-template-borderbox">
+
+        {#
+        {{ textarea({
+          "label": {
+            "text": "Sender address"
+          },
+          "hint": {
+            "text": "This is your organisation's address."
+          },
+          "id": "template-letter-sender-1",
+          "name": "template-letter-sender-1"
+        }) }}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-sender-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a sender address
+        </span>
+        #}
+
+        {{ input({
+          "label": {
+            "text": "Heading"
+          },
+          "hint": {
+            "text": "This is the main heading which appears at the top of the letter."
+          },
+          "id": "template-letter-heading-1",
+          "name": "template-letter-heading-1"
+        }) }}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-heading-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a heading
+        </span>
+
+        {{ textarea({
+          "label": {
+            "text": "Body text"
+          },
+          "hint": {
+            "text": "This is your main letter content."
+          },
+          "name": "template-letter-message-1",
+          "id": "template-letter-message-1"
+        }) }}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-message-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+        </span>
+
+        <div class="nhsuk-form-group">
+
+          <label class="nhsuk-label" for="example">
+            Upload a signature image (optional)
+            <span class="nhsuk-hint">Images must be no larger than 500 x 500 pixels and 10MB in file size.</span>
+          </label>
+          <input type="file" class="nhsuk-button nhsuk-button--secondary" />
+
+        </div>
+
+        </div>
+
+        {%endif%}
+
+        <input type="hidden" name="continue-url" value="template-letter-1">
+        <input type="hidden" name="message-type" value="letter">
+        <input type="hidden" name="folder-1-letter-templates" value="1">
+        <input type="hidden" name="template-letter-name-1-approved" value="">
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+
+    <div class="nhsuk-grid-column-one-third">
+
+      <h2 class="nhsuk-heading-m">Letter layout</h2>
+      <p class="nhsuk-hint">This shows where your content will appear on the page.</p>
+
+      <a href="/images/nhs-notify-pdf-letter-spec.jpg" target="_blank">
+        <img src="/images/nhs-notify-pdf-letter-spec.jpg" style="max-width: 100%; border:#4c6272 1px solid;" />
+      </a>
+      <p><a href="/images/nhs-notify-pdf-letter-spec.jpg" target="_blank">View letter layout (opens in a new tab)</a></p>
+
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-top-4">Personalisation</h2>
+
+      {{ details({
+        "text": "PDS fields",
+        "HTML": ""
+      }) }}
+
+      {{ details({
+        "text": "Your data fields",
+        "HTML": ""
+      }) }}
+
+      <h2 class="nhsuk-heading-m">Body text formatting</h2>
+
+      {{ details({
+        "text": "Headings",
+        "HTML": ""
+      }) }}
+
+      {{ details({
+        "text": "Bold text",
+        "HTML": ""
+      }) }}
+
+      {{ details({
+        "text": "Links",
+        "HTML": ""
+      }) }}
+
+      {{ details({
+        "text": "Bulleted lists",
+        "HTML": ""
+      }) }}
+
+      {{ details({
+        "text": "Numbered lists",
+        "HTML": ""
+      }) }}
+
+      {{ details({
+        "text": "QR codes",
+        "HTML": ""
+      }) }}
+
+      {{ details({
+        "text": "Signatures",
+        "HTML": ""
+      }) }}
+
+      {{ details({
+        "text": "Page breaks",
+        "HTML": ""
+      }) }}
+
+      {{ details({
+        "text": "Content blocks",
+        "HTML": ""
+      }) }}
+
+    </div>
+
+  </div>
+{% endblock %}

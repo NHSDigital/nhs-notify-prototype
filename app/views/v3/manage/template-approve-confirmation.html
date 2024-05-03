@@ -1,0 +1,49 @@
+{% extends 'v3/layout.html' %}
+
+
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <div class="notify-confirmation-panel">
+        <h1 class="nhsuk-heading-l">Template submitted</h1>
+        <p class="nhsuk-body-l nhsuk-u-margin-bottom-0">
+          Template name<br />
+          <strong>{{ data['approve-template-name']}}</strong>
+        </p>
+      </div>
+
+      <p>You'll receive a confirmation email, which contains the template ID.</p>
+
+      <h2 class="nhsuk-heading-m">If you're setting up a template</h2>
+
+      <p>Make a note of the template name and IDs. You'll need to provide them to our onboarding team to set up the messages you want to send.</p>
+
+      <h2 class="nhsuk-heading-m">If you're replacing a submitted or live template</h2>
+
+      <p>Make a note of the template name and ID, then create a <a href="">Service Now request</a>.</p>
+      
+      <p>
+        <strong>Template ID</strong><br />
+        a4b171b5-431f-4a5b-9d7a-9a4903c98e66
+      </p>
+
+      {{ button({
+        "text": "Copy template ID to clipboard",
+        "classes": "nhsuk-button--secondary"
+      }) }}
+
+      <p><a href="template-type">Create another template</a></p>
+
+      <p><a href="templates">Go back to saved templates</a></p>
+
+    </div>
+  </div>
+{% endblock %}

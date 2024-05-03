@@ -36,8 +36,6 @@
         NHS Notify prototypes
       </h1>
 
-      <a href="/v1/" class="nhsuk-button">Open current version</a>
-
       <table role="table" class="nhsuk-table-responsive">
 
         <caption class="nhsuk-table__caption">Prototype versions</caption>
@@ -48,7 +46,7 @@
               Version
             </th>
             <th role="columnheader" class="" scope="col">
-              Sprint(s)
+              Expected release
             </th>
             <th role="columnheader" class="" scope="col">
               Date created
@@ -66,22 +64,43 @@
 
           <tr role="row" class="nhsuk-table__row">
             <td role="cell" class="nhsuk-table__cell">
-              Version 2 (current)
+              Version 3
             </td>
             <td role="cell" class="nhsuk-table__cell">
-              9
+              Increment 2
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              30th Apr 2024
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              {{ tag({
+                text: "In design",
+                classes: "nhsuk-tag--blue"
+              })}}
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <p><a href="/v3/manage/">Open prototype</a></p>
+            </td>
+          </tr>
+          
+          <tr role="row" class="nhsuk-table__row">
+            <td role="cell" class="nhsuk-table__cell">
+              Version 2
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              MVP
             </td>
             <td role="cell" class="nhsuk-table__cell">
               16th Apr 2024
             </td>
             <td role="cell" class="nhsuk-table__cell">
               {{ tag({
-                text: "In progress",
+                text: "In research",
                 classes: "nhsuk-tag--blue"
               })}}
             </td>
             <td role="cell" class="nhsuk-table__cell">
-              <p><a href="/v2/manage/">Open templating prototype</a></p>
+              <p><a href="/v2/manage/">Open prototype</a></p>
             </td>
           </tr>
 
@@ -90,7 +109,7 @@
               Version 1
             </td>
             <td role="cell" class="nhsuk-table__cell">
-              7 &amp; 8
+              N/A
             </td>
             <td role="cell" class="nhsuk-table__cell">
               22nd Mar 2024

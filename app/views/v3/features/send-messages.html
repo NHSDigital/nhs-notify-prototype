@@ -1,0 +1,101 @@
+{% extends 'v3/layout.html' %}
+
+
+
+{% block beforeContent %}
+
+{{ breadcrumb({
+  items: [
+    {
+      href: "/",
+      text: "Home"
+    },
+    {
+      href: "/features",
+      text: "Features"
+    }
+  ]
+}) }}
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <div class="app-pane">
+
+        <div class="app-pane__side-bar">
+
+          <nav class="app-side-nav">
+
+            <!--<div class="nhsuk-back-link app-u-hide-mobile app-side-nav__back nhsuk-u-margin-bottom-4">
+    
+              <a class="nhsuk-back-link__link" href="{{link}}">
+                <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+                  <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+                </svg>
+                {{title}}
+              </a>
+            
+            </div>
+
+            <h2 class="app-side-nav__heading">
+              Section heading <span class="nhsuk-u-visually-hidden">navigation</span>
+            </h2>-->
+
+            <ul class="nhsuk-list app-side-nav__list">
+            
+              <li class="app-side-nav__item app-side-nav__item--current nhsuk-u-padding-left-2" style="border-left:2px solid #005eb8">
+                
+                <a class="app-side-nav__link" href="/features/send-messages">Send messages to patients and the public</a>
+
+                <ul class="nhsuk-list app-side-nav__list nhsuk-u-margin-top-1 nhsuk-u-margin-left-3 nhsuk-u-margin-bottom-3">
+
+                  {{sideNavSubItem(title='NHS app messages', link='nhs-app', active='0')}}
+
+                  {{sideNavSubItem(title='Emails', link='emails', active='0')}}
+
+                  {{sideNavSubItem(title='Text messages', link='sms', active='0')}}
+
+                  {{sideNavSubItem(title='Letters', link='letters', active='0')}}
+
+                </ul>
+
+              </li>
+
+              {{sideNavItem(title='Control your message content', link='control', active='0')}}
+
+              {{sideNavItem(title='Decide how your messages are sent', link='decide', active='0')}}
+
+              {{sideNavItem(title='Reach wider audiences', link='reach', active='0')}}
+
+              {{sideNavItem(title='Prevent sending messages to people who cannot be contacted', link='prevent', active='0')}}
+
+              {{sideNavItem(title='See how your messages perform', link='perform', active='0')}}
+
+              {{sideNavItem(title='Roadmap', link='roadmap', active='0')}}
+
+              {{sideNavItem(title='Security features', link='security', active='0')}}
+
+            </ul>
+            
+          </nav>
+          
+        </div>
+
+        <div class="app-pane__main-content">
+
+          <h1 class="nhsuk-heading-xl">Send messages to patients and the public</h1>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
