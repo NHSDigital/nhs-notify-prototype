@@ -4,6 +4,7 @@
 
 {% block beforeContent %}
 
+{#
 {{ breadcrumb({
   items: [
     {
@@ -16,6 +17,7 @@
     }
   ]
 }) }}
+#}
 
 {% endblock %}
 
@@ -33,6 +35,12 @@
 
           <nav class="app-side-nav">
 
+            <ul class="nhsuk-list app-side-nav__list nhsuk-u-margin-bottom-3">
+
+            {{sideNavItem(title='Pricing', link='', active='0')}}
+
+            </ul>
+
             {#
             {{sideNavBackLink(title='Back link', link='/')}}
 
@@ -41,13 +49,13 @@
             </h2>
             #}
 
-            <ul class="nhsuk-list app-side-nav__list">
+            <ul class="nhsuk-list app-side-nav__list nhsuk-u-margin-left-4">
 
-              {{sideNavItem(title='Text messages', link='sms', active='1')}}
+              {{sideNavItem(title='Text messages', link='', active='1')}}
 
-              {{sideNavItem(title='Letters', link='letters', active='0')}}
+              {{sideNavItem(title='Letters', link='', active='0')}}
 
-              {{sideNavItem(title='How to pay', link='pay', active='0')}}
+              {{sideNavItem(title='How to pay', link='', active='0')}}
 
             </ul>
             
@@ -58,6 +66,138 @@
         <div class="app-pane__main-content">
 
           <h1 class="nhsuk-heading-xl">Text messages</h1>
+
+          <p>NHS England organisations and services have an annual allowances of free text messages.</p>
+          <p>The current allowance is:</p>
+          <ul>
+            <li>30,000 free text messages for national services</li>
+            <li>10,000 free text messages for regional services</li>
+          </ul>
+          <p>When a service has used its annual allowance, it costs 2.27 pence (plus VAT) for each text message you send.</p>
+          <p>You may pay more for each message, if you:</p>
+          <ul>
+            <li>send text messages longer than 160 characters</li>
+            <li>use certain signs and symbols</li>
+            <li>use accents and accented letters</li>
+          </ul>
+
+          <h2 class="nhsuk-heading-m">Long text messages</h2>
+          <p>If a text message is longer than 160 characters (including spaces), it counts as more than one message.</p>
+
+          {{ table({
+            head: [
+              {
+                text: "Message length"
+              },
+              {
+                text: "Charge"
+              }
+            ],
+            rows: [
+              [
+                {
+                  text: "Up to 306 characters"
+                },
+                {
+                  text: "2 text messages"
+                }
+              ],
+              [
+                {
+                  text: "Up to 459 characters"
+                },
+                {
+                  text: "3 text messages"
+                }
+              ],
+              [
+                {
+                  text: "Up to 612 characters"
+                },
+                {
+                  text: "4 text messages"
+                }
+              ],
+              [
+                {
+                  text: "Up to 765 characters"
+                },
+                {
+                  text: "5 text messages"
+                }
+              ],
+              [
+                {
+                  text: "Up to 918 characters"
+                },
+                {
+                  text: "6 text messages"
+                }
+              ]
+            ]
+          }) }}
+
+          <h2 class="nhsuk-heading-m">Signs and symbols</h2>
+          <p>The following signs and symbols count as 2 characters each: []{}^\|~€</p>
+          <p>Using them can increase the cost of sending text messages.</p>
+
+          <h2 class="nhsuk-heading-m">Accents and accented characters</h2>
+          <p>Some languages, such as Welsh, use accented characters.</p>
+          <p>The following accented characters do not affect the cost of sending text messages: Ä, É, Ö, Ü, à, ä, é, è, ì, ò, ö, ù, ü.</p>
+          <p>Using other accented characters can increase the cost of sending text messages.</p>
+
+          {{ table({
+            head: [
+              {
+                text: "Message length"
+              },
+              {
+                text: "Charge"
+              }
+            ],
+            rows: [
+              [
+                {
+                  text: "Up to 70 characters"
+                },
+                {
+                  text: "1 text message"
+                }
+              ],
+              [
+                {
+                  text: "Up to 134 characters"
+                },
+                {
+                  text: "2 text messages"
+                }
+              ],
+              [
+                {
+                  text: "Up to 201 characters"
+                },
+                {
+                  text: "3 text messages"
+                }
+              ],
+              [
+                {
+                  text: "Up to 268 characters"
+                },
+                {
+                  text: "4 text messages"
+                }
+              ],
+              [
+                {
+                  text: "Each additional 67 characters"
+                },
+                {
+                  text: "1 additional text message"
+                }
+              ]
+            ]
+          }) }}
 
         </div>
 
