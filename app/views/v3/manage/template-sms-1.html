@@ -51,7 +51,7 @@
             },
             {
               "value": "test-sms",
-              "text": "Preview"
+              "text": "Send a test message"
             },
             {
               "value": "submit-sms",
@@ -61,6 +61,7 @@
         }) }}
   
         <input type="hidden" name="approve-template-name" value="{{ data['template-sms-name-1'] }}">
+        <input type="hidden" name="message-type" value="sms">
   
         {{ button({
           "text": "Continue"

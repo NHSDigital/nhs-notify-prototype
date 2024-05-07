@@ -77,7 +77,7 @@ window.onload = function () {
             },
             {
               "value": "test-email",
-              "text": "Preview"
+              "text": "Send a test email"
             },
             {
               "value": "submit-email",
@@ -87,6 +87,7 @@ window.onload = function () {
         }) }}
 
         <input type="hidden" name="approve-template-name" value="{{ data['template-email-name-1'] }}">
+        <input type="hidden" name="message-type" value="email">
 
         {{ button({
           "text": "Continue"

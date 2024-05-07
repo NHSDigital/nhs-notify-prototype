@@ -18,17 +18,14 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
+      <h1 class="nhsuk-heading-l">Choose a template type to create</h1>
+
+      <p><a href="">Find out more about template types</a></p>
+
       <form action="route-template-type" method="post">
 
       {{ radios({
         "name": "radio-template-type",
-        "fieldset": {
-          "legend": {
-            "text": "Choose a template type to create",
-            "classes": "nhsuk-fieldset__legend--l",
-            "isPageHeading": true
-          }
-        },
         "items": [
           {
             "value": "app",
