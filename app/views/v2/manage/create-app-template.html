@@ -105,24 +105,37 @@
 
       {{ details({
         "text": "PDS fields",
-        "HTML": ""
-      }) }}
-
-      {{ details({
-        "text": "Your data fields",
-        "HTML": ""
+        "HTML": "
+        <p>To personalise a message, use double brackets to add a placeholder to your content. For example:</p>
+        <code>Hello ((firstName)), your NHS number is ((NHSnumber))</code>
+        <p class='nhsuk-u-margin-top-4'>The fields available from PDS are:</p>
+        <ul>
+          <li>firstName</li>
+          <li>lastName</li>
+          <li>NHSnumber</li>
+          <li>birthDate</li>
+        </ul>
+        "
       }) }}
 
       <h2 class="nhsuk-heading-m">Message formatting</h2>
 
       {{ details({
         "text": "Bold text",
-        "HTML": ""
+        "HTML": "
+        <p>Use two asterisk symbols on either side of the words you want to be bold, for example:</p>
+        <code>**this is bold text**</code>
+        "
       }) }}
 
       {{ details({
         "text": "Links",
-        "HTML": ""
+        "HTML": "
+        <p>To convert text into a link, use square brackets around the link text and round brackets around the URL. Make sure there are no spaces between the brackets or the link will not work. For example:</p>
+        <code>
+          [Read more](https://www.nhs.uk/)
+        </code>
+        "
       }) }}
 
     </div>

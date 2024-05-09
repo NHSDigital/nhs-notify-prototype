@@ -28,7 +28,7 @@
         {% endif %}
       </h1>
 
-      <form action="/{{ protoVersion }}/manage/template-letter-1" onsubmit="return checkFormLetter();">
+      <form action="template-saved-confirmation" onsubmit="return checkFormLetter();">
 
         {% if data['mode'] == 'edit' %}
 
@@ -208,7 +208,7 @@
         <p><a href="/{{ protoVersion }}/pricing/letters" target="_blank">Learn about letter pricing</a>.</p>
 
         {{ button({
-          "text": "Continue"
+          "text": "Save"
         }) }}
 
       </form>
@@ -229,12 +229,10 @@
 
       {{ details({
         "text": "PDS fields",
-        "HTML": ""
-      }) }}
-
-      {{ details({
-        "text": "Your data fields",
-        "HTML": ""
+        "HTML": "
+        To personalise a message, use double brackets to add a placeholder to your content. For example:
+        <code>Hello ((first name)), your reference is ((ref number))</code>
+        "
       }) }}
 
       <h2 class="nhsuk-heading-m">Body text formatting</h2>
@@ -250,7 +248,7 @@
       }) }}
 
       {{ details({
-        "text": "Links",
+        "text": "Italics",
         "HTML": ""
       }) }}
 

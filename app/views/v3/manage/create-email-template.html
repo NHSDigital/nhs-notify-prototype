@@ -28,7 +28,7 @@
         {% endif %}
       </h1>
 
-      <form action="/{{ protoVersion }}/manage/template-email-1" onsubmit="return checkFormEmail();">
+      <form action="template-saved-confirmation" onsubmit="return checkFormEmail();">
 
         {% if data['mode'] == 'edit' %}
         
@@ -139,7 +139,7 @@
         <input type="hidden" name="template-email-name-1-approved" value="">
 
         {{ button({
-          "text": "Continue"
+          "text": "Save"
         }) }}
 
       </form>

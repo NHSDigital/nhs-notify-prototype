@@ -1,7 +1,5 @@
 {% extends 'v3/layout.html' %}
 
-
-
 {% block beforeContent %}
 {% endblock %}
 
@@ -17,6 +15,10 @@
         <p class="nhsuk-body-l nhsuk-u-margin-bottom-0">
           Template name<br />
           <strong>
+            {% if data['message-type'] == 'app' %}
+            {{ data['template-app-name-1']}}
+            {% endif %}
+            
             {% if data['message-type'] == 'email' %}
             {{ data['template-email-name-1']}}
             {% endif %}
@@ -32,13 +34,11 @@
         </p>
       </div>
 
-      <p>
-        <a href="/{{ protoVersion }}/manage/folder-1/{{ data['continue-url']}}">View template</a>
-      </p>
-      
-      <p>
-        <a href="/{{ protoVersion }}/manage/folder-1/">Back to {{ data['folder-name-1'] }}</a>
-      </p>
+      <p><a href="{{ data['continue-url']}}">View template</a></p>
+
+      <p><a href="template-type">Create another template</a></p>
+
+      <p><a href="templates">Go back to saved templates</a></p>
 
     </div>
   </div>

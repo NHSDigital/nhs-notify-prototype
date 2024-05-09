@@ -122,19 +122,17 @@
 
       {{ details({
         "text": "PDS fields",
-        "HTML": ""
-      }) }}
-
-      {{ details({
-        "text": "Your data fields",
-        "HTML": ""
-      }) }}
-
-      <h2 class="nhsuk-heading-m">Message formatting</h2>
-
-      {{ details({
-        "text": "Links",
-        "HTML": ""
+        "HTML": "
+        <p>To personalise a message, use double brackets to add a placeholder to your content. For example:</p>
+        <code>Hello ((firstName)), your NHS number is ((NHSnumber))</code>
+        <p class='nhsuk-u-margin-top-4'>The fields available from PDS are:</p>
+        <ul>
+          <li>firstName</li>
+          <li>lastName</li>
+          <li>NHSnumber</li>
+          <li>birthDate</li>
+        </ul>
+        "
       }) }}
 
     </div>

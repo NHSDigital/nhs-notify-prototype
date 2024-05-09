@@ -28,7 +28,7 @@
         {% endif %}
       </h1>
 
-      <form action="/{{ protoVersion }}/manage/template-sms-1" onsubmit="return checkFormSMS();">
+      <form action="template-saved-confirmation" onsubmit="return checkFormSMS();">
  
         {% if data['mode'] == 'edit' %}
 
@@ -115,7 +115,7 @@
         <input type="hidden" name="template-sms-name-1-approved" value="">
 
         {{ button({
-          "text": "Continue"
+          "text": "Save"
         }) }}
 
       </form>

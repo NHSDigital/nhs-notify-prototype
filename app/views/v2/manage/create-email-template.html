@@ -187,49 +187,73 @@
 
       {{ details({
         "text": "PDS fields",
-        "HTML": ""
-      }) }}
-
-      {{ details({
-        "text": "Your data fields",
-        "HTML": ""
+        "HTML": "
+        <p>To personalise a message, use double brackets to add a placeholder to your content. For example:</p>
+        <code>Hello ((firstName)), your NHS number is ((NHSnumber))</code>
+        <p class='nhsuk-u-margin-top-4'>The fields available from PDS are:</p>
+        <ul>
+          <li>firstName</li>
+          <li>lastName</li>
+          <li>NHSnumber</li>
+          <li>birthDate</li>
+        </ul>
+        "
       }) }}
 
       <h2 class="nhsuk-heading-m">Message formatting</h2>
 
       {{ details({
         "text": "Headings",
-        "HTML": ""
+        "HTML": "
+        <p>Use one hash symbol followed by a space for a heading, for example:</p>
+        <code># This is a heading</code>
+        <p class='nhsuk-u-margin-top-4'>To add a subheading, use 2 hash symbols:</p>
+        <code>## This is a subheading</code>
+        "
       }) }}
 
       {{ details({
         "text": "Bold text",
-        "HTML": ""
+        "HTML": "
+        <p>Use two asterisk symbols on either side of the words you want to be bold, for example:</p>
+        <code>**this is bold text**</code>
+        "
       }) }}
 
       {{ details({
-        "text": "Links",
-        "HTML": ""
-      }) }}
-
-      {{ details({
-        "text": "Bulleted lists",
-        "HTML": ""
+        "text": "Bullet points",
+        "HTML": "
+        <p>Put each item on a separate line with an asterisk and a space in front of each one, for example:</p>
+        <code>
+          * bullet 1<br />
+          * bullet 2<br />
+          * bullet 3
+        </code>
+        "
       }) }}
 
       {{ details({
         "text": "Numbered lists",
-        "HTML": ""
+        "HTML": "
+        <p>Put each item on a separate line with the number, full stop and a space in front of each one, for example:</p>
+        <code>
+          1. first item<br />
+          2. second item<br />
+          3. third item
+        </code>
+        "
       }) }}
 
       {{ details({
-        "text": "QR codes",
-        "HTML": ""
-      }) }}
-
-      {{ details({
-        "text": "Signatures",
-        "HTML": ""
+        "text": "Horizontal lines",
+        "HTML": "
+        <p>To add a horizontal line between 2 paragraphs, use 3 dashes. Leave one empty line space after the first paragraph. For example:</p>
+        <code>
+          First paragraph<br /><br />
+          ---<br />
+          Second paragraph
+        </code>
+        "
       }) }}
 
     </div>
