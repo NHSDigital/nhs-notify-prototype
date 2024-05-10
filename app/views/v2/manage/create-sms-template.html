@@ -121,17 +121,30 @@
       <h2 class="nhsuk-heading-m">Personalisation</h2>
 
       {{ details({
-        "text": "PDS fields",
+        "text": "Personalisation fields",
         "HTML": "
-        <p>To personalise a message, use double brackets to add a placeholder to your content. For example:</p>
-        <code>Hello ((firstName)), your NHS number is ((NHSnumber))</code>
-        <p class='nhsuk-u-margin-top-4'>The fields available from PDS are:</p>
+        <p>Use double brackets to add a personalisation field to your content. For example:</p>
+        <code class='nhsuk-code-block'>Hello ((firstName)), your NHS number is ((NHSnumber))</code>
+        <p class='nhsuk-u-margin-top-4'>NHS Notify gets data from PDS to populate personalisation fields.<br />You can use:</p>
         <ul>
-          <li>firstName</li>
-          <li>lastName</li>
-          <li>NHSnumber</li>
-          <li>birthDate</li>
+          <li>((firstName))</li>
+          <li>((lastName))</li>
+          <li>((NHSnumber))</li>
+          <li>((birthDate))</li>
         </ul>
+        "
+      }) }}
+
+      <h2 class="nhsuk-heading-m">Message formatting</h2>
+
+      {{ details({
+        "text": "Links and URLs",
+        "HTML": "
+        <p>Write the URL in full, starting with https://</p>
+        <p>For example:</p>
+        <code class='nhsuk-code-block'>
+          https://www.nhs.uk/example
+        </code>
         "
       }) }}
 
