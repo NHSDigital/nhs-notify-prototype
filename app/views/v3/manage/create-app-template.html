@@ -110,25 +110,44 @@
       <h2 class="nhsuk-heading-m">Personalisation</h2>
 
       {{ details({
-        "text": "PDS fields",
-        "HTML": ""
-      }) }}
-
-      {{ details({
-        "text": "Your data fields",
-        "HTML": ""
+        "text": "Personalisation fields",
+        "HTML": "
+        <p>Use double brackets to add a personalisation field to your content. For example:</p>
+        <code class='nhsuk-code-block'>Hello ((firstName)), your NHS number is ((NHSnumber))</code>
+        <p class='nhsuk-u-margin-top-4'>NHS Notify gets data from PDS to populate personalisation fields.<br />You can use:</p>
+        <ul>
+          <li>((firstName))</li>
+          <li>((lastName))</li>
+          <li>((NHSnumber))</li>
+          <li>((birthDate))</li>
+        </ul>
+        "
       }) }}
 
       <h2 class="nhsuk-heading-m">Message formatting</h2>
 
       {{ details({
         "text": "Bold text",
-        "HTML": ""
+        "HTML": "
+        <p>Use 2 asterisk symbols on either side of the words you want to be bold, for example:</p>
+        <code class='nhsuk-code-block'>**this is bold text**</code>
+        "
       }) }}
 
       {{ details({
-        "text": "Links",
-        "HTML": ""
+        "text": "Links and URLs",
+        "HTML": "
+        <p>If the recipient is not expecting to receive a message from you, write the URL in full, starting with https://</p>
+        <p>For example:</p>
+        <code class='nhsuk-code-block'>
+          https://www.nhs.uk/example
+        </code>
+        <p class='nhsuk-u-margin-top-4'>To convert text into a link, use square brackets around the link text and round brackets around the full URL. Make sure there are no spaces between the brackets or the link will not work.</p>
+        <p>For example:</p>
+        <code class='nhsuk-code-block'>
+          [Read more](https://www.nhs.uk/)
+        </code>
+        "
       }) }}
 
     </div>

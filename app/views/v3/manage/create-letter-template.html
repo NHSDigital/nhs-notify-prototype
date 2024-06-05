@@ -228,10 +228,17 @@
       <h2 class="nhsuk-heading-m nhsuk-u-margin-top-4">Personalisation</h2>
 
       {{ details({
-        "text": "PDS fields",
+        "text": "Personalisation fields",
         "HTML": "
-        To personalise a message, use double brackets to add a placeholder to your content. For example:
-        <code>Hello ((first name)), your reference is ((ref number))</code>
+        <p>Use double brackets to add a personalisation field to your content. For example:</p>
+        <code class='nhsuk-code-block'>Hello ((firstName)), your NHS number is ((NHSnumber))</code>
+        <p class='nhsuk-u-margin-top-4'>NHS Notify gets data from PDS to populate personalisation fields.<br />You can use:</p>
+        <ul>
+          <li>((firstName))</li>
+          <li>((lastName))</li>
+          <li>((NHSnumber))</li>
+          <li>((birthDate))</li>
+        </ul>
         "
       }) }}
 
@@ -239,47 +246,79 @@
 
       {{ details({
         "text": "Headings",
-        "HTML": ""
+        "HTML": "
+        <p>Use one hash symbol followed by a space for a heading, for example:</p>
+        <code class='nhsuk-code-block'># This is a heading</code>
+        <p class='nhsuk-u-margin-top-4'>To add a subheading, use 2 hash symbols:</p>
+        <code class='nhsuk-code-block'>## This is a subheading</code>
+        "
       }) }}
+
 
       {{ details({
         "text": "Bold text",
-        "HTML": ""
+        "HTML": "
+        <p>Use two asterisk symbols on either side of the words you want to be bold, for example:</p>
+        <code class='nhsuk-code-block'>**this is bold text**</code>
+        "
       }) }}
 
       {{ details({
-        "text": "Italics",
-        "HTML": ""
-      }) }}
-
-      {{ details({
-        "text": "Bulleted lists",
-        "HTML": ""
+        "text": "Bullet points",
+        "HTML": "
+        <p>Put each item on a separate line with an asterisk and a space in front of each one, for example:</p>
+        <code class='nhsuk-code-block'>
+          * bullet 1<br />
+          * bullet 2<br />
+          * bullet 3
+        </code>
+        "
       }) }}
 
       {{ details({
         "text": "Numbered lists",
-        "HTML": ""
-      }) }}
-
-      {{ details({
-        "text": "QR codes",
-        "HTML": ""
+        "HTML": "
+        <p>Put each item on a separate line with the number, full stop and a space in front of each one, for example:</p>
+        <code class='nhsuk-code-block'>
+          1. first item<br />
+          2. second item<br />
+          3. third item
+        </code>
+        "
       }) }}
 
       {{ details({
         "text": "Signatures",
-        "HTML": ""
+        "HTML": "
+        <p>If you upload a signature image, use 2 curly brackets on either side of 'signature' to insert your signature image in the body text. For example:</p>
+        <code class='nhsuk-code-block'>{{signature}}</code>
+        "
       }) }}
 
       {{ details({
         "text": "Page breaks",
-        "HTML": ""
+        "HTML": "
+        <p>To add a page break, put 3 asterisks, for example:</p>
+        <code class='nhsuk-code-block'>
+          Content on one page<br />
+          ***<br />
+          Content on another page
+        </code>
+        "
       }) }}
 
       {{ details({
         "text": "Content blocks",
-        "HTML": ""
+        "HTML": "
+        <p>Content blocks are blocks of text that cannot be split onto different pages.</p>
+        <p>Use <code>{{startBlock}}</code> before your block of content, and <code>{{endBlock}}</code> after your block of content.</p>
+        <p>For example:</p>
+        <code class='nhsuk-code-block'>
+          {{startBlock}}<br />
+          Here is my unbreakable block of content.<br />
+          {{endBlock}}
+        </code>
+        "
       }) }}
 
     </div>

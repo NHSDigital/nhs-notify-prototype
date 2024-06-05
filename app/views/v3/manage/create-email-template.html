@@ -192,50 +192,82 @@
       <h2 class="nhsuk-heading-m">Personalisation</h2>
 
       {{ details({
-        "text": "PDS fields",
-        "HTML": ""
-      }) }}
-
-      {{ details({
-        "text": "Your data fields",
-        "HTML": ""
+        "text": "Personalisation fields",
+        "HTML": "
+        <p>Use double brackets to add a personalisation field to your content. For example:</p>
+        <code class='nhsuk-code-block'>Hello ((firstName)), your NHS number is ((NHSnumber))</code>
+        <p class='nhsuk-u-margin-top-4'>NHS Notify gets data from PDS to populate personalisation fields.<br />You can use:</p>
+        <ul>
+          <li>((firstName))</li>
+          <li>((lastName))</li>
+          <li>((NHSnumber))</li>
+          <li>((birthDate))</li>
+        </ul>
+        "
       }) }}
 
       <h2 class="nhsuk-heading-m">Message formatting</h2>
 
       {{ details({
         "text": "Headings",
-        "HTML": ""
+        "HTML": "
+        <p>Use one hash symbol followed by a space for a heading, for example:</p>
+        <code class='nhsuk-code-block'># This is a heading</code>
+        <p class='nhsuk-u-margin-top-4'>To add a subheading, use 2 hash symbols:</p>
+        <code class='nhsuk-code-block'>## This is a subheading</code>
+        "
       }) }}
 
       {{ details({
-        "text": "Bold text",
-        "HTML": ""
-      }) }}
-
-      {{ details({
-        "text": "Links",
-        "HTML": ""
-      }) }}
-
-      {{ details({
-        "text": "Bulleted lists",
-        "HTML": ""
+        "text": "Bullet points",
+        "HTML": "
+        <p>Put each item on a separate line with an asterisk and a space in front of each one, for example:</p>
+        <code class='nhsuk-code-block'>
+          * bullet 1<br />
+          * bullet 2<br />
+          * bullet 3
+        </code>
+        "
       }) }}
 
       {{ details({
         "text": "Numbered lists",
-        "HTML": ""
+        "HTML": "
+        <p>Put each item on a separate line with the number, full stop and a space in front of each one, for example:</p>
+        <code class='nhsuk-code-block'>
+          1. first item<br />
+          2. second item<br />
+          3. third item
+        </code>
+        "
       }) }}
 
       {{ details({
-        "text": "QR codes",
-        "HTML": ""
+        "text": "Horizontal lines",
+        "HTML": "
+        <p>To add a horizontal line between 2 paragraphs, use 3 dashes. Leave one empty line space after the first paragraph. For example:</p>
+        <code class='nhsuk-code-block'>
+          First paragraph<br /><br />
+          ---<br />
+          Second paragraph
+        </code>
+        "
       }) }}
 
       {{ details({
-        "text": "Signatures",
-        "HTML": ""
+        "text": "Links and URLs",
+        "HTML": "
+        <p>If the recipient is not expecting to receive a message from you, write the URL in full, starting with https://</p>
+        <p>For example:</p>
+        <code class='nhsuk-code-block'>
+          https://www.nhs.uk/example
+        </code>
+        <p class='nhsuk-u-margin-top-4'>To convert text into a link, use square brackets around the link text and round brackets around the full URL. Make sure there are no spaces between the brackets or the link will not work.</p>
+        <p>For example:</p>
+        <code class='nhsuk-code-block'>
+          [Read more](https://www.nhs.uk/)
+        </code>
+        "
       }) }}
 
     </div>
