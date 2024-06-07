@@ -1,0 +1,58 @@
+{% extends 'v3/layout.html' %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block outerContent %}
+
+{{ backLink({
+  "href": "javascript:history.go(-1)",
+  "text": "Go back",
+  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">Which template type do you want this duplicate to be?</h1>
+
+      <form action="" method="post">
+
+      {{ radios({
+        "name": "radio-template-type",
+        "hint": {
+          "text": "Select one option"
+        },
+        "items": [
+          {
+            "value": "app",
+            "text": "NHS app message"
+          },
+          {
+            "value": "email",
+            "text": "Email"
+          },
+          {
+            "value": "sms",
+            "text": "Text message (SMS)"
+          },
+          {
+            "value": "letter",
+            "text": "Standard letter"
+          }
+        ]
+      }) }}
+
+      {{ button({
+        'text': 'Continue'
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
