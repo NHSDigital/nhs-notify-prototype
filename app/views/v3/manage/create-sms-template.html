@@ -28,6 +28,8 @@
         {% endif %}
       </h1>
 
+      <span class="nhsuk-u-visually-hidden"><a href="#guidance">Read the guidance for creating a letter template</a></span>
+
       <form action="template-saved-confirmation" onsubmit="return checkFormSMS();">
  
         {% if data['mode'] == 'edit' %}
@@ -37,6 +39,9 @@
           <label class="nhsuk-label" for="template-sms-name-1">
             Template name
           </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
+          </div>
 
           {% include "../../includes/details-template-name.html" %}
 
@@ -71,10 +76,13 @@
           <label class="nhsuk-label" for="template-sms-name-1">
             Template name
           </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
+          </div>
 
           {% include "../../includes/details-template-name.html" %}
 
-          <input class="nhsuk-input" id="template-sms-name-1" name="template-sms-name-1" type="text">
+          <input class="nhsuk-input" id="template-sms-name-1" name="template-sms-name-1" type="text" value="{{data['template-sms-name-1']}}">
           
         </div>
 
@@ -125,7 +133,7 @@
 
     <div class="nhsuk-grid-column-one-third">
 
-      <h2 class="nhsuk-heading-m">Personalisation</h2>
+      <h2 class="nhsuk-heading-m" id="guidance">Personalisation</h2>
 
       {{ details({
         "text": "Personalisation fields",

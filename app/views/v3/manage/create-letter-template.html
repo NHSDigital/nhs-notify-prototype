@@ -28,6 +28,8 @@
         {% endif %}
       </h1>
 
+      <span class="nhsuk-u-visually-hidden"><a href="#guidance">Read the guidance for creating a letter template</a></span>
+
       <form action="template-saved-confirmation" onsubmit="return checkFormLetter();">
 
         {% if data['mode'] == 'edit' %}
@@ -39,6 +41,9 @@
             <label class="nhsuk-label" for="template-letter-name-1">
               Template name
             </label>
+            <div class="nhsuk-hint">
+              This will not be visible to recipients.
+            </div>
   
             {% include "../../includes/details-template-name.html" %}
   
@@ -125,6 +130,9 @@
             <label class="nhsuk-label" for="template-letter-name-1">
               Template name
             </label>
+            <div class="nhsuk-hint">
+              This will not be visible to recipients.
+            </div>
   
             {% include "../../includes/details-template-name.html" %}
   
@@ -219,11 +227,11 @@
 
     <div class="nhsuk-grid-column-one-third">
 
-      <h2 class="nhsuk-heading-m">Letter layout</h2>
+      <h2 class="nhsuk-heading-m" id="guidance">Letter layout</h2>
       <p class="nhsuk-hint">This shows where your content will appear on the page.</p>
 
       <a href="/images/nhs-notify-pdf-letter-spec.jpg" target="_blank">
-        <img src="/images/nhs-notify-pdf-letter-spec.jpg" style="max-width: 100%; border:#4c6272 1px solid;" />
+        <img src="/images/nhs-notify-pdf-letter-spec.jpg" style="max-width: 100%; border:#4c6272 1px solid;" alt="A white A4 peice of paper with the NHS logo in the top right corner and section for the recipient's address to the left. Below that is a section for the main heading. Below that is a large section for the main body. At the bottom is a small section for the page number." />
       </a>
       <p><a href="/images/nhs-notify-pdf-letter-spec.jpg" target="_blank">View letter layout (opens in a new tab)</a></p>
 
@@ -246,6 +254,24 @@
 
       <h2 class="nhsuk-heading-m">Body text formatting</h2>
 
+      {{ details({
+        "text": "Line breaks and paragraphs",
+        "HTML": "
+        <p>To add a line break, use 2 spaces at the end of your text, for example:</p>
+        <code class='nhsuk-code-block'>
+          line 1&nbsp;&nbsp;<br />
+          line 2&nbsp;&nbsp;<br />
+          line 3
+        </code>
+        <p class='nhsuk-u-margin-top-4'>To add a paragraph, use a blank line between each paragraph, for example:</p>
+        <code class='nhsuk-code-block'>
+          <p>line 1</p>
+          <p>line 2</p>
+          line 3
+        </code>
+        "
+      }) }}
+      
       {{ details({
         "text": "Headings",
         "HTML": "

@@ -24,21 +24,26 @@
         Create text message template
       </h1>
 
+      <span class="nhsuk-u-visually-hidden"><a href="#guidance">Read the guidance for creating a text message template</a></span>
+
       <form action="/{{ protoVersion }}/manage/template-sms-1" onsubmit="return checkFormSMS();">
  
         {% if data['mode'] == 'edit' %}
 
-        {{ input({
-          "label": {
-            "text": "Template name"
-          },
-          "hint": {
-            "text": "This will not be visible to recipients."
-          },
-          "id": "template-sms-name-1",
-          "name": "template-sms-name-1",
-          "value": data['template-sms-name-1']
-        }) }}
+        <div class="nhsuk-form-group">
+          
+          <label class="nhsuk-label" for="template-sms-name-1">
+            Template name
+          </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
+          </div>
+
+          {% include "../../includes/details-template-name.html" %}
+
+          <input class="nhsuk-input" id="template-sms-name-1" name="template-sms-name-1" type="text" value="{{data['template-sms-name-1']}}">
+          
+        </div>
 
         <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-sms-name-1--error">
           <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
@@ -62,16 +67,20 @@
 
         {% else %}
 
-        {{ input({
-          "label": {
-            "text": "Template name"
-          },
-          "hint": {
-            "text": "This will not be visible to recipients."
-          },
-          "id": "template-sms-name-1",
-          "name": "template-sms-name-1"
-        }) }}
+        <div class="nhsuk-form-group">
+          
+          <label class="nhsuk-label" for="template-sms-name-1">
+            Template name
+          </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
+          </div>
+
+          {% include "../../includes/details-template-name.html" %}
+
+          <input class="nhsuk-input" id="template-sms-name-1" name="template-sms-name-1" type="text">
+          
+        </div>
 
         <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-sms-name-1--error">
           <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
@@ -118,7 +127,7 @@
 
     <div class="nhsuk-grid-column-one-third">
 
-      <h2 class="nhsuk-heading-m">Personalisation</h2>
+      <h2 class="nhsuk-heading-m" id="guidance">Personalisation</h2>
 
       {{ details({
         "text": "Personalisation fields",
