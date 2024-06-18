@@ -24,15 +24,20 @@ window.onload = function () {
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
+      {{ tag({
+        text: "Saved draft",
+        classes: "nhsuk-u-margin-bottom-2"
+      })}}
+
       <h1 class="nhsuk-heading-xl">
         <span class="nhsuk-caption-l">Email template</span>
         {{ data['template-email-name-1'] }}
       </h1>
 
-      <p>
+      <!--<p>
         <strong>Template ID</strong><br />
         a4b171b5-431f-4a5b-9d7a-9a4903c98e66
-      </p>
+      </p>-->
 
       {{ details({
         "text": "Who your email will be sent from",
@@ -121,7 +126,7 @@ window.onload = function () {
 
       <p><a href="template-type">Create another template</a></p>
 
-      <p><a href="templates">Go back to saved templates</a></p>
+      <p><a href="templates">Go to saved templates</a></p>
 
     </div>
   </div>

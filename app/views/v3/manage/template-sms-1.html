@@ -12,6 +12,11 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
+      {{ tag({
+        text: "Saved draft",
+        classes: "nhsuk-u-margin-bottom-2"
+      })}}
+
       <h1 class="nhsuk-heading-xl">
         <span class="nhsuk-caption-l">Text message template</span>
         {{ data['template-sms-name-1'] }}
@@ -95,7 +100,7 @@
 
       <p><a href="template-type">Create another template</a></p>
 
-      <p><a href="templates">Go back to saved templates</a></p>
+      <p><a href="templates">Go to saved templates</a></p>
 
     </div>
   </div>
