@@ -75,7 +75,6 @@
         <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-sender-1--error">
           <span class="nhsuk-u-visually-hidden">Error:</span> Enter a sender address
         </span>
-        #}
 
         {{ input({
           "label": {
@@ -92,6 +91,7 @@
         <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-heading-1--error">
           <span class="nhsuk-u-visually-hidden">Error:</span> Enter a heading
         </span>
+        #}
 
         {{ textarea({
           "label": {
@@ -102,7 +102,8 @@
           },
           "name": "template-letter-message-1",
           "id": "template-letter-message-1",
-          "value": data['template-letter-message-1']
+          "value": data['template-letter-message-1'],
+          "classes": "message-body"
         }) }}
 
         <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-message-1--error">
@@ -163,7 +164,6 @@
         <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-sender-1--error">
           <span class="nhsuk-u-visually-hidden">Error:</span> Enter a sender address
         </span>
-        #}
 
         {{ input({
           "label": {
@@ -179,6 +179,7 @@
         <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-heading-1--error">
           <span class="nhsuk-u-visually-hidden">Error:</span> Enter a heading
         </span>
+        #}
 
         {{ textarea({
           "label": {
@@ -189,7 +190,7 @@
           },
           "name": "template-letter-message-1",
           "id": "template-letter-message-1",
-          "classes": "letter-body-text"
+          "classes": "message-body"
         }) }}
 
         <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-message-1--error">
@@ -244,10 +245,21 @@
         <code class='nhsuk-code-block'>Hello ((firstName)), your NHS number is ((NHSnumber))</code>
         <p class='nhsuk-u-margin-top-4'>NHS Notify gets data from PDS to populate personalisation fields.<br />You can use:</p>
         <ul>
+          <li>((fullName))</li>
           <li>((firstName))</li>
+          <li>((middleNames))</li>
           <li>((lastName))</li>
-          <li>((NHSnumber))</li>
+          <li>((nhsNumber))</li>
           <li>((birthDate))</li>
+          <li>((namePrefix))</li>
+          <li>((nameSuffix))</li>
+          <li>((address_line_1))</li>
+          <li>((address_line_2))</li>
+          <li>((address_line_3))</li>
+          <li>((address_line_4))</li>
+          <li>((address_line_5))</li>
+          <li>((address_line_6))</li>
+          <li>((address_line_7))</li>
         </ul>
         "
       }) }}

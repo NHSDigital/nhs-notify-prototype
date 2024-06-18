@@ -139,7 +139,7 @@ function checkFormLetter() {
         document.getElementById("template-letter-sender-1").classList.remove("nhsuk-input--error");
         document.getElementById("template-letter-sender-1").closest(".nhsuk-form-group").classList.remove("nhsuk-form-group--error");
         document.getElementById("template-letter-sender-1--error").style.display = "none";
-    }*/
+    }
 
     if (document.getElementById("template-letter-heading-1").value == "") {
         document.getElementById("template-letter-heading-1").classList.add("nhsuk-input--error");
@@ -150,7 +150,7 @@ function checkFormLetter() {
         document.getElementById("template-letter-heading-1").classList.remove("nhsuk-input--error");
         document.getElementById("template-letter-heading-1").closest(".nhsuk-form-group").classList.remove("nhsuk-form-group--error");
         document.getElementById("template-letter-heading-1--error").style.display = "none";
-    }
+    }*/
 
     if (document.getElementById("template-letter-message-1").value == "") {
         document.getElementById("template-letter-message-1").classList.add("nhsuk-input--error");

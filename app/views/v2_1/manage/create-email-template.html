@@ -74,6 +74,7 @@
           "label": {
             "text": "Message"
           },
+          "classes": "message-body",
           "value": data['template-email-message-1']
         }) }}
 
@@ -127,7 +128,8 @@
           "id": "template-email-message-1",
           "label": {
             "text": "Message"
-          }
+          },
+          "classes": "message-body"
         }) }}
 
         <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-email-message-1--error">
@@ -201,10 +203,21 @@
         <code class='nhsuk-code-block'>Hello ((firstName)), your NHS number is ((NHSnumber))</code>
         <p class='nhsuk-u-margin-top-4'>NHS Notify gets data from PDS to populate personalisation fields.<br />You can use:</p>
         <ul>
+          <li>((fullName))</li>
           <li>((firstName))</li>
+          <li>((middleNames))</li>
           <li>((lastName))</li>
-          <li>((NHSnumber))</li>
+          <li>((nhsNumber))</li>
           <li>((birthDate))</li>
+          <li>((namePrefix))</li>
+          <li>((nameSuffix))</li>
+          <li>((address_line_1))</li>
+          <li>((address_line_2))</li>
+          <li>((address_line_3))</li>
+          <li>((address_line_4))</li>
+          <li>((address_line_5))</li>
+          <li>((address_line_6))</li>
+          <li>((address_line_7))</li>
         </ul>
         "
       }) }}
