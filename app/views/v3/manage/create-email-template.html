@@ -25,6 +25,12 @@
         {% endif %}
       </h1>
 
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
       <span class="nhsuk-u-visually-hidden"><a href="#guidance">Read the guidance for creating an email template</a></span>
 
       <form action="template-email-1" onsubmit="return checkFormEmail();">
@@ -234,6 +240,14 @@
         <code class='nhsuk-code-block'># This is a heading</code>
         <p class='nhsuk-u-margin-top-4'>To add a subheading, use 2 hash symbols:</p>
         <code class='nhsuk-code-block'>## This is a subheading</code>
+        "
+      }) }}
+
+      {{ details({
+        "text": "Bold text",
+        "HTML": "
+        <p>Use 2 asterisk symbols on either side of the words you want to be bold, for example:</p>
+        <code class='nhsuk-code-block'>**this is bold text**</code>
         "
       }) }}
 

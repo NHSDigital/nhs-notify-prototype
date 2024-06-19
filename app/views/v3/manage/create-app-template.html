@@ -25,6 +25,12 @@
         {% endif %}
       </h1>
 
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
       <span class="nhsuk-u-visually-hidden"><a href="#guidance">Read the guidance for creating an app template</a></span>
 
       <form action="template-app-1" onsubmit="return checkFormApp();">
@@ -162,10 +168,32 @@
       <h2 class="nhsuk-heading-m">Message formatting</h2>
 
       {{ details({
+        "text": "Headings",
+        "HTML": "
+        <p>Use one hash symbol followed by a space for a heading, for example:</p>
+        <code class='nhsuk-code-block'># This is a heading</code>
+        <p class='nhsuk-u-margin-top-4'>To add a subheading, use 2 hash symbols:</p>
+        <code class='nhsuk-code-block'>## This is a subheading</code>
+        "
+      }) }}
+
+      {{ details({
         "text": "Bold text",
         "HTML": "
         <p>Use 2 asterisk symbols on either side of the words you want to be bold, for example:</p>
         <code class='nhsuk-code-block'>**this is bold text**</code>
+        "
+      }) }}
+
+      {{ details({
+        "text": "Bullet points",
+        "HTML": "
+        <p>Put each item on a separate line with an asterisk and a space in front of each one, for example:</p>
+        <code class='nhsuk-code-block'>
+          * bullet 1<br />
+          * bullet 2<br />
+          * bullet 3
+        </code>
         "
       }) }}
 
