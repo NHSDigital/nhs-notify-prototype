@@ -19,9 +19,9 @@
 
       <h1 class="nhsuk-heading-xl">
         {% if data['mode'] == 'edit' %}
-        Edit letter template
+        Edit non-english language letter template
         {% else %}
-        Create letter template
+        Create non-english language letter template
         {% endif %}
       </h1>
 
@@ -33,7 +33,7 @@
 
       <span class="nhsuk-u-visually-hidden"><a href="#guidance">Read the guidance for creating a letter template</a></span>
 
-      <form action="template-letter-1" onsubmit="return checkFormLetter();">
+      <form action="" onsubmit="return checkFormLetter();">
 
         {% if data['mode'] == 'edit' %}
 
@@ -64,7 +64,7 @@
 
         {{ textarea({
           "label": {
-            "text": "Body text"
+            "text": "English body text"
           },
           "hint": {
             "text": "This is your main letter content."
@@ -76,6 +76,156 @@
         }) }}
 
         <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-message-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+        </span>
+
+        {{ select({
+          "id": "select-language",
+          "name": "select-language",
+          "label": {
+            "text": "Choose a language"
+          },
+          "items": [
+            {
+              "text": "Please select"
+            },  
+            {
+              "value": 1,
+              "text": "Albanian"
+            },
+            {
+              "value": 2,
+              "text": "Arabic"
+            },
+            {
+              "value": 3,
+              "text": "Bengali"
+            },
+            {
+              "value": 3,
+              "text": "Bulgarian"
+            },
+            {
+              "value": 3,
+              "text": "Chinese"
+            },
+            {
+              "value": 3,
+              "text": "French"
+            },
+            {
+              "value": 3,
+              "text": "German"
+            },
+            {
+              "value": 3,
+              "text": "Modern Greek"
+            },
+            {
+              "value": 3,
+              "text": "Gujarati"
+            },
+            {
+              "value": 3,
+              "text": "Hindi"
+            },
+            {
+              "value": 3,
+              "text": "Italian"
+            },
+            {
+              "value": 3,
+              "text": "Latvian"
+            },
+            {
+              "value": 3,
+              "text": "Lithuanian"
+            },
+            {
+              "value": 3,
+              "text": "Nepali"
+            },
+            {
+              "value": 3,
+              "text": "Punjabi (Indian)"
+            },
+            {
+              "value": 3,
+              "text": "Persian"
+            },
+            {
+              "value": 3,
+              "text": "Polish"
+            },
+            {
+              "value": 3,
+              "text": "Portuguese"
+            },
+            {
+              "value": 3,
+              "text": "Romanian"
+            },
+            {
+              "value": 3,
+              "text": "Russian"
+            },
+            {
+              "value": 3,
+              "text": "Somali"
+            },
+            {
+              "value": 3,
+              "text": "Spanish"
+            },
+            {
+              "value": 3,
+              "text": "Tamil"
+            },
+            {
+              "value": 3,
+              "text": "Turkish"
+            },
+            {
+              "value": 3,
+              "text": "Urdu"
+            },
+            {
+              "value": 3,
+              "text": "Tagalog"
+            },
+            {
+              "value": 3,
+              "text": "Ukrainian"
+            },
+            {
+              "value": 3,
+              "text": "Vietnamese"
+            },
+            {
+              "value": 3,
+              "text": "Bengali"
+            }
+          ]
+        }) }}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-language--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Choose a language
+        </span>
+
+        {{ textarea({
+          "label": {
+            "text": "Non-english body text"
+          },
+          "hint": {
+            "text": "This is your main letter content."
+          },
+          "name": "template-letter-message-non-eng-1",
+          "id": "template-letter-message-non-eng-1",
+          "classes": "message-body",
+          "value": data['template-letter-message-non-eng-1']
+        }) }}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-message-non-eng-1--error">
           <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
         </span>
 
@@ -126,21 +276,170 @@
 
         <div class="notify-template-borderbox">
 
-        {{ textarea({
-          "label": {
-            "text": "Body text"
-          },
-          "hint": {
-            "text": "This is your main letter content."
-          },
-          "name": "template-letter-message-1",
-          "id": "template-letter-message-1",
-          "classes": "message-body"
-        }) }}
-
-        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-message-1--error">
-          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
-        </span>
+          {{ textarea({
+            "label": {
+              "text": "English body text"
+            },
+            "hint": {
+              "text": "This is your main letter content."
+            },
+            "name": "template-letter-message-1",
+            "id": "template-letter-message-1",
+            "classes": "message-body"
+          }) }}
+  
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-message-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+          </span>
+  
+          {{ select({
+            "id": "select-language",
+            "name": "select-language",
+            "label": {
+              "text": "Choose a language"
+            },
+            "items": [
+              {
+                "text": "Please select"
+              },  
+              {
+                "value": 1,
+                "text": "Albanian"
+              },
+              {
+                "value": 2,
+                "text": "Arabic"
+              },
+              {
+                "value": 3,
+                "text": "Bengali"
+              },
+              {
+                "value": 3,
+                "text": "Bulgarian"
+              },
+              {
+                "value": 3,
+                "text": "Chinese"
+              },
+              {
+                "value": 3,
+                "text": "French"
+              },
+              {
+                "value": 3,
+                "text": "German"
+              },
+              {
+                "value": 3,
+                "text": "Modern Greek"
+              },
+              {
+                "value": 3,
+                "text": "Gujarati"
+              },
+              {
+                "value": 3,
+                "text": "Hindi"
+              },
+              {
+                "value": 3,
+                "text": "Italian"
+              },
+              {
+                "value": 3,
+                "text": "Latvian"
+              },
+              {
+                "value": 3,
+                "text": "Lithuanian"
+              },
+              {
+                "value": 3,
+                "text": "Nepali"
+              },
+              {
+                "value": 3,
+                "text": "Punjabi (Indian)"
+              },
+              {
+                "value": 3,
+                "text": "Persian"
+              },
+              {
+                "value": 3,
+                "text": "Polish"
+              },
+              {
+                "value": 3,
+                "text": "Portuguese"
+              },
+              {
+                "value": 3,
+                "text": "Romanian"
+              },
+              {
+                "value": 3,
+                "text": "Russian"
+              },
+              {
+                "value": 3,
+                "text": "Somali"
+              },
+              {
+                "value": 3,
+                "text": "Spanish"
+              },
+              {
+                "value": 3,
+                "text": "Tamil"
+              },
+              {
+                "value": 3,
+                "text": "Turkish"
+              },
+              {
+                "value": 3,
+                "text": "Urdu"
+              },
+              {
+                "value": 3,
+                "text": "Tagalog"
+              },
+              {
+                "value": 3,
+                "text": "Ukrainian"
+              },
+              {
+                "value": 3,
+                "text": "Vietnamese"
+              },
+              {
+                "value": 3,
+                "text": "Bengali"
+              }
+            ]
+          }) }}
+  
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-language--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Choose a language
+          </span>
+  
+          {{ textarea({
+            "label": {
+              "text": "Non-english body text"
+            },
+            "hint": {
+              "text": "This is your main letter content."
+            },
+            "name": "template-letter-message-non-eng-1",
+            "id": "template-letter-message-non-eng-1",
+            "classes": "message-body"
+          }) }}
+  
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-message-non-eng-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+          </span>
 
         <div class="nhsuk-form-group">
 
@@ -164,10 +463,10 @@
 
         {%endif%}
 
-        <input type="hidden" name="continue-url" value="template-letter-1">
-        <input type="hidden" name="message-type" value="letter">
+        <input type="hidden" name="continue-url" value="template-letter-non-eng-1">
+        <input type="hidden" name="message-type" value="letter-non-eng">
         <input type="hidden" name="folder-1-letter-templates" value="1">
-        <input type="hidden" name="template-letter-name-1-approved" value="">
+        <input type="hidden" name="template-letter-non-eng-name-1-approved" value="">
 
         <p><a href="">Learn about letter pricing</a>.</p>
 

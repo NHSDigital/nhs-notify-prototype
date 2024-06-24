@@ -225,6 +225,24 @@
       <h2 class="nhsuk-heading-m">Message formatting</h2>
 
       {{ details({
+        "text": "Line breaks and paragraphs",
+        "HTML": "
+        <p>To add a line break, use 2 spaces at the end of your text, for example:</p>
+        <code class='nhsuk-code-block'>
+          line 1&nbsp;&nbsp;<br />
+          line 2&nbsp;&nbsp;<br />
+          line 3
+        </code>
+        <p class='nhsuk-u-margin-top-4'>To add a paragraph, use a blank line between each paragraph, for example:</p>
+        <code class='nhsuk-code-block'>
+          <p>line 1</p>
+          <p>line 2</p>
+          line 3
+        </code>
+        "
+      }) }}
+      
+      {{ details({
         "text": "Headings",
         "HTML": "
         <p>Use one hash symbol followed by a space for a heading, for example:</p>

@@ -18,6 +18,10 @@ router.post('*/route-template-type', (req, res) => {
     res.redirect('create-sms-template?mode=');
   }
 
+  if (radio_template_type === 'letter-non-eng') {
+    res.redirect('create-letter-non-eng-template?mode=');
+  }
+  
   if (radio_template_type === 'letter-large') {
     res.redirect('create-letter-large-template?mode=');
   }
