@@ -143,7 +143,7 @@
         "text": "Personalisation fields",
         "HTML": "
         <p>Use double brackets to add a personalisation field to your content. For example:</p>
-        <code class='nhsuk-code-block'>Hello ((firstName)), your NHS number is ((NHSnumber))</code>
+        <code class='nhsuk-code-block'>Hello ((firstName)), your NHS number is ((nhsNumber))</code>
         <p class='nhsuk-u-margin-top-4'>NHS Notify gets data from PDS to populate personalisation fields.<br />You can use:</p>
         <ul>
           <li>((fullName))</li>
@@ -167,33 +167,9 @@
 
       <h2 class="nhsuk-heading-m">Message formatting</h2>
 
-      {{ details({
-        "text": "Line breaks and paragraphs",
-        "HTML": "
-        <p>To add a line break, use 2 spaces at the end of your text, for example:</p>
-        <code class='nhsuk-code-block'>
-          line 1&nbsp;&nbsp;<br />
-          line 2&nbsp;&nbsp;<br />
-          line 3
-        </code>
-        <p class='nhsuk-u-margin-top-4'>To add a paragraph, use a blank line between each paragraph, for example:</p>
-        <code class='nhsuk-code-block'>
-          <p>line 1</p>
-          <p>line 2</p>
-          line 3
-        </code>
-        "
-      }) }}
+      {% include "../../includes/details-linebreaks.html" %}
       
-      {{ details({
-        "text": "Headings",
-        "HTML": "
-        <p>Use one hash symbol followed by a space for a heading, for example:</p>
-        <code class='nhsuk-code-block'># This is a heading</code>
-        <p class='nhsuk-u-margin-top-4'>To add a subheading, use 2 hash symbols:</p>
-        <code class='nhsuk-code-block'>## This is a subheading</code>
-        "
-      }) }}
+      {% include "../../includes/details-headings.html" %}
 
       {{ details({
         "text": "Bold text",
@@ -203,33 +179,9 @@
         "
       }) }}
 
-      {{ details({
-        "text": "Bullet points",
-        "HTML": "
-        <p>Put each item on a separate line with an asterisk and a space in front of each one, for example:</p>
-        <code class='nhsuk-code-block'>
-          * bullet 1<br />
-          * bullet 2<br />
-          * bullet 3
-        </code>
-        "
-      }) }}
+      {% include "../../includes/details-bullets.html" %}
 
-      {{ details({
-        "text": "Links and URLs",
-        "HTML": "
-        <p>If the recipient is not expecting to receive a message from you, write the URL in full, starting with https://</p>
-        <p>For example:</p>
-        <code class='nhsuk-code-block'>
-          https://www.nhs.uk/example
-        </code>
-        <p class='nhsuk-u-margin-top-4'>To convert text into a link, use square brackets around the link text and round brackets around the full URL. Make sure there are no spaces between the brackets or the link will not work.</p>
-        <p>For example:</p>
-        <code class='nhsuk-code-block'>
-          [Read more](https://www.nhs.uk/)
-        </code>
-        "
-      }) }}
+      {% include "../../includes/details-links.html" %}
 
     </div>
 

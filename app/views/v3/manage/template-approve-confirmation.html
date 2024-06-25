@@ -13,30 +13,30 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <div class="notify-confirmation-panel">
-        <h1 class="nhsuk-heading-l">Template submitted</h1>
-        <p class="nhsuk-body-l nhsuk-u-margin-bottom-0">
-          Template name<br />
-          <strong>{{ data['approve-template-name']}}</strong>
-        </p>
+        <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-0">Template submitted</h1>
       </div>
 
-      <p>You'll receive a confirmation email, which contains the template ID.</p>
+      <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-1">Template name</h2>
+      <p>{{ data['approve-template-name']}}</p>
 
-      <h2 class="nhsuk-heading-m">If you're setting up a template</h2>
+      <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-1">Template ID</h2>
+      <p>a4b171b5-431f-4a5b-9d7a-9a4903c98e66</p>
 
-      <p>Make a note of the template name and IDs. You'll need to provide them to our onboarding team to set up the messages you want to send.</p>
+      <h2 class="nhsuk-heading-m">What you need to do next</h2>
 
-      <h2 class="nhsuk-heading-m">If you're replacing a submitted or live template</h2>
+      <p>Make a note of the template name and ID. You'll also receive a confirmation email, which contains the template name and ID.</p>
 
-      <p>Make a note of the template name and ID, then create a <a href="">Service Now request</a>.</p>
+      <h3 class="nhsuk-heading-s">If you're getting ready to go live</h3>
+
+      <p>The onboarding team will ask you for your template names and IDs when you are planning how to send your messages.</p>
+
+      <h3 class="nhsuk-heading-s">If your service is live</h3>
+
+      <p>Tell NHS Notify what you want to do with your template by raising a service now request:</p>
       
-      <p>
-        <strong>Template ID</strong><br />
-        a4b171b5-431f-4a5b-9d7a-9a4903c98e66
-      </p>
 
       {{ button({
-        "text": "Copy template ID to clipboard",
+        "text": "Raise a service now request",
         "classes": "nhsuk-button--secondary"
       }) }}
 

@@ -235,7 +235,7 @@
             Upload a signature image (optional)
             <span class="nhsuk-hint">Images must be no larger than 500 x 500 pixels and 10MB in file size.</span>
           </label>
-          <input type="file" class="nhsuk-button nhsuk-button--secondary" />
+          <input type="file" class="nhsuk-button nhsuk-button--reverse" />
 
           {{ details({
             "text": "Inserting your signature",
@@ -447,7 +447,7 @@
             Upload a signature image (optional)
             <span class="nhsuk-hint">Images must be no larger than 500 x 500 pixels and 10MB in file size.</span>
           </label>
-          <input type="file" class="nhsuk-button nhsuk-button--secondary" />
+          <input type="file" class="nhsuk-button nhsuk-button--reverse" />
 
           {{ details({
             "text": "Inserting your signature",
@@ -494,7 +494,7 @@
         "text": "Personalisation fields",
         "HTML": "
         <p>Use double brackets to add a personalisation field to your content. For example:</p>
-        <code class='nhsuk-code-block'>Hello ((firstName)), your NHS number is ((NHSnumber))</code>
+        <code class='nhsuk-code-block'>Hello ((firstName)), your NHS number is ((nhsNumber))</code>
         <p class='nhsuk-u-margin-top-4'>NHS Notify gets data from PDS to populate personalisation fields.<br />You can use:</p>
         <ul>
           <li>((fullName))</li>
@@ -518,99 +518,21 @@
 
       <h2 class="nhsuk-heading-m">Body text formatting</h2>
 
-      {{ details({
-        "text": "Line breaks and paragraphs",
-        "HTML": "
-        <p>To add a line break, use 2 spaces at the end of your text, for example:</p>
-        <code class='nhsuk-code-block'>
-          line 1&nbsp;&nbsp;<br />
-          line 2&nbsp;&nbsp;<br />
-          line 3
-        </code>
-        <p class='nhsuk-u-margin-top-4'>To add a paragraph, use a blank line between each paragraph, for example:</p>
-        <code class='nhsuk-code-block'>
-          <p>line 1</p>
-          <p>line 2</p>
-          line 3
-        </code>
-        "
-      }) }}
+      {% include "../../includes/details-linebreaks.html" %}
       
-      {{ details({
-        "text": "Headings",
-        "HTML": "
-        <p>Use one hash symbol followed by a space for a heading, for example:</p>
-        <code class='nhsuk-code-block'># This is a heading</code>
-        <p class='nhsuk-u-margin-top-4'>To add a subheading, use 2 hash symbols:</p>
-        <code class='nhsuk-code-block'>## This is a subheading</code>
-        "
-      }) }}
+      {% include "../../includes/details-headings.html" %}
 
-      {{ details({
-        "text": "Bold text",
-        "HTML": "
-        <p>Use two asterisk symbols on either side of the words you want to be bold, for example:</p>
-        <code class='nhsuk-code-block'>**this is bold text**</code>
-        "
-      }) }}
+      {% include "../../includes/details-bold.html" %}
 
-      {{ details({
-        "text": "Bullet points",
-        "HTML": "
-        <p>Put each item on a separate line with an asterisk and a space in front of each one, for example:</p>
-        <code class='nhsuk-code-block'>
-          * bullet 1<br />
-          * bullet 2<br />
-          * bullet 3
-        </code>
-        "
-      }) }}
+      {% include "../../includes/details-bullets.html" %}
 
-      {{ details({
-        "text": "Numbered lists",
-        "HTML": "
-        <p>Put each item on a separate line with the number, full stop and a space in front of each one, for example:</p>
-        <code class='nhsuk-code-block'>
-          1. first item<br />
-          2. second item<br />
-          3. third item
-        </code>
-        "
-      }) }}
+      {% include "../../includes/details-numbered-lists.html" %}
 
-      {{ details({
-        "text": "Signatures",
-        "HTML": "
-        <p>If you upload a signature image, use 2 curly brackets on either side of 'signature' to insert your signature image in the body text. For example:</p>
-        <code class='nhsuk-code-block'>{{signature}}</code>
-        "
-      }) }}
+      {% include "../../includes/details-signatures.html" %}
 
-      {{ details({
-        "text": "Page breaks",
-        "HTML": "
-        <p>To add a page break, put 3 asterisks, for example:</p>
-        <code class='nhsuk-code-block'>
-          Content on one page<br />
-          ***<br />
-          Content on another page
-        </code>
-        "
-      }) }}
+      {% include "../../includes/details-page-breaks.html" %}
 
-      {{ details({
-        "text": "Content blocks",
-        "HTML": "
-        <p>Content blocks are blocks of text that cannot be split onto different pages.</p>
-        <p>Use <code>{{startBlock}}</code> before your block of content, and <code>{{endBlock}}</code> after your block of content.</p>
-        <p>For example:</p>
-        <code class='nhsuk-code-block'>
-          {{startBlock}}<br />
-          Here is my unbreakable block of content.<br />
-          {{endBlock}}
-        </code>
-        "
-      }) }}
+      {% include "../../includes/details-content-blocks.html" %}
 
     </div>
 
