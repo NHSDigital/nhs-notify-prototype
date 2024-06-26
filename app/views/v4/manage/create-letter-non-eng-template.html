@@ -35,7 +35,6 @@
 
       <form action="" onsubmit="return checkFormLetter();">
 
-        {% if data['mode'] == 'edit' %}
 
         <div class="notify-template-borderbox">
 
@@ -49,8 +48,16 @@
             </div>
   
             {% include "../../includes/details-template-name.html" %}
+  
+            {% if data['mode'] == 'edit' %}
   
             <input class="nhsuk-input" id="template-letter-name-1" name="template-letter-name-1" type="text" value="{{data['template-letter-name-1']}}">
+
+            {% else %}
+
+            <input class="nhsuk-input" id="template-letter-name-1" name="template-letter-name-1" type="text">
+
+            {% endif %}
             
           </div>
 
@@ -62,219 +69,22 @@
 
         <div class="notify-template-borderbox">
 
-        {{ textarea({
-          "label": {
-            "text": "English body text"
-          },
-          "hint": {
-            "text": "This is your main letter content."
-          },
-          "name": "template-letter-message-1",
-          "id": "template-letter-message-1",
-          "classes": "message-body",
-          "value": data['template-letter-message-1']
-        }) }}
-
-        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-message-1--error">
-          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
-        </span>
-
-        {{ select({
-          "id": "select-language",
-          "name": "select-language",
-          "label": {
-            "text": "Choose a language"
-          },
-          "items": [
-            {
-              "text": "Please select"
-            },  
-            {
-              "value": 1,
-              "text": "Albanian"
+          {% if data['mode'] == 'edit' %}
+  
+          {{ textarea({
+            "label": {
+              "text": "English body text"
             },
-            {
-              "value": 2,
-              "text": "Arabic"
+            "hint": {
+              "text": "This is your main letter content."
             },
-            {
-              "value": 3,
-              "text": "Bengali"
-            },
-            {
-              "value": 3,
-              "text": "Bulgarian"
-            },
-            {
-              "value": 3,
-              "text": "Chinese"
-            },
-            {
-              "value": 3,
-              "text": "French"
-            },
-            {
-              "value": 3,
-              "text": "German"
-            },
-            {
-              "value": 3,
-              "text": "Modern Greek"
-            },
-            {
-              "value": 3,
-              "text": "Gujarati"
-            },
-            {
-              "value": 3,
-              "text": "Hindi"
-            },
-            {
-              "value": 3,
-              "text": "Italian"
-            },
-            {
-              "value": 3,
-              "text": "Latvian"
-            },
-            {
-              "value": 3,
-              "text": "Lithuanian"
-            },
-            {
-              "value": 3,
-              "text": "Nepali"
-            },
-            {
-              "value": 3,
-              "text": "Punjabi (Indian)"
-            },
-            {
-              "value": 3,
-              "text": "Persian"
-            },
-            {
-              "value": 3,
-              "text": "Polish"
-            },
-            {
-              "value": 3,
-              "text": "Portuguese"
-            },
-            {
-              "value": 3,
-              "text": "Romanian"
-            },
-            {
-              "value": 3,
-              "text": "Russian"
-            },
-            {
-              "value": 3,
-              "text": "Somali"
-            },
-            {
-              "value": 3,
-              "text": "Spanish"
-            },
-            {
-              "value": 3,
-              "text": "Tamil"
-            },
-            {
-              "value": 3,
-              "text": "Turkish"
-            },
-            {
-              "value": 3,
-              "text": "Urdu"
-            },
-            {
-              "value": 3,
-              "text": "Tagalog"
-            },
-            {
-              "value": 3,
-              "text": "Ukrainian"
-            },
-            {
-              "value": 3,
-              "text": "Vietnamese"
-            },
-            {
-              "value": 3,
-              "text": "Bengali"
-            }
-          ]
-        }) }}
-
-        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-language--error">
-          <span class="nhsuk-u-visually-hidden">Error:</span> Choose a language
-        </span>
-
-        {{ textarea({
-          "label": {
-            "text": "Non-english body text"
-          },
-          "hint": {
-            "text": "This is your main letter content."
-          },
-          "name": "template-letter-message-non-eng-1",
-          "id": "template-letter-message-non-eng-1",
-          "classes": "message-body",
-          "value": data['template-letter-message-non-eng-1']
-        }) }}
-
-        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-message-non-eng-1--error">
-          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
-        </span>
-
-        <div class="nhsuk-form-group">
-
-          <label class="nhsuk-label" for="example">
-            Upload a signature image (optional)
-            <span class="nhsuk-hint">Images must be no larger than 500 x 500 pixels and 10MB in file size.</span>
-          </label>
-          <input type="file" class="nhsuk-button nhsuk-button--reverse" />
-
-          {{ details({
-            "text": "Inserting your signature",
-            "HTML": "
-            <p>Use 2 curly brackets on either side of 'signature' to insert your signature image in the body text. For example:</p>
-            <code class='nhsuk-code-block'>{{signature}}</code>
-            "
+            "name": "template-letter-message-1",
+            "id": "template-letter-message-1",
+            "classes": "message-body",
+            "value": data['template-letter-message-1']
           }) }}
 
-        </div>
-
-        </div>
-
-        {%else%}
-
-        <div class="notify-template-borderbox">
-
-          <div class="nhsuk-form-group">
-          
-            <label class="nhsuk-label" for="template-letter-name-1">
-              Template name
-            </label>
-            <div class="nhsuk-hint">
-              This will not be visible to recipients.
-            </div>
-  
-            {% include "../../includes/details-template-name.html" %}
-  
-            <input class="nhsuk-input" id="template-letter-name-1" name="template-letter-name-1" type="text">
-            
-          </div>
-
-          <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-name-1--error">
-            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
-          </span>
-
-        </div>
-
-        <div class="notify-template-borderbox">
+          {% else %}
 
           {{ textarea({
             "label": {
@@ -287,11 +97,13 @@
             "id": "template-letter-message-1",
             "classes": "message-body"
           }) }}
-  
+
+          {% endif %}
+
           <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-message-1--error">
             <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
           </span>
-  
+
           {{ select({
             "id": "select-language",
             "name": "select-language",
@@ -420,11 +232,28 @@
               }
             ]
           }) }}
-  
+
           <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-language--error">
             <span class="nhsuk-u-visually-hidden">Error:</span> Choose a language
           </span>
+
+          {% if data['mode'] == 'edit' %}
   
+          {{ textarea({
+            "label": {
+              "text": "Non-english body text"
+            },
+            "hint": {
+              "text": "This is your main letter content."
+            },
+            "name": "template-letter-message-non-eng-1",
+            "id": "template-letter-message-non-eng-1",
+            "classes": "message-body",
+            "value": data['template-letter-message-non-eng-1']
+          }) }}
+
+          {% else %}
+
           {{ textarea({
             "label": {
               "text": "Non-english body text"
@@ -436,32 +265,32 @@
             "id": "template-letter-message-non-eng-1",
             "classes": "message-body"
           }) }}
-  
+
+          {% endif %}
+
           <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-message-non-eng-1--error">
             <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
           </span>
 
-        <div class="nhsuk-form-group">
+          <div class="nhsuk-form-group">
 
-          <label class="nhsuk-label" for="example">
-            Upload a signature image (optional)
-            <span class="nhsuk-hint">Images must be no larger than 500 x 500 pixels and 10MB in file size.</span>
-          </label>
-          <input type="file" class="nhsuk-button nhsuk-button--reverse" />
+            <label class="nhsuk-label" for="example">
+              Upload a signature image (optional)
+              <span class="nhsuk-hint">Images must be no larger than 500 x 500 pixels and 10MB in file size.</span>
+            </label>
+            <input type="file" class="nhsuk-button nhsuk-button--reverse" />
 
-          {{ details({
-            "text": "Inserting your signature",
-            "HTML": "
-            <p>Use 2 curly brackets on either side of 'signature' to insert your signature image in the body text. For example:</p>
-            <code class='nhsuk-code-block'>{{signature}}</code>
-            "
-          }) }}
+            {{ details({
+              "text": "Inserting your signature",
+              "HTML": "
+              <p>Use 2 curly brackets on either side of 'signature' to insert your signature image in the body text. For example:</p>
+              <code class='nhsuk-code-block'>{{signature}}</code>
+              "
+            }) }}
+
+          </div>
 
         </div>
-
-        </div>
-
-        {%endif%}
 
         <input type="hidden" name="continue-url" value="template-letter-non-eng-1">
         <input type="hidden" name="message-type" value="letter-non-eng">
@@ -490,31 +319,7 @@
 
       <h2 class="nhsuk-heading-m nhsuk-u-margin-top-4">Personalisation</h2>
 
-      {{ details({
-        "text": "Personalisation fields",
-        "HTML": "
-        <p>Use double brackets to add a personalisation field to your content. For example:</p>
-        <code class='nhsuk-code-block'>Hello ((firstName)), your NHS number is ((nhsNumber))</code>
-        <p class='nhsuk-u-margin-top-4'>NHS Notify gets data from PDS to populate personalisation fields.<br />You can use:</p>
-        <ul>
-          <li>((fullName))</li>
-          <li>((firstName))</li>
-          <li>((middleNames))</li>
-          <li>((lastName))</li>
-          <li>((nhsNumber))</li>
-          <li>((birthDate))</li>
-          <li>((namePrefix))</li>
-          <li>((nameSuffix))</li>
-          <li>((address_line_1))</li>
-          <li>((address_line_2))</li>
-          <li>((address_line_3))</li>
-          <li>((address_line_4))</li>
-          <li>((address_line_5))</li>
-          <li>((address_line_6))</li>
-          <li>((address_line_7))</li>
-        </ul>
-        "
-      }) }}
+      {% include "../../includes/details-personalisation.html" %}
 
       <h2 class="nhsuk-heading-m">Body text formatting</h2>
 

@@ -42,37 +42,27 @@ window.onload = function () {
         "
       }) }}
 
-      <table role="table" class="nhsuk-table-responsive notify-template-content nhsuk-u-margin-bottom-4">
+      <!--<object class="nhsuk-u-margin-bottom-2" data="/files/example-letter-vacs.pdf" style="width: 100%; min-height: 600px;"></object>-->
 
-        <tbody class="nhsuk-table__body">
-          <!--<tr role="row" class="nhsuk-table__row">
-            <th role="cell" class="nhsuk-table__cell">
-              Sender address
-            </th>
-            <td role="cell" class="nhsuk-table__cell">
-              {{ data['template-letter-sender-1'] }}
-            </td>
-          </tr>
-          <tr role="row" class="nhsuk-table__row">
-            <th role="cell" class="nhsuk-table__cell">
-              Heading
-            </th>
-            <td role="cell" class="nhsuk-table__cell">
-              {{ data['template-letter-heading-1'] }}
-            </td>
-          </tr>-->
-          <tr role="row" class="nhsuk-table__row">
-            <th role="cell" class="nhsuk-table__cell">
-              Body text
-            </th>
-            <td role="cell" class="nhsuk-table__cell">
-              <textarea id="sourceTA" style="display: none;">{{ data["template-letter-message-1"] }}</textarea>
-              <div id="targetDiv"></div>
-            </td>
-          </tr>
-        </tbody>
+      <div id="adobe-dc-view" style="height: 800px; width: 100%;"></div>
+      <script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
+      <script type="text/javascript">
+        const previewConfig = {
+          embedMode: "SIZED_CONTAINER",
+          showDownloadPDF: true,
+          showZoomControl: false
+        }
 
-      </table>
+        document.addEventListener("adobe_dc_view_sdk.ready", function(){ 
+          var adobeDCView = new AdobeDC.View({clientId: "f419e8ee3f914a539f3dca22cecbca79", divId: "adobe-dc-view"});
+          adobeDCView.previewFile({
+            content:{location: {url: "/files/example-letter-vacs.pdf"}},
+            metaData:{fileName: "example-letter-vacs.pdf"}
+          }, previewConfig);
+        });
+      </script>
+
+      <!--<p><a href="">Download preview PDF</a></p>-->
 
       {% if data['template-letter-name-1-approved'] != '1' %}
 
@@ -83,7 +73,7 @@ window.onload = function () {
           "fieldset": {
             "legend": {
               "text": "What would you like to do next with this template?",
-              "classes": "nhsuk-fieldset__legend--m"
+              "classes": "nhsuk-fieldset__legend--m nhsuk-u-padding-top-6"
             }
           },
           "items": [
@@ -93,7 +83,7 @@ window.onload = function () {
             },
             {
               "value": "test-letter",
-              "text": "Preview (PDF)"
+              "text": "Preview with test personalisation data"
             },
             {
               "value": "submit-letter",

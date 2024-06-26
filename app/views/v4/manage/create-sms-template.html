@@ -35,8 +35,6 @@
 
       <form action="template-sms-1" onsubmit="return checkFormSMS();">
  
-        {% if data['mode'] == 'edit' %}
-
         <div class="nhsuk-form-group">
           
           <label class="nhsuk-label" for="template-sms-name-1">
@@ -48,13 +46,23 @@
 
           {% include "../../includes/details-template-name.html" %}
 
+          {% if data['mode'] == 'edit' %}
+
           <input class="nhsuk-input" id="template-sms-name-1" name="template-sms-name-1" type="text" value="{{data['template-sms-name-1']}}">
-          
+
+          {% else %}
+
+          <input class="nhsuk-input" id="template-sms-name-1" name="template-sms-name-1" type="text">
+
+          {% endif %}
+
         </div>
 
         <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-sms-name-1--error">
           <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
         </span>
+
+        {% if data['mode'] == 'edit' %}
 
         {{ textarea({
           "name": "template-sms-message-1",
@@ -69,30 +77,7 @@
           "value": data['template-sms-message-1']
         }) }}
 
-        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-sms-message-1--error">
-          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
-        </span>
-
         {% else %}
-
-        <div class="nhsuk-form-group">
-          
-          <label class="nhsuk-label" for="template-sms-name-1">
-            Template name
-          </label>
-          <div class="nhsuk-hint">
-            This will not be visible to recipients.
-          </div>
-
-          {% include "../../includes/details-template-name.html" %}
-
-          <input class="nhsuk-input" id="template-sms-name-1" name="template-sms-name-1" type="text">
-          
-        </div>
-
-        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-sms-name-1--error">
-          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
-        </span>
 
         {{ textarea({
           "name": "template-sms-message-1",
@@ -106,14 +91,14 @@
           "classes": "message-body"
         }) }}
 
+        {% endif %}
+
         <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-sms-message-1--error">
           <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
         </span>
 
-        {% endif %}
-
         <p id="charNum" class="nhsuk-u-margin-bottom-0">0 characters</p>
-        <p>This template will be sent as <span id="numMsgs">0</span> text messages. If you're using personalisation fields, it could send as more.</p>
+        <p>This template will be charged as <span id="numMsgs">0</span> text messages. If you're using personalisation fields, it could be charged as more.</p>
         <p><a href="">Learn more about character counts and text message pricing</a>.</p>
 
         <script>
@@ -140,31 +125,7 @@
 
       <h2 class="nhsuk-heading-m" id="guidance">Personalisation</h2>
 
-      {{ details({
-        "text": "Personalisation fields",
-        "HTML": "
-        <p>Use double brackets to add a personalisation field to your content. For example:</p>
-        <code class='nhsuk-code-block'>Hello ((firstName)), your NHS number is ((nhsNumber))</code>
-        <p class='nhsuk-u-margin-top-4'>NHS Notify gets data from PDS to populate personalisation fields.<br />You can use:</p>
-        <ul>
-          <li>((fullName))</li>
-          <li>((firstName))</li>
-          <li>((middleNames))</li>
-          <li>((lastName))</li>
-          <li>((nhsNumber))</li>
-          <li>((birthDate))</li>
-          <li>((namePrefix))</li>
-          <li>((nameSuffix))</li>
-          <li>((address_line_1))</li>
-          <li>((address_line_2))</li>
-          <li>((address_line_3))</li>
-          <li>((address_line_4))</li>
-          <li>((address_line_5))</li>
-          <li>((address_line_6))</li>
-          <li>((address_line_7))</li>
-        </ul>
-        "
-      }) }}
+      {% include "../../includes/details-personalisation-no-address.html" %}
 
       <h2 class="nhsuk-heading-m">Message formatting</h2>
 
