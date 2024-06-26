@@ -22,7 +22,7 @@ window.onload = function () {
 
 {% block content %}
   <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-full-width">
+    <div class="nhsuk-grid-column-full">
 
       {{ tag({
         text: "Saved draft",
@@ -50,7 +50,10 @@ window.onload = function () {
         const previewConfig = {
           embedMode: "SIZED_CONTAINER",
           showDownloadPDF: true,
-          showZoomControl: false
+          showZoomControl: true,
+          showAnnotationTools: false,
+          showThumbnails: false,
+          showBookmarks: false
         }
 
         document.addEventListener("adobe_dc_view_sdk.ready", function(){ 
