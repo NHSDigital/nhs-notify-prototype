@@ -35,8 +35,6 @@
 
       <form action="template-app-1" onsubmit="return checkFormApp();">
 
-        {% if data['mode'] == 'edit' %}
- 
         <div class="nhsuk-form-group">
           
           <label class="nhsuk-label" for="template-app-name-1">
@@ -48,14 +46,24 @@
 
           {% include "../../includes/details-template-name.html" %}
 
+          {% if data['mode'] == 'edit' %}
+  
           <input class="nhsuk-input" id="template-app-name-1" name="template-app-name-1" type="text" value="{{data['template-app-name-1']}}">
-          
+
+          {% else %}
+
+          <input class="nhsuk-input" id="template-app-name-1" name="template-app-name-1" type="text">
+
+          {% endif %}
+
         </div>
 
         <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-app-name-1--error">
           <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
         </span>
 
+        {% if data['mode'] == 'edit' %}
+  
         {{ textarea({
           "name": "template-app-message-1",
           "id": "template-app-message-1",
@@ -70,30 +78,7 @@
           "classes": "message-body"
         }) }}
 
-        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-app-message-1--error">
-          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
-        </span>
-
         {% else %}
-
-        <div class="nhsuk-form-group">
-          
-          <label class="nhsuk-label" for="template-app-name-1">
-            Template name
-          </label>
-          <div class="nhsuk-hint">
-            This will not be visible to recipients.
-          </div>
-
-          {% include "../../includes/details-template-name.html" %}
-
-          <input class="nhsuk-input" id="template-app-name-1" name="template-app-name-1" type="text">
-          
-        </div>
-
-        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-app-name-1--error">
-          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
-        </span>
 
         {{ textarea({
           "name": "template-app-message-1",
@@ -108,12 +93,12 @@
           "classes": "message-body"
         }) }}
 
+        {% endif %}
+
         <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-app-message-1--error">
           <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
         </span>
-
-        {% endif %}
-
+        
         <p id="charNum">0 of 5000 characters</p>
 
         <script>
@@ -139,31 +124,7 @@
 
       <h2 class="nhsuk-heading-m" id="guidance">Personalisation</h2>
 
-      {{ details({
-        "text": "Personalisation fields",
-        "HTML": "
-        <p>Use double brackets to add a personalisation field to your content. For example:</p>
-        <code class='nhsuk-code-block'>Hello ((firstName)), your NHS number is ((nhsNumber))</code>
-        <p class='nhsuk-u-margin-top-4'>NHS Notify gets data from PDS to populate personalisation fields.<br />You can use:</p>
-        <ul>
-          <li>((fullName))</li>
-          <li>((firstName))</li>
-          <li>((middleNames))</li>
-          <li>((lastName))</li>
-          <li>((nhsNumber))</li>
-          <li>((birthDate))</li>
-          <li>((namePrefix))</li>
-          <li>((nameSuffix))</li>
-          <li>((address_line_1))</li>
-          <li>((address_line_2))</li>
-          <li>((address_line_3))</li>
-          <li>((address_line_4))</li>
-          <li>((address_line_5))</li>
-          <li>((address_line_6))</li>
-          <li>((address_line_7))</li>
-        </ul>
-        "
-      }) }}
+      {% include "../../includes/details-personalisation-no-address.html" %}
 
       <h2 class="nhsuk-heading-m">Message formatting</h2>
 

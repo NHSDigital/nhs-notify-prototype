@@ -20,10 +20,39 @@
         {% if data['message-type'] == 'email' %}{{data['test-email-1']}}{%endif%}
       </p>
 
-      <form action="{{data['continue-url']}}" method="post">
-      {{ button({
-        "text": "Continue"
-      }) }}
+      <form action="route-template-next" method="post">
+
+        {{ radios({
+          "name": "template-next",
+          "fieldset": {
+            "legend": {
+              "text": "What would you like to do next with this template?",
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "items": [
+            {
+              "value": "edit-email",
+              "text": "Edit"
+            },
+            {
+              "value": "test-email",
+              "text": "Send another test email"
+            },
+            {
+              "value": "submit-email",
+              "text": "Submit"
+            }
+          ]
+        }) }}
+
+        <input type="hidden" name="approve-template-name" value="{{ data['template-email-name-1'] }}">
+        <input type="hidden" name="message-type" value="email">
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
       </form>
 
     </div>

@@ -35,7 +35,7 @@
 
       <form action="template-email-1" onsubmit="return checkFormEmail();">
 
-        {% if data['mode'] == 'edit' %}
+        
         
         <div class="notify-template-borderbox">
 
@@ -49,64 +49,16 @@
             </div>
   
             {% include "../../includes/details-template-name.html" %}
+
+            {% if data['mode'] == 'edit' %}
   
             <input class="nhsuk-input" id="template-email-name-1" name="template-email-name-1" type="text" value="{{data['template-email-name-1']}}">
-            
-          </div>
 
-          <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-email-name-1--error">
-            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
-          </span>
+            {% else %}
 
-        </div>
-
-        <div class="notify-template-borderbox">
-
-        {{ input({
-          "label": {
-            "text": "Subject line"
-          },
-          "id": "template-email-subject-1",
-          "name": "template-email-subject-1",
-          "value": data['template-email-subject-1']
-        }) }}
-
-        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-email-subject-1--error">
-          <span class="nhsuk-u-visually-hidden">Error:</span> Enter an email subject
-        </span>
-
-        {{ textarea({
-          "name": "template-email-message-1",
-          "id": "template-email-message-1",
-          "label": {
-            "text": "Message"
-          },
-          "classes": "message-body",
-          "value": data['template-email-message-1']
-        }) }}
-
-        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-email-message-1--error">
-          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
-        </span>
-
-        </div>
-
-        {% else %}
-
-        <div class="notify-template-borderbox">
-
-          <div class="nhsuk-form-group">
-          
-            <label class="nhsuk-label" for="template-email-name-1">
-              Template name
-            </label>
-            <div class="nhsuk-hint">
-              This will not be visible to recipients.
-            </div>
-  
-            {% include "../../includes/details-template-name.html" %}
-  
             <input class="nhsuk-input" id="template-email-name-1" name="template-email-name-1" type="text">
+
+            {% endif %}
             
           </div>
 
@@ -118,34 +70,63 @@
 
         <div class="notify-template-borderbox">
 
-        {{ input({
-          "label": {
-            "text": "Subject line"
-          },
-          "id": "template-email-subject-1",
-          "name": "template-email-subject-1"
-        }) }}
+          {% if data['mode'] == 'edit' %}
 
-        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-email-subject-1--error">
-          <span class="nhsuk-u-visually-hidden">Error:</span> Enter an email subject
-        </span>
+          {{ input({
+            "label": {
+              "text": "Subject line"
+            },
+            "id": "template-email-subject-1",
+            "name": "template-email-subject-1",
+            "value": data['template-email-subject-1']
+          }) }}
 
-        {{ textarea({
-          "name": "template-email-message-1",
-          "id": "template-email-message-1",
-          "label": {
-            "text": "Message"
-          },
-          "classes": "message-body"
-        }) }}
+          {% else %}
 
-        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-email-message-1--error">
-          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
-        </span>
+          {{ input({
+            "label": {
+              "text": "Subject line"
+            },
+            "id": "template-email-subject-1",
+            "name": "template-email-subject-1"
+          }) }}
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-email-subject-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter an email subject
+          </span>
+
+          {% if data['mode'] == 'edit' %}
+
+          {{ textarea({
+            "name": "template-email-message-1",
+            "id": "template-email-message-1",
+            "label": {
+              "text": "Message"
+            },
+            "classes": "message-body",
+            "value": data['template-email-message-1']
+          }) }}
+
+          {% else %}
+
+          {{ textarea({
+            "name": "template-email-message-1",
+            "id": "template-email-message-1",
+            "label": {
+              "text": "Message"
+            },
+            "classes": "message-body"
+          }) }}
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-email-message-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+          </span>
 
         </div>
-
-        {% endif %}
 
         <input type="hidden" name="continue-url" value="template-email-1">
         <input type="hidden" name="message-type" value="email">
@@ -153,7 +134,7 @@
         <input type="hidden" name="template-email-name-1-approved" value="">
 
         {{ button({
-          "text": "Save"
+          "text": "Save and preview"
         }) }}
 
       </form>
@@ -205,31 +186,7 @@
 
       <h2 class="nhsuk-heading-m" id="guidance">Personalisation</h2>
 
-      {{ details({
-        "text": "Personalisation fields",
-        "HTML": "
-        <p>Use double brackets to add a personalisation field to your content. For example:</p>
-        <code class='nhsuk-code-block'>Hello ((firstName)), your NHS number is ((nhsNumber))</code>
-        <p class='nhsuk-u-margin-top-4'>NHS Notify gets data from PDS to populate personalisation fields.<br />You can use:</p>
-        <ul>
-          <li>((fullName))</li>
-          <li>((firstName))</li>
-          <li>((middleNames))</li>
-          <li>((lastName))</li>
-          <li>((nhsNumber))</li>
-          <li>((birthDate))</li>
-          <li>((namePrefix))</li>
-          <li>((nameSuffix))</li>
-          <li>((address_line_1))</li>
-          <li>((address_line_2))</li>
-          <li>((address_line_3))</li>
-          <li>((address_line_4))</li>
-          <li>((address_line_5))</li>
-          <li>((address_line_6))</li>
-          <li>((address_line_7))</li>
-        </ul>
-        "
-      }) }}
+      {% include "../../includes/details-personalisation-no-address.html" %}
 
       <h2 class="nhsuk-heading-m">Message formatting</h2>
 
