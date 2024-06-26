@@ -25,11 +25,40 @@
         {% endif %}
       </h1>
 
+      <button id="toggle" onclick="guidanceShowHide()" class="nhsuk-button nhsuk-button--secondary">Show guidance</button>
+      
+      <script>
+        function guidanceShowHide() {
+
+          var columnRight = document.getElementById("column-right");
+          var columnLeft = document.getElementById("column-left");
+          var classIsPresent = columnLeft.classList.contains("nhsuk-grid-column-two-thirds");
+          var button = document.getElementById("toggle");
+
+          if (classIsPresent) {
+            columnLeft.classList.remove("nhsuk-grid-column-two-thirds");
+            columnLeft.classList.add("nhsuk-grid-column-full");
+            columnRight.style.display = "none";
+            button.innerHTML = "Show guidance";
+            columnRight.setAttribute("aria-hidden", "true");
+          } else {
+            columnLeft.classList.add("nhsuk-grid-column-two-thirds");
+            columnLeft.classList.remove("nhsuk-grid-column-full");
+            columnRight.style.display = "block";
+            button.innerHTML = "Hide guidance";
+            columnRight.removeAttribute("aria-hidden");
+          }
+
+          return false;
+
+        }
+      </script>
+
     </div>
   </div>
 
   <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
+    <div id="column-left" class="nhsuk-grid-column-full">
 
       <span class="nhsuk-u-visually-hidden"><a href="#guidance">Read the guidance for creating a letter template</a></span>
 
@@ -147,7 +176,7 @@
 
     </div>
 
-    <div class="nhsuk-grid-column-one-third">
+    <div id="column-right" class="nhsuk-grid-column-one-third" style="display: none;">
 
       <h2 class="nhsuk-heading-m" id="guidance">Letter layout</h2>
       <p class="nhsuk-hint">This shows where your content will appear on the page.</p>
