@@ -1,0 +1,127 @@
+{% extends 'v4/layout.html' %}
+
+{% block head %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+<script>
+window.onload = function () {
+  var text = document.getElementById('sourceTA').value,
+      target = document.getElementById('targetDiv'),
+      converter = new showdown.Converter(),
+      html = converter.makeHtml(text);
+    
+    target.innerHTML = html;
+}
+</script>
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full-width">
+
+      {{ tag({
+        text: "Saved draft",
+        classes: "nhsuk-u-margin-bottom-2"
+      })}}
+
+      <h1 class="nhsuk-heading-xl">
+        <span class="nhsuk-caption-l">Letter template</span>
+        {{ data['template-letter-name-1'] }}
+      </h1>
+
+      {{ details({
+        "text": "Who your letter will be sent from",
+        "HTML": "
+        <p>The return address is set by NHS Notify's suppliers and is printed on each letter's envelope.</p>
+        <p>If you want recipients to reply to you by letter, add your address in the content of your letter. Letter templates do not have a section for a reply address.</p>
+        "
+      }) }}
+
+      <table role="table" class="nhsuk-table-responsive notify-template-content nhsuk-u-margin-bottom-4">
+
+        <tbody class="nhsuk-table__body">
+          <!--<tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell">
+              Sender address
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              {{ data['template-letter-sender-1'] }}
+            </td>
+          </tr>
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell">
+              Heading
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              {{ data['template-letter-heading-1'] }}
+            </td>
+          </tr>-->
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell">
+              Body text
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              <textarea id="sourceTA" style="display: none;">{{ data["template-letter-message-1"] }}</textarea>
+              <div id="targetDiv"></div>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+
+      {% if data['template-letter-name-1-approved'] != '1' %}
+
+      <form action="route-template-next" method="post">
+
+        {{ radios({
+          "name": "template-next",
+          "fieldset": {
+            "legend": {
+              "text": "What would you like to do next with this template?",
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "items": [
+            {
+              "value": "edit-letter",
+              "text": "Edit"
+            },
+            {
+              "value": "test-letter",
+              "text": "Preview (PDF)"
+            },
+            {
+              "value": "submit-letter",
+              "text": "Submit"
+            }
+          ]
+        }) }}
+  
+        <input type="hidden" name="approve-template-name" value="{{ data['template-letter-name-1'] }}">
+        <input type="hidden" name="message-type" value="letter">
+  
+        {{ button({
+          "text": "Continue"
+        }) }}
+  
+      </form>
+
+      {% else %}
+
+      <p>This template cannot be edited because it has been submitted.</p>
+      <p>If you want to change a submitted or live template, you must create a new template to replace it.</p>
+
+      {% endif %}
+
+      <p><a href="template-type">Create another template</a></p>
+
+      <p><a href="templates">Go to saved templates</a></p>
+
+    </div>
+  </div>
+{% endblock %}

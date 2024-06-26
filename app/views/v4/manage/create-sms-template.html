@@ -1,0 +1,185 @@
+{% extends 'v4/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+{{ backLink({
+  "href": "javascript:history.go(-1)",
+  "text": "Go back",
+  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">
+        {% if data['mode'] == 'edit' %}
+        Edit text message template
+        {% else %}
+        Create text message template
+        {% endif %}
+      </h1>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-u-visually-hidden"><a href="#guidance">Read the guidance for creating a letter template</a></span>
+
+      <form action="template-sms-1" onsubmit="return checkFormSMS();">
+ 
+        {% if data['mode'] == 'edit' %}
+
+        <div class="nhsuk-form-group">
+          
+          <label class="nhsuk-label" for="template-sms-name-1">
+            Template name
+          </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
+          </div>
+
+          {% include "../../includes/details-template-name.html" %}
+
+          <input class="nhsuk-input" id="template-sms-name-1" name="template-sms-name-1" type="text" value="{{data['template-sms-name-1']}}">
+          
+        </div>
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-sms-name-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+        </span>
+
+        {{ textarea({
+          "name": "template-sms-message-1",
+          "id": "template-sms-message-1",
+          "label": {
+            "text": "Message"
+          },
+          "attributes": {
+            "onkeyup": "countChars(this);"
+          },
+          "classes": "message-body",
+          "value": data['template-sms-message-1']
+        }) }}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-sms-message-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+        </span>
+
+        {% else %}
+
+        <div class="nhsuk-form-group">
+          
+          <label class="nhsuk-label" for="template-sms-name-1">
+            Template name
+          </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
+          </div>
+
+          {% include "../../includes/details-template-name.html" %}
+
+          <input class="nhsuk-input" id="template-sms-name-1" name="template-sms-name-1" type="text">
+          
+        </div>
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-sms-name-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+        </span>
+
+        {{ textarea({
+          "name": "template-sms-message-1",
+          "id": "template-sms-message-1",
+          "label": {
+            "text": "Message"
+          },
+          "attributes": {
+            "onkeyup": "countChars(this);"
+          },
+          "classes": "message-body"
+        }) }}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-sms-message-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+        </span>
+
+        {% endif %}
+
+        <p id="charNum" class="nhsuk-u-margin-bottom-0">0 characters</p>
+        <p>This template will be sent as <span id="numMsgs">0</span> text messages. If you're using personalisation fields, it could send as more.</p>
+        <p><a href="">Learn more about character counts and text message pricing</a>.</p>
+
+        <script>
+          function countChars(obj){
+            document.getElementById("charNum").innerHTML = obj.value.length+' characters';
+            document.getElementById("numMsgs").innerHTML = Math.ceil(obj.value.length / 160);
+          }
+        </script>
+
+        <input type="hidden" name="message-type" value="sms">
+        <input type="hidden" name="continue-url" value="template-sms-1">
+        <input type="hidden" name="folder-1-sms-templates" value="1">
+        <input type="hidden" name="template-sms-name-1-approved" value="">
+
+        {{ button({
+          "text": "Save"
+        }) }}
+
+      </form>
+
+    </div>
+
+    <div class="nhsuk-grid-column-one-third">
+
+      <h2 class="nhsuk-heading-m" id="guidance">Personalisation</h2>
+
+      {{ details({
+        "text": "Personalisation fields",
+        "HTML": "
+        <p>Use double brackets to add a personalisation field to your content. For example:</p>
+        <code class='nhsuk-code-block'>Hello ((firstName)), your NHS number is ((nhsNumber))</code>
+        <p class='nhsuk-u-margin-top-4'>NHS Notify gets data from PDS to populate personalisation fields.<br />You can use:</p>
+        <ul>
+          <li>((fullName))</li>
+          <li>((firstName))</li>
+          <li>((middleNames))</li>
+          <li>((lastName))</li>
+          <li>((nhsNumber))</li>
+          <li>((birthDate))</li>
+          <li>((namePrefix))</li>
+          <li>((nameSuffix))</li>
+          <li>((address_line_1))</li>
+          <li>((address_line_2))</li>
+          <li>((address_line_3))</li>
+          <li>((address_line_4))</li>
+          <li>((address_line_5))</li>
+          <li>((address_line_6))</li>
+          <li>((address_line_7))</li>
+        </ul>
+        "
+      }) }}
+
+      <h2 class="nhsuk-heading-m">Message formatting</h2>
+
+      {{ details({
+        "text": "Links and URLs",
+        "HTML": "
+        <p>Write the URL in full, starting with https://</p>
+        <p>For example:</p>
+        <code class='nhsuk-code-block'>
+          https://www.nhs.uk/example
+        </code>
+        "
+      }) }}
+
+    </div>
+
+  </div>
+{% endblock %}

@@ -1,0 +1,68 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'v4/layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Change the page title here -->
+      <h1>
+        Log in
+      </h1>
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
+
+      <form method="post" action="/{{protoVersion}}/manage/">
+
+        {{ input({
+          "label": {
+            "text": "Email address"
+          },
+          "id": "login-email",
+          "name": "login-email"
+        }) }}
+
+        {{ input({
+          "label": {
+            "text": "Password"
+          },
+          "id": "login-password",
+          "name": "login-password"
+        }) }}
+
+        {{ button({
+          "text": "Log in"
+        }) }}
+
+      </form>
+
+      <!-- End of content -->
+
+    </div>
+  </div>
+{% endblock %}

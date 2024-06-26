@@ -1,0 +1,107 @@
+{% extends 'v4/layout.html' %}
+
+
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ tag({
+        text: "Saved draft",
+        classes: "nhsuk-u-margin-bottom-2"
+      })}}
+
+      <h1 class="nhsuk-heading-xl">
+        <span class="nhsuk-caption-l">Text message template</span>
+        {{ data['template-sms-name-1'] }}
+      </h1>
+
+      {{ details({
+        "text": "Who your text message will be sent from",
+        "HTML": "
+        <p>Set your text message sender name during onboarding.</p>
+        <p>If you need to set up a different text message sender name for other messages, contact our onboarding team.</p>
+        "
+      }) }}
+
+      <table role="table" class="nhsuk-table-responsive notify-template-content nhsuk-u-margin-bottom-4">
+        <tbody class="nhsuk-table__body">
+
+          <!--<tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell">
+              From
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              [Your organisation or service]
+            </td>
+          </tr>-->
+
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell">
+              Message
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              {{ data['template-sms-message-1'] }}
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      {% if data['template-sms-name-1-approved'] != '1' %}
+
+      <form action="route-template-next" method="post">
+
+        {{ radios({
+          "name": "template-next",
+          "fieldset": {
+            "legend": {
+              "text": "What would you like to do next with this template?",
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "items": [
+            {
+              "value": "edit-sms",
+              "text": "Edit"
+            },
+            {
+              "value": "test-sms",
+              "text": "Send a test message"
+            },
+            {
+              "value": "submit-sms",
+              "text": "Submit"
+            }
+          ]
+        }) }}
+  
+        <input type="hidden" name="approve-template-name" value="{{ data['template-sms-name-1'] }}">
+        <input type="hidden" name="message-type" value="sms">
+  
+        {{ button({
+          "text": "Continue"
+        }) }}
+  
+      </form>
+
+      {% else %}
+
+      <p>This template cannot be edited because it has been submitted.</p>
+      <p>If you want to change a submitted or live template, you must create a new template to replace it.</p>
+
+      {% endif %}
+
+      <p><a href="template-type">Create another template</a></p>
+
+      <p><a href="templates">Go to saved templates</a></p>
+
+    </div>
+  </div>
+{% endblock %}

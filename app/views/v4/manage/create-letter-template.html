@@ -1,0 +1,241 @@
+{% extends 'v4/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+{{ backLink({
+  "href": "javascript:history.go(-1)",
+  "text": "Go back",
+  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">
+        {% if data['mode'] == 'edit' %}
+        Edit letter template
+        {% else %}
+        Create letter template
+        {% endif %}
+      </h1>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-u-visually-hidden"><a href="#guidance">Read the guidance for creating a letter template</a></span>
+
+      <form action="template-letter-1" onsubmit="return checkFormLetter();">
+
+        {% if data['mode'] == 'edit' %}
+
+        <div class="notify-template-borderbox">
+
+          <div class="nhsuk-form-group">
+          
+            <label class="nhsuk-label" for="template-letter-name-1">
+              Template name
+            </label>
+            <div class="nhsuk-hint">
+              This will not be visible to recipients.
+            </div>
+  
+            {% include "../../includes/details-template-name.html" %}
+  
+            <input class="nhsuk-input" id="template-letter-name-1" name="template-letter-name-1" type="text" value="{{data['template-letter-name-1']}}">
+            
+          </div>
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>
+
+        </div>
+
+        <div class="notify-template-borderbox">
+
+        {{ textarea({
+          "label": {
+            "text": "Body text"
+          },
+          "hint": {
+            "text": "This is your main letter content."
+          },
+          "name": "template-letter-message-1",
+          "id": "template-letter-message-1",
+          "classes": "message-body",
+          "value": data['template-letter-message-1']
+        }) }}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-message-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+        </span>
+
+        <div class="nhsuk-form-group">
+
+          <label class="nhsuk-label" for="example">
+            Upload a signature image (optional)
+            <span class="nhsuk-hint">Images must be no larger than 500 x 500 pixels and 10MB in file size.</span>
+          </label>
+          <input type="file" class="nhsuk-button nhsuk-button--reverse" />
+
+          {{ details({
+            "text": "Inserting your signature",
+            "HTML": "
+            <p>Use 2 curly brackets on either side of 'signature' to insert your signature image in the body text. For example:</p>
+            <code class='nhsuk-code-block'>{{signature}}</code>
+            "
+          }) }}
+
+        </div>
+
+        </div>
+
+        {%else%}
+
+        <div class="notify-template-borderbox">
+
+          <div class="nhsuk-form-group">
+          
+            <label class="nhsuk-label" for="template-letter-name-1">
+              Template name
+            </label>
+            <div class="nhsuk-hint">
+              This will not be visible to recipients.
+            </div>
+  
+            {% include "../../includes/details-template-name.html" %}
+  
+            <input class="nhsuk-input" id="template-letter-name-1" name="template-letter-name-1" type="text">
+            
+          </div>
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>
+
+        </div>
+
+        <div class="notify-template-borderbox">
+
+        {{ textarea({
+          "label": {
+            "text": "Body text"
+          },
+          "hint": {
+            "text": "This is your main letter content."
+          },
+          "name": "template-letter-message-1",
+          "id": "template-letter-message-1",
+          "classes": "message-body"
+        }) }}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-message-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+        </span>
+
+        <div class="nhsuk-form-group">
+
+          <label class="nhsuk-label" for="example">
+            Upload a signature image (optional)
+            <span class="nhsuk-hint">Images must be no larger than 500 x 500 pixels and 10MB in file size.</span>
+          </label>
+          <input type="file" class="nhsuk-button nhsuk-button--reverse" />
+
+          {{ details({
+            "text": "Inserting your signature",
+            "HTML": "
+            <p>Use 2 curly brackets on either side of 'signature' to insert your signature image in the body text. For example:</p>
+            <code class='nhsuk-code-block'>{{signature}}</code>
+            "
+          }) }}
+
+        </div>
+
+        </div>
+
+        {%endif%}
+
+        <input type="hidden" name="continue-url" value="template-letter-1">
+        <input type="hidden" name="message-type" value="letter">
+        <input type="hidden" name="folder-1-letter-templates" value="1">
+        <input type="hidden" name="template-letter-name-1-approved" value="">
+
+        <p><a href="">Learn about letter pricing</a>.</p>
+
+        {{ button({
+          "text": "Save"
+        }) }}
+
+      </form>
+
+    </div>
+
+    <div class="nhsuk-grid-column-one-third">
+
+      <h2 class="nhsuk-heading-m" id="guidance">Letter layout</h2>
+      <p class="nhsuk-hint">This shows where your content will appear on the page.</p>
+
+      <a href="/images/nhs-notify-pdf-letter-spec.jpg" target="_blank">
+        <img src="/images/nhs-notify-pdf-letter-spec.jpg" style="max-width: 100%; border:#4c6272 1px solid;" alt="A white A4 peice of paper with the NHS logo in the top right corner and section for the recipient's address to the left. Below that is a section for the main heading. Below that is a large section for the main body. At the bottom is a small section for the page number." />
+      </a>
+      <p><a href="/images/nhs-notify-pdf-letter-spec.jpg" target="_blank">View letter layout (opens in a new tab)</a></p>
+
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-top-4">Personalisation</h2>
+
+      {{ details({
+        "text": "Personalisation fields",
+        "HTML": "
+        <p>Use double brackets to add a personalisation field to your content. For example:</p>
+        <code class='nhsuk-code-block'>Hello ((firstName)), your NHS number is ((nhsNumber))</code>
+        <p class='nhsuk-u-margin-top-4'>NHS Notify gets data from PDS to populate personalisation fields.<br />You can use:</p>
+        <ul>
+          <li>((fullName))</li>
+          <li>((firstName))</li>
+          <li>((middleNames))</li>
+          <li>((lastName))</li>
+          <li>((nhsNumber))</li>
+          <li>((birthDate))</li>
+          <li>((namePrefix))</li>
+          <li>((nameSuffix))</li>
+          <li>((address_line_1))</li>
+          <li>((address_line_2))</li>
+          <li>((address_line_3))</li>
+          <li>((address_line_4))</li>
+          <li>((address_line_5))</li>
+          <li>((address_line_6))</li>
+          <li>((address_line_7))</li>
+        </ul>
+        "
+      }) }}
+
+      <h2 class="nhsuk-heading-m">Body text formatting</h2>
+
+      {% include "../../includes/details-linebreaks.html" %}
+      
+      {% include "../../includes/details-headings.html" %}
+
+      {% include "../../includes/details-bold.html" %}
+
+      {% include "../../includes/details-bullets.html" %}
+
+      {% include "../../includes/details-numbered-lists.html" %}
+
+      {% include "../../includes/details-signatures.html" %}
+
+      {% include "../../includes/details-page-breaks.html" %}
+
+      {% include "../../includes/details-content-blocks.html" %}
+
+    </div>
+
+  </div>
+{% endblock %}
