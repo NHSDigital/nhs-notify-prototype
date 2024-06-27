@@ -24,10 +24,21 @@ window.onload = function () {
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
 
+      {% if data['template-letter-name-1-approved'] == '1' %}
+
+      {{ tag({
+        text: "Submitted",
+        classes: "nhsuk-u-margin-bottom-2 nhsuk-tag--grey"
+      })}}
+
+      {% else %}
+
       {{ tag({
         text: "Saved draft",
         classes: "nhsuk-u-margin-bottom-2"
       })}}
+
+      {% endif %}
 
       <h1 class="nhsuk-heading-xl">
         <span class="nhsuk-caption-l">Letter template</span>
@@ -41,6 +52,21 @@ window.onload = function () {
         <p>If you want recipients to reply to you by letter, add your address in the content of your letter. Letter templates do not have a section for a reply address.</p>
         "
       }) }}
+
+      <table role="table" class="nhsuk-table-responsive notify-template-content nhsuk-u-margin-bottom-4">
+        <tbody class="nhsuk-table__body">
+
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell">
+              Template ID
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              a4b171b5-431f-4a5b-9d7a-9a4903c98e66
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
 
       <!--<object class="nhsuk-u-margin-bottom-2" data="/files/example-letter-vacs.pdf" style="width: 100%; min-height: 600px;"></object>-->
 
@@ -57,7 +83,8 @@ window.onload = function () {
         }
 
         document.addEventListener("adobe_dc_view_sdk.ready", function(){ 
-          var adobeDCView = new AdobeDC.View({clientId: "f419e8ee3f914a539f3dca22cecbca79", divId: "adobe-dc-view"});
+          var adobeDCView = new AdobeDC.View({clientId: "1b86a3aba48f4be3b0d473ba30e9472c", divId: "adobe-dc-view"});
+          // Live client ID: f419e8ee3f914a539f3dca22cecbca79
           adobeDCView.previewFile({
             content:{location: {url: "/files/example-letter-vacs.pdf"}},
             metaData:{fileName: "example-letter-vacs.pdf"}
