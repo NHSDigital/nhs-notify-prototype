@@ -1,6 +1,8 @@
 {% extends 'v4/layout.html' %}
 
 {% block head %}
+
+<!-- Script to convert markdown to formatted content -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
 <script>
 window.onload = function () {
@@ -45,17 +47,29 @@ window.onload = function () {
         {{ data['template-letter-name-1'] }}
       </h1>
 
-      {{ details({
-        "text": "Who your letter will be sent from",
-        "HTML": "
-        <p>The return address is set by NHS Notify's suppliers and is printed on each letter's envelope.</p>
-        <p>If you want recipients to reply to you by letter, add your address in the content of your letter. Letter templates do not have a section for a reply address.</p>
-        "
-      }) }}
+      
 
-      <table role="table" class="nhsuk-table-responsive notify-template-content nhsuk-u-margin-bottom-4">
+      <table role="table" class="notify-template-content nhsuk-u-margin-bottom-4">
         <tbody class="nhsuk-table__body">
 
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell">
+              From
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              
+              {{ details({
+                "text": "Who your letter will be sent from",
+                "HTML": "
+                <p>The return address is set by NHS Notify's suppliers and is printed on each letter's envelope.</p>
+                <p>If you want recipients to reply to you by letter, add your address in the content of your letter. Letter templates do not have a section for a reply address.</p>
+                ",
+                "classes": "nhsuk-u-margin-bottom-0"
+              }) }}
+
+            </td>
+          </tr>
+          
           <tr role="row" class="nhsuk-table__row">
             <th role="cell" class="nhsuk-table__cell">
               Template ID
@@ -70,7 +84,8 @@ window.onload = function () {
 
       <!--<object class="nhsuk-u-margin-bottom-2" data="/files/example-letter-vacs.pdf" style="width: 100%; min-height: 600px;"></object>-->
 
-      <div id="adobe-dc-view" style="height: 800px; width: 100%;"></div>
+      <div id="adobe-dc-view" style="height: 800px; width: 100%;" class="nhsuk-u-margin-bottom-6"></div>
+      
       <script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
       <script type="text/javascript">
         const previewConfig = {
@@ -98,12 +113,13 @@ window.onload = function () {
 
       <form action="route-template-next" method="post">
 
+        <!--
         {{ radios({
           "name": "template-next",
           "fieldset": {
             "legend": {
               "text": "What would you like to do next with this template?",
-              "classes": "nhsuk-fieldset__legend--m nhsuk-u-padding-top-6"
+              "classes": "nhsuk-fieldset__legend--m"
             }
           },
           "items": [
@@ -121,9 +137,39 @@ window.onload = function () {
             }
           ]
         }) }}
+        -->
+
+        {{ radios({
+          "name": "template-next",
+          "fieldset": {
+            "legend": {
+              "text": "What would you like to do next?",
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "items": [
+            {
+              "value": "edit-letter",
+              "text": "Edit template"
+            },
+            {
+              "value": "submit-letter",
+              "text": "Submit template"
+            },
+            {
+              "value": "create",
+              "text": "Create another template"
+            },
+            {
+              "value": "saved",
+              "text": "Go back to saved templates"
+            }
+          ]
+        }) }}
   
         <input type="hidden" name="approve-template-name" value="{{ data['template-letter-name-1'] }}">
         <input type="hidden" name="message-type" value="letter">
+        <input type="hidden" name="continue-url" value="template-letter-1">
   
         {{ button({
           "text": "Continue"
@@ -135,12 +181,13 @@ window.onload = function () {
 
       <p>This template cannot be edited because it has been submitted.</p>
       <p>If you want to change a submitted or live template, you must create a new template to replace it.</p>
+      <p><a href="templates">Go to saved templates</a></p>
 
       {% endif %}
 
-      <p><a href="template-type">Create another template</a></p>
+      <!--<p><a href="template-type">Create another template</a></p>
 
-      <p><a href="templates">Go to saved templates</a></p>
+      <p><a href="templates">Go to saved templates</a></p>-->
 
     </div>
   </div>

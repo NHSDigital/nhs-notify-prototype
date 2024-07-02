@@ -17,6 +17,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
+      <!-- Show the correct heading based on whether the page mode is set to 'create' or 'edit'-->
       <h1 class="nhsuk-heading-xl">
         {% if data['mode'] == 'edit' %}
         Edit email template
@@ -25,11 +26,15 @@
         {% endif %}
       </h1>
 
+      <button id="toggle" onclick="guidanceShowHide()" class="nhsuk-button nhsuk-button--secondary">Show template guidance</button>
+      
+      
+
     </div>
   </div>
 
   <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
+    <div id="column-left" class="nhsuk-grid-column-full">
 
       <span class="nhsuk-u-visually-hidden"><a href="#guidance">Read the guidance for creating an email template</a></span>
 
@@ -48,7 +53,7 @@
               This will not be visible to recipients.
             </div>
   
-            {% include "../../includes/details-template-name.html" %}
+            {% include "../includes/details-template-name.html" %}
 
             {% if data['mode'] == 'edit' %}
   
@@ -128,6 +133,7 @@
 
         </div>
 
+        <!-- Set the variables that are used on subsequent pages -->
         <input type="hidden" name="continue-url" value="template-email-1">
         <input type="hidden" name="message-type" value="email">
         <input type="hidden" name="folder-1-email-templates" value="1">
@@ -139,60 +145,19 @@
 
       </form>
 
-      <script>
-        function checkform() {
-          var ok = true;
-
-          if (document.getElementById("template-email-name-1").value == "") {
-            document.getElementById("template-email-name-1").classList.add("nhsuk-input--error");
-            document.getElementById("template-email-name-1").closest(".nhsuk-form-group").classList.add("nhsuk-form-group--error");
-            document.getElementById("template-email-name-1--error").style.display = "block";
-            ok = false;
-          } else {
-            document.getElementById("template-email-name-1").classList.remove("nhsuk-input--error");
-            document.getElementById("template-email-name-1").closest(".nhsuk-form-group").classList.remove("nhsuk-form-group--error");
-            document.getElementById("template-email-name-1--error").style.display = "none";
-          }
-
-          if (document.getElementById("template-email-subject-1").value == "") {
-            document.getElementById("template-email-subject-1").classList.add("nhsuk-input--error");
-            document.getElementById("template-email-subject-1").closest(".nhsuk-form-group").classList.add("nhsuk-form-group--error");
-            document.getElementById("template-email-subject-1--error").style.display = "block";
-            ok = false;
-          } else {
-            document.getElementById("template-email-subject-1").classList.remove("nhsuk-input--error");
-            document.getElementById("template-email-subject-1").closest(".nhsuk-form-group").classList.remove("nhsuk-form-group--error");
-            document.getElementById("template-email-subject-1--error").style.display = "none";
-          }
-
-          if (document.getElementById("template-email-message-1").value == "") {
-            document.getElementById("template-email-message-1").classList.add("nhsuk-input--error");
-            document.getElementById("template-email-message-1").closest(".nhsuk-form-group").classList.add("nhsuk-form-group--error");
-            document.getElementById("template-email-message-1--error").style.display = "block";
-            ok = false;
-          } else {
-            document.getElementById("template-email-message-1").classList.remove("nhsuk-input--error");
-            document.getElementById("template-email-message-1").closest(".nhsuk-form-group").classList.remove("nhsuk-form-group--error");
-            document.getElementById("template-email-message-1--error").style.display = "none";
-          }
-
-          return ok;
-        }
-      </script>
-
     </div>
 
-    <div class="nhsuk-grid-column-one-third">
+    <div id="column-right" class="nhsuk-grid-column-one-third">
 
       <h2 class="nhsuk-heading-m" id="guidance">Personalisation</h2>
 
-      {% include "../../includes/details-personalisation-no-address.html" %}
+      {% include "../includes/details-personalisation-no-address.html" %}
 
       <h2 class="nhsuk-heading-m">Message formatting</h2>
 
-      {% include "../../includes/details-linebreaks.html" %}
+      {% include "../includes/details-linebreaks.html" %}
       
-      {% include "../../includes/details-headings.html" %}
+      {% include "../includes/details-headings.html" %}
 
       {{ details({
         "text": "Bold text",
@@ -202,13 +167,13 @@
         "
       }) }}
 
-      {% include "../../includes/details-bullets.html" %}
+      {% include "../includes/details-bullets.html" %}
 
-      {% include "../../includes/details-numbered-lists.html" %}
+      {% include "../includes/details-numbered-lists.html" %}
 
-      {% include "../../includes/details-lines.html" %}
+      {% include "../includes/details-lines.html" %}
 
-      {% include "../../includes/details-links.html" %}
+      {% include "../includes/details-links.html" %}
 
     </div>
 

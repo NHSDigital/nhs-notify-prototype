@@ -17,6 +17,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
+      <!-- Show the correct heading based on whether the page mode is set to 'create' or 'edit'-->
       <h1 class="nhsuk-heading-xl">
         {% if data['mode'] == 'edit' %}
         Edit text message template
@@ -25,11 +26,15 @@
         {% endif %}
       </h1>
 
+      <button id="toggle" onclick="guidanceShowHide()" class="nhsuk-button nhsuk-button--secondary">Show template guidance</button>
+      
+      
+
     </div>
   </div>
 
   <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
+    <div id="column-left" class="nhsuk-grid-column-full">
 
       <span class="nhsuk-u-visually-hidden"><a href="#guidance">Read the guidance for creating a letter template</a></span>
 
@@ -44,7 +49,7 @@
             This will not be visible to recipients.
           </div>
 
-          {% include "../../includes/details-template-name.html" %}
+          {% include "../includes/details-template-name.html" %}
 
           {% if data['mode'] == 'edit' %}
 
@@ -98,8 +103,11 @@
         </span>
 
         <p id="charNum" class="nhsuk-u-margin-bottom-0">0 characters</p>
-        <p>This template will be charged as <span id="numMsgs">0</span> text messages. If you're using personalisation fields, it could be charged as more.</p>
-        <p><a href="">Learn more about character counts and text message pricing</a>.</p>
+        <p>
+          This template will be charged as <span id="numMsgs">0</span> text messages.<br />
+          If you're using personalisation fields, it could be charged as more.
+        </p>
+        <p><a href="/{{protoVersion}}/404">Learn more about character counts and text message pricing</a>.</p>
 
         <script>
           function countChars(obj){
@@ -108,24 +116,25 @@
           }
         </script>
 
+        <!-- Set the variables that are used on subsequent pages -->
         <input type="hidden" name="message-type" value="sms">
         <input type="hidden" name="continue-url" value="template-sms-1">
         <input type="hidden" name="folder-1-sms-templates" value="1">
         <input type="hidden" name="template-sms-name-1-approved" value="">
 
         {{ button({
-          "text": "Save"
+          "text": "Save and preview"
         }) }}
 
       </form>
 
     </div>
 
-    <div class="nhsuk-grid-column-one-third">
+    <div id="column-right" class="nhsuk-grid-column-one-third">
 
       <h2 class="nhsuk-heading-m" id="guidance">Personalisation</h2>
 
-      {% include "../../includes/details-personalisation-no-address.html" %}
+      {% include "../includes/details-personalisation-no-address.html" %}
 
       <h2 class="nhsuk-heading-m">Message formatting</h2>
 

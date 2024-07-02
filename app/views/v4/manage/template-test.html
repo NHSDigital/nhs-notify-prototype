@@ -24,10 +24,10 @@
       </h1>
 
       <p>
-        Preview your message by sending it to a mobile phone.
+        Preview your message by sending it to your mobile phone.
       </p>
 
-      <div class="nhsuk-form-group">
+      <!--<div class="nhsuk-form-group">
 
         <h2 class="nhsuk-heading-m">Enter test personalisation data (optional)</h2>
 
@@ -62,11 +62,11 @@
 
         <p class="nhsuk-u-margin-top-4"><a href="template-test?template-test-data-firstname=Mary&template-test-data-lastname=Poppins&template-test-data-nhsnumber=012%20345%206789">Use default test data</a></p>
 
-      </div>
+      </div>-->
 
       <div class="nhsuk-form-group">
 
-        <h2 class="nhsuk-heading-m">Enter a mobile phone number</h2>
+        <!--<h2 class="nhsuk-heading-m">Enter a mobile phone number</h2>-->
 
         <form action="template-test-confirmation" method="post" onsubmit="return checkFormTestSMS();">
 
@@ -101,14 +101,13 @@
       </h1>
 
       <p>
-        Preview your message by sending it to an email address.
+        Preview your message by sending it to your email address.
       </p>
 
       
 
-      <div class="nhsuk-form-group">
+      <!--<div class="nhsuk-form-group">
 
-        {#
         <h2 class="nhsuk-heading-m">Enter test personalisation data (optional)</h2>
 
         {{ input({
@@ -138,17 +137,16 @@
           "name": "test-nhsnumber-1",
           "value": data['template-test-data-nhsnumber']
         }) }}
-        #}
 
-        <!--<p class="nhsuk-u-margin-top-4"><a href="template-test?template-test-data-firstname=Mary&template-test-data-lastname=Poppins&template-test-data-nhsnumber=012%20345%206789">Use default test data</a></p>-->
+        <p class="nhsuk-u-margin-top-4"><a href="template-test?template-test-data-firstname=Mary&template-test-data-lastname=Poppins&template-test-data-nhsnumber=012%20345%206789">Use default test data</a></p>
 
-      </div>
+      </div>-->
 
       <form action="template-test-confirmation" method="post" onsubmit="return checkFormTestEmail();">
 
         <div class="nhsuk-form-group">
 
-        <h2 class="nhsuk-heading-m">Enter an email address</h2>
+        <!--<h2 class="nhsuk-heading-m">Enter an email address</h2>-->
 
         {{ input({
           "label": {
@@ -168,7 +166,7 @@
         "text": "Send"
       }) }}
 
-      <p><a href="template-approve">Skip sending a test email</a></p>
+      <!--<p><a href="template-approve">Skip sending a test email</a></p>-->
 
       </form>
 

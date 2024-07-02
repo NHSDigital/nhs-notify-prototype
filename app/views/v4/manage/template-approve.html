@@ -47,6 +47,7 @@
           "text": "Submit template"
         }) }}
 
+        <!-- Change the status for the relevant message type to 'approved' -->
         {% if data['template-app-name-1-approved'] == '0' %}
         <input type="hidden" name="template-app-name-1-approved" value="1">
         {% endif %}

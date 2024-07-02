@@ -1,6 +1,8 @@
 {% extends 'v4/layout.html' %}
 
 {% block head %}
+
+<!-- Script to convert markdown to formatted content -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
 <script>
 window.onload = function () {
@@ -22,7 +24,7 @@ window.onload = function () {
 
 {% block content %}
   <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-grid-column-full">
 
       {% if data['template-app-name-1-approved'] == '1' %}
 
@@ -44,17 +46,27 @@ window.onload = function () {
         {{ data['template-app-name-1'] }}
       </h1>
 
-      {{ details({
-        "text": "Who your NHS App message will be sent from",
-        "HTML": "
-        <p>Set your NHS App message sender name during onboarding.</p>
-        <p>If you need to set up a different NHS App message sender name for other messages, contact our onboarding team.</p>
-        "
-      }) }}
-
       <table role="table" class="nhsuk-table-responsive notify-template-content nhsuk-u-margin-bottom-4">
         <tbody class="nhsuk-table__body">
 
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell">
+              From
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              
+              {{ details({
+                "text": "Who your NHS App message will be sent from",
+                "HTML": "
+                <p>Set your NHS App message sender name during onboarding.</p>
+                <p>If you need to set up a different NHS App message sender name for other messages, contact our onboarding team.</p>
+                ",
+                "classes": "nhsuk-u-margin-bottom-0"
+              }) }}
+
+            </td>
+          </tr>
+          
           <tr role="row" class="nhsuk-table__row">
             <th role="cell" class="nhsuk-table__cell">
               Template ID
@@ -69,8 +81,20 @@ window.onload = function () {
               Message
             </th>
             <td role="cell" class="nhsuk-table__cell">
-              <textarea id="sourceTA" style="display: none;">{{ data["template-app-message-1"] }}</textarea>
+
+              <textarea id="sourceTA">{{ data["template-app-message-1"] }}</textarea>
+
               <div id="targetDiv"></div>
+
+              {% if data['template-app-name-1-approved'] != '1' %}
+              <form action="create-app-template?mode=edit" method="post" class="nhsuk-u-margin-top-4">
+                {{ button({
+                  "text": "Edit template",
+                  "classes": "nhsuk-button--secondary"
+                }) }}
+                </form>
+                {% endif %}
+
             </td>
           </tr>
 
@@ -81,6 +105,7 @@ window.onload = function () {
 
       <form action="route-template-next" method="post">
 
+        <!--
         {{ radios({
           "name": "template-next",
           "fieldset": {
@@ -100,8 +125,35 @@ window.onload = function () {
             }
           ]
         }) }}
+        -->
+
+        {{ radios({
+          "name": "template-next",
+          "fieldset": {
+            "legend": {
+              "text": "What would you like to do next?",
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "items": [
+            {
+              "value": "submit-app",
+              "text": "Submit template"
+            },
+            {
+              "value": "create",
+              "text": "Create another template"
+            },
+            {
+              "value": "saved",
+              "text": "Go back to saved templates"
+            }
+          ]
+        }) }}
   
         <input type="hidden" name="approve-template-name" value="{{ data['template-app-name-1'] }}">
+        <input type="hidden" name="message-type" value="app">
+        <input type="hidden" name="continue-url" value="template-app-1">
   
         {{ button({
           "text": "Continue"
@@ -113,12 +165,13 @@ window.onload = function () {
 
       <p>This template cannot be edited because it has been submitted.</p>
       <p>If you want to change a submitted or live template, you must create a new template to replace it.</p>
+      <p><a href="templates">Go to saved templates</a></p>
 
       {% endif %}
 
-      <p><a href="template-type">Create another template</a></p>
+      <!--<p><a href="template-type">Create another template</a></p>
 
-      <p><a href="templates">Go to saved templates</a></p>
+      <p><a href="templates">Go to saved templates</a></p>-->
 
     </div>
   </div>

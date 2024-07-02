@@ -17,6 +17,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
+      <!-- Show the correct heading based on whether the page mode is set to 'create' or 'edit'-->
       <h1 class="nhsuk-heading-xl">
         {% if data['mode'] == 'edit' %}
         Edit non-english language letter template
@@ -25,15 +26,19 @@
         {% endif %}
       </h1>
 
+      <button id="toggle" onclick="guidanceShowHide()" class="nhsuk-button nhsuk-button--secondary">Show template guidance</button>
+      
+      
+
     </div>
   </div>
 
   <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
+    <div id="column-left" class="nhsuk-grid-column-full">
 
       <span class="nhsuk-u-visually-hidden"><a href="#guidance">Read the guidance for creating a letter template</a></span>
 
-      <form action="" onsubmit="return checkFormLetter();">
+      <form action="/{{protoVersion}}/404" onsubmit="return checkFormLetter();">
 
 
         <div class="notify-template-borderbox">
@@ -47,7 +52,7 @@
               This will not be visible to recipients.
             </div>
   
-            {% include "../../includes/details-template-name.html" %}
+            {% include "../includes/details-template-name.html" %}
   
             {% if data['mode'] == 'edit' %}
   
@@ -73,10 +78,10 @@
   
           {{ textarea({
             "label": {
-              "text": "English body text"
+              "text": "English letter content"
             },
             "hint": {
-              "text": "This is your main letter content."
+              "text": "These letters must include both english and non-english languages."
             },
             "name": "template-letter-message-1",
             "id": "template-letter-message-1",
@@ -88,10 +93,10 @@
 
           {{ textarea({
             "label": {
-              "text": "English body text"
+              "text": "English letter content"
             },
             "hint": {
-              "text": "This is your main letter content."
+              "text": "These letters must include both english and non-english languages."
             },
             "name": "template-letter-message-1",
             "id": "template-letter-message-1",
@@ -241,10 +246,10 @@
   
           {{ textarea({
             "label": {
-              "text": "Non-english body text"
+              "text": "Non-english letter content"
             },
             "hint": {
-              "text": "This is your main letter content."
+              "text": "Enter the non-english version of your content here."
             },
             "name": "template-letter-message-non-eng-1",
             "id": "template-letter-message-non-eng-1",
@@ -256,10 +261,10 @@
 
           {{ textarea({
             "label": {
-              "text": "Non-english body text"
+              "text": "Non-english letter content"
             },
             "hint": {
-              "text": "This is your main letter content."
+              "text": "Enter the non-english version of your content here."
             },
             "name": "template-letter-message-non-eng-1",
             "id": "template-letter-message-non-eng-1",
@@ -272,6 +277,7 @@
             <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
           </span>
 
+          {#
           <div class="nhsuk-form-group">
 
             <label class="nhsuk-label" for="example">
@@ -289,55 +295,52 @@
             }) }}
 
           </div>
+          #}
 
         </div>
 
+        <!-- Set the variables that are used on subsequent pages -->
         <input type="hidden" name="continue-url" value="template-letter-non-eng-1">
         <input type="hidden" name="message-type" value="letter-non-eng">
         <input type="hidden" name="folder-1-letter-templates" value="1">
         <input type="hidden" name="template-letter-non-eng-name-1-approved" value="">
 
-        <p><a href="">Learn about letter pricing</a>.</p>
+        <!--<p><a href="">Learn about letter pricing</a>.</p>-->
 
         {{ button({
-          "text": "Save"
+          "text": "Save and preview"
         }) }}
 
       </form>
 
     </div>
 
-    <div class="nhsuk-grid-column-one-third">
+    <div id="column-right" class="nhsuk-grid-column-one-third">
 
       <h2 class="nhsuk-heading-m" id="guidance">Letter layout</h2>
-      <p class="nhsuk-hint">This shows where your content will appear on the page.</p>
-
-      <a href="/images/nhs-notify-pdf-letter-spec.jpg" target="_blank">
-        <img src="/images/nhs-notify-pdf-letter-spec.jpg" style="max-width: 100%; border:#4c6272 1px solid;" alt="A white A4 peice of paper with the NHS logo in the top right corner and section for the recipient's address to the left. Below that is a section for the main heading. Below that is a large section for the main body. At the bottom is a small section for the page number." />
-      </a>
       <p><a href="/images/nhs-notify-pdf-letter-spec.jpg" target="_blank">View letter layout (opens in a new tab)</a></p>
 
       <h2 class="nhsuk-heading-m nhsuk-u-margin-top-4">Personalisation</h2>
 
-      {% include "../../includes/details-personalisation.html" %}
+      {% include "../includes/details-personalisation.html" %}
 
       <h2 class="nhsuk-heading-m">Body text formatting</h2>
 
-      {% include "../../includes/details-linebreaks.html" %}
+      {% include "../includes/details-linebreaks.html" %}
       
-      {% include "../../includes/details-headings.html" %}
+      {% include "../includes/details-headings.html" %}
 
-      {% include "../../includes/details-bold.html" %}
+      {% include "../includes/details-bold.html" %}
 
-      {% include "../../includes/details-bullets.html" %}
+      {% include "../includes/details-bullets.html" %}
 
-      {% include "../../includes/details-numbered-lists.html" %}
+      {% include "../includes/details-numbered-lists.html" %}
 
-      {% include "../../includes/details-signatures.html" %}
+      {% include "../includes/details-signatures.html" %}
 
-      {% include "../../includes/details-page-breaks.html" %}
+      {% include "../includes/details-page-breaks.html" %}
 
-      {% include "../../includes/details-content-blocks.html" %}
+      {% include "../includes/details-content-blocks.html" %}
 
     </div>
 

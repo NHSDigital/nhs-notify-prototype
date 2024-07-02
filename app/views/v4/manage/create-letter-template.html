@@ -17,6 +17,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
+      <!-- Show the correct heading based on whether the page mode is set to 'create' or 'edit'-->
       <h1 class="nhsuk-heading-xl">
         {% if data['mode'] == 'edit' %}
         Edit letter template
@@ -25,34 +26,9 @@
         {% endif %}
       </h1>
 
-      <button id="toggle" onclick="guidanceShowHide()" class="nhsuk-button nhsuk-button--secondary">Show guidance</button>
+      <button id="toggle" onclick="guidanceShowHide()" class="nhsuk-button nhsuk-button--secondary">Show template guidance</button>
       
-      <script>
-        function guidanceShowHide() {
-
-          var columnRight = document.getElementById("column-right");
-          var columnLeft = document.getElementById("column-left");
-          var classIsPresent = columnLeft.classList.contains("nhsuk-grid-column-two-thirds");
-          var button = document.getElementById("toggle");
-
-          if (classIsPresent) {
-            columnLeft.classList.remove("nhsuk-grid-column-two-thirds");
-            columnLeft.classList.add("nhsuk-grid-column-full");
-            columnRight.style.display = "none";
-            button.innerHTML = "Show guidance";
-            columnRight.setAttribute("aria-hidden", "true");
-          } else {
-            columnLeft.classList.add("nhsuk-grid-column-two-thirds");
-            columnLeft.classList.remove("nhsuk-grid-column-full");
-            columnRight.style.display = "block";
-            button.innerHTML = "Hide guidance";
-            columnRight.removeAttribute("aria-hidden");
-          }
-
-          return false;
-
-        }
-      </script>
+      
 
     </div>
   </div>
@@ -76,7 +52,7 @@
               This will not be visible to recipients.
             </div>
   
-            {% include "../../includes/details-template-name.html" %}
+            {% include "../includes/details-template-name.html" %}
 
             {% if data['mode'] == 'edit' %}
   
@@ -121,11 +97,14 @@
             },
             "name": "template-letter-message-1",
             "id": "template-letter-message-1",
-            "classes": "message-body",
+            "classes": "message-body"
+          }) }}
+
+          {#
             "attributes": {
               "placeholder": "For example:\n\n# Important information about vaccinations.\n\nDear ((firstName)) ((lastName)), you have been selected for a vaccination.\n\n* Bullet 1\n* Bullet 2\n* Bullet 3"
             }
-          }) }}
+          #}
 
           {% endif %}
 
@@ -133,40 +112,17 @@
             <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
           </span>
 
-          <p><a href="">Learn more about personalising and formatting messages</a></p>
-
-          <div class="nhsuk-form-group nhsuk-u-margin-top-6">
-
-            <label class="nhsuk-label" for="example">
-              Upload a signature image (optional)
-              <span class="nhsuk-hint">Images must be:
-                <ul class="nhsuk-list nhsuk-list--bullet">
-                  <li>no larger than 500 x 500 pixels</li>
-                  <li>no larger than 10MB in file size</li>
-                  <li>JPG or PNG format</li>
-                </ul>
-              </span>
-            </label>
-            <input type="file" class="nhsuk-button nhsuk-button--reverse" />
-
-            {{ details({
-              "text": "Inserting your signature",
-              "HTML": "
-              <p>Use 2 curly brackets on either side of 'signature' to insert your signature image in the body text. For example:</p>
-              <code class='nhsuk-code-block'>{{signature}}</code>
-              "
-            }) }}
-
-          </div>
+          <!--<p><a href="">Learn more about personalising and formatting messages</a></p>-->
 
         </div>
 
+        <!-- Set the variables that are used on subsequent pages -->
         <input type="hidden" name="continue-url" value="template-letter-1">
         <input type="hidden" name="message-type" value="letter">
         <input type="hidden" name="folder-1-letter-templates" value="1">
         <input type="hidden" name="template-letter-name-1-approved" value="">
 
-        <p><a href="">Learn about letter pricing</a>.</p>
+        <!--<p><a href="">Learn about letter pricing</a>.</p>-->
 
         {{ button({
           "text": "Save and preview"
@@ -179,34 +135,27 @@
     <div id="column-right" class="nhsuk-grid-column-one-third" style="display: none;">
 
       <h2 class="nhsuk-heading-m" id="guidance">Letter layout</h2>
-      <p class="nhsuk-hint">This shows where your content will appear on the page.</p>
-
-      <a href="/images/nhs-notify-pdf-letter-spec.jpg" target="_blank">
-        <img src="/images/nhs-notify-pdf-letter-spec.jpg" style="max-width: 100%; border:#4c6272 1px solid;" alt="A white A4 peice of paper with the NHS logo in the top right corner and section for the recipient's address to the left. Below that is a section for the main heading. Below that is a large section for the main body. At the bottom is a small section for the page number." />
-      </a>
       <p><a href="/images/nhs-notify-pdf-letter-spec.jpg" target="_blank">View letter layout (opens in a new tab)</a></p>
 
       <h2 class="nhsuk-heading-m nhsuk-u-margin-top-4">Personalisation</h2>
 
-      {% include "../../includes/details-personalisation.html" %}
+      {% include "../includes/details-personalisation.html" %}
 
       <h2 class="nhsuk-heading-m">Body text formatting</h2>
 
-      {% include "../../includes/details-linebreaks.html" %}
+      {% include "../includes/details-linebreaks.html" %}
       
-      {% include "../../includes/details-headings.html" %}
+      {% include "../includes/details-headings.html" %}
 
-      {% include "../../includes/details-bold.html" %}
+      {% include "../includes/details-bold.html" %}
 
-      {% include "../../includes/details-bullets.html" %}
+      {% include "../includes/details-bullets.html" %}
 
-      {% include "../../includes/details-numbered-lists.html" %}
+      {% include "../includes/details-numbered-lists.html" %}
 
-      {% include "../../includes/details-signatures.html" %}
+      {% include "../includes/details-page-breaks.html" %}
 
-      {% include "../../includes/details-page-breaks.html" %}
-
-      {% include "../../includes/details-content-blocks.html" %}
+      {% include "../includes/details-content-blocks.html" %}
 
     </div>
 

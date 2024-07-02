@@ -119,3 +119,18 @@ a:visited{
 .message-body{
     min-height: 350px;
 }
+
+.nhsuk-warning-callout-nhs-notify{
+    border: $color_nhsuk-yellow 1px solid;
+    background-color: #fff9c4;
+}
+
+// Hide the text area that contains the raw markdown before it's converted
+#sourceTA{
+    display: none;
+}
+
+// Hide the right-hand column on the create template pages when the page loads
+#column-right{
+    display: none;
+}

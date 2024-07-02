@@ -20,6 +20,13 @@
         {% if data['message-type'] == 'email' %}{{data['test-email-1']}}{%endif%}
       </p>
 
+      <form action="{{ data['continue-url'] }}">
+        {{ button({
+          "text": "Continue"
+        }) }}
+      </form>
+
+      <!--
       <form action="route-template-next" method="post">
 
         {{ radios({
@@ -54,6 +61,7 @@
         }) }}
 
       </form>
+      -->
 
     </div>
   </div>

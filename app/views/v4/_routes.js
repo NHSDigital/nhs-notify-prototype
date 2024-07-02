@@ -6,6 +6,7 @@ router.post('*/route-template-type', (req, res) => {
 
   const radio_template_type = req.session.data['radio-template-type'];
 
+  // Take the user to the relevant 'create' page and reset the page mode to 'create'
   if (radio_template_type === 'app') {
       res.redirect('create-app-template?mode=');
   }
@@ -23,15 +24,15 @@ router.post('*/route-template-type', (req, res) => {
   }
   
   if (radio_template_type === 'letter-large') {
-    res.redirect('create-letter-large-template?mode=');
+    res.redirect('/v4/404');
   }
 
   if (radio_template_type === 'letter-braille') {
-    res.redirect('create-letter-braille-template?mode=');
+    res.redirect('/v4/404');
   }
 
   if (radio_template_type === 'letter-audio') {
-    res.redirect('create-letter-audio-template?mode=');
+    res.redirect('/v4/404');
   }
   
   else {
@@ -45,6 +46,7 @@ router.post('*/route-template-next', (req, res) => {
 
   const template_next = req.session.data['template-next'];
 
+  // Take the user to the 'create' page but set the page to 'edit' mode
   if (template_next === 'edit-app') {
     res.redirect('create-app-template?mode=edit');
   }
@@ -53,12 +55,13 @@ router.post('*/route-template-next', (req, res) => {
       res.redirect('template-test');
   }
 
+  // Create the 'approved' variable for app and set it as false
   if (template_next === 'submit-app') {
     res.redirect('template-approve?template-app-name-1-approved=0');
   }
 
 
-  
+  // Take the user to the 'create' page but set the page to 'edit' mode
   if (template_next === 'edit-email') {
       res.redirect('create-email-template?mode=edit');
   }
@@ -67,12 +70,13 @@ router.post('*/route-template-next', (req, res) => {
       res.redirect('template-test');
   }
 
+  // Create the 'approved' variable for email and set it as false
   if (template_next === 'submit-email') {
     res.redirect('template-approve?template-email-name-1-approved=0');
   }
 
 
-
+  // Take the user to the 'create' page but set the page to 'edit' mode
   if (template_next === 'edit-sms') {
     res.redirect('create-sms-template?mode=edit');
   }
@@ -81,12 +85,13 @@ router.post('*/route-template-next', (req, res) => {
       res.redirect('template-test');
   }
 
+  // Create the 'approved' variable for sms and set it as false
   if (template_next === 'submit-sms') {
     res.redirect('template-approve?template-sms-name-1-approved=0');
   }
 
 
-
+  // Take the user to the 'create' page but set the page to 'edit' mode
   if (template_next === 'edit-letter') {
     res.redirect('create-letter-template?mode=edit');
   }
@@ -95,6 +100,7 @@ router.post('*/route-template-next', (req, res) => {
     res.redirect('template-test');
   }
 
+  // Create the 'approved' variable for letter and set it as false
   if (template_next === 'submit-letter') {
     res.redirect('template-approve?template-letter-name-1-approved=0');
   }

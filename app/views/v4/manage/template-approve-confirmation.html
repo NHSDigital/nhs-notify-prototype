@@ -34,11 +34,12 @@
 
       <p>Tell NHS Notify what you want to do with your template by raising a service now request:</p>
       
-
-      {{ button({
-        "text": "Raise a service now request",
-        "classes": "nhsuk-button--secondary"
-      }) }}
+      <form action="/{{protoVersion}}/404">
+        {{ button({
+          "text": "Raise a service now request",
+          "classes": "nhsuk-button--secondary"
+        }) }}
+      </form>
 
       <p><a href="template-type">Create another template</a></p>
 
