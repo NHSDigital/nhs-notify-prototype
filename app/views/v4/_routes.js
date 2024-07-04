@@ -24,15 +24,15 @@ router.post('*/route-template-type', (req, res) => {
   }
   
   if (radio_template_type === 'letter-large') {
-    res.redirect('/v4/404');
+    res.redirect('/404');
   }
 
   if (radio_template_type === 'letter-braille') {
-    res.redirect('/v4/404');
+    res.redirect('/404');
   }
 
   if (radio_template_type === 'letter-audio') {
-    res.redirect('/v4/404');
+    res.redirect('/404');
   }
   
   else {
