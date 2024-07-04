@@ -98,8 +98,8 @@ window.onload = function () {
         }
 
         document.addEventListener("adobe_dc_view_sdk.ready", function(){ 
-          var adobeDCView = new AdobeDC.View({clientId: "1b86a3aba48f4be3b0d473ba30e9472c", divId: "adobe-dc-view"});
-          // Live client ID: f419e8ee3f914a539f3dca22cecbca79
+          var adobeDCView = new AdobeDC.View({clientId: "f419e8ee3f914a539f3dca22cecbca79", divId: "adobe-dc-view"});
+          // Client IDs: live: f419e8ee3f914a539f3dca22cecbca79    localhost: 1b86a3aba48f4be3b0d473ba30e9472c
           adobeDCView.previewFile({
             content:{location: {url: "/files/example-letter-vacs.pdf"}},
             metaData:{fileName: "example-letter-vacs.pdf"}
