@@ -60,7 +60,7 @@ window.onload = function () {
               a4b171b5-431f-4a5b-9d7a-9a4903c98e66
             </td>
           </tr>
-          
+
           <tr role="row" class="nhsuk-table__row">
             <th role="cell" class="nhsuk-table__cell">
               From
@@ -78,6 +78,8 @@ window.onload = function () {
 
             </td>
           </tr>
+          
+          
 
         </tbody>
       </table>
@@ -98,8 +100,8 @@ window.onload = function () {
         }
 
         document.addEventListener("adobe_dc_view_sdk.ready", function(){ 
-          var adobeDCView = new AdobeDC.View({clientId: "1b86a3aba48f4be3b0d473ba30e9472c", divId: "adobe-dc-view"});
-          // Live client ID: f419e8ee3f914a539f3dca22cecbca79
+          var adobeDCView = new AdobeDC.View({clientId: "f419e8ee3f914a539f3dca22cecbca79", divId: "adobe-dc-view"});
+          // Live client ID: f419e8ee3f914a539f3dca22cecbca79    1b86a3aba48f4be3b0d473ba30e9472c
           adobeDCView.previewFile({
             content:{location: {url: "/files/example-letter-vacs.pdf"}},
             metaData:{fileName: "example-letter-vacs.pdf"}
