@@ -1,0 +1,290 @@
+{% extends 'v5/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1>
+        Message templates
+      </h1>
+
+      <form action="template-type">
+        {{ button({
+          'text': 'Create template'
+        }) }}
+      </form>
+
+      {% if data['folder-1-app-templates'] == '1' or data['folder-1-email-templates'] == '1' or data['folder-1-sms-templates'] == '1' or data['folder-1-letter-templates'] == '1'%}
+
+      <table role="table" class="nhsuk-table-responsive">
+
+        <caption class="nhsuk-table__caption">List of templates</caption>
+
+        <thead role="rowgroup" class="nhsuk-table__head">
+          <tr role="row">
+            <th role="columnheader" class="" scope="col">
+              Name
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Type
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Status
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Date created
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Manage
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Submit
+            </th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+
+
+          {% if data['folder-1-app-templates'] == '1' %}
+          
+          <tr role="row" class="nhsuk-table__row">
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Name </span>
+              <a href="template-app-1?message-type=app">
+                {{ data['template-app-name-1'] }}
+              </a>
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Type </span>
+              NHS App
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Status </span>
+              {% if data['template-app-name-1-approved'] == '1' %}
+
+              {{ tag({
+                text: "Submitted",
+                classes: "nhsuk-tag--grey"
+              })}}
+
+              {% else %}
+
+              {{ tag({
+                text: "Ready to submit"
+              })}}
+
+              {% endif %}
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Date created </span>30th Apr 2024
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Action </span>
+              {% if data['template-app-name-1-approved'] != '1' %}
+              <p class="nhsuk-u-margin-bottom-2"><a href="create-app-template?mode=edit">Edit</a></p>
+              {% endif %}
+              <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type">Duplicate</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="">Copy template ID to clipboard</a></p>
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              {{ button({
+                "text": "Submit"
+              }) }}
+            </td>
+          </tr>
+
+          {% endif %}
+
+
+          {% if data['folder-1-email-templates'] == '1' %}
+          
+          <tr role="row" class="nhsuk-table__row">
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Name </span>
+              <a href="template-email-1?message-type=email">
+                {{ data['template-email-name-1'] }}
+              </a>
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Type </span>
+              Email
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Status </span>
+              {% if data['template-email-name-1-approved'] == '1' %}
+
+              {{ tag({
+                text: "Submitted",
+                classes: "nhsuk-tag--grey"
+              })}}
+
+              {% else %}
+
+              {{ tag({
+                text: "Ready to submit"
+              })}}
+
+              {% endif %}
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Date created </span>30th Apr 2024
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Action </span>
+              {% if data['template-email-name-1-approved'] != '1' %}
+              <p class="nhsuk-u-margin-bottom-2"><a href="create-email-template?mode=edit">Edit</a></p>
+              {% endif %}
+              <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type">Duplicate</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="">Copy template ID to clipboard</a></p>
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              {{ button({
+                "text": "Submit"
+              }) }}
+            </td>
+          </tr>
+
+          {% endif %}
+
+
+
+          {% if data['folder-1-sms-templates'] == '1' %}
+          
+          <tr role="row" class="nhsuk-table__row">
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Name </span>
+              <!--<a href="template-sms-1?message-type=sms">-->
+                {{ data['template-sms-name-1'] }}
+              <!--</a>-->
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Type </span>
+              Text message
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Status </span>
+              {% if data['template-sms-name-1-approved'] == '1' %}
+
+              {{ tag({
+                text: "Submitted",
+                classes: "nhsuk-tag--grey"
+              })}}
+
+              {% else %}
+
+              {{ tag({
+                text: "Ready to submit"
+              })}}
+
+              {% endif %}
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Date created </span>30th Apr 2024
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Action </span>
+              <p class="nhsuk-u-margin-bottom-2"><a href="template-sms-1?message-type=sms">Preview &amp; test</a></p>
+              {% if data['template-sms-name-1-approved'] != '1' %}
+              <p class="nhsuk-u-margin-bottom-2"><a href="create-sms-template?mode=edit">Edit</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="">Delete</a></p>
+              {% endif %}
+              <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type">Duplicate</a></p>
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              {% if data['template-sms-name-1-approved'] != '1' %}
+              <form action="template-approve">
+                {{ button({
+                  "text": "Submit"
+                }) }}
+                <input type="hidden" name="template-sms-name-1-approved" value="0">
+                <input type="hidden" name="approve-template-name" value="{{ data['template-sms-name-1'] }}">
+                <input type="hidden" name="message-type" value="sms">
+                <input type="hidden" name="continue-url" value="template-sms-1">
+              </form>
+              {% else %}
+              Already submitted
+              {% endif %}
+            </td>
+          </tr>
+
+          {% endif %}
+
+
+
+          {% if data['folder-1-letter-templates'] == '1' %}
+          
+          <tr role="row" class="nhsuk-table__row">
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Name </span>
+              <!--<a href="template-letter-1?message-type=letter">-->
+                {{ data['template-letter-name-1'] }}
+              <!--</a>-->
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Type </span>
+              Letter
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Status </span>
+              {% if data['template-letter-name-1-approved'] == '1' %}
+
+              {{ tag({
+                text: "Submitted",
+                classes: "nhsuk-tag--grey"
+              })}}
+
+              {% else %}
+
+              {{ tag({
+                text: "Ready to submit"
+              })}}
+
+              {% endif %}
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Date created </span>30th Apr 2024
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Action </span>
+              <p class="nhsuk-u-margin-bottom-2"><a href="template-letter-1?message-type=letter">Preview</a></p>
+              {% if data['template-letter-name-1-approved'] != '1' %}
+              <p class="nhsuk-u-margin-bottom-2"><a href="create-letter-template?mode=edit">Edit</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="">Delete</a></p>
+              {% endif %}
+              <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type">Duplicate</a></p>
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <form action="template-approve">
+                {{ button({
+                  "text": "Submit"
+                }) }}
+                <input type="hidden" name="template-letter-name-1-approved" value="0">
+                <input type="hidden" name="approve-template-name" value="{{ data['template-letter-name-1'] }}">
+                <input type="hidden" name="message-type" value="letter">
+                <input type="hidden" name="continue-url" value="template-letter-1">
+              </form>
+            </td>
+          </tr>
+
+          {% endif %}
+
+          
+
+        </tbody>
+      </table>
+
+      {% else %}
+ 
+      <p>You do not have any templates yet.</p>
+
+      {% endif %}
+      
+    </div>
+  </div>
+{% endblock %}

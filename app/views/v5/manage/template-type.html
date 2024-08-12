@@ -1,4 +1,4 @@
-{% extends 'v3/layout.html' %}
+{% extends 'v5/layout.html' %}
 
 {% block beforeContent %}
 
@@ -20,7 +20,7 @@
 
       <h1 class="nhsuk-heading-l">Choose a template type to create</h1>
 
-      <p><a href="">Find out more about template types</a></p>
+      <p><a href="/404">Learn more about message channels.</a></p>
 
       <form action="route-template-type" method="post">
 
@@ -47,16 +47,8 @@
             "text": "Standard letter"
           },
           {
-            "value": "letter-large",
-            "text": "Large print letter"
-          },
-          {
-            "value": "letter-braille",
-            "text": "Braille letter"
-          },
-          {
-            "value": "letter-audio",
-            "text": "Audio CD letter"
+            "value": "letter-non-eng",
+            "text": "Non-english language letter"
           }
         ]
       }) }}

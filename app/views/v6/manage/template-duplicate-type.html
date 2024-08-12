@@ -1,4 +1,4 @@
-{% extends 'v3/layout.html' %}
+{% extends 'v6/layout.html' %}
 
 {% block beforeContent %}
 
@@ -18,11 +18,9 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-heading-l">Choose a template type to create</h1>
+      <h1 class="nhsuk-heading-l">Which template type do you want the copy to be?</h1>
 
-      <p><a href="">Find out more about template types</a></p>
-
-      <form action="route-template-type" method="post">
+      <form action="/404" method="post">
 
       {{ radios({
         "name": "radio-template-type",
@@ -45,18 +43,6 @@
           {
             "value": "letter",
             "text": "Standard letter"
-          },
-          {
-            "value": "letter-large",
-            "text": "Large print letter"
-          },
-          {
-            "value": "letter-braille",
-            "text": "Braille letter"
-          },
-          {
-            "value": "letter-audio",
-            "text": "Audio CD letter"
           }
         ]
       }) }}

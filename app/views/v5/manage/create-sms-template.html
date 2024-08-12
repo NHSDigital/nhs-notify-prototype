@@ -1,0 +1,153 @@
+{% extends 'v5/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+{{ backLink({
+  "href": "javascript:history.go(-1)",
+  "text": "Go back",
+  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Show the correct heading based on whether the page mode is set to 'create' or 'edit'-->
+      <h1 class="nhsuk-heading-xl">
+        {% if data['mode'] == 'edit' %}
+        Edit text message template
+        {% else %}
+        Create text message template
+        {% endif %}
+      </h1>
+
+      <button id="toggle" onclick="guidanceShowHide()" class="nhsuk-button nhsuk-button--secondary">Show template guidance</button>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div id="column-left" class="nhsuk-grid-column-full">
+
+      <span class="nhsuk-u-visually-hidden"><a href="#guidance">Read the guidance for creating a letter template</a></span>
+
+      <form action="template-saved-confirmation" onsubmit="return checkFormSMS();">
+ 
+        <div class="nhsuk-form-group">
+          
+          <label class="nhsuk-label" for="template-sms-name-1">
+            Template name
+          </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
+          </div>
+
+          {% include "../includes/details-template-name.html" %}
+
+          {% if data['mode'] == 'edit' %}
+
+          <input class="nhsuk-input" id="template-sms-name-1" name="template-sms-name-1" type="text" value="{{data['template-sms-name-1']}}">
+
+          {% else %}
+
+          <input class="nhsuk-input" id="template-sms-name-1" name="template-sms-name-1" type="text">
+
+          {% endif %}
+
+        </div>
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-sms-name-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+        </span>
+
+        {% if data['mode'] == 'edit' %}
+
+        {{ textarea({
+          "name": "template-sms-message-1",
+          "id": "template-sms-message-1",
+          "label": {
+            "text": "Message"
+          },
+          "attributes": {
+            "onkeyup": "countChars(this);"
+          },
+          "classes": "message-body",
+          "value": data['template-sms-message-1']
+        }) }}
+
+        {% else %}
+
+        {{ textarea({
+          "name": "template-sms-message-1",
+          "id": "template-sms-message-1",
+          "label": {
+            "text": "Message"
+          },
+          "attributes": {
+            "onkeyup": "countChars(this);"
+          },
+          "classes": "message-body"
+        }) }}
+
+        {% endif %}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-sms-message-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+        </span>
+
+        <p id="charNum" class="nhsuk-u-margin-bottom-0">0 characters</p>
+        <p>
+          This template will be charged as <span id="numMsgs">0</span> text messages.<br />
+          If you're using personalisation fields, it could be charged as more.
+        </p>
+        <p><a href="/404">Learn more about character counts and text message pricing</a>.</p>
+
+        <script>
+          function countChars(obj){
+            document.getElementById("charNum").innerHTML = obj.value.length+' characters';
+            document.getElementById("numMsgs").innerHTML = Math.ceil(obj.value.length / 160);
+          }
+        </script>
+
+        <!-- Set the variables that are used on subsequent pages -->
+        <input type="hidden" name="message-type" value="sms">
+        <input type="hidden" name="continue-url" value="template-sms-1">
+        <input type="hidden" name="folder-1-sms-templates" value="1">
+        <input type="hidden" name="template-sms-name-1-approved" value="">
+
+        {{ button({
+          "text": "Save and preview"
+        }) }}
+
+      </form>
+
+    </div>
+
+    <div id="column-right" class="nhsuk-grid-column-one-third">
+
+      <h2 class="nhsuk-heading-m" id="guidance">Personalisation</h2>
+
+      {% include "../includes/details-personalisation-no-address.html" %}
+
+      <h2 class="nhsuk-heading-m">Message formatting</h2>
+
+      {{ details({
+        "text": "Links and URLs",
+        "HTML": "
+        <p>Write the URL in full, starting with https://</p>
+        <p>For example:</p>
+        <code class='nhsuk-code-block'>
+          https://www.nhs.uk/example
+        </code>
+        "
+      }) }}
+
+    </div>
+
+  </div>
+{% endblock %}

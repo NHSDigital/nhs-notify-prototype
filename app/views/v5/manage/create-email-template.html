@@ -1,0 +1,181 @@
+{% extends 'v5/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+{{ backLink({
+  "href": "javascript:history.go(-1)",
+  "text": "Go back",
+  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Show the correct heading based on whether the page mode is set to 'create' or 'edit'-->
+      <h1 class="nhsuk-heading-xl">
+        {% if data['mode'] == 'edit' %}
+        Edit email template
+        {% else %}
+        Create email template
+        {% endif %}
+      </h1>
+
+      <button id="toggle" onclick="guidanceShowHide()" class="nhsuk-button nhsuk-button--secondary">Show template guidance</button>
+      
+      
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div id="column-left" class="nhsuk-grid-column-full">
+
+      <span class="nhsuk-u-visually-hidden"><a href="#guidance">Read the guidance for creating an email template</a></span>
+
+      <form action="template-email-1" onsubmit="return checkFormEmail();">
+
+        
+        
+        <div class="notify-template-borderbox">
+
+          <div class="nhsuk-form-group">
+          
+            <label class="nhsuk-label" for="template-email-name-1">
+              Template name
+            </label>
+            <div class="nhsuk-hint">
+              This will not be visible to recipients.
+            </div>
+  
+            {% include "../includes/details-template-name.html" %}
+
+            {% if data['mode'] == 'edit' %}
+  
+            <input class="nhsuk-input" id="template-email-name-1" name="template-email-name-1" type="text" value="{{data['template-email-name-1']}}">
+
+            {% else %}
+
+            <input class="nhsuk-input" id="template-email-name-1" name="template-email-name-1" type="text">
+
+            {% endif %}
+            
+          </div>
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-email-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>
+
+        </div>
+
+        <div class="notify-template-borderbox">
+
+          {% if data['mode'] == 'edit' %}
+
+          {{ input({
+            "label": {
+              "text": "Subject line"
+            },
+            "id": "template-email-subject-1",
+            "name": "template-email-subject-1",
+            "value": data['template-email-subject-1']
+          }) }}
+
+          {% else %}
+
+          {{ input({
+            "label": {
+              "text": "Subject line"
+            },
+            "id": "template-email-subject-1",
+            "name": "template-email-subject-1"
+          }) }}
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-email-subject-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter an email subject
+          </span>
+
+          {% if data['mode'] == 'edit' %}
+
+          {{ textarea({
+            "name": "template-email-message-1",
+            "id": "template-email-message-1",
+            "label": {
+              "text": "Message"
+            },
+            "classes": "message-body",
+            "value": data['template-email-message-1']
+          }) }}
+
+          {% else %}
+
+          {{ textarea({
+            "name": "template-email-message-1",
+            "id": "template-email-message-1",
+            "label": {
+              "text": "Message"
+            },
+            "classes": "message-body"
+          }) }}
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-email-message-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+          </span>
+
+        </div>
+
+        <!-- Set the variables that are used on subsequent pages -->
+        <input type="hidden" name="continue-url" value="template-email-1">
+        <input type="hidden" name="message-type" value="email">
+        <input type="hidden" name="folder-1-email-templates" value="1">
+        <input type="hidden" name="template-email-name-1-approved" value="">
+
+        {{ button({
+          "text": "Save and preview"
+        }) }}
+
+      </form>
+
+    </div>
+
+    <div id="column-right" class="nhsuk-grid-column-one-third">
+
+      <h2 class="nhsuk-heading-m" id="guidance">Personalisation</h2>
+
+      {% include "../includes/details-personalisation-no-address.html" %}
+
+      <h2 class="nhsuk-heading-m">Message formatting</h2>
+
+      {% include "../includes/details-linebreaks.html" %}
+      
+      {% include "../includes/details-headings.html" %}
+
+      {{ details({
+        "text": "Bold text",
+        "HTML": "
+        <p>Use 2 asterisk symbols on either side of the words you want to be bold, for example:</p>
+        <code class='nhsuk-code-block'>**this is bold text**</code>
+        "
+      }) }}
+
+      {% include "../includes/details-bullets.html" %}
+
+      {% include "../includes/details-numbered-lists.html" %}
+
+      {% include "../includes/details-lines.html" %}
+
+      {% include "../includes/details-links.html" %}
+
+    </div>
+
+  </div>
+{% endblock %}

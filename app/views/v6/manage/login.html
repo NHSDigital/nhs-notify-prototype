@@ -1,0 +1,37 @@
+{% extends 'v6/layout.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block main %}
+
+      <a href="templates?auth=1"><img src="/images/nhsmail-login-screenshot.png" alt="" style="max-width: 1200px; margin: 0 auto; display:block;"></a>
+
+      {#
+      <h1 class="nhsuk-heading-xl">
+        Log in
+      </h1>
+
+      <p>Log in using your NHS mail or CIS2 login details to create and submit templates you want to send as messages using NHS Notify.</p>
+
+      <a href="/{{protoVersion}}/manage/template-type"><img src="/images/microsoft-sign-in.jpg" class="nhsuk-button--microsoft"></a>
+
+      <p>or</p>
+
+      <form action="/{{protoVersion}}/manage/template-type">
+      <button class="nhsuk-button nhsuk-button--cis2" data-module="nhsuk-button" type="submit">
+        <img src="/images/nhs-logo.svg" alt="">Care identity
+      </button>
+      </form>
+      #}
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

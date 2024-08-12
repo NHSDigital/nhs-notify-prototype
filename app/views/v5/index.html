@@ -3,7 +3,7 @@
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
-{% extends 'v4/layout.html' %}
+{% extends 'v5/layout.html' %}
 <!-- 
   In /views/layout.html you can:
     - change the header and footer 
@@ -37,12 +37,13 @@
       <p>
         <strong>Prototype version:</strong> {{protoVersion}}
       </p>
-      
+
       <form action="manage/">
         {{ button({
           'text': 'Continue'
         }) }}
       </form>
+      
 
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->

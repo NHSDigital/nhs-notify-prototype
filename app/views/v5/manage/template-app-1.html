@@ -1,0 +1,178 @@
+{% extends 'v5/layout.html' %}
+
+{% block head %}
+
+<!-- Script to convert markdown to formatted content -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+<script>
+window.onload = function () {
+  var text = document.getElementById('sourceTA').value,
+      target = document.getElementById('targetDiv'),
+      converter = new showdown.Converter(),
+      html = converter.makeHtml(text);
+    
+    target.innerHTML = html;
+}
+</script>
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      {% if data['template-app-name-1-approved'] == '1' %}
+
+      {{ tag({
+        text: "Submitted",
+        classes: "nhsuk-u-margin-bottom-2 nhsuk-tag--grey"
+      })}}
+
+      {% else %}
+
+      {{ tag({
+        text: "Ready to submit",
+        classes: "nhsuk-u-margin-bottom-2"
+      })}}
+
+      {% endif %}
+      <h1 class="nhsuk-heading-xl">
+        <span class="nhsuk-caption-l">NHS App message template</span>
+        {{ data['template-app-name-1'] }}
+      </h1>
+
+      <table role="table" class="nhsuk-table-responsive notify-template-content nhsuk-u-margin-bottom-4">
+        <tbody class="nhsuk-table__body">
+
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell">
+              Template ID
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              app-a4b171b5-431f-4a5b-9d7a-9a4903c98e66
+            </td>
+          </tr>
+
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell">
+              From
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              
+              {{ details({
+                "text": "Who your NHS App message will be sent from",
+                "HTML": "
+                <p>Set your NHS App message sender name during onboarding.</p>
+                <p>If you need to set up a different NHS App message sender name for other messages, contact our onboarding team.</p>
+                ",
+                "classes": "nhsuk-u-margin-bottom-0"
+              }) }}
+
+            </td>
+          </tr>
+
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell">
+              Message
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+
+              <textarea id="sourceTA">{{ data["template-app-message-1"] }}</textarea>
+
+              <div id="targetDiv"></div>
+
+              {% if data['template-app-name-1-approved'] != '1' %}
+              <form action="create-app-template?mode=edit" method="post" class="nhsuk-u-margin-top-4">
+                {{ button({
+                  "text": "Edit template",
+                  "classes": "nhsuk-button--secondary"
+                }) }}
+                </form>
+                {% endif %}
+
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      {% if data['template-app-name-1-approved'] != '1' %}
+
+      <form action="route-template-next" method="post">
+
+        <!--
+        {{ radios({
+          "name": "template-next",
+          "fieldset": {
+            "legend": {
+              "text": "What would you like to do next with this template?",
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "items": [
+            {
+              "value": "edit-app",
+              "text": "Edit"
+            },
+            {
+              "value": "submit-app",
+              "text": "Submit"
+            }
+          ]
+        }) }}
+        -->
+
+        {{ radios({
+          "name": "template-next",
+          "fieldset": {
+            "legend": {
+              "text": "What would you like to do next?",
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "items": [
+            {
+              "value": "submit-app",
+              "text": "Submit template"
+            },
+            {
+              "value": "create",
+              "text": "Create another template"
+            },
+            {
+              "value": "saved",
+              "text": "Go to saved templates"
+            }
+          ]
+        }) }}
+  
+        <input type="hidden" name="approve-template-name" value="{{ data['template-app-name-1'] }}">
+        <input type="hidden" name="message-type" value="app">
+        <input type="hidden" name="continue-url" value="template-app-1">
+  
+        {{ button({
+          "text": "Continue"
+        }) }}
+  
+      </form>
+      
+      {% else %}
+
+      <p>This template cannot be edited because it has been submitted.</p>
+      <p>If you want to change a submitted or live template, you must create a new template to replace it.</p>
+      <p><a href="templates">Go to saved templates</a></p>
+
+      {% endif %}
+
+      <!--<p><a href="template-type">Create another template</a></p>
+
+      <p><a href="templates">Go to saved templates</a></p>-->
+
+    </div>
+  </div>
+{% endblock %}

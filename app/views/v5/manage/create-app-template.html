@@ -1,0 +1,156 @@
+{% extends 'v5/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+{{ backLink({
+  "href": "javascript:history.go(-1)",
+  "text": "Go back",
+  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">
+        <!-- Show the correct heading based on whether the page mode is set to 'create' or 'edit'-->
+        {% if data['mode'] == 'edit' %}
+        Edit NHS App message template
+        {% else %}
+        Create NHS App message template
+        {% endif %}
+      </h1>
+
+      <button id="toggle" onclick="guidanceShowHide()" class="nhsuk-button nhsuk-button--secondary">Show template guidance</button>
+      
+      
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div id="column-left" class="nhsuk-grid-column-full">
+
+      <span class="nhsuk-u-visually-hidden"><a href="#guidance">Read the guidance for creating an app template</a></span>
+
+      <form action="template-app-1" onsubmit="return checkFormApp();">
+
+        <div class="nhsuk-form-group">
+          
+          <label class="nhsuk-label" for="template-app-name-1">
+            Template name
+          </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
+          </div>
+
+          {% include "../includes/details-template-name.html" %}
+
+          {% if data['mode'] == 'edit' %}
+  
+          <input class="nhsuk-input" id="template-app-name-1" name="template-app-name-1" type="text" value="{{data['template-app-name-1']}}">
+
+          {% else %}
+
+          <input class="nhsuk-input" id="template-app-name-1" name="template-app-name-1" type="text">
+
+          {% endif %}
+
+        </div>
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-app-name-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+        </span>
+
+        {% if data['mode'] == 'edit' %}
+  
+        {{ textarea({
+          "name": "template-app-message-1",
+          "id": "template-app-message-1",
+          "label": {
+            "text": "Message"
+          },
+          "value": data['template-app-message-1'],
+          "attributes": {
+            "onkeyup": "countChars(this);",
+            "maxlength": "5000"
+          },
+          "classes": "message-body"
+        }) }}
+
+        {% else %}
+
+        {{ textarea({
+          "name": "template-app-message-1",
+          "id": "template-app-message-1",
+          "label": {
+            "text": "Message"
+          },
+          "attributes": {
+            "onkeyup": "countChars(this);",
+            "maxlength": "5000"
+          },
+          "classes": "message-body"
+        }) }}
+
+        {% endif %}
+
+        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-app-message-1--error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+        </span>
+        
+        <p id="charNum">0 of 5000 characters</p>
+
+        <script>
+          function countChars(obj){
+            document.getElementById("charNum").innerHTML = obj.value.length+' of 5000 characters';
+          }
+        </script>
+
+        <!-- Set the variables that are used on subsequent pages -->
+        <input type="hidden" name="message-type" value="app">
+        <input type="hidden" name="continue-url" value="template-app-1">
+        <input type="hidden" name="folder-1-app-templates" value="1">
+        <input type="hidden" name="template-app-name-1-approved" value="">
+
+        {{ button({
+          "text": "Save and preview"
+        }) }}
+
+      </form>
+
+    </div>
+
+    <div id="column-right" class="nhsuk-grid-column-one-third">
+
+      <h2 class="nhsuk-heading-m" id="guidance">Personalisation</h2>
+
+      {% include "../includes/details-personalisation-no-address.html" %}
+
+      <h2 class="nhsuk-heading-m">Message formatting</h2>
+
+      {% include "../includes/details-linebreaks.html" %}
+      
+      {% include "../includes/details-headings.html" %}
+
+      {{ details({
+        "text": "Bold text",
+        "HTML": "
+        <p>Use 2 asterisk symbols on either side of the words you want to be bold, for example:</p>
+        <code class='nhsuk-code-block'>**this is bold text**</code>
+        "
+      }) }}
+
+      {% include "../includes/details-bullets.html" %}
+
+      {% include "../includes/details-links.html" %}
+
+    </div>
+
+  </div>
+{% endblock %}
