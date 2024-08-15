@@ -145,3 +145,17 @@ a:visited{
 #column-right{
     display: none;
 }
+
+
+.nhsuk-button--warning {
+    background-color: #d5281b;
+    box-shadow: 0 4px 0 #6b140e;
+    
+    &:active{
+        background-color: #6b140e;
+    }
+    
+    &:hover{
+        background-color: #a82015;
+    }
+}

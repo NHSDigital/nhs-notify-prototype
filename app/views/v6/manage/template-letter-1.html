@@ -72,7 +72,6 @@
               Accessible formats
             </th>
             <td role="cell" class="nhsuk-table__cell">
-              
               {% if 'accessible-large-print' in data['checkbox-accessible-letter'] %}Large print<br />{% endif %}
               {% if 'accessible-braille' in data['checkbox-accessible-letter'] %}Braille<br />{% endif %}
               {% if 'accessible-audio-cd' in data['checkbox-accessible-letter'] %}Audio CD{% endif %}
@@ -133,7 +132,7 @@
   
         <input type="hidden" name="approve-template-name" value="{{ data['template-letter-name-1'] }}">
         <input type="hidden" name="message-type" value="letter">
-        <input type="hidden" name="continue-url" value="template-letter-1">
+        <input type="hidden" name="continue-url" value="template-letter-1?show-save-banner=no">
   
         {{ button({
           "text": "Continue"

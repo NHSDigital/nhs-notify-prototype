@@ -85,7 +85,7 @@
               <span class="nhsuk-table-responsive__heading">Action </span>
               <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type">Copy</a></p>
               {% if data['template-app-name-1-approved'] != '1' %}
-              <p class="nhsuk-u-margin-bottom-2"><a href="">Remove</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=app&approve-template-name={{ data['template-app-name-1'] }}">Remove</a></p>
               {% endif %}
             </td>
           </tr>
@@ -130,7 +130,7 @@
               <span class="nhsuk-table-responsive__heading">Action </span>
               <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type">Copy</a></p>
               {% if data['template-email-name-1-approved'] != '1' %}
-              <p class="nhsuk-u-margin-bottom-2"><a href="create-email-template?mode=edit">Remove</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=email&approve-template-name={{ data['template-email-name-1'] }}">Remove</a></p>
               {% endif %}
             </td>
           </tr>
@@ -176,7 +176,7 @@
               <span class="nhsuk-table-responsive__heading">Action </span>
               <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type">Copy</a></p>
               {% if data['template-sms-name-1-approved'] != '1' %}
-              <p class="nhsuk-u-margin-bottom-2"><a href="">Remove</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=sms&approve-template-name={{ data['template-sms-name-1'] }}">Remove</a></p>
               {% endif %}
             </td>
           </tr>
@@ -222,7 +222,7 @@
               <span class="nhsuk-table-responsive__heading">Action </span>
               <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type">Copy</a></p>
               {% if data['template-letter-name-1-approved'] != '1' %}
-              <p class="nhsuk-u-margin-bottom-2"><a href="">Remove</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=letter&approve-template-name={{ data['template-letter-name-1'] }}">Remove</a></p>
               {% endif %}
             </td>
           </tr>

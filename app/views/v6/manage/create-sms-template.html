@@ -73,7 +73,7 @@
 
           {% if data['mode'] == 'edit' %}
 
-          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-sms-message-1" name="template-sms-message-1" onkeyup="countChars(this);">{{data['template-email-message-1']}}</textarea>
+          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-sms-message-1" name="template-sms-message-1" onkeyup="countChars(this);">{{data['template-sms-message-1']}}</textarea>
 
           {% else %}
 
@@ -94,7 +94,7 @@
             This template will be charged as <span id="numMsgs">0</span> text messages.<br />
             If you're using personalisation fields, it could be charged as more.
           </p>
-          <p><a href="/404">Learn more about character counts and text message pricing</a>.</p>
+          <p><a href="/404">Learn more about character counts and text message pricing (opens in a new tab)</a>.</p>
 
           <script>
             function countChars(obj){

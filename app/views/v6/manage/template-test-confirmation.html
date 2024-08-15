@@ -20,11 +20,7 @@
         {% if data['message-type'] == 'email' %}{{data['test-email-1']}}{%endif%}
       </p>
 
-      <form action="{{ data['continue-url'] }}">
-        {{ button({
-          "text": "Continue"
-        }) }}
-      </form>
+      <a href="{{ data['continue-url'] }}" class="nhsuk-button">Continue</a>
 
       <!--
       <form action="route-template-next" method="post">

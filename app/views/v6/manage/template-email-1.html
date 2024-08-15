@@ -8,12 +8,13 @@
 window.onload = function () {
   var text = document.getElementById('sourceTA').value,
       target = document.getElementById('targetDiv'),
-      converter = new showdown.Converter(),
+      converter = new showdown.Converter({noHeaderId: true, simpleLineBreaks: true, simplifiedAutoLink: true}),
       html = converter.makeHtml(text);
     
     target.innerHTML = html;
 }
 </script>
+
 {% endblock %}
 
 {% block beforeContent %}
@@ -135,7 +136,7 @@ window.onload = function () {
             <td role="cell" colspan="2" class="nhsuk-table__cell">
 
               <div class="nhsuk-warning-callout-nhs-notify nhsuk-u-padding-4">
-                <p class=" nhsuk-u-margin-0">This is only a basic preview. <a href="template-test?message-type=email&continue-url=template-email-1">Send a test email</a> to preview this template properly.</p>
+                <p class=" nhsuk-u-margin-0">This is only a basic preview. <a href="template-test?message-type=email&continue-url=template-email-1?show-save-banner=no">Send a test email</a> to preview this template properly.</p>
               </div>
               
             </td>
@@ -175,7 +176,7 @@ window.onload = function () {
 
         <input type="hidden" name="approve-template-name" value="{{ data['template-email-name-1'] }}">
         <input type="hidden" name="message-type" value="email">
-        <input type="hidden" name="continue-url" value="template-email-1">
+        <input type="hidden" name="continue-url" value="template-email-1?show-save-banner=no">
 
         {{ button({
           "text": "Continue"

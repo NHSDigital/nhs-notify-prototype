@@ -8,12 +8,13 @@
 window.onload = function () {
   var text = document.getElementById('sourceTA').value,
       target = document.getElementById('targetDiv'),
-      converter = new showdown.Converter({simpleLineBreaks: true}),
+      converter = new showdown.Converter({noHeaderId: true, simpleLineBreaks: true, simplifiedAutoLink: true}),
       html = converter.makeHtml(text);
     
     target.innerHTML = html;
 }
 </script>
+
 {% endblock %}
 
 {% block beforeContent %}
@@ -152,7 +153,7 @@ window.onload = function () {
   
         <input type="hidden" name="approve-template-name" value="{{ data['template-app-name-1'] }}">
         <input type="hidden" name="message-type" value="app">
-        <input type="hidden" name="continue-url" value="template-app-1">
+        <input type="hidden" name="continue-url" value="template-app-1?show-save-banner=no">
   
         {{ button({
           "text": "Continue"

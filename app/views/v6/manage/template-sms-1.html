@@ -98,8 +98,8 @@
             </th>
             <td role="cell" class="nhsuk-table__cell" style="border-bottom: none;">
 
-              <div>
-              {{ data['template-sms-message-1'] }}
+              <div class="linkify-this">
+                {{ data["template-sms-message-1"] }}
               </div>
 
             </td>
@@ -111,7 +111,7 @@
             <td role="cell" colspan="2" class="nhsuk-table__cell">
 
               <div class="nhsuk-warning-callout-nhs-notify nhsuk-u-padding-4">
-                <p class=" nhsuk-u-margin-0">This is only a basic preview. <a href="template-test?message-type=sms&continue-url=template-sms-1">Send a test text message</a> to preview this template properly.</p>
+                <p class=" nhsuk-u-margin-0">This is only a basic preview. <a href="template-test?message-type=sms&continue-url=template-sms-1?show-save-banner=no">Send a test text message</a> to preview this template properly.</p>
               </div>
               
             </td>
@@ -151,7 +151,7 @@
   
         <input type="hidden" name="approve-template-name" value="{{ data['template-sms-name-1'] }}">
         <input type="hidden" name="message-type" value="sms">
-        <input type="hidden" name="continue-url" value="template-sms-1">
+        <input type="hidden" name="continue-url" value="template-sms-1?show-save-banner=no">
   
         {{ button({
           "text": "Continue"
@@ -171,4 +171,37 @@
 
     </div>
   </div>
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+  const linkify = t => {
+  const isValidHttpUrl = s => {
+    let u
+    try {u = new URL(s)}
+    catch (_) {return false}
+    return u.protocol.startsWith("http")
+  }
+  const m = t.match(/(?<=\s|^)[a-zA-Z0-9-:/]+\.[a-zA-Z0-9-].+?(?=[.,;:?!-]?(?:\s|$))/g)
+  if (!m) return t
+  const a = []
+  m.forEach(x => {
+    const [t1, ...t2] = t.split(x)
+    a.push(t1)
+    t = t2.join(x)
+    const y = (!(x.match(/:\/\//)) ? 'https://' : '') + x
+    if (isNaN(x) && isValidHttpUrl(y)) 
+      a.push('<a href="' + y + '" target="_blank">' + y.split('/')[2] + '</a>')
+    else
+      a.push(x)
+  })
+  a.push(t)
+  return a.join('')
+}
+document.querySelectorAll('.linkify-this').forEach(o => {
+  o.innerHTML = linkify(o.innerHTML)
+})
+</script>
+
 {% endblock %}

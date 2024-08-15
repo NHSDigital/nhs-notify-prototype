@@ -61,30 +61,6 @@
 
         </div>
 
-        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
-
-          <label class="nhsuk-label nhsuk-u-font-size-24" for="template-letter-message-1">
-            English letter content
-          </label>
-          
-          <p><a href="#" id="toggle" onclick="guidanceShowHideV2()">Show formatting &amp; personalisation guidance</a></p>
-
-          {% if data['mode'] == 'edit' %}
-
-          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-letter-message-1" name="template-letter-message-1">{{data['template-letter-message-1']}}</textarea>
-
-          {% else %}
-
-          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-letter-message-1" name="template-letter-message-1"></textarea>
-
-          {% endif %}
-
-          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-letter-message-1--error">
-            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
-          </span>
-
-        </div>
-
         <div class="nhsuk-u-margin-bottom-8">
 
           {{ select({
@@ -231,6 +207,31 @@
           
           <p><a href="#" id="toggle" onclick="guidanceShowHideV2()">Show formatting &amp; personalisation guidance</a></p>
 
+          {% if data['mode'] == 'edit' %}
+
+          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-letter-message-1" name="template-letter-message-1">{{data['template-letter-message-1']}}</textarea>
+
+          {% else %}
+
+          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-letter-message-1" name="template-letter-message-1"></textarea>
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-letter-message-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+          </span>
+
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+
+          <label class="nhsuk-label nhsuk-u-font-size-24" for="template-letter-message-1">
+            English letter content
+          </label>
+          <span class="nhsuk-hint">Non-english letters also include an english copy of the letter in the same envelope.</span>
+
+          <p><a href="/404">Learn more about non-english letters (opens in a new tab)</a>.</p>
+          
           {% if data['mode'] == 'edit' %}
 
           <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-letter-message-1" name="template-letter-message-1">{{data['template-letter-message-1']}}</textarea>
