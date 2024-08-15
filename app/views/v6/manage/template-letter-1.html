@@ -19,6 +19,12 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
 
+      {% if data['show-save-banner'] == 'yes' %}
+      <div class="notify-confirmation-panel">
+        <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-0">Template saved</h1>
+      </div>
+      {% endif %}
+
       {% if data['template-letter-name-1-approved'] == '1' %}
 
       {{ tag({
@@ -39,8 +45,6 @@
         {{ data['template-letter-name-1'] }}
       </h1>
 
-      
-
       <table role="table" class="notify-template-content nhsuk-u-margin-bottom-4">
         <tbody class="nhsuk-table__body">
 
@@ -55,12 +59,26 @@
 
           <tr role="row" class="nhsuk-table__row">
             <th role="cell" class="nhsuk-table__cell">
-              Channel
+              Type
             </th>
             <td role="cell" class="nhsuk-table__cell">
               Letter
             </td>
           </tr>
+
+          {% if data['checkbox-accessible-letter'] %}
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell">
+              Accessible formats
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              
+              {% if 'accessible-large-print' in data['checkbox-accessible-letter'] %}Large print<br />{% endif %}
+              {% if 'accessible-braille' in data['checkbox-accessible-letter'] %}Braille<br />{% endif %}
+              {% if 'accessible-audio-cd' in data['checkbox-accessible-letter'] %}Audio CD{% endif %}
+            </td>
+          </tr>
+          {% endif %}
           
           <tr role="row" class="nhsuk-table__row">
             <th role="cell" class="nhsuk-table__cell">

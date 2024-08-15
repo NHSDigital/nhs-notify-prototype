@@ -15,6 +15,17 @@ a:visited{
     color:$nhsuk-link-color;
 }
 
+.notify-button-blue{
+    background-color: $color_nhsuk-blue;
+    color: $color_nhsuk-white;
+
+    &:hover,
+    &:active {
+        background-color: $color_nhsuk-blue;
+        color: $color_nhsuk-white;
+    }
+}
+
 .notify-template-borderbox{
     border: 4px solid $nhsuk-border-color;
     padding: 1.5rem 1.5rem 0 1.5rem;

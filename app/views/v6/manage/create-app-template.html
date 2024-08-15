@@ -32,13 +32,11 @@
   <div class="nhsuk-grid-row">
     <div id="column-left" class="nhsuk-grid-column-full">
 
-      <span class="nhsuk-u-visually-hidden"><a href="#guidance">Read the guidance for creating an app template</a></span>
+      <form action="template-app-1" onsubmit="return checkFormApp();">
 
-      <form action="template-saved-confirmation" onsubmit="return checkFormApp();">
-
-        <div class="nhsuk-form-group">
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
           
-          <label class="nhsuk-label" for="template-app-name-1">
+          <label class="nhsuk-label nhsuk-u-font-size-24" for="template-app-name-1">
             Template name
           </label>
           <div class="nhsuk-hint">
@@ -49,61 +47,47 @@
 
           {% if data['mode'] == 'edit' %}
   
-          <input class="nhsuk-input" id="template-app-name-1" name="template-app-name-1" type="text" value="{{data['template-app-name-1']}}">
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-app-name-1" name="template-app-name-1" type="text" value="{{data['template-app-name-1']}}">
 
           {% else %}
 
-          <input class="nhsuk-input" id="template-app-name-1" name="template-app-name-1" type="text">
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-app-name-1" name="template-app-name-1" type="text">
 
           {% endif %}
 
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-app-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>  
+
         </div>
 
-        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-app-name-1--error">
-          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
-        </span>
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
 
-        {% if data['mode'] == 'edit' %}
-  
-        {{ textarea({
-          "name": "template-app-message-1",
-          "id": "template-app-message-1",
-          "label": {
-            "text": "Message"
-          },
-          "value": data['template-app-message-1'],
-          "attributes": {
-            "onkeyup": "countChars(this);",
-            "maxlength": "5000"
-          },
-          "classes": "message-body"
-        }) }}
+          <label class="nhsuk-label nhsuk-u-font-size-24" for="template-app-message-1">
+            Message
+          </label>
+          
+          <p><a href="#" id="toggle" onclick="guidanceShowHideV2()">Show formatting &amp; personalisation guidance</a></p>
 
-        {% else %}
+          {% if data['mode'] == 'edit' %}
 
-        {{ textarea({
-          "name": "template-app-message-1",
-          "id": "template-app-message-1",
-          "label": {
-            "text": "Message"
-          },
-          "attributes": {
-            "onkeyup": "countChars(this);",
-            "maxlength": "5000"
-          },
-          "classes": "message-body"
-        }) }}
+          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-app-message-1" name="template-app-message-1" onkeyup="countChars(this);" maxlength="5000">{{data['template-app-message-1']}}</textarea>
 
-        {% endif %}
+          {% else %}
 
-        <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-app-message-1--error">
-          <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
-        </span>
+          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-app-message-1" name="template-app-message-1" onkeyup="countChars(this);" maxlength="5000"></textarea>
 
-        <a href="#" id="toggle" onclick="guidanceShowHide()" class="nhsuk-button nhsuk-button--secondary">Show template guidance</a>
-        
-        <p id="charNum">0 of 5000 characters</p>
+          {% endif %}
 
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-app-message-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+          </span>
+
+          <p id="charNum">0 of 5000 characters</p>
+
+        </div>
+
+        <!-- Script to count the characters in the textarea and display the number in the paragraph below. -->
         <script>
           function countChars(obj){
             document.getElementById("charNum").innerHTML = obj.value.length+' of 5000 characters';
@@ -112,9 +96,10 @@
 
         <!-- Set the variables that are used on subsequent pages -->
         <input type="hidden" name="message-type" value="app">
-        <input type="hidden" name="continue-url" value="template-app-1">
+        <input type="hidden" name="continue-url" value="template-app-1?show-save-banner=no">
         <input type="hidden" name="folder-1-app-templates" value="1">
         <input type="hidden" name="template-app-name-1-approved" value="">
+        <input type="hidden" name="show-save-banner" value="yes">
 
         {{ button({
           "text": "Save and preview"
@@ -132,7 +117,7 @@
 
       <h2 class="nhsuk-heading-m">Message formatting</h2>
 
-      {% include "../includes/details-linebreaks.html" %}
+      {#  {% include "../includes/details-linebreaks.html" %}  #}
       
       {% include "../includes/details-headings.html" %}
 

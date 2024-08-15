@@ -26,91 +26,73 @@
         {% endif %}
       </h1>
 
-      <button id="toggle" onclick="guidanceShowHide()" class="nhsuk-button nhsuk-button--secondary">Show template guidance</button>
-
     </div>
   </div>
 
   <div class="nhsuk-grid-row">
     <div id="column-left" class="nhsuk-grid-column-full">
 
-      <span class="nhsuk-u-visually-hidden"><a href="#guidance">Read the guidance for creating a letter template</a></span>
-
       <form action="/404">
 
-        <div class="notify-template-borderbox">
-
-          <div class="nhsuk-form-group">
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
           
-            <label class="nhsuk-label" for="template-letter-name-1">
-              Template name
-            </label>
-            <div class="nhsuk-hint">
-              This will not be visible to recipients.
-            </div>
-  
-            {% include "../includes/details-template-name.html" %}
-  
-            {% if data['mode'] == 'edit' %}
-  
-            <input class="nhsuk-input" id="template-letter-name-1" name="template-letter-name-1" type="text" value="{{data['template-letter-name-1']}}">
-
-            {% else %}
-
-            <input class="nhsuk-input" id="template-letter-name-1" name="template-letter-name-1" type="text">
-
-            {% endif %}
-            
+          <label class="nhsuk-label nhsuk-u-font-size-24" for="template-letter-name-1">
+            Template name
+          </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
           </div>
 
-          <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-name-1--error">
+          {% include "../includes/details-template-name.html" %}
+
+          {% if data['mode'] == 'edit' %}
+  
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-letter-name-1" name="template-letter-name-1" type="text" value="{{data['template-letter-name-1']}}">
+
+          {% else %}
+
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-letter-name-1" name="template-letter-name-1" type="text">
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-letter-name-1--error">
             <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>  
+
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+
+          <label class="nhsuk-label nhsuk-u-font-size-24" for="template-letter-message-1">
+            English letter content
+          </label>
+          
+          <p><a href="#" id="toggle" onclick="guidanceShowHideV2()">Show formatting &amp; personalisation guidance</a></p>
+
+          {% if data['mode'] == 'edit' %}
+
+          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-letter-message-1" name="template-letter-message-1">{{data['template-letter-message-1']}}</textarea>
+
+          {% else %}
+
+          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-letter-message-1" name="template-letter-message-1"></textarea>
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-letter-message-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
           </span>
 
         </div>
 
-        <div class="notify-template-borderbox">
-
-          {% if data['mode'] == 'edit' %}
-  
-          {{ textarea({
-            "label": {
-              "text": "English letter content"
-            },
-            "hint": {
-              "text": "These letters must include both english and non-english languages."
-            },
-            "name": "template-letter-message-1",
-            "id": "template-letter-message-1",
-            "classes": "message-body",
-            "value": data['template-letter-message-1']
-          }) }}
-
-          {% else %}
-
-          {{ textarea({
-            "label": {
-              "text": "English letter content"
-            },
-            "hint": {
-              "text": "These letters must include both english and non-english languages."
-            },
-            "name": "template-letter-message-1",
-            "id": "template-letter-message-1",
-            "classes": "message-body"
-          }) }}
-
-          {% endif %}
-
-          <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-message-1--error">
-            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
-          </span>
+        <div class="nhsuk-u-margin-bottom-8">
 
           {{ select({
             "id": "select-language",
             "name": "select-language",
             "label": {
-              "text": "Choose a language"
+              "text": "Choose a language",
+              "classes": "nhsuk-u-font-size-24"
             },
             "items": [
               {
@@ -239,60 +221,29 @@
             <span class="nhsuk-u-visually-hidden">Error:</span> Choose a language
           </span>
 
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+
+          <label class="nhsuk-label nhsuk-u-font-size-24" for="template-letter-message-1">
+            Non-english letter content
+          </label>
+          
+          <p><a href="#" id="toggle" onclick="guidanceShowHideV2()">Show formatting &amp; personalisation guidance</a></p>
+
           {% if data['mode'] == 'edit' %}
-  
-          {{ textarea({
-            "label": {
-              "text": "Non-english letter content"
-            },
-            "hint": {
-              "text": "Enter the non-english version of your content here."
-            },
-            "name": "template-letter-message-non-eng-1",
-            "id": "template-letter-message-non-eng-1",
-            "classes": "message-body",
-            "value": data['template-letter-message-non-eng-1']
-          }) }}
+
+          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-letter-message-1" name="template-letter-message-1">{{data['template-letter-message-1']}}</textarea>
 
           {% else %}
 
-          {{ textarea({
-            "label": {
-              "text": "Non-english letter content"
-            },
-            "hint": {
-              "text": "Enter the non-english version of your content here."
-            },
-            "name": "template-letter-message-non-eng-1",
-            "id": "template-letter-message-non-eng-1",
-            "classes": "message-body"
-          }) }}
+          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-letter-message-1" name="template-letter-message-1"></textarea>
 
           {% endif %}
 
-          <span class="nhsuk-error-message nhsuk-u-margin-bottom-6" id="template-letter-message-non-eng-1--error">
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-letter-message-1--error">
             <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
           </span>
-
-          {#
-          <div class="nhsuk-form-group">
-
-            <label class="nhsuk-label" for="example">
-              Upload a signature image (optional)
-              <span class="nhsuk-hint">Images must be no larger than 500 x 500 pixels and 10MB in file size.</span>
-            </label>
-            <input type="file" class="nhsuk-button nhsuk-button--reverse" />
-
-            {{ details({
-              "text": "Inserting your signature",
-              "HTML": "
-              <p>Use 2 curly brackets on either side of 'signature' to insert your signature image in the body text. For example:</p>
-              <code class='nhsuk-code-block'>{{signature}}</code>
-              "
-            }) }}
-
-          </div>
-          #}
 
         </div>
 

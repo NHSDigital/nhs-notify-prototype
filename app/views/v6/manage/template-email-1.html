@@ -33,6 +33,12 @@ window.onload = function () {
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
 
+      {% if data['show-save-banner'] == 'yes' %}
+      <div class="notify-confirmation-panel">
+        <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-0">Template saved</h1>
+      </div>
+      {% endif %}
+
       {% if data['template-email-name-1-approved'] == '1' %}
 
       {{ tag({
@@ -67,7 +73,7 @@ window.onload = function () {
 
           <tr role="row" class="nhsuk-table__row">
             <th role="cell" class="nhsuk-table__cell">
-              Channel
+              Type
             </th>
             <td role="cell" class="nhsuk-table__cell">
               Email
@@ -99,7 +105,7 @@ window.onload = function () {
         </tbody>
       </table>
 
-      <table role="table" class="notify-template-content nhsuk-u-margin-bottom-4">
+      <table role="table" class="notify-template-content nhsuk-u-margin-bottom-6">
         <tbody class="nhsuk-table__body">
 
           <tr role="row" class="nhsuk-table__row">
@@ -129,7 +135,7 @@ window.onload = function () {
             <td role="cell" colspan="2" class="nhsuk-table__cell">
 
               <div class="nhsuk-warning-callout-nhs-notify nhsuk-u-padding-4">
-                <p class=" nhsuk-u-margin-0">This is only a basic preview. <a href="template-test?message-type=email&continue-url=template-email-1">Send a test text message</a> to preview this template properly.</p>
+                <p class=" nhsuk-u-margin-0">This is only a basic preview. <a href="template-test?message-type=email&continue-url=template-email-1">Send a test email</a> to preview this template properly.</p>
               </div>
               
             </td>
