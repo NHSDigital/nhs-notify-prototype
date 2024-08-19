@@ -8,7 +8,7 @@
 window.onload = function () {
   var text = document.getElementById('sourceTA').value,
       target = document.getElementById('targetDiv'),
-      converter = new showdown.Converter({noHeaderId: true, simpleLineBreaks: true, simplifiedAutoLink: true}),
+      converter = new showdown.Converter({noHeaderId: true, simpleLineBreaks: true, simplifiedAutoLink: false}),
       html = converter.makeHtml(text);
     
     target.innerHTML = html;
@@ -122,7 +122,7 @@ window.onload = function () {
             <th role="cell" class="nhsuk-table__cell" style="border-bottom: none;">
               Message
             </th>
-            <td role="cell" class="nhsuk-table__cell" style="border-bottom: none;">
+            <td role="cell" class="nhsuk-table__cell notify-template-email-message" style="border-bottom: none;">
 
               <textarea id="sourceTA">{{ data["template-email-message-1"] }}</textarea>
               <div id="targetDiv"></div>

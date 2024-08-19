@@ -32,8 +32,6 @@
   <div class="nhsuk-grid-row">
     <div id="column-left" class="nhsuk-grid-column-full">
 
-      <span class="nhsuk-u-visually-hidden"><a href="#guidance">Read the guidance for creating an email template</a></span>
-
       <form action="template-email-1" onsubmit="return checkFormEmail();">
 
         <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
@@ -91,7 +89,7 @@
             Message
           </label>
           
-          <p><a href="#" id="toggle" onclick="guidanceShowHideV2()">Show formatting &amp; personalisation guidance</a></p>
+          <p><a href="#" id="guidanceToggle">Show formatting &amp; personalisation guidance</a></p>
 
           {% if data['mode'] == 'edit' %}
 
@@ -136,14 +134,6 @@
       
       {% include "../includes/details-headings.html" %}
 
-      {{ details({
-        "text": "Bold text",
-        "HTML": "
-        <p>Use 2 asterisk symbols on either side of the words you want to be bold, for example:</p>
-        <code class='nhsuk-code-block'>**this is bold text**</code>
-        "
-      }) }}
-
       {% include "../includes/details-bullets.html" %}
 
       {% include "../includes/details-numbered-lists.html" %}
@@ -155,4 +145,8 @@
     </div>
 
   </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/js/guidanceToggle2.js" ></script>
 {% endblock %}

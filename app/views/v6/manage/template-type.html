@@ -24,6 +24,34 @@
 
       <form action="route-template-type" method="post">
 
+      {% set letterHtml %}
+        {{ radios({
+          name: "radio-template-type-letter",
+          items: [
+            {
+              value: "letter",
+              text: "Standard letter"
+            },
+            {
+              value: "letter-non-eng",
+              text: "Non-english letter"
+            },
+            {
+              value: "letter-large-print",
+              text: "Large print letter"
+            },
+            {
+              value: "letter-braille",
+              text: "Braille letter"
+            },
+            {
+              value: "letter-audio-cd",
+              text: "Audio CD letter"
+            }
+          ]
+        }) }}
+      {% endset -%}
+
       {{ radios({
         "name": "radio-template-type",
         "hint": {
@@ -44,14 +72,15 @@
           },
           {
             "value": "letter",
-            "text": "Standard letter"
-          },
-          {
-            "value": "letter-non-eng",
-            "text": "Non-english language letter"
+            "text": "Letter",
+            "conditional": {
+              html: letterHtml
+            }
           }
         ]
       }) }}
+
+      <input type="hidden" name="mode" value="">
 
       {{ button({
         'text': 'Continue'

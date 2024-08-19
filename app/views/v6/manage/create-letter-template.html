@@ -67,7 +67,7 @@
             Letter content
           </label>
           
-          <p><a href="#" id="toggle" onclick="guidanceShowHideV2()">Show formatting &amp; personalisation guidance</a></p>
+          <p><a href="#" id="guidanceToggle">Show formatting &amp; personalisation guidance</a></p>
 
           {% if data['mode'] == 'edit' %}
 
@@ -152,8 +152,6 @@
       
       {% include "../includes/details-headings.html" %}
 
-      {% include "../includes/details-bold.html" %}
-
       {% include "../includes/details-bullets.html" %}
 
       {% include "../includes/details-numbered-lists.html" %}
@@ -165,4 +163,8 @@
     </div>
 
   </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/js/guidanceToggle2.js" ></script>
 {% endblock %}

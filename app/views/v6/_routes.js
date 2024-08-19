@@ -5,38 +5,39 @@ const router = express.Router()
 router.post('*/route-template-type', (req, res) => {
 
   const radio_template_type = req.session.data['radio-template-type'];
+  const radio_template_type_letter = req.session.data['radio-template-type-letter'];
 
   // Take the user to the relevant 'create' page and reset the page mode to 'create'
   if (radio_template_type === 'app') {
-      res.redirect('create-app-template?mode=');
+      res.redirect('create-app-template');
   }
   
   if (radio_template_type === 'email') {
-      res.redirect('create-email-template?mode=');
+      res.redirect('create-email-template');
   }
   
   if (radio_template_type === 'sms') {
-    res.redirect('create-sms-template?mode=');
-  }
-
-  if (radio_template_type === 'letter-non-eng') {
-    res.redirect('create-letter-non-eng-template?mode=');
+    res.redirect('create-sms-template');
   }
   
-  if (radio_template_type === 'letter-large') {
+  if (radio_template_type === 'letter' && radio_template_type_letter === 'letter-non-eng') {
+    res.redirect('create-letter-non-eng-template');
+  }
+
+  if (radio_template_type === 'letter' && radio_template_type_letter === 'letter-large-print') {
     res.redirect('/404');
   }
 
-  if (radio_template_type === 'letter-braille') {
+  if (radio_template_type === 'letter' && radio_template_type_letter === 'letter-braille') {
     res.redirect('/404');
   }
 
-  if (radio_template_type === 'letter-audio') {
+  if (radio_template_type === 'letter' && radio_template_type_letter === 'letter-audio-cd') {
     res.redirect('/404');
   }
-  
+
   else {
-    res.redirect('create-letter-template?mode=');
+    res.redirect('create-letter-template');
   }
 
 });

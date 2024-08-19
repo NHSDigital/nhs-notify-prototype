@@ -8,7 +8,7 @@
 window.onload = function () {
   var text = document.getElementById('sourceTA').value,
       target = document.getElementById('targetDiv'),
-      converter = new showdown.Converter({noHeaderId: true, simpleLineBreaks: true, simplifiedAutoLink: true}),
+      converter = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
       html = converter.makeHtml(text);
     
     target.innerHTML = html;

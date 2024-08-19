@@ -159,3 +159,24 @@ a:visited{
         background-color: #a82015;
     }
 }
+
+// Custom styles for the email preview to closely match the GOV Notify preview
+.notify-template-email-message{
+    h1{
+        font-size: 27px;
+        margin-bottom: 15px;
+    }
+
+    h2{
+        font-size: 19px;
+        margin-bottom: 15px;
+        padding-top: 0;
+    }
+
+    h3,h4,h5,h6{
+        font-size: 19px;
+        margin-bottom: 15px;
+        font-weight: normal;
+    }
+
+}
