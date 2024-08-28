@@ -36,6 +36,7 @@ function guidanceShowHideV2() {
         columnRight.setAttribute("aria-hidden", "true")
         sessionStorage.setItem("guidance", "closed")
     } 
+    
     // Show
     else {
         columnLeft.classList.add("nhsuk-grid-column-two-thirds")
@@ -45,9 +46,6 @@ function guidanceShowHideV2() {
         columnRight.removeAttribute("aria-hidden")
         sessionStorage.setItem("guidance", "open")
     }
-
-    var guidance = sessionStorage.getItem("guidance")
-    console.log(guidance)
 
     return false;
 

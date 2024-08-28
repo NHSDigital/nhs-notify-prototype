@@ -20,10 +20,11 @@ router.post('*/route-template-type', (req, res) => {
     res.redirect('create-sms-template');
   }
   
-  if (radio_template_type === 'letter' && radio_template_type_letter === 'letter-non-eng') {
+  if (radio_template_type === 'letter-non-eng') {
     res.redirect('create-letter-non-eng-template');
   }
 
+  /*
   if (radio_template_type === 'letter' && radio_template_type_letter === 'letter-large-print') {
     res.redirect('/404');
   }
@@ -35,6 +36,7 @@ router.post('*/route-template-type', (req, res) => {
   if (radio_template_type === 'letter' && radio_template_type_letter === 'letter-audio-cd') {
     res.redirect('/404');
   }
+  */
 
   else {
     res.redirect('create-letter-template');

@@ -96,21 +96,21 @@
           <div class="nhsuk-checkboxes">
 
             <div class="nhsuk-checkboxes__item">
-              <input class="nhsuk-checkboxes__input" id="example-1" name="checkbox-accessible-letter" type="checkbox" value="accessible-large-print">
+              <input class="nhsuk-checkboxes__input" id="example-1" name="checkbox-accessible-letter" type="checkbox" value="accessible-large-print" {% if 'accessible-large-print' in data['checkbox-accessible-letter'] %}checked{% endif %}>
               <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
                 Large print
               </label>
             </div>
     
             <div class="nhsuk-checkboxes__item">
-              <input class="nhsuk-checkboxes__input" id="example-2" name="checkbox-accessible-letter" type="checkbox" value="accessible-braille">
+              <input class="nhsuk-checkboxes__input" id="example-2" name="checkbox-accessible-letter" type="checkbox" value="accessible-braille" {% if 'accessible-braille' in data['checkbox-accessible-letter'] %}checked{% endif %}>
               <label class="nhsuk-label nhsuk-checkboxes__label" for="example-2">
                 Braille
               </label>
             </div>
     
             <div class="nhsuk-checkboxes__item">
-              <input class="nhsuk-checkboxes__input" id="example-3" name="checkbox-accessible-letter" type="checkbox" value="accessible-audio-cd">
+              <input class="nhsuk-checkboxes__input" id="example-3" name="checkbox-accessible-letter" type="checkbox" value="accessible-audio-cd" {% if 'accessible-audio-cd' in data['checkbox-accessible-letter'] %}checked{% endif %}>
               <label class="nhsuk-label nhsuk-checkboxes__label" for="example-3">
                 Audio CD
               </label>
@@ -147,8 +147,6 @@
       {% include "../includes/details-personalisation.html" %}
 
       <h2 class="nhsuk-heading-m">Body text formatting</h2>
-
-      {% include "../includes/details-linebreaks.html" %}
       
       {% include "../includes/details-headings.html" %}
 

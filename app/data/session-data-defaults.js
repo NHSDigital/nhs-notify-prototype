@@ -21,6 +21,8 @@ module.exports = {
     "template-letter-name-1": "National 20 to 40 year olds",
     "template-letter-sender-1": "NHS organisation name, 25 Long Lane, Leeds, LS1 2AB",
     "template-letter-heading-1": "The main heading of the letter",
-    "template-letter-message-1": "Here is the message body."
+    "template-letter-message-1": "Here is the message body.",
+
+    "checkbox-accessible-letter": ""
   
   }
