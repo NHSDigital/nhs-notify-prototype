@@ -7,11 +7,13 @@
 
 {% block outerContent %}
 
+<!--
 {{ backLink({
   "href": data['continue-url'],
   "text": "Go back",
   "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
 }) }}
+-->
 
 {% endblock %}
 
@@ -36,12 +38,14 @@
           <li>is formatted correctly</li>
         </ul>
 
-        <p>If you want to change a submitted template, you must create a new template to replace it.</p>
+        <!--<p>If you want to change a submitted template, you must create a new template to replace it.</p>-->
 
         {{ warningCallout({
           "heading": "Important",
-          "HTML": "<p>When you submit this template it cannot be changed. It can only be replaced by a new template.</p>"
+          "HTML": "<p>When you submit a template it cannot be changed. It can only be replaced by a new template.</p>"
         }) }}
+
+        <a href="{{data['continue-url']}}?show-save-banner=no" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-right-2">Go back</a>
 
         {{ button({
           "text": "Submit template"
@@ -66,10 +70,10 @@
 
       </form>
 
-      {{ backLink({
+      <!--{{ backLink({
         "href": data['continue-url'],
         "text": "Go back"
-      }) }}
+      }) }}-->
 
     </div>
   </div>
