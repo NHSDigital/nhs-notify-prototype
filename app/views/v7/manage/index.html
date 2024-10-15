@@ -1,0 +1,46 @@
+{% extends 'v7/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">
+        Create and submit a template to NHS Notify
+      </h1>
+
+      <p>Use this tool to create and submit templates you want to send as messages using NHS Notify.</p>
+      <p>You can create templates for:</p>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>NHS App messages</li>
+        <li>emails</li>
+        <li>text messages (SMS)</li>
+        <li>letters</li>
+      </ul>
+
+      <p>When you submit a template, it will be used by NHS Notify to set up the messages you want to send.</p>
+
+      <h2 class="nhsuk-heading-l">Before you start</h2>
+
+      <p>Only use this tool if your message content has been signed off by the relevant stakeholders in your team.</p>
+
+      <p>You can save a template as a draft and edit it later.</p>
+          
+      <p>If you want to change a submitted template, you must create a new template to replace it.</p>
+
+      <p>You can access this tool by signing in with your NHSmail account or Care Identity.</p>
+
+      <form action="/{{protoVersion}}/manage/login">
+        {{ button({
+          'text': 'Start now'
+        }) }}
+      </form>
+      
+    </div>
+  </div>
+{% endblock %}

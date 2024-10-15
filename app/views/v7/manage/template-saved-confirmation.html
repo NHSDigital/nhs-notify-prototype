@@ -1,0 +1,41 @@
+{% extends 'v7/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <div class="notify-confirmation-panel">
+        <h1 class="nhsuk-heading-l">Template saved</h1>
+        <p class="nhsuk-body-l nhsuk-u-margin-bottom-0">
+          Template name<br />
+          <strong>
+            {% if data['message-type'] == 'app' %}
+            {{ data['template-app-name-1']}}
+            {% endif %}
+            
+            {% if data['message-type'] == 'email' %}
+            {{ data['template-email-name-1']}}
+            {% endif %}
+
+            {% if data['message-type'] == 'sms' %}
+            {{ data['template-sms-name-1']}}
+            {% endif %}
+
+            {% if data['message-type'] == 'letter' %}
+            {{ data['template-letter-name-1']}}
+            {% endif %}
+          </strong>
+        </p>
+      </div>
+
+      <p><a href="templates">Continue</a></p>
+
+    </div>
+  </div>
+{% endblock %}
