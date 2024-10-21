@@ -20,7 +20,7 @@ router.post('*/route-template-type', (req, res) => {
     res.redirect('create-sms-template');
   }
   
-  if (radio_template_type === 'letter-non-eng') {
+  if (radio_template_type_letter === 'letter-non-eng') {
     res.redirect('create-letter-non-eng-template');
   }
 
@@ -99,8 +99,16 @@ router.post('*/route-template-next', (req, res) => {
     res.redirect('create-letter-template?mode=edit');
   }
 
+  if (template_next === 'edit-personalisation-letter') {
+    res.redirect('template-test-letter');
+  }
+
   if (template_next === 'test-letter') {
-    res.redirect('template-test');
+    res.redirect('template-test-letter');
+  }
+
+  if (template_next === 'view-letter') {
+    res.redirect('template-letter-1?show-save-banner=no');
   }
 
   // Create the 'approved' variable for letter and set it as false
@@ -120,6 +128,22 @@ router.post('*/route-template-next', (req, res) => {
   
   else {
     res.redirect('#error');
+  }
+
+});
+
+
+
+router.post('*/route-template-letter-1', (req, res) => {
+
+  const radio_letter_test_data = req.session.data['radio-letter-test-data'];
+
+  if (radio_letter_test_data === 'yes') {
+      res.redirect('template-test-letter');
+  }
+
+  else {
+    res.redirect('template-letter-1');
   }
 
 });

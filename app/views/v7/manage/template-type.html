@@ -7,8 +7,8 @@
 {% block outerContent %}
 
 {{ backLink({
-  "href": "javascript:history.go(-1)",
-  "text": "Go back",
+  "href": "templates",
+  "text": "Back to all templates",
   "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
 }) }}
 
@@ -34,7 +34,7 @@
             },
             {
               value: "letter-non-eng",
-              text: "Non-english letter"
+              text: "Additional language letter"
             },
             {
               value: "letter-large-print",
@@ -72,11 +72,10 @@
           },
           {
             "value": "letter",
-            "text": "Letter"
-          },
-          {
-            "value": "letter-non-eng",
-            "text": "Additional language letter"
+            "text": "Letter",
+            conditional: {
+              html: letterHtml
+            }
           }
         ]
       }) }}

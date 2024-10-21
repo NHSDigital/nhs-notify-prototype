@@ -5,11 +5,15 @@
 
 {% block outerContent %}
 
+{% if data['mode'] != 'edit' %}
+
 {{ backLink({
   "href": "javascript:history.go(-1)",
-  "text": "Go back",
+  "text": "Back to choose a template type",
   "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
 }) }}
+
+{% endif %}
 
 {% endblock %}
 
@@ -32,7 +36,7 @@
   <div class="nhsuk-grid-row">
     <div id="column-left" class="nhsuk-grid-column-full">
 
-      <form action="template-app-1" onsubmit="return checkFormApp();">
+      <form action="template-app-1" onsubmit="return checkFormApp();" method="post">
 
         <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
           
@@ -136,6 +140,12 @@
       {% include "../includes/details-bullets.html" %}
 
       {% include "../includes/details-links.html" %}
+
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-top-4">More about NHS App messages</h2>
+
+      <p><a href='https://notify.nhs.uk/features/nhs-app-messages' target='_blank'>NHS App messages</a></p>
+      <p><a href='https://notify.nhs.uk/using-nhs-notify/tell-recipients-who-your-messages-are-from' target='_blank'>Sender IDs (opens in a new tab)</a></p>
+      <p><a href='https://notify.nhs.uk/using-nhs-notify/delivery-times' target='_blank'>Delivery times (opens in a new tab)</a></p>
 
     </div>
 

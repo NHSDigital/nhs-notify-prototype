@@ -40,21 +40,7 @@ window.onload = function () {
       </div>
       {% endif %}
 
-      {% if data['template-email-name-1-approved'] == '1' %}
-
-      {{ tag({
-        text: "Submitted",
-        classes: "nhsuk-u-margin-bottom-2 nhsuk-tag--grey"
-      })}}
-
-      {% else %}
-
-      {{ tag({
-        text: "Ready to submit",
-        classes: "nhsuk-u-margin-bottom-2"
-      })}}
-
-      {% endif %}
+      
 
       <h1 class="nhsuk-heading-xl">
         {{ data['template-email-name-1'] }}
@@ -82,29 +68,55 @@ window.onload = function () {
           </tr>
 
           <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell" style="width:20%;">
+              Status
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              
+              {% if data['template-email-name-1-approved'] == '1' %}
+
+              {{ tag({
+                text: "Submitted",
+                classes: "nhsuk-u-margin-bottom-2 nhsuk-tag--grey"
+              })}}
+
+              {% else %}
+
+              {{ tag({
+                text: "Ready to submit",
+                classes: "nhsuk-u-margin-bottom-2"
+              })}}
+
+              {% endif %}
+
+            </td>
+          </tr>
+
+          <!--<tr role="row" class="nhsuk-table__row">
             <th role="cell" class="nhsuk-table__cell">
               From
             </th>
             <td role="cell" class="nhsuk-table__cell">
               
-              <a href="/404">Who your email will be sent from</a>
-
-              {#
-              {{ details({
-                "text": "Who your email will be sent from",
-                "HTML": "
-                <p>Set your reply-to and from email addresses during onboarding.</p>
-                <p>If you need to set up a different reply-to or from address for other messages, contact our onboarding team.</p>
-                ",
-                "classes": "nhsuk-u-margin-bottom-0"
-              }) }}
-              #}
+              <a href="https://notify.nhs.uk/using-nhs-notify/tell-recipients-who-your-messages-are-from" target="_blank">Learn more about from and reply-to addresses (opens in a new tab)</a>
 
             </td>
-          </tr>
+          </tr>-->
 
         </tbody>
       </table>
+
+      <!--{{ details({
+        text: "Learn about sending emails",
+        HTML: "
+        <p>Learn more about:</p>
+        <ul>
+          <li><a href='https://notify.nhs.uk/features/emails' target='_blank'>Emails</a></li>
+          <li><a href='https://notify.nhs.uk/using-nhs-notify/tell-recipients-who-your-messages-are-from' target='_blank'>From and reply-to addresses (opens in a new tab)</a></li>
+          <li><a href='https://notify.nhs.uk/using-nhs-notify/delivery-times' target='_blank'>Delivery times (opens in a new tab)</a></li>
+        </ul>
+        "
+      }) }}-->
 
       <table role="table" class="notify-template-content nhsuk-u-margin-bottom-6">
         <tbody class="nhsuk-table__body">

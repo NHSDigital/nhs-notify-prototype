@@ -5,11 +5,15 @@
 
 {% block outerContent %}
 
+{% if data['mode'] != 'edit' %}
+
 {{ backLink({
   "href": "javascript:history.go(-1)",
-  "text": "Go back",
+  "text": "Back to choose a template type",
   "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
 }) }}
+
+{% endif %}
 
 {% endblock %}
 
@@ -32,7 +36,7 @@
   <div class="nhsuk-grid-row">
     <div id="column-left" class="nhsuk-grid-column-full">
 
-      <form action="/404">
+      <form action="/404" method="post">
 
         <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
           
@@ -185,10 +189,6 @@
               {
                 "value": 3,
                 "text": "Vietnamese"
-              },
-              {
-                "value": 3,
-                "text": "Bengali"
               }
             ]
           }) }}

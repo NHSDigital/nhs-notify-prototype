@@ -1,0 +1,67 @@
+{% extends 'v7/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+  {{ backLink({
+    "href": "template-letter-1",
+    "text": "Back to template",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-xl">Preview with personalisation data</span>
+      <h1 class="nhsuk-heading-xl">
+        Create test personalisation data
+      </h1>
+
+      <form action="template-letter-preview" method="post">
+
+        <div class='nhsuk-form-group'>
+          <label class='nhsuk-label' for='test-firstname-1'>
+            firstName
+          </label>
+          <input class='nhsuk-input' name='test-firstname-1' type='text'  value='{{data['template-test-data-firstname']}}'>
+        </div>
+
+        <div class='nhsuk-form-group'>
+          <label class='nhsuk-label' for='test-lastname-1'>
+            lastName
+          </label>
+          <input class='nhsuk-input' name='test-lastname-1' type='text' value='{{data['template-test-data-lastname']}}'>
+        </div>
+
+        <div class='nhsuk-form-group'>
+          <label class='nhsuk-label' for='test-nhsnumber-1'>
+            nhsNumber
+          </label>
+          <input class='nhsuk-input' name='test-nhsnumber-1' type='text' value='{{data['template-test-data-nhsnumber']}}'>
+        </div>
+
+        <div class='nhsuk-form-group'>
+          <label class='nhsuk-label' for='test-address-1'>
+            address_line_1
+          </label>
+          <input class='nhsuk-input' name='test-address-1' type='text' value='{{data['template-test-data-address']}}'>
+        </div>
+
+        <p class='nhsuk-u-margin-top-4'><a href='?template-test-data-firstname=Mary&template-test-data-lastname=Poppins&template-test-data-nhsnumber=012%20345%206789&template-test-data-address=10%20Long%20Lane'>Insert default test data</a></p>
+
+        <p class='nhsuk-u-margin-top-4'><a href='?template-test-data-firstname=&template-test-data-lastname=&template-test-data-nhsnumber=&template-test-data-address=' style="color: #d5281b;">Clear test data</a></p>
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+      
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

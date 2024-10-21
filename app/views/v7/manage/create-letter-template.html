@@ -5,11 +5,15 @@
 
 {% block outerContent %}
 
+{% if data['mode'] != 'edit' %}
+
 {{ backLink({
   "href": "javascript:history.go(-1)",
-  "text": "Go back",
+  "text": "Back to choose a template type",
   "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
 }) }}
+
+{% endif %}
 
 {% endblock %}
 
@@ -32,7 +36,7 @@
   <div class="nhsuk-grid-row">
     <div id="column-left" class="nhsuk-grid-column-full">
 
-      <form action="template-letter-1" onsubmit="return checkFormLetter();">
+      <form action="route-template-letter-1" onsubmit="return checkFormLetter();" method="post">
 
         <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
           
@@ -71,11 +75,11 @@
 
           {% if data['mode'] == 'edit' %}
 
-          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-letter-message-1" name="template-letter-message-1">{{data['template-letter-message-1']}}</textarea>
+          <textarea class="nhsuk-textarea message-body-letter nhsuk-u-margin-bottom-2" id="template-letter-message-1" name="template-letter-message-1">{{data['template-letter-message-1']}}</textarea>
 
           {% else %}
 
-          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-letter-message-1" name="template-letter-message-1"></textarea>
+          <textarea class="nhsuk-textarea message-body-letter nhsuk-u-margin-bottom-2" id="template-letter-message-1" name="template-letter-message-1"></textarea>
 
           {% endif %}
 
@@ -85,7 +89,37 @@
 
         </div>
 
-        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+        <!--<div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+
+          <label class="nhsuk-label nhsuk-u-font-size-24 nhsuk-u-margin-bottom-4">
+            Do you want to add test personalisation data to the letter preview?
+          </label>
+
+          <div class="nhsuk-radios nhsuk-radios--inline">
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="radio-letter-test-data-1" name="radio-letter-test-data" type="radio" value="yes" {% if data['radio-letter-test-data'] == 'yes' %}checked{% endif %}>
+              <label class="nhsuk-label nhsuk-radios__label" for="radio-letter-test-data-1">
+                Yes
+              </label>
+            </div>
+      
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="radio-letter-test-data-2" name="radio-letter-test-data" type="radio" value="no" {% if data['radio-letter-test-data'] == 'no' %}checked{% endif %}>
+              <label class="nhsuk-label nhsuk-radios__label" for="radio-letter-test-data-2">
+                No
+              </label>
+            </div>
+      
+          </div>
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="radio-letter-test-data--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Choose whether you want to add test personalisation data to the letter preview
+          </span>
+
+        </div>-->
+
+        <!--<div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
 
           <label for="checkbox-accessible-letter" class="nhsuk-label nhsuk-u-font-size-24">Request accessible letter formats</label>
 
@@ -118,7 +152,7 @@
     
           </div>
 
-        </div>
+        </div>-->
 
         <!-- Set the variables that are used on subsequent pages -->
         <input type="hidden" name="message-type" value="letter">
@@ -133,6 +167,18 @@
           "text": "Save and preview"
         }) }}
 
+        <!--{{ details({
+          text: "Learn more about sending letters",
+          HTML: "
+          <p>Learn more about:</p>
+          <ul>
+            <li><a href='https://notify.nhs.uk/pricing/letters' target='_blank'>Letter pricing (opens in a new tab)</a></li>
+            <li><a href='https://notify.nhs.uk/using-nhs-notify/tell-recipients-who-your-messages-are-from' target='_blank'>Return addresses (opens in a new tab)</a></li>
+            <li><a href='https://notify.nhs.uk/using-nhs-notify/delivery-times' target='_blank'>Delivery times (opens in a new tab)</a></li>
+          </ul>
+          "
+        }) }}-->
+
       </form>
 
     </div>
@@ -141,7 +187,7 @@
 
       <h2 class="nhsuk-heading-m" id="guidance">Letter layout</h2>
       <p><a href="/images/nhs-notify-pdf-letter-spec.jpg" target="_blank">View letter layout (opens in a new tab)</a></p>
-
+      
       <h2 class="nhsuk-heading-m nhsuk-u-margin-top-4">Personalisation</h2>
 
       {% include "../includes/details-personalisation.html" %}
@@ -154,9 +200,18 @@
 
       {% include "../includes/details-numbered-lists.html" %}
 
+      {% include "../includes/details-page-breaks-auto.html" %}
+
+      {#
       {% include "../includes/details-page-breaks.html" %}
 
       {% include "../includes/details-content-blocks.html" %}
+      #}
+
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-top-4">More about letters</h2>
+      <p><a href='https://notify.nhs.uk/pricing/letters' target='_blank'>Letter pricing (opens in a new tab)</a></p>
+      <p><a href='https://notify.nhs.uk/using-nhs-notify/tell-recipients-who-your-messages-are-from' target='_blank'>Return addresses (opens in a new tab)</a></p>
+      <p><a href='https://notify.nhs.uk/using-nhs-notify/delivery-times' target='_blank'>Delivery times (opens in a new tab)</a></p>
 
     </div>
 
