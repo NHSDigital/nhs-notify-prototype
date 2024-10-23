@@ -108,7 +108,7 @@ router.post('*/route-template-next', (req, res) => {
   }
 
   if (template_next === 'view-letter') {
-    res.redirect('template-letter-1?show-save-banner=no');
+    res.redirect('template-letter-1?show-save-banner=no&personalisation-letter=');
   }
 
   // Create the 'approved' variable for letter and set it as false

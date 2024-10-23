@@ -112,6 +112,14 @@
         "
       }) }}-->
 
+      {% if data['personalisation-letter'] == 'yes' %}
+
+      <div class="nhsuk-warning-callout-nhs-notify nhsuk-u-padding-4 nhsuk-u-margin-bottom-6">
+        <p class="nhsuk-u-margin-0">This preview contains <a href="template-test-letter">test personalisation data</a>.</p>
+      </div>
+
+      {% endif %}
+
       <div id="adobe-dc-view" style="height:800px; width:100%;" class="nhsuk-u-margin-bottom-6"></div>
 
       <!--<div class="nhsuk-warning-callout-nhs-notify nhsuk-u-padding-4 nhsuk-u-margin-bottom-6">
@@ -122,6 +130,8 @@
       {% if data['template-letter-name-1-approved'] != '1' %}
 
       <form action="route-template-next" method="post">
+
+        {% if data['personalisation-letter'] == 'yes' %}
 
         {{ radios({
           "name": "template-next",
@@ -138,7 +148,7 @@
             },
             {
               "value": "test-letter",
-              "text": "Preview template with personalisation data"
+              "text": "Edit or remove test personalisation data"
             },
             {
               "value": "submit-letter",
@@ -146,6 +156,34 @@
             }
           ]
         }) }}
+
+        {% else %}
+
+        {{ radios({
+          "name": "template-next",
+          "fieldset": {
+            "legend": {
+              "text": "What would you like to do next?",
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "items": [
+            {
+              "value": "edit-letter",
+              "text": "Edit template"
+            },
+            {
+              "value": "test-letter",
+              "text": "Test the personalisation fields"
+            },
+            {
+              "value": "submit-letter",
+              "text": "Submit template"
+            }
+          ]
+        }) }}
+
+        {% endif %}
   
         <input type="hidden" name="approve-template-name" value="{{ data['template-letter-name-1'] }}">
         <input type="hidden" name="message-type" value="letter">

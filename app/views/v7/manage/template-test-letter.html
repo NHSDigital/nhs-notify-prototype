@@ -17,48 +17,79 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <span class="nhsuk-caption-xl">Preview with personalisation data</span>
       <h1 class="nhsuk-heading-xl">
         Create test personalisation data
       </h1>
 
-      <form action="template-letter-preview" method="post">
+      <p>Write test personalisation data to populate the fields in the template preview.</p>
+      <p>You can use this to check how different lengths of personalisation data affect your message.</p>
 
-        <div class='nhsuk-form-group'>
-          <label class='nhsuk-label' for='test-firstname-1'>
+      <form action="template-letter-1?personalisation-letter=yes" method="post">
+
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="template-test-data-firstname">
             firstName
           </label>
-          <input class='nhsuk-input' name='test-firstname-1' type='text'  value='{{data['template-test-data-firstname']}}'>
+          <input class="nhsuk-input" name="template-test-data-firstname" type="text"  value="{{data['template-test-data-firstname']}}">
         </div>
 
-        <div class='nhsuk-form-group'>
-          <label class='nhsuk-label' for='test-lastname-1'>
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="template-test-data-lastname">
             lastName
           </label>
-          <input class='nhsuk-input' name='test-lastname-1' type='text' value='{{data['template-test-data-lastname']}}'>
+          <input class="nhsuk-input" name="template-test-data-lastname" type="text" value="{{data['template-test-data-lastname']}}">
         </div>
 
-        <div class='nhsuk-form-group'>
-          <label class='nhsuk-label' for='test-nhsnumber-1'>
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="template-test-data-nhsnumber">
             nhsNumber
           </label>
-          <input class='nhsuk-input' name='test-nhsnumber-1' type='text' value='{{data['template-test-data-nhsnumber']}}'>
+          <input class="nhsuk-input" name="template-test-data-nhsnumber" type="text" value="{{data['template-test-data-nhsnumber']}}">
         </div>
 
-        <div class='nhsuk-form-group'>
-          <label class='nhsuk-label' for='test-address-1'>
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="template-test-data-address">
             address_line_1
           </label>
-          <input class='nhsuk-input' name='test-address-1' type='text' value='{{data['template-test-data-address']}}'>
+          <input class="nhsuk-input" name="template-test-data-address" type="text" value="{{data['template-test-data-address']}}">
         </div>
 
-        <p class='nhsuk-u-margin-top-4'><a href='?template-test-data-firstname=Mary&template-test-data-lastname=Poppins&template-test-data-nhsnumber=012%20345%206789&template-test-data-address=10%20Long%20Lane'>Insert default test data</a></p>
+        <!--<div class="nhsuk-form-group">
 
-        <p class='nhsuk-u-margin-top-4'><a href='?template-test-data-firstname=&template-test-data-lastname=&template-test-data-nhsnumber=&template-test-data-address=' style="color: #d5281b;">Clear test data</a></p>
+          <p class="nhsuk-u-margin-top-4"><a href="?template-test-data-firstname=Mary&template-test-data-lastname=Poppins&template-test-data-nhsnumber=012%20345%206789&template-test-data-address=10%20Long%20Lane">Insert default test data</a></p>
 
-        {{ button({
-          "text": "Continue"
-        }) }}
+        </div>
+
+        <div class="nhsuk-form-group">
+
+          <p class="nhsuk-u-margin-top-4"><a href="?template-test-data-firstname=&template-test-data-lastname=&template-test-data-nhsnumber=&template-test-data-address=" style="color: #d5281b;">Clear test data</a></p>
+
+        </div>-->
+
+        <div class="nhsuk-form-group">
+
+          {{ button({
+            "text": "Add test personalisation data",
+            "classes": "nhsuk-u-margin-bottom-0"
+          }) }}
+
+        </div>
+
+      </form>
+
+      <form action="template-letter-1" method="post">
+
+        <div class="nhsuk-form-group">
+
+          {{ button({
+            "text": "Remove test personalisation data",
+            "classes": "nhsuk-button--secondary"
+          }) }}
+
+          <input type="hidden" name="personalisation-letter" value="">
+          <input type="hidden" name="show-save-banner" value="no">
+
+        </div>
       
       </form>
 
