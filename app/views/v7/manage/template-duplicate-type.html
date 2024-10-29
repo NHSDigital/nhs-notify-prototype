@@ -7,8 +7,8 @@
 {% block outerContent %}
 
 {{ backLink({
-  "href": "javascript:history.go(-1)",
-  "text": "Go back",
+  "href": "templates",
+  "text": "Back to all templates",
   "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
 }) }}
 
@@ -18,12 +18,13 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-heading-l">Which template type do you want the copy to be?</h1>
+      <h1 class="nhsuk-heading-xl">Copy '{{ data['template-copy-name'] }}'</h1>
+      <h2 class="nhsuk-heading-m">Choose a template type</h2>
 
-      <form action="/404" method="post">
+      <form action="route-template-duplicate" method="post">
 
       {{ radios({
-        "name": "radio-template-type",
+        "name": "radio-template-duplicate-type",
         "hint": {
           "text": "Select one option"
         },
@@ -39,25 +40,28 @@
           {
             "value": "sms",
             "text": "Text message (SMS)"
-          },
-          {
-            "value": "letter",
-            "text": "Standard letter"
-          },
-          {
-            value: "letter-large-print",
-            text: "Large print letter"
-          },
-          {
-            value: "letter-braille",
-            text: "Braille letter"
-          },
-          {
-            value: "letter-audio-cd",
-            text: "Audio CD letter"
           }
         ]
       }) }}
+
+      <!--
+      {
+        "value": "letter",
+        "text": "Standard letter"
+      },
+      {
+        value: "letter-large-print",
+        text: "Large print letter"
+      },
+      {
+        value: "letter-braille",
+        text: "Braille letter"
+      },
+      {
+        value: "letter-audio-cd",
+        text: "Audio CD letter"
+      }
+      -->
 
       {{ button({
         'text': 'Continue'

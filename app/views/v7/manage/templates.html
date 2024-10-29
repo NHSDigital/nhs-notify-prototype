@@ -83,9 +83,45 @@
             </td>
             <td role="cell" class="nhsuk-table__cell">
               <span class="nhsuk-table-responsive__heading">Action </span>
-              <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type">Copy</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type?template-copy-name={{ data['template-app-name-1'] }}">Copy</a></p>
               {% if data['template-app-name-1-approved'] != '1' %}
               <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=app&approve-template-name={{ data['template-app-name-1'] }}">Remove</a></p>
+              {% endif %}
+            </td>
+          </tr>
+
+          {% endif %}
+
+
+          {% if data['app-duplicate-template'] == 'yes' %}
+
+          <tr role="row" class="nhsuk-table__row">
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Name </span>
+              <a href="/404">
+                Copy: {{ data['template-copy-name'] }}
+              </a>
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Type </span>
+              NHS App
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Status </span>
+
+              {{ tag({
+                text: "Ready to submit"
+              })}}
+
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Date created </span>30th Apr 2024
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Action </span>
+              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Copy</a></p>
+              {% if data['template-app-name-1-approved'] != '1' %}
+              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Remove</a></p>
               {% endif %}
             </td>
           </tr>
@@ -128,7 +164,7 @@
             </td>
             <td role="cell" class="nhsuk-table__cell">
               <span class="nhsuk-table-responsive__heading">Action </span>
-              <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type">Copy</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type?template-copy-name={{ data['template-email-name-1'] }}">Copy</a></p>
               {% if data['template-email-name-1-approved'] != '1' %}
               <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=email&approve-template-name={{ data['template-email-name-1'] }}">Remove</a></p>
               {% endif %}
@@ -174,7 +210,7 @@
             </td>
             <td role="cell" class="nhsuk-table__cell">
               <span class="nhsuk-table-responsive__heading">Action </span>
-              <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type">Copy</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type?template-copy-name={{ data['template-sms-name-1'] }}">Copy</a></p>
               {% if data['template-sms-name-1-approved'] != '1' %}
               <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=sms&approve-template-name={{ data['template-sms-name-1'] }}">Remove</a></p>
               {% endif %}
@@ -220,7 +256,7 @@
             </td>
             <td role="cell" class="nhsuk-table__cell">
               <span class="nhsuk-table-responsive__heading">Action </span>
-              <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type">Copy</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type?template-copy-name={{ data['template-letter-name-1'] }}">Copy</a></p>
               {% if data['template-letter-name-1-approved'] != '1' %}
               <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=letter&approve-template-name={{ data['template-letter-name-1'] }}">Remove</a></p>
               {% endif %}

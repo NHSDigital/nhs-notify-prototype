@@ -148,4 +148,20 @@ router.post('*/route-template-letter-1', (req, res) => {
 
 });
 
+
+
+router.post('*/route-template-duplicate', (req, res) => {
+
+  const radio_template_duplicate_type = req.session.data['radio-template-duplicate-type'];
+
+  if (radio_template_duplicate_type === 'app') {
+      res.redirect('templates?app-duplicate-template=yes');
+  }
+
+  else {
+    res.redirect('/404');
+  }
+
+});
+
 module.exports = router
