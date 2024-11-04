@@ -73,7 +73,7 @@
               {% else %}
 
               {{ tag({
-                text: "Ready to submit"
+                text: "Not yet submitted"
               })}}
 
               {% endif %}
@@ -85,7 +85,7 @@
               <span class="nhsuk-table-responsive__heading">Action </span>
               <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type?template-copy-name={{ data['template-app-name-1'] }}">Copy</a></p>
               {% if data['template-app-name-1-approved'] != '1' %}
-              <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=app&approve-template-name={{ data['template-app-name-1'] }}">Remove</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=app&approve-template-name={{ data['template-app-name-1'] }}">Delete</a></p>
               {% endif %}
             </td>
           </tr>
@@ -110,7 +110,7 @@
               <span class="nhsuk-table-responsive__heading">Status </span>
 
               {{ tag({
-                text: "Ready to submit"
+                text: "Not yet submitted"
               })}}
 
             </td>
@@ -121,7 +121,7 @@
               <span class="nhsuk-table-responsive__heading">Action </span>
               <p class="nhsuk-u-margin-bottom-2"><a href="/404">Copy</a></p>
               {% if data['template-app-name-1-approved'] != '1' %}
-              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Remove</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Delete</a></p>
               {% endif %}
             </td>
           </tr>
@@ -154,7 +154,7 @@
               {% else %}
 
               {{ tag({
-                text: "Ready to submit"
+                text: "Not yet submitted"
               })}}
 
               {% endif %}
@@ -166,7 +166,7 @@
               <span class="nhsuk-table-responsive__heading">Action </span>
               <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type?template-copy-name={{ data['template-email-name-1'] }}">Copy</a></p>
               {% if data['template-email-name-1-approved'] != '1' %}
-              <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=email&approve-template-name={{ data['template-email-name-1'] }}">Remove</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=email&approve-template-name={{ data['template-email-name-1'] }}">Delete</a></p>
               {% endif %}
             </td>
           </tr>
@@ -200,7 +200,7 @@
               {% else %}
 
               {{ tag({
-                text: "Ready to submit"
+                text: "Not yet submitted"
               })}}
 
               {% endif %}
@@ -212,7 +212,7 @@
               <span class="nhsuk-table-responsive__heading">Action </span>
               <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type?template-copy-name={{ data['template-sms-name-1'] }}">Copy</a></p>
               {% if data['template-sms-name-1-approved'] != '1' %}
-              <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=sms&approve-template-name={{ data['template-sms-name-1'] }}">Remove</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=sms&approve-template-name={{ data['template-sms-name-1'] }}">Delete</a></p>
               {% endif %}
             </td>
           </tr>
@@ -246,7 +246,7 @@
               {% else %}
 
               {{ tag({
-                text: "Ready to submit"
+                text: "Not yet submitted"
               })}}
 
               {% endif %}
@@ -258,7 +258,7 @@
               <span class="nhsuk-table-responsive__heading">Action </span>
               <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type?template-copy-name={{ data['template-letter-name-1'] }}">Copy</a></p>
               {% if data['template-letter-name-1-approved'] != '1' %}
-              <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=letter&approve-template-name={{ data['template-letter-name-1'] }}">Remove</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=letter&approve-template-name={{ data['template-letter-name-1'] }}">Delete</a></p>
               {% endif %}
             </td>
           </tr>
