@@ -20,9 +20,9 @@
       <h1 class="nhsuk-heading-xl">
         <!-- Show the correct heading based on whether the page mode is set to 'create' or 'edit'-->
         {% if data['mode'] == 'edit' %}
-        Edit NHS app message template
+        Edit NHS App message template
         {% else %}
-        Create NHS app message template
+        Create NHS App message template
         {% endif %}
       </h1>
 
@@ -153,4 +153,8 @@
     </div>
 
   </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/js/guidanceToggle1.js" ></script>
 {% endblock %}

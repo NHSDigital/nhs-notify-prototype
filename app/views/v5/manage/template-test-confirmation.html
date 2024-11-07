@@ -1,0 +1,31 @@
+{% extends 'v5/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">
+        Message sent
+      </h1>
+
+      <p>
+        A test message has been sent to: 
+        {% if data['message-type'] == 'sms' %}{{data['test-sms-1']}}{%endif%}
+        {% if data['message-type'] == 'email' %}{{data['test-email-1']}}{%endif%}
+      </p>
+
+      <form action="{{ data['continue-url'] }}">
+        {{ button({
+          "text": "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

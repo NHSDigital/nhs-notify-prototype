@@ -1,0 +1,207 @@
+{% extends 'v6/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+{{ backLink({
+  "href": "templates",
+  "text": "Back to all templates",
+  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      {% if data['show-save-banner'] == 'yes' %}
+      <div class="notify-confirmation-panel">
+        <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-0">Template saved</h1>
+      </div>
+      {% endif %}
+
+      {% if data['template-sms-name-1-approved'] == '1' %}
+
+      {{ tag({
+        text: "Submitted",
+        classes: "nhsuk-u-margin-bottom-2 nhsuk-tag--grey"
+      })}}
+
+      {% else %}
+
+      {{ tag({
+        text: "Ready to submit",
+        classes: "nhsuk-u-margin-bottom-2"
+      })}}
+
+      {% endif %}
+
+      <h1 class="nhsuk-heading-xl">
+        {{ data['template-sms-name-1'] }}
+      </h1>
+
+      <table role="table" class="notify-template-content nhsuk-u-margin-bottom-4">
+        <tbody class="nhsuk-table__body">
+
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell" style="width:20%;">
+              Template ID
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              sms-a4b171b5-431f-4a5b-9d7a-9a4903c98e66
+            </td>
+          </tr>
+
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell">
+              Type
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              Text message (SMS)
+            </td>
+          </tr>
+
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell">
+              From
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+
+              <a href="/404">Who your text message will be sent from</a>
+
+              {#
+              {{ details({
+                "text": "Who your text message will be sent from",
+                "HTML": "
+                <p>Set your text message sender name during onboarding.</p>
+                <p>If you need to set up a different text message sender name for other messages, contact our onboarding team.</p>
+                ",
+                "classes": "nhsuk-u-margin-bottom-0"
+              }) }}
+              #}
+
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <table role="table" class="notify-template-content nhsuk-u-margin-bottom-6">
+        <tbody class="nhsuk-table__body">
+
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell" style="border-bottom: none; width: 20%;">
+              Message
+            </th>
+            <td role="cell" class="nhsuk-table__cell" style="border-bottom: none;">
+
+              <div class="linkify-this">
+                {{ data["template-sms-message-1"] }}
+              </div>
+
+            </td>
+          </tr>
+
+          {% if data['template-sms-name-1-approved'] != '1' %}
+          <tr role="row" class="nhsuk-table__row">
+
+            <td role="cell" colspan="2" class="nhsuk-table__cell">
+
+              <div class="nhsuk-warning-callout-nhs-notify nhsuk-u-padding-4">
+                <p class=" nhsuk-u-margin-0">This is only a basic preview. <a href="template-test?message-type=sms&continue-url=template-sms-1?show-save-banner=no">Send a test text message</a> to preview this template properly.</p>
+              </div>
+              
+            </td>
+          </tr>
+          {% endif %}
+
+        </tbody>
+      </table>
+
+      {% if data['template-sms-name-1-approved'] != '1' %}
+
+      <form action="route-template-next" method="post">
+
+        {{ radios({
+          "name": "template-next",
+          "fieldset": {
+            "legend": {
+              "text": "What would you like to do next?",
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "items": [
+            {
+              "value": "edit-sms",
+              "text": "Edit template"
+            },
+            {
+              "value": "test-sms",
+              "text": "Send a test text message"
+            },
+            {
+              "value": "submit-sms",
+              "text": "Submit template"
+            }
+          ]
+        }) }}
+  
+        <input type="hidden" name="approve-template-name" value="{{ data['template-sms-name-1'] }}">
+        <input type="hidden" name="message-type" value="sms">
+        <input type="hidden" name="continue-url" value="template-sms-1?show-save-banner=no">
+  
+        {{ button({
+          "text": "Continue"
+        }) }}
+  
+      </form>
+
+      <p><a href="templates">Back to all templates</a></p>
+
+      {% else %}
+
+      <p>This template cannot be edited because it has been submitted.</p>
+      <p>If you want to change a submitted or live template, you must create a new template to replace it.</p>
+      <p><a href="templates">Back to all templates</a></p>
+
+      {% endif %}
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+  const linkify = t => {
+  const isValidHttpUrl = s => {
+    let u
+    try {u = new URL(s)}
+    catch (_) {return false}
+    return u.protocol.startsWith("http")
+  }
+  const m = t.match(/(?<=\s|^)[a-zA-Z0-9-:/]+\.[a-zA-Z0-9-].+?(?=[.,;:?!-]?(?:\s|$))/g)
+  if (!m) return t
+  const a = []
+  m.forEach(x => {
+    const [t1, ...t2] = t.split(x)
+    a.push(t1)
+    t = t2.join(x)
+    const y = (!(x.match(/:\/\//)) ? 'https://' : '') + x
+    if (isNaN(x) && isValidHttpUrl(y)) 
+      a.push('<a href="' + y + '" target="_blank">' + y.split('/')[2] + '</a>')
+    else
+      a.push(x)
+  })
+  a.push(t)
+  return a.join('')
+}
+document.querySelectorAll('.linkify-this').forEach(o => {
+  o.innerHTML = linkify(o.innerHTML)
+})
+</script>
+
+{% endblock %}

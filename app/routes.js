@@ -33,5 +33,8 @@ router.use('/v2', require('./views/v2/_routes'));
 router.use('/v2_1', require('./views/v2_1/_routes'));
 router.use('/v3', require('./views/v3/_routes'));
 router.use('/v4', require('./views/v4/_routes'));
+router.use('/v5', require('./views/v5/_routes'));
+router.use('/v6', require('./views/v6/_routes'));
+router.use('/v7', require('./views/v7/_routes'));
 
 module.exports = router;

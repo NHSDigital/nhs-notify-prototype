@@ -1,7 +1,4 @@
-{% extends 'v2_1/layout.html' %}
-
-{% block header %}
-{% endblock %}
+{% extends 'v7/layout.html' %}
 
 {% block beforeContent %}
 {% endblock %}
@@ -9,29 +6,73 @@
 {% block outerContent %}
 {% endblock %}
 
-{% block main %}
+{% block content %}
 
-      <a href="/{{protoVersion}}/manage/template-type?auth=1"><img src="/images/nhsmail-login-screenshot.png" alt="" style="max-width: 1200px; margin: 0 auto; display:block;"></a>
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+  
+    <h1 class="nhsuk-heading-xl">
+      Sign in
+    </h1>
 
-      {#
-      <h1 class="nhsuk-heading-xl">
-        Log in
-      </h1>
+    <div class="nhsuk-u-padding-6 notify-template-content">
 
-      <p>Log in using your NHS mail or CIS2 login details to create and submit templates you want to send as messages using NHS Notify.</p>
+      <!--<h2 class="nhsuk-heading-m">Sign in using an NHS account</h2>
 
-      <a href="/{{protoVersion}}/manage/template-type"><img src="/images/microsoft-sign-in.jpg" class="nhsuk-button--microsoft"></a>
-
-      <p>or</p>
-
-      <form action="/{{protoVersion}}/manage/template-type">
-      <button class="nhsuk-button nhsuk-button--cis2" data-module="nhsuk-button" type="submit">
-        <img src="/images/nhs-logo.svg" alt="">Care identity
-      </button>
+      <form action="templates?auth=1" method="post">
+        <button class="nhsuk-button notify-button-blue">
+          <img src="https://assets.nhs.uk/images/nhs-logo.png" class="nhsuk-u-margin-right-2" style="display: inline-block; vertical-align: middle; width: 70px; border: none; outline: none;"/>
+          NHSmail
+        </button>
       </form>
-      #}
 
-{% endblock %}
+      <form action="templates?auth=1" method="post">
+        <button class="nhsuk-button notify-button-blue">
+          <img src="https://assets.nhs.uk/images/nhs-logo.png" class="nhsuk-u-margin-right-2" style="display: inline-block; vertical-align: middle; width: 70px; border: none; outline: none;"/>
+          Care Identity
+        </button>
+      </form>
 
-{% block footer %}
+      <form action="templates?auth=1" method="post">
+        <button class="nhsuk-button notify-button-blue">
+          <img src="https://assets.nhs.uk/images/nhs-logo.png" class="nhsuk-u-margin-right-2" style="display: inline-block; vertical-align: middle; width: 70px; border: none; outline: none;"/>
+          Digital developer account
+        </button>
+      </form>-->
+        
+      <form action="template-type?auth=1" method="post">
+
+        <!--<h2 class="nhsuk-heading-m">Or sign in using an NHS Notify account</h2>-->
+
+        {{ input({
+          label: {
+            text: "Email address"
+          },
+          id: "user-email",
+          name: "user-email"
+        }) }}
+  
+        {{ input({
+          label: {
+            text: "Password"
+          },
+          id: "user-password",
+          name: "user-password",
+          type: "password"
+        }) }}
+
+        <p><a href="/404">Forgot your password?</a></p>
+  
+        {{ button({
+          text: "Sign in",
+          classes: "nhsuk-u-margin-bottom-0"
+        }) }}
+  
+      </form>
+      
+    </div>
+  
+  </div>
+</div>
+
 {% endblock %}

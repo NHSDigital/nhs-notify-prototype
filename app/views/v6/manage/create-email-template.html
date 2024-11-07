@@ -1,0 +1,152 @@
+{% extends 'v6/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+{{ backLink({
+  "href": "javascript:history.go(-1)",
+  "text": "Go back",
+  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Show the correct heading based on whether the page mode is set to 'create' or 'edit'-->
+      <h1 class="nhsuk-heading-xl">
+        {% if data['mode'] == 'edit' %}
+        Edit email template
+        {% else %}
+        Create email template
+        {% endif %}
+      </h1>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div id="column-left" class="nhsuk-grid-column-full">
+
+      <form action="template-email-1" onsubmit="return checkFormEmail();">
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+          
+          <label class="nhsuk-label nhsuk-u-font-size-24" for="template-email-name-1">
+            Template name
+          </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
+          </div>
+
+          {% include "../includes/details-template-name.html" %}
+
+          {% if data['mode'] == 'edit' %}
+  
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-email-name-1" name="template-email-name-1" type="text" value="{{data['template-email-name-1']}}">
+
+          {% else %}
+
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-email-name-1" name="template-email-name-1" type="text">
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-email-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>  
+
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+          
+          <label class="nhsuk-label nhsuk-u-font-size-24" for="template-email-subject-1">
+            Subject line
+          </label>
+
+          {% if data['mode'] == 'edit' %}
+
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-email-subject-1" name="template-email-subject-1" type="text" value="{{data['template-email-subject-1']}}">
+
+          {% else %}
+
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-email-subject-1" name="template-email-subject-1" type="text">
+
+          {% endif %}
+  
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-email-subject-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a subject line
+          </span>  
+
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+
+          <label class="nhsuk-label nhsuk-u-font-size-24" for="template-email-message-1">
+            Message
+          </label>
+          
+          <p><a href="#" id="guidanceToggle">Show formatting and personalisation guidance</a>.</p>
+
+          {% if data['mode'] == 'edit' %}
+
+          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-email-message-1" name="template-email-message-1">{{data['template-email-message-1']}}</textarea>
+
+          {% else %}
+
+          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-email-message-1" name="template-email-message-1"></textarea>
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-email-message-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+          </span>
+
+        </div>
+
+        <!-- Set the variables that are used on subsequent pages -->
+        <input type="hidden" name="message-type" value="email">
+        <input type="hidden" name="continue-url" value="template-email-1?show-save-banner=no">
+        <input type="hidden" name="folder-1-email-templates" value="1">
+        <input type="hidden" name="template-email-name-1-approved" value="">
+        <input type="hidden" name="show-save-banner" value="yes">
+
+        {{ button({
+          "text": "Save and preview"
+        }) }}
+
+      </form>
+
+    </div>
+
+    <div id="column-right" class="nhsuk-grid-column-one-third">
+
+      <h2 class="nhsuk-heading-m" id="guidance">Personalisation</h2>
+
+      {% include "../includes/details-personalisation-no-address.html" %}
+
+      <h2 class="nhsuk-heading-m">Message formatting</h2>
+
+      {% include "../includes/details-linebreaks.html" %}
+      
+      {% include "../includes/details-headings.html" %}
+
+      {% include "../includes/details-bullets.html" %}
+
+      {% include "../includes/details-numbered-lists.html" %}
+
+      {% include "../includes/details-lines.html" %}
+
+      {% include "../includes/details-links.html" %}
+
+    </div>
+
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/js/guidanceToggle2.js" ></script>
+{% endblock %}

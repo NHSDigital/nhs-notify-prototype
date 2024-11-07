@@ -1,0 +1,73 @@
+{% extends 'v5/layout.html' %}
+
+
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+{{ backLink({
+  "href": "templates",
+  "text": "Back to all templates",
+  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">
+        Submit '{{ data['approve-template-name'] }}'
+      </h1>
+
+      <p class="nhsuk-body-l">When you submit a template, it will be used by NHS Notify to set up the messages you want to send.</p>
+
+      <form action="template-approve-confirmation">
+
+        <h2 class="nhsuk-heading-m">Before you submit</h2>
+
+        <p>You should check that that your template:</p>
+        <ul>
+          <li>is signed off by the relevant stakeholders in your team</li>
+          <li>does not have any spelling errors</li>
+          <li>is formatted correctly</li>
+        </ul>
+
+        <p>If you want to change a submitted template, you must create a new template to replace it.</p>
+
+        {{ warningCallout({
+          "heading": "Important",
+          "HTML": "<p>When you submit this template it cannot be changed. It can only be replaced by a new template.</p>"
+        }) }}
+
+        {{ button({
+          "text": "Submit template"
+        }) }}
+
+        <!-- Change the status for the relevant message type to 'approved' -->
+        {% if data['template-app-name-1-approved'] == '0' %}
+        <input type="hidden" name="template-app-name-1-approved" value="1">
+        {% endif %}
+
+        {% if data['template-email-name-1-approved'] == '0' %}
+        <input type="hidden" name="template-email-name-1-approved" value="1">
+        {% endif %}
+
+        {% if data['template-sms-name-1-approved'] == '0' %}
+        <input type="hidden" name="template-sms-name-1-approved" value="1">
+        {% endif %}
+
+        {% if data['template-letter-name-1-approved'] == '0' %}
+        <input type="hidden" name="template-letter-name-1-approved" value="1">
+        {% endif %}
+
+      </form>
+
+      <p><a href="templates">Back to all templates</a></p>
+
+    </div>
+  </div>
+{% endblock %}

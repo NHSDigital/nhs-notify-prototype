@@ -1,0 +1,81 @@
+{% extends 'v6/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+  
+    <h1 class="nhsuk-heading-xl">
+      Sign in to NHS Notify
+    </h1>
+
+    <div class="nhsuk-u-padding-6 notify-template-content">
+
+      <h2 class="nhsuk-heading-m">Sign in using an existing account</h2>
+
+      <form action="templates?auth=1" method="post">
+        <button class="nhsuk-button notify-button-blue">
+          <img src="https://assets.nhs.uk/images/nhs-logo.png" class="nhsuk-u-margin-right-2" style="display: inline-block; vertical-align: middle; width: 70px; border: none; outline: none;"/>
+          NHSmail
+        </button>
+      </form>
+
+      <form action="templates?auth=1" method="post">
+        <button class="nhsuk-button notify-button-blue">
+          <img src="https://assets.nhs.uk/images/nhs-logo.png" class="nhsuk-u-margin-right-2" style="display: inline-block; vertical-align: middle; width: 70px; border: none; outline: none;"/>
+          Care Identity
+        </button>
+      </form>
+
+      <form action="templates?auth=1" method="post">
+        <button class="nhsuk-button notify-button-blue">
+          <img src="https://assets.nhs.uk/images/nhs-logo.png" class="nhsuk-u-margin-right-2" style="display: inline-block; vertical-align: middle; width: 70px; border: none; outline: none;"/>
+          Digital developer account
+        </button>
+      </form>
+
+      <p class="nhsuk-body-l nhsuk-u-margin-top-4">or</p>
+
+      <h2 class="nhsuk-heading-m">Sign in using your NHS Notify account</h2>
+
+      <form action="templates?auth=1" method="post">
+
+      {{ input({
+        label: {
+          text: "Email address"
+        },
+        id: "user-email",
+        name: "user-email"
+      }) }}
+
+      {{ input({
+        label: {
+          text: "Password"
+        },
+        id: "user-password",
+        name: "user-password",
+        type: "password"
+      }) }}
+
+      {{ button({
+        text: "Sign in"
+      }) }}
+
+      </form>
+
+      <p><a href="">Forgot your password?</a></p>
+
+    </div>
+
+    
+  
+  </div>
+</div>
+
+{% endblock %}

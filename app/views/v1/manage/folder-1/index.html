@@ -1,8 +1,6 @@
 {% extends 'v1/layout.html' %}
 
-{% block pageTitle %}
-  NHS.UK prototype kit
-{% endblock %}
+
 
 {% block beforeContent %}
 {% endblock %}
@@ -35,7 +33,7 @@
       
           <li class="nhsuk-tabs__list-item nhsuk-tabs__list-item--selected">
             <a class="nhsuk-tabs__tab" href="#app">
-              NHS app
+              NHS App
             </a>
           </li>
       
@@ -61,7 +59,7 @@
       
         <div class="nhsuk-tabs__panel" id="app">
 
-          <h3 class="nhsuk-heading-m">NHS app templates</h3>
+          <h3 class="nhsuk-heading-m">NHS App templates</h3>
 
           <form action="">
             {{ button({
@@ -75,7 +73,7 @@
           
           {% else %}
 
-          <p>There are no NHS app templates. Create a template to get started.</p>
+          <p>There are no NHS App templates. Create a template to get started.</p>
 
           {% endif %}
           

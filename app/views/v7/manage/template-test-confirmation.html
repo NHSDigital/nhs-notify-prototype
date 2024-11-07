@@ -1,0 +1,64 @@
+{% extends 'v7/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">
+        Message sent
+      </h1>
+
+      <p>
+        A test message has been sent to: 
+        {% if data['message-type'] == 'sms' %}{{data['test-sms-1']}}{%endif%}
+        {% if data['message-type'] == 'email' %}{{data['test-email-1']}}{%endif%}
+      </p>
+
+      <a href="{{ data['continue-url'] }}" class="nhsuk-button">Continue</a>
+
+      <!--
+      <form action="route-template-next" method="post">
+
+        {{ radios({
+          "name": "template-next",
+          "fieldset": {
+            "legend": {
+              "text": "What would you like to do next with this template?",
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "items": [
+            {
+              "value": "edit-email",
+              "text": "Edit"
+            },
+            {
+              "value": "test-email",
+              "text": "Send another test email"
+            },
+            {
+              "value": "submit-email",
+              "text": "Submit"
+            }
+          ]
+        }) }}
+
+        <input type="hidden" name="approve-template-name" value="{{ data['template-email-name-1'] }}">
+        <input type="hidden" name="message-type" value="email">
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+      -->
+
+    </div>
+  </div>
+{% endblock %}

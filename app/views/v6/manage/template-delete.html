@@ -1,0 +1,25 @@
+{% extends 'v6/layout.html' %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">Are you sure you want to remove the template '{{ data['approve-template-name'] }}'?</h1>
+
+      <p>Doing this will remove the template from your account.</p>
+      <p>If you need to restore this template after removing it, you will need to contact NHS Notify.</p>
+
+      <a href="templates" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-right-2">No, go back</a>
+
+      <a href="templates?folder-1-{{data['message-type']}}-templates=0" class="nhsuk-button nhsuk-button--warning">Yes, remove template</a>
+
+    </div>
+  </div>
+{% endblock %}

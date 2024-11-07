@@ -15,6 +15,17 @@ a:visited{
     color:$nhsuk-link-color;
 }
 
+.notify-button-blue{
+    background-color: $color_nhsuk-blue;
+    color: $color_nhsuk-white;
+
+    &:hover,
+    &:active {
+        background-color: $color_nhsuk-blue;
+        color: $color_nhsuk-white;
+    }
+}
+
 .notify-template-borderbox{
     border: 4px solid $nhsuk-border-color;
     padding: 1.5rem 1.5rem 0 1.5rem;
@@ -120,6 +131,10 @@ a:visited{
     min-height: 350px;
 }
 
+.message-body-letter{
+    min-height: 600px;
+}
+
 .nhsuk-warning-callout-nhs-notify{
     border: $color_nhsuk-yellow 1px solid;
     background-color: #fff9c4;
@@ -133,4 +148,39 @@ a:visited{
 // Hide the right-hand column on the create template pages when the page loads
 #column-right{
     display: none;
+}
+
+
+.nhsuk-button--warning {
+    background-color: #d5281b;
+    box-shadow: 0 4px 0 #6b140e;
+    
+    &:active{
+        background-color: #6b140e;
+    }
+    
+    &:hover{
+        background-color: #a82015;
+    }
+}
+
+// Custom styles for the email preview to closely match the GOV Notify preview
+.notify-template-email-message{
+    h1{
+        font-size: 27px;
+        margin-bottom: 15px;
+    }
+
+    h2{
+        font-size: 19px;
+        margin-bottom: 15px;
+        padding-top: 0;
+    }
+
+    h3,h4,h5,h6{
+        font-size: 19px;
+        margin-bottom: 15px;
+        font-weight: normal;
+    }
+
 }
