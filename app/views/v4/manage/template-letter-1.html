@@ -54,15 +54,6 @@ window.onload = function () {
 
           <tr role="row" class="nhsuk-table__row">
             <th role="cell" class="nhsuk-table__cell">
-              Template ID
-            </th>
-            <td role="cell" class="nhsuk-table__cell">
-              a4b171b5-431f-4a5b-9d7a-9a4903c98e66
-            </td>
-          </tr>
-          
-          <tr role="row" class="nhsuk-table__row">
-            <th role="cell" class="nhsuk-table__cell">
               From
             </th>
             <td role="cell" class="nhsuk-table__cell">
@@ -76,6 +67,15 @@ window.onload = function () {
                 "classes": "nhsuk-u-margin-bottom-0"
               }) }}
 
+            </td>
+          </tr>
+          
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell">
+              Template ID
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              a4b171b5-431f-4a5b-9d7a-9a4903c98e66
             </td>
           </tr>
 
@@ -99,7 +99,7 @@ window.onload = function () {
 
         document.addEventListener("adobe_dc_view_sdk.ready", function(){ 
           var adobeDCView = new AdobeDC.View({clientId: "f419e8ee3f914a539f3dca22cecbca79", divId: "adobe-dc-view"});
-          // Client IDs: live: f419e8ee3f914a539f3dca22cecbca79    localhost: 1b86a3aba48f4be3b0d473ba30e9472c
+          // Live client ID: f419e8ee3f914a539f3dca22cecbca79    1b86a3aba48f4be3b0d473ba30e9472c
           adobeDCView.previewFile({
             content:{location: {url: "/files/example-letter-vacs.pdf"}},
             metaData:{fileName: "example-letter-vacs.pdf"}
