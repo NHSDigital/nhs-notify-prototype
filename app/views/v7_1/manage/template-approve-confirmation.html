@@ -1,0 +1,52 @@
+{% extends 'v7_1/layout.html' %}
+
+
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <div class="notify-confirmation-panel">
+        <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-0">Template submitted</h1>
+      </div>
+
+      <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-1">Template name</h2>
+      <p>{{ data['approve-template-name']}}</p>
+
+      <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-1">Template ID</h2>
+      <p>{{data['message-type']}}-a4b171b5-431f-4a5b-9d7a-9a4903c98e66</p>
+
+      <h2 class="nhsuk-heading-l">What you need to do next</h2>
+
+      <p>You'll receive a confirmation email, which contains the template name and ID.</p>
+
+      <h3 class="nhsuk-heading-s">If you're currently onboarding</h3>
+
+      <p>Tell your onboarding manager once you've submitted all your templates.</p>
+
+      <h3 class="nhsuk-heading-s">If you've already onboarded</h3>
+
+      <p>Once you've submitted all your templates <a href="https://nhsdigitallive.service-now.com/nhs_digital?id=sc_cat_item&sys_id=6208dbce1be759102eee65b9bd4bcbf5" target="_blank">raise a request with the service desk (opens in a new tab)</a>.</p>
+
+      <!--<p><a href="https://nhsdigitallive.service-now.com/nhs_digital?id=sc_cat_item&sys_id=6208dbce1be759102eee65b9bd4bcbf5" target="_blank">Raise a request with the service desk (opens in a new tab)</a> once you've submitted all your templates.</p>-->
+      
+      <!--<form action="/404">
+        {{ button({
+          "text": "Raise a service desk request",
+          "classes": "nhsuk-button--secondary"
+        }) }}
+      </form>-->
+
+      <hr class="nhsuk-section-break--visible" />
+
+      <p><a href="templates">Back to all templates</a></p>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'v7_1/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+  
+    <h1 class="nhsuk-heading-xl">
+      Sign in
+    </h1>
+
+    <div class="nhsuk-u-padding-6 notify-template-content">
+
+      <h2 class="nhsuk-heading-m">Sign in using an NHS account</h2>
+
+      <form action="templates?auth=1" method="post">
+        <button class="nhsuk-button notify-button-blue">
+          <img src="https://assets.nhs.uk/images/nhs-logo.png" class="nhsuk-u-margin-right-2" style="display: inline-block; vertical-align: middle; width: 70px; border: none; outline: none;"/>
+          NHSmail
+        </button>
+      </form>
+
+      <form action="templates?auth=1" method="post">
+        <button class="nhsuk-button notify-button-blue">
+          <img src="https://assets.nhs.uk/images/nhs-logo.png" class="nhsuk-u-margin-right-2" style="display: inline-block; vertical-align: middle; width: 70px; border: none; outline: none;"/>
+          Care Identity
+        </button>
+      </form>
+
+      <form action="templates?auth=1" method="post">
+        <button class="nhsuk-button notify-button-blue">
+          <img src="https://assets.nhs.uk/images/nhs-logo.png" class="nhsuk-u-margin-right-2" style="display: inline-block; vertical-align: middle; width: 70px; border: none; outline: none;"/>
+          Digital developer account
+        </button>
+      </form>
+        
+      <form action="templates?auth=1" method="post" class="nhsuk-u-margin-top-4" autocomplete="off">
+
+        <h2 class="nhsuk-heading-m">Or sign in using an NHS Notify account</h2>
+
+        {{ input({
+          label: {
+            text: "Email address"
+          },
+          id: "user-email",
+          name: "user-email"
+        }) }}
+  
+        {{ input({
+          label: {
+            text: "Password"
+          },
+          id: "user-password",
+          name: "user-password",
+          type: "password"
+        }) }}
+
+        <p><a href="">Forgot your password?</a></p>
+  
+        {{ button({
+          text: "Sign in"
+        }) }}
+  
+      </form>
+      
+    </div>
+  
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'v7_1/layout.html' %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block outerContent %}
+
+{{ backLink({
+  "href": "templates",
+  "text": "Back to all templates",
+  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">Copy '{{ data['template-copy-name'] }}'</h1>
+      <h2 class="nhsuk-heading-m">Choose a template type</h2>
+
+      <form action="route-template-duplicate" method="post">
+
+      {{ radios({
+        "name": "radio-template-duplicate-type",
+        "hint": {
+          "text": "Select one option"
+        },
+        "items": [
+          {
+            "value": "app",
+            "text": "NHS App message"
+          },
+          {
+            "value": "email",
+            "text": "Email"
+          },
+          {
+            "value": "sms",
+            "text": "Text message (SMS)"
+          }
+        ]
+      }) }}
+
+      <!--
+      {
+        "value": "letter",
+        "text": "Standard letter"
+      },
+      {
+        value: "letter-large-print",
+        text: "Large print letter"
+      },
+      {
+        value: "letter-braille",
+        text: "Braille letter"
+      },
+      {
+        value: "letter-audio-cd",
+        text: "Audio CD letter"
+      }
+      -->
+
+      {{ button({
+        'text': 'Continue'
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

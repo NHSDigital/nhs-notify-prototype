@@ -1,0 +1,89 @@
+{% extends 'v7_1/layout.html' %}
+
+{% block head %}{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+{{ backLink({
+  "href": "template-test-letter",
+  "text": "Back to create test personalisation data",
+  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <span class="nhsuk-caption-xl">Preview with personalisation data</span>
+      <h1 class="nhsuk-heading-xl">
+        {{ data['template-letter-name-1'] }}
+      </h1>
+
+      <div id="adobe-dc-view" style="height:800px; width:100%;" class="nhsuk-u-margin-bottom-6"></div>
+
+      <form action="route-template-next" method="post">
+
+        {{ radios({
+          "name": "template-next",
+          "fieldset": {
+            "legend": {
+              "text": "What would you like to do next?",
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "items": [
+            {
+              "value": "edit-personalisation-letter",
+              "text": "Edit personalisation data"
+            },
+            {
+              "value": "view-letter",
+              "text": "Go back to template"
+            }
+          ]
+        }) }}
+  
+        <input type="hidden" name="approve-template-name" value="{{ data['template-letter-name-1'] }}">
+        <input type="hidden" name="message-type" value="letter">
+        <input type="hidden" name="continue-url" value="template-letter-1?show-save-banner=no">
+  
+        {{ button({
+          "text": "Continue"
+        }) }}
+  
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+
+<script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
+<script type="text/javascript">
+  const previewConfig = {
+    embedMode: "SIZED_CONTAINER",
+    showDownloadPDF: true,
+    showPrintPDF: true,
+    showZoomControl: true,
+    showAnnotationTools: false,
+    showThumbnails: false,
+    showBookmarks: false    
+  }
+
+  document.addEventListener("adobe_dc_view_sdk.ready", function(){ 
+    var adobeDCView = new AdobeDC.View({clientId: "1b86a3aba48f4be3b0d473ba30e9472c", divId: "adobe-dc-view"});
+    // Client IDs: live: f419e8ee3f914a539f3dca22cecbca79    localhost: 1b86a3aba48f4be3b0d473ba30e9472c
+    adobeDCView.previewFile({
+      content:{location: {url: "/files/example-letter-vacs.pdf"}},
+      metaData:{fileName: "example-letter-vacs.pdf"}
+    }, previewConfig);
+  });
+</script>
+
+{% endblock %}
