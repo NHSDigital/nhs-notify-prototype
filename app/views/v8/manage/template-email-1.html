@@ -1,4 +1,4 @@
-{% extends 'v7_1/layout.html' %}
+{% extends 'v8/layout.html' %}
 
 {% block head %}
 
@@ -92,31 +92,8 @@ window.onload = function () {
             </td>
           </tr>
 
-          <!--<tr role="row" class="nhsuk-table__row">
-            <th role="cell" class="nhsuk-table__cell">
-              From
-            </th>
-            <td role="cell" class="nhsuk-table__cell">
-              
-              <a href="https://notify.nhs.uk/using-nhs-notify/tell-recipients-who-your-messages-are-from" target="_blank">Learn more about from and reply-to addresses (opens in a new tab)</a>
-
-            </td>
-          </tr>-->
-
         </tbody>
       </table>
-
-      <!--{{ details({
-        text: "Learn about sending emails",
-        HTML: "
-        <p>Learn more about:</p>
-        <ul>
-          <li><a href='https://notify.nhs.uk/features/emails' target='_blank'>Emails</a></li>
-          <li><a href='https://notify.nhs.uk/using-nhs-notify/tell-recipients-who-your-messages-are-from' target='_blank'>From and reply-to addresses (opens in a new tab)</a></li>
-          <li><a href='https://notify.nhs.uk/using-nhs-notify/delivery-times' target='_blank'>Delivery times (opens in a new tab)</a></li>
-        </ul>
-        "
-      }) }}-->
 
       <table role="table" class="notify-template-content nhsuk-u-margin-bottom-6">
         <tbody class="nhsuk-table__body">
@@ -131,7 +108,7 @@ window.onload = function () {
           </tr>
 
           <tr role="row" class="nhsuk-table__row">
-            <th role="cell" class="nhsuk-table__cell" style="border-bottom: none;">
+            <th role="cell" class="nhsuk-table__cell" style="width:20%; border-bottom: none;">
               Message
             </th>
             <td role="cell" class="nhsuk-table__cell notify-template-email-message" style="border-bottom: none;">
@@ -142,7 +119,7 @@ window.onload = function () {
             </td>
           </tr>
 
-          <!--{% if data['template-email-name-1-approved'] != '1' %}
+          {% if data['template-email-name-1-approved'] != '1' %}
           <tr role="row" class="nhsuk-table__row">
 
             <td role="cell" colspan="2" class="nhsuk-table__cell">
@@ -153,7 +130,7 @@ window.onload = function () {
               
             </td>
           </tr>
-          {% endif %}-->
+          {% endif %}
 
         </tbody>
       </table>
@@ -174,6 +151,10 @@ window.onload = function () {
             {
               "value": "edit-email",
               "text": "Edit template"
+            },
+            {
+              "value": "test-email",
+              "text": "Send a test email"
             },
             {
               "value": "submit-email",
