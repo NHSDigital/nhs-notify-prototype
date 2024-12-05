@@ -23,6 +23,8 @@ module.exports = {
     "template-letter-heading-1": "The main heading of the letter",
     "template-letter-message-1": "Here is the message body.",
 
-    "checkbox-accessible-letter": ""
+    "checkbox-accessible-letter": "",
+    "messages-draft": "0",
+    "messages-prod": "0"
   
   }

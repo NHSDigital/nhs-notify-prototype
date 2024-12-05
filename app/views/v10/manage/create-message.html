@@ -1,0 +1,153 @@
+{% extends 'v10/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-one-quarter">
+
+      <ul class="nhsuk-list app-side-nav__list">
+
+        {{sideNavItem(title='Message groups', link='folders', active='0')}}
+
+        <li class="app-side-nav__item nhsuk-u-margin-left-3"><a href="folder" class="app-side-nav__link">{{ data['folder-name-1'] }}</a></li>
+
+        <li class="app-side-nav__item nhsuk-u-margin-left-5">
+
+          <ul class="nhsuk-list app-side-nav__list nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-3">
+
+            {{sideNavSubItem(title='Messages', link='folder-messages', active='1')}}
+
+            {{sideNavSubItem(title='Templates', link='folder-templates', active='0')}}
+
+            {{sideNavSubItem(title='Settings', link='folder-settings', active='0')}}
+
+          </ul>
+
+        </li>
+
+      </ul>
+
+    </div>
+
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <h1 class="nhsuk-heading-xl">
+        Create a message
+      </h1>
+
+      {{ input({
+        name: "message-name-1",
+        label: {
+          text: "Message name"
+        },
+          hint: {
+          text: "Your recipients will not see this"
+        },
+        formGroup: {
+          classes: "nhsuk-u-margin-bottom-6"
+        }
+      }) }}
+
+      <dl class="nhsuk-summary-list notify-summary-list">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            routingPlanId
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            b838b13c-f98c-4def-93f0-515d4e4f4ee1
+          </dd>
+      
+        </div>
+        
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Status
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ tag({
+              text: "Draft",
+              classes: "nhsuk-tag--blue"
+            })}}
+            <!--{{ tag({
+              text: "In production",
+              classes: "nhsuk-tag--red"
+          })}}-->
+          </dd>
+      
+        </div>
+      
+      </dl>
+
+      <h2 class="nhsuk-heading-m">Plan how this message is sent</h2>
+
+      <div class="notify-routing-plan">
+
+        <div class="notify-channel-block">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">1</div>
+            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">First channel</h3>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h4 class="nhsuk-heading-xs">NHS App</h4>
+              <p class="nhsuk-u-margin-bottom-0"><a href="">Choose template</a></p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="notify-channel-block">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">2</div>
+            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Second channel</h3>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h4 class="nhsuk-heading-xs">NHS App</h4>
+              <p class="nhsuk-u-margin-bottom-0"><a href="">Choose template</a></p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="notify-channel-block">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">3</div>
+            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Third channel</h3>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h4 class="nhsuk-heading-xs">NHS App</h4>
+              <p class="nhsuk-u-margin-bottom-0"><a href="">Choose template</a></p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <form action="create-message">
+        {{ button({
+          'text': 'Create message'
+        }) }}
+      </form>
+
+      
+
+
+    </div>
+  </div>
+{% endblock %}

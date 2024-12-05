@@ -1,0 +1,211 @@
+{% extends 'v10/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-one-quarter">
+
+      <ul class="nhsuk-list app-side-nav__list">
+
+        {{sideNavItem(title='Message groups', link='folders', active='0')}}
+
+        <li class="app-side-nav__item nhsuk-u-margin-left-3"><a href="folder" class="app-side-nav__link">{{ data['folder-name-1'] }}</a></li>
+
+        <li class="app-side-nav__item nhsuk-u-margin-left-5">
+
+          <ul class="nhsuk-list app-side-nav__list nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-3">
+
+            {{sideNavSubItem(title='Messages', link='folder-messages', active='1')}}
+
+            {{sideNavSubItem(title='Templates', link='folder-templates', active='0')}}
+
+            {{sideNavSubItem(title='Settings', link='folder-settings', active='0')}}
+
+          </ul>
+
+        </li>
+
+      </ul>
+
+    </div>
+
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <span class="nhsuk-caption-xl">{{ data['folder-name-1'] }}</span>
+      <h1 class="nhsuk-heading-xl">
+        Messages
+      </h1>
+
+      <form action="create-message">
+        {{ button({
+          'text': 'Create message'
+        }) }}
+      </form>
+
+      <details class="nhsuk-details nhsuk-expander" open>
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Draft ({{ data['messages-draft'] }})
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          
+
+          {% if data['messages-draft'] == '1' %}
+
+          <table role="table" class="nhsuk-table-responsive">
+        
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">
+                  <div class="nhsuk-checkboxes">
+                    <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1"></label>
+                    </div>
+                  </div>
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Name
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Date and <br />time created
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  
+                  <div class="nhsuk-checkboxes">
+                    <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1"></label>
+                    </div>
+                  </div>
+
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Name </span>
+                  <a href="">
+                    {{ data['message-name-1'] }}
+                  </a>
+                </td>
+                <td role="cell" class="nhsuk-table__cell nhsuk-body-s">
+                  <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />09:34
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Action </span>
+                  <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type?template-copy-name={{ data['template-app-name-1'] }}">Copy</a></p>
+                  {% if data['template-app-name-1-approved'] != '1' %}
+                  <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=app&approve-template-name={{ data['template-app-name-1'] }}">Delete</a></p>
+                  {% endif %}
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+    
+          {% else %}
+     
+          <p>You do not have any draft messages yet.</p>
+    
+          {% endif %}
+
+
+        </div>
+      </details>
+
+
+      <details class="nhsuk-details nhsuk-expander">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Production ({{ data['messages-prod'] }})
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          
+
+          {% if data['messages-prod'] == '1' %}
+
+          <table role="table" class="nhsuk-table-responsive">
+        
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">
+                  <div class="nhsuk-checkboxes">
+                    <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1"></label>
+                    </div>
+                  </div>
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Name
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Date and <br />time created
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  
+                  <div class="nhsuk-checkboxes">
+                    <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1"></label>
+                    </div>
+                  </div>
+
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Name </span>
+                  <a href="">
+                    {{ data['message-name-1'] }}
+                  </a>
+                </td>
+                <td role="cell" class="nhsuk-table__cell nhsuk-body-s">
+                  <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />09:34
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Action </span>
+                  <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type?template-copy-name={{ data['template-app-name-1'] }}">Copy</a></p>
+                  {% if data['template-app-name-1-approved'] != '1' %}
+                  <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=app&approve-template-name={{ data['template-app-name-1'] }}">Delete</a></p>
+                  {% endif %}
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+    
+          {% else %}
+     
+          <p>You do not have any messages in production yet.</p>
+    
+          {% endif %}
+
+
+        </div>
+      </details>
+
+
+    </div>
+  </div>
+{% endblock %}

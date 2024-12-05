@@ -1,0 +1,223 @@
+{% extends 'v10/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+{% if data['mode'] != 'edit' %}
+
+{{ backLink({
+  "href": "template-type",
+  "text": "Back to choose a template type",
+  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Show the correct heading based on whether the page mode is set to 'create' or 'edit'-->
+      <h1 class="nhsuk-heading-xl">
+        {% if data['mode'] == 'edit' %}
+        Edit letter template
+        {% else %}
+        Create letter template
+        {% endif %}
+      </h1>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div id="column-left" class="nhsuk-grid-column-full">
+
+      <form action="route-template-letter-1" onsubmit="return checkFormLetter();" method="post" autocomplete="off">
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+          
+          <label class="nhsuk-label nhsuk-u-font-size-22" for="template-letter-name-1">
+            Template name
+          </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
+          </div>
+
+          {% include "../includes/details-template-name.html" %}
+
+          {% if data['mode'] == 'edit' %}
+  
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-letter-name-1" name="template-letter-name-1" type="text" value="{{data['template-letter-name-1']}}">
+
+          {% else %}
+
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-letter-name-1" name="template-letter-name-1" type="text">
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-letter-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>  
+
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+
+          <label class="nhsuk-label nhsuk-u-font-size-22" for="template-letter-message-1">
+            Letter content
+          </label>
+          
+          <p><a href="#" id="guidanceToggle">Show formatting and personalisation guidance</a>.</p>
+
+          {% if data['mode'] == 'edit' %}
+
+          <textarea class="nhsuk-textarea message-body-letter nhsuk-u-margin-bottom-2" id="template-letter-message-1" name="template-letter-message-1">{{data['template-letter-message-1']}}</textarea>
+
+          {% else %}
+
+          <textarea class="nhsuk-textarea message-body-letter nhsuk-u-margin-bottom-2" id="template-letter-message-1" name="template-letter-message-1"></textarea>
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-letter-message-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+          </span>
+
+        </div>
+
+        <!--<div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+
+          <label class="nhsuk-label nhsuk-u-font-size-22 nhsuk-u-margin-bottom-4">
+            Do you want to add test personalisation data to the letter preview?
+          </label>
+
+          <div class="nhsuk-radios nhsuk-radios--inline">
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="radio-letter-test-data-1" name="radio-letter-test-data" type="radio" value="yes" {% if data['radio-letter-test-data'] == 'yes' %}checked{% endif %}>
+              <label class="nhsuk-label nhsuk-radios__label" for="radio-letter-test-data-1">
+                Yes
+              </label>
+            </div>
+      
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="radio-letter-test-data-2" name="radio-letter-test-data" type="radio" value="no" {% if data['radio-letter-test-data'] == 'no' %}checked{% endif %}>
+              <label class="nhsuk-label nhsuk-radios__label" for="radio-letter-test-data-2">
+                No
+              </label>
+            </div>
+      
+          </div>
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="radio-letter-test-data--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Choose whether you want to add test personalisation data to the letter preview
+          </span>
+
+        </div>-->
+
+        <!--<div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+
+          <label for="checkbox-accessible-letter" class="nhsuk-label nhsuk-u-font-size-22">Request accessible letter formats</label>
+
+          <div class="nhsuk-hint">If you also need this letter template to be produced in accessible formats, choose which formats you need.</div>
+
+          <p><a href="/404">Learn more about accessible letter formats (opens in a new tab)</a>.</p>
+
+          <div class="nhsuk-checkboxes">
+
+            <div class="nhsuk-checkboxes__item">
+              <input class="nhsuk-checkboxes__input" id="example-1" name="checkbox-accessible-letter" type="checkbox" value="accessible-large-print" {% if 'accessible-large-print' in data['checkbox-accessible-letter'] %}checked{% endif %}>
+              <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
+                Large print
+              </label>
+            </div>
+    
+            <div class="nhsuk-checkboxes__item">
+              <input class="nhsuk-checkboxes__input" id="example-2" name="checkbox-accessible-letter" type="checkbox" value="accessible-braille" {% if 'accessible-braille' in data['checkbox-accessible-letter'] %}checked{% endif %}>
+              <label class="nhsuk-label nhsuk-checkboxes__label" for="example-2">
+                Braille
+              </label>
+            </div>
+    
+            <div class="nhsuk-checkboxes__item">
+              <input class="nhsuk-checkboxes__input" id="example-3" name="checkbox-accessible-letter" type="checkbox" value="accessible-audio-cd" {% if 'accessible-audio-cd' in data['checkbox-accessible-letter'] %}checked{% endif %}>
+              <label class="nhsuk-label nhsuk-checkboxes__label" for="example-3">
+                Audio CD
+              </label>
+            </div>
+    
+          </div>
+
+        </div>-->
+
+        <!-- Set the variables that are used on subsequent pages -->
+        <input type="hidden" name="message-type" value="letter">
+        <input type="hidden" name="continue-url" value="template-letter-1?show-save-banner=no">
+        <input type="hidden" name="folder-1-letter-templates" value="1">
+        <input type="hidden" name="template-letter-name-1-approved" value="">
+        <input type="hidden" name="show-save-banner" value="yes">
+
+        <!--<p><a href="">Learn about letter pricing</a>.</p>-->
+
+        {{ button({
+          "text": "Save and preview"
+        }) }}
+
+        <!--{{ details({
+          text: "Learn more about sending letters",
+          HTML: "
+          <p>Learn more about:</p>
+          <ul>
+            <li><a href='https://notify.nhs.uk/pricing/letters' target='_blank'>Letter pricing (opens in a new tab)</a></li>
+            <li><a href='https://notify.nhs.uk/using-nhs-notify/tell-recipients-who-your-messages-are-from' target='_blank'>Return addresses (opens in a new tab)</a></li>
+            <li><a href='https://notify.nhs.uk/using-nhs-notify/delivery-times' target='_blank'>Delivery times (opens in a new tab)</a></li>
+          </ul>
+          "
+        }) }}-->
+
+      </form>
+
+    </div>
+
+    <div id="column-right" class="nhsuk-grid-column-one-third" style="display: none;">
+
+      <h2 class="nhsuk-heading-m" id="guidance">Letter layout</h2>
+      <p><a href="/images/nhs-notify-pdf-letter-spec.jpg" target="_blank">View letter layout (opens in a new tab)</a></p>
+      
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-top-4">Personalisation</h2>
+
+      {% include "../includes/details-personalisation.html" %}
+
+      <h2 class="nhsuk-heading-m">Body text formatting</h2>
+      
+      {% include "../includes/details-headings.html" %}
+
+      {% include "../includes/details-bullets.html" %}
+
+      {% include "../includes/details-numbered-lists.html" %}
+
+      {% include "../includes/details-page-breaks-auto.html" %}
+
+      {#
+      {% include "../includes/details-page-breaks.html" %}
+
+      {% include "../includes/details-content-blocks.html" %}
+      #}
+
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-top-4">More about letters</h2>
+      <p><a href='https://notify.nhs.uk/pricing/letters' target='_blank'>Letter pricing (opens in a new tab)</a></p>
+      <p><a href='https://notify.nhs.uk/using-nhs-notify/tell-recipients-who-your-messages-are-from' target='_blank'>Return addresses (opens in a new tab)</a></p>
+      <p><a href='https://notify.nhs.uk/using-nhs-notify/delivery-times' target='_blank'>Delivery times (opens in a new tab)</a></p>
+
+    </div>
+
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/js/guidanceToggle2.js" ></script>
+{% endblock %}

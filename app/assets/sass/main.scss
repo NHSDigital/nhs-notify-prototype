@@ -184,3 +184,83 @@ a:visited{
     }
 
 }
+
+
+
+// Custom styles for the routing plan creation
+
+
+.notify-channel-block {
+
+    margin-bottom: 50px;
+    position: relative;
+
+    &::after{
+        content: "";
+        height: 105%;
+        display: block;
+        border: dashed 2px $nhsuk-link-color;
+        position: absolute;
+        top: 40px;
+        left: 19px;
+    }
+
+    &:last-of-type::after{
+        display: none;
+    }
+
+    .notify-channel-block-channel {
+
+        .notify-channel-block-number{
+            width: 40px;
+            height: 40px;
+            padding-top:5px;
+            margin-right:20px;
+            background-color: $nhsuk-link-color;
+            border-radius: 20px;
+            color: $color_nhsuk-white;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            display: inline-block;
+            float: left;
+        }
+
+        h3{
+            padding-top: 5px;
+        }
+        
+    }
+
+
+
+    .notify-channel-block-outer {
+        padding: 20px;
+        margin-left: 60px;
+        background-color: $color_nhsuk-white;
+        border:1px solid $nhsuk-border-color;
+    }
+
+    .notify-channel-block-inner {
+        padding: 20px;
+        background-color: $color_nhsuk-white;
+        border:1px solid $nhsuk-border-color;
+    }
+
+}
+
+
+.notify-summary-list {
+    background-color: $color_nhsuk-white;
+    border: 1px solid $nhsuk-border-color;
+
+    .nhsuk-summary-list__key{
+        width: 20%;
+        padding: 20px;
+        color: $nhsuk-secondary-text-color;
+    }
+    
+    .nhsuk-summary-list__value{
+        padding: 20px;
+    }
+}
