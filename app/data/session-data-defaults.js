@@ -25,6 +25,8 @@ module.exports = {
 
     "checkbox-accessible-letter": "",
     "messages-draft": "0",
-    "messages-prod": "0"
+    "messages-prod": "0",
+    "channel-amount": "1",
+    "channel-1-type": "NHS App"
   
   }

@@ -1,0 +1,98 @@
+{% extends 'v10/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="create-message" autocomplete="off">
+
+        {% if data['channel-amount'] == '1' %}
+
+        {{ radios({
+          "name": "channel-2-type",
+          fieldset: {
+            legend: {
+              text: "Add a fallback channel",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          },
+          "hint": {
+            "text": "Select one option"
+          },
+          "items": [
+            {
+              "value": "NHS App",
+              "text": "NHS App"
+            },
+            {
+              "value": "Email",
+              "text": "Email"
+            },
+            {
+              "value": "Text message (SMS)",
+              "text": "Text message (SMS)"
+            }
+          ]
+        }) }}
+
+        <input type="hidden" name="channel-amount" value="2">
+
+        {% endif %}
+
+        {% if data['channel-amount'] == '2' %}
+
+        {{ radios({
+          "name": "channel-3-type",
+          fieldset: {
+            legend: {
+              text: "Add a fallback channel",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          },
+          "hint": {
+            "text": "Select one option"
+          },
+          "items": [
+            {
+              "value": "NHS App",
+              "text": "NHS App"
+            },
+            {
+              "value": "Email",
+              "text": "Email"
+            },
+            {
+              "value": "Text message (SMS)",
+              "text": "Text message (SMS)"
+            }
+          ]
+        }) }}
+
+        <input type="hidden" name="channel-amount" value="3">
+
+        {% endif %}
+
+        <div class="nhsuk-form-group">
+
+          {{ button({
+            text: 'Save and continue'
+          }) }}
+
+          <a href="create-message" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

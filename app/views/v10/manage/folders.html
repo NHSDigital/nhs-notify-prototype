@@ -11,20 +11,30 @@
     <div class="nhsuk-grid-column-full">
 
       <h1 class="nhsuk-heading-xl">
-        Message groups
+        Campaigns
       </h1>
+
+      <p>Some content here...</p>
 
       <form action="create-folder">
         {{ button({
-          'text': 'Create a message group'
+          'text': 'Create a campaign'
         }) }}
       </form>
+
+      {{ details({
+        text: "What is a campaign?",
+        HTML: "
+        <p>Campaigns contain templates and messages that are related to each other by the same topic. For example, 'Health campaign June 2024' or 'Screening invitations'.</p>
+        <p>You can set up templates and messages after you create a campaign.</p>
+        "
+      }) }}
 
       {% if data['folders'] == '1' %}
 
       <table role="table" class="nhsuk-table-responsive">
 
-        <caption class="nhsuk-table__caption">List of message groups</caption>
+        <!--<caption class="nhsuk-table__caption">List of message groups</caption>-->
 
         <thead role="rowgroup" class="nhsuk-table__head">
           <tr role="row">
@@ -67,8 +77,7 @@
 
       {% else %}
  
-      <p>Message groups contain templates and messages that are related to each other by the same topic. For example, 'Health campaign June 2024'.</p>
-      <p>You need to create a message group before you can set up templates and messages.</p>
+      <p>You don't have any campaigns yet.</p>
 
       {% endif %}
       

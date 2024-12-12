@@ -13,7 +13,7 @@
 
       <ul class="nhsuk-list app-side-nav__list">
 
-        {{sideNavItem(title='Message groups', link='folders', active='0')}}
+        {{sideNavItem(title='Campaigns', link='folders', active='0')}}
 
         <li class="app-side-nav__item nhsuk-u-margin-left-3"><a href="folder" class="app-side-nav__link">{{ data['folder-name-1'] }}</a></li>
 
@@ -25,7 +25,7 @@
 
             {{sideNavSubItem(title='Templates', link='folder-templates', active='0')}}
 
-            {{sideNavSubItem(title='Settings', link='folder-settings', active='0')}}
+            <!--{{sideNavSubItem(title='Settings', link='folder-settings', active='0')}}-->
 
           </ul>
 
@@ -37,24 +37,28 @@
 
     <div class="nhsuk-grid-column-three-quarters">
 
-      <span class="nhsuk-caption-xl">{{ data['folder-name-1'] }}</span>
+      <span class="nhsuk-caption-l">{{ data['folder-name-1'] }}</span>
       <h1 class="nhsuk-heading-xl">
         Messages
       </h1>
 
-      <form action="create-message">
+      <p>Some content here...</p>
+
+      <form action="{% if data['messages-draft'] == '1' %}{% else %}create-message{% endif %}">
         {{ button({
           'text': 'Create message'
         }) }}
       </form>
 
-      <details class="nhsuk-details nhsuk-expander" open>
+      <details class="nhsuk-details nhsuk-expander" open id="expanderDraft">
         <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
+          <span class="nhsuk-details__summary-text nhsuk-heading-s nhsuk-u-margin-bottom-0">
             Draft ({{ data['messages-draft'] }})
           </span>
         </summary>
         <div class="nhsuk-details__text">
+
+          <p>Explainer text...</p>
           
 
           {% if data['messages-draft'] == '1' %}
@@ -64,12 +68,14 @@
             <thead role="rowgroup" class="nhsuk-table__head">
               <tr role="row">
                 <th role="columnheader" class="" scope="col">
-                  <div class="nhsuk-checkboxes">
-                    <div class="nhsuk-checkboxes__item">
-                      <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
-                      <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1"></label>
-                    </div>
-                  </div>
+
+                  Select
+
+                  <!--<div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input" id="selectAllCheckbox" name="example" type="checkbox" value="email" onclick="toggleActionsByCheckboxes()">
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="selectAllCheckbox"></label>
+                  </div>-->
+
                 </th>
                 <th role="columnheader" class="" scope="col">
                   Name
@@ -87,34 +93,57 @@
               <tr role="row" class="nhsuk-table__row">
                 <td role="cell" class="nhsuk-table__cell">
                   
-                  <div class="nhsuk-checkboxes">
-                    <div class="nhsuk-checkboxes__item">
-                      <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+                  <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input checkboxes" id="example-1" name="example" type="checkbox" value="email" onclick="toggleActionsByCheckboxes()">
                       <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1"></label>
-                    </div>
                   </div>
 
                 </td>
                 <td role="cell" class="nhsuk-table__cell">
                   <span class="nhsuk-table-responsive__heading">Name </span>
-                  <a href="">
+                  <a href="create-message">
                     {{ data['message-name-1'] }}
-                  </a>
+                  </a><br />
+                  <!--<span class="nhsuk-body-s" style="color: #4c6272;">
+                    {% if data['channel-1-type'] %}{{ data['channel-1-type'] }}{% endif %}
+                    {% if data['channel-2-type'] %} > {{ data['channel-2-type'] }}{% endif %}
+                    {% if data['channel-3-type'] %} > {{ data['channel-3-type'] }}{% endif %}
+                  </span>-->
                 </td>
                 <td role="cell" class="nhsuk-table__cell nhsuk-body-s">
                   <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />09:34
                 </td>
                 <td role="cell" class="nhsuk-table__cell">
                   <span class="nhsuk-table-responsive__heading">Action </span>
-                  <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type?template-copy-name={{ data['template-app-name-1'] }}">Copy</a></p>
-                  {% if data['template-app-name-1-approved'] != '1' %}
-                  <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=app&approve-template-name={{ data['template-app-name-1'] }}">Delete</a></p>
+
+                  {% if data['channel-amount'] == '1' and data['channel-1-template'] or data['channel-amount'] == '2' and data['channel-1-template'] and data['channel-2-template'] or data['channel-amount'] == '3' and data['channel-1-template'] and data['channel-2-template'] and data['channel-3-template'] %}
+
+                  <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="move-message-production">Move to production</a></p>
+
                   {% endif %}
+                  
+                  <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="">Copy</a></p>
+                  <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="">Delete</a></p>
                 </td>
               </tr>
               
             </tbody>
           </table>
+
+          <div class="notify-sticky-actions" id="notify-sticky-actions">
+
+            <div class="nhsuk-width-container">
+              <div class="nhsuk-grid-row">
+                <div class="nhsuk-grid-column-one-quarter">&nbsp;</div>
+                <div class="nhsuk-grid-column-three-quarters">
+    
+                  <a href="move-message-production" class="nhsuk-button nhsuk-u-margin-bottom-0">Move to production</a>
+    
+                </div>
+              </div>
+            </div>
+    
+          </div>
     
           {% else %}
      
@@ -127,14 +156,15 @@
       </details>
 
 
-      <details class="nhsuk-details nhsuk-expander">
+      <details class="nhsuk-details nhsuk-expander" id="expanderProd">
         <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
+          <span class="nhsuk-details__summary-text nhsuk-heading-s nhsuk-u-margin-bottom-0">
             Production ({{ data['messages-prod'] }})
           </span>
         </summary>
         <div class="nhsuk-details__text">
           
+          <p>Explainer text...</p>
 
           {% if data['messages-prod'] == '1' %}
 
@@ -142,14 +172,6 @@
         
             <thead role="rowgroup" class="nhsuk-table__head">
               <tr role="row">
-                <th role="columnheader" class="" scope="col">
-                  <div class="nhsuk-checkboxes">
-                    <div class="nhsuk-checkboxes__item">
-                      <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
-                      <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1"></label>
-                    </div>
-                  </div>
-                </th>
                 <th role="columnheader" class="" scope="col">
                   Name
                 </th>
@@ -165,18 +187,8 @@
               
               <tr role="row" class="nhsuk-table__row">
                 <td role="cell" class="nhsuk-table__cell">
-                  
-                  <div class="nhsuk-checkboxes">
-                    <div class="nhsuk-checkboxes__item">
-                      <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
-                      <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1"></label>
-                    </div>
-                  </div>
-
-                </td>
-                <td role="cell" class="nhsuk-table__cell">
                   <span class="nhsuk-table-responsive__heading">Name </span>
-                  <a href="">
+                  <a href="create-message-production">
                     {{ data['message-name-1'] }}
                   </a>
                 </td>
@@ -185,10 +197,7 @@
                 </td>
                 <td role="cell" class="nhsuk-table__cell">
                   <span class="nhsuk-table-responsive__heading">Action </span>
-                  <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type?template-copy-name={{ data['template-app-name-1'] }}">Copy</a></p>
-                  {% if data['template-app-name-1-approved'] != '1' %}
-                  <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=app&approve-template-name={{ data['template-app-name-1'] }}">Delete</a></p>
-                  {% endif %}
+                  <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="">Copy</a></p>
                 </td>
               </tr>
               
@@ -205,7 +214,39 @@
         </div>
       </details>
 
+      {{ card({
+        href: "/404",
+        primary: "true",
+        clickable: "true",
+        heading: "Message settings",
+        headingClasses: "nhsuk-heading-m nhsuk-u-margin-bottom-0",
+        classes: "nhsuk-u-margin-bottom-4"
+      }) }}
 
     </div>
   </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+
+  function toggleActionsByCheckboxes(){
+  
+    let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+    var stickyActions = document.getElementById('notify-sticky-actions');
+  
+    if(checkboxes.length == 0) {
+      stickyActions.style.display = "none";
+    } else {
+      stickyActions.style.display = "block";
+    }
+  
+  }
+  
+</script>
+
+<script src="/js/expanderToggle.js" ></script>
+
 {% endblock %}

@@ -40,11 +40,88 @@ window.onload = function () {
       </div>
       {% endif %}
 
-      
-
       <h1 class="nhsuk-heading-xl">
         {{ data['template-email-name-1'] }}
       </h1>
+
+      {% if data['template-email-name-1-approved'] != '1' %}
+
+      <div class="nhsuk-u-margin-bottom-6">
+
+        <p class="nhsuk-u-margin-bottom-3">
+          {{ tag({
+            text: "Unlocked",
+            classes: "nhsuk-u-margin-right-2"
+          })}}
+        </p>
+  
+        {{ details({
+          text: "Show messages this template is assigned to",
+          HTML: '
+            <p>
+              <strong class="nhsuk-tag nhsuk-tag--blue">
+                Draft
+              </strong> 
+              <a href="">Message name 1</a>
+            </p>
+            <p>
+              <strong class="nhsuk-tag nhsuk-tag--blue">
+                Draft
+              </strong> 
+              <a href="">Message name 2</a>
+            </p>
+            <p>
+              <strong class="nhsuk-tag nhsuk-tag--blue">
+                Draft
+              </strong> 
+              <a href="">Message name 3</a>
+            </p>
+          ',
+          classes: 'nhsuk-u-margin-bottom-0'
+        }) }}
+
+      </div>
+
+      {% else %}
+
+      <div class="nhsuk-warning-callout-nhs-notify nhsuk-u-padding-4 nhsuk-u-margin-bottom-6">
+
+        <p class="nhsuk-u-margin-bottom-3">
+          {{ tag({
+            text: "Locked",
+            classes: "nhsuk-u-margin-right-2 nhsuk-tag--orange"
+          })}}
+          You cannot edit this template as it's assigned to messages in production.
+        </p>
+
+        {{ details({
+          text: "Show messages this template is assigned to",
+          HTML: '
+          <p>
+            <strong class="nhsuk-tag nhsuk-tag--red">
+              Production
+            </strong> 
+            <a href="">Message name 1</a>
+          </p>
+          <p>
+            <strong class="nhsuk-tag nhsuk-tag--red">
+              Production
+            </strong> 
+            <a href="">Message name 2</a>
+          </p>
+          <p>
+            <strong class="nhsuk-tag nhsuk-tag--blue">
+              Draft
+            </strong> 
+            <a href="">Message name 3</a>
+          </p>
+          ',
+          classes: 'nhsuk-u-margin-bottom-0'
+        }) }}
+
+      </div>
+
+      {% endif %}
 
       <table role="table" class="notify-template-content nhsuk-u-margin-bottom-4">
         <tbody class="nhsuk-table__body">
@@ -67,7 +144,7 @@ window.onload = function () {
             </td>
           </tr>
 
-          <tr role="row" class="nhsuk-table__row">
+          <!--<tr role="row" class="nhsuk-table__row">
             <th role="cell" class="nhsuk-table__cell" style="width:20%;">
               Status
             </th>
@@ -76,24 +153,130 @@ window.onload = function () {
               {% if data['template-email-name-1-approved'] == '1' %}
 
               {{ tag({
-                text: "Submitted",
-                classes: "nhsuk-u-margin-bottom-2 nhsuk-tag--grey"
+                text: "Locked",
+                classes: "nhsuk-u-margin-bottom-2 nhsuk-tag--red"
               })}}
 
               {% else %}
 
               {{ tag({
-                text: "Not yet submitted",
+                text: "Unlocked",
                 classes: "nhsuk-u-margin-bottom-2"
               })}}
 
               {% endif %}
 
+              {{ details({
+                classes: 'nhsuk-expander',
+                text: 'Messages this template is assigned to',
+                HTML: '
+                <ul>
+                  <li>
+                    <a href="">Message name 1</a>
+                    {{ tag({
+                      text: "Draft",
+                      classes: "nhsuk-tag--blue"
+                    })}}
+                  </li>
+                  <li>
+                    <a href="">Message name 2</a>
+                    {{ tag({
+                      text: "Draft",
+                      classes: "nhsuk-tag--blue"
+                    })}}
+                  </li>
+                  <li>
+                    <a href="">Message name 3</a>
+                    {{ tag({
+                      text: "Production",
+                      classes: "nhsuk-tag--red"
+                    })}}
+                  </li>
+                </ul>'
+              }) }}
+
+              <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-2">This template is assigned to messages in production.</p>
+
+              {{ details({
+                text: "Messages this template is assigned to",
+                HTML: '
+                <ul>
+                  <li>
+                    <a href="">Message name 1</a>
+                    <strong class="nhsuk-tag nhsuk-tag--blue">
+                      Draft
+                    </strong>
+                  </li>
+                  <li>
+                    <a href="">Message name 2</a>
+                    <strong class="nhsuk-tag nhsuk-tag--blue">
+                      Draft
+                    </strong>
+                  <li>
+                    <a href="">Message name 3</a>
+                    <strong class="nhsuk-tag nhsuk-tag--red">
+                      Production
+                    </strong>
+                  </li>
+                </ul>
+                '
+              }) }}
+
             </td>
-          </tr>
+          </tr>-->
+
+          <!--<tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell" style="width:20%;">
+              Assigned to
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              
+              <ul>
+                <li>
+                  <a href="">Message name 1</a>
+                  {{ tag({
+                    text: "Draft",
+                    classes: "nhsuk-tag--blue"
+                  })}}
+                </li>
+                <li>
+                  <a href="">Message name 2</a>
+                  {{ tag({
+                    text: "Draft",
+                    classes: "nhsuk-tag--blue"
+                  })}}
+                </li>
+                <li>
+                  <a href="">Message name 3</a>
+                  {{ tag({
+                    text: "Production",
+                    classes: "nhsuk-tag--red"
+                  })}}
+                </li>
+              </ul>
+
+              {{ details({
+                text: "Show all messages",
+                HTML: "
+                <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
+                  <p>You can find your NHS number by logging in to a GP online service or on any document the NHS has sent you, such as your:</p>
+                  <ul>
+                      <li>prescriptions</li>
+                      <li>test results</li>
+                      <li>hospital referral letters</li>
+                      <li>appointment letters</li>
+                  </ul>
+                  <p>Ask your GP surgery for help if you can't find your NHS number.</p>
+                "
+              }) }}
+
+            </td>
+          </tr>-->
 
         </tbody>
       </table>
+
+      
 
       <table role="table" class="notify-template-content nhsuk-u-margin-bottom-6">
         <tbody class="nhsuk-table__body">
@@ -177,8 +360,6 @@ window.onload = function () {
 
       {% else %}
 
-      <p>This template cannot be edited because it has been submitted.</p>
-      <p>If you want to change a submitted or live template, you must create a new template to replace it.</p>
       <p><a href="templates">Back to all templates</a></p>
 
       {% endif %}

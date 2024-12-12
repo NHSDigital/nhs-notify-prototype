@@ -141,7 +141,8 @@ a:visited{
 }
 
 // Hide the text area that contains the raw markdown before it's converted
-#sourceTA{
+#sourceTA,
+.hidden{
     display: none;
 }
 
@@ -241,12 +242,55 @@ a:visited{
         border:1px solid $nhsuk-border-color;
     }
 
+        .notify-channel-move-up{
+            margin-top: 10px;
+            font-size: 19px;
+            display: inline-block;
+
+            .nhsuk-icon__chevron-left{
+                width: 38px;
+                height: 38px;
+                vertical-align: middle;
+                text-decoration: none;
+            }
+        }
+
+        .notify-channel-move-down{
+            margin-top: 10px;
+            font-size: 19px;
+            display: inline-block;
+
+            .nhsuk-icon__chevron-left{
+                width: 38px;
+                height: 38px;
+                vertical-align: middle;
+                text-decoration: none;
+            }
+        }
+
     .notify-channel-block-inner {
         padding: 20px;
         background-color: $color_nhsuk-white;
         border:1px solid $nhsuk-border-color;
+
+        p:last-of-type{
+            margin-bottom: 0;
+        }
     }
 
+}
+
+.notify-channel-add-fallback{
+    margin-bottom: 50px;
+
+    .nhsuk-icon__plus{
+        width: 48px;
+        height: 48px;
+        margin-right:12px;
+        vertical-align: middle;
+        fill: $nhsuk-secondary-text-color;
+        text-decoration: none;
+    }
 }
 
 
@@ -262,5 +306,32 @@ a:visited{
     
     .nhsuk-summary-list__value{
         padding: 20px;
+    }
+}
+
+
+.notify-sticky-actions{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    width: 100%;
+    padding: 20px 0;
+    background-color: $color_nhsuk-white;
+    border-top: solid 2px $nhsuk-border-color;
+    display: none;
+}
+
+
+// Fixing bug with checkbox tick icons inside an expander component
+
+.nhsuk-expander{
+
+    .nhsuk-checkboxes__input + .nhsuk-checkboxes__label::after {
+        border-width: 0 0 4px 4px;
+        height: 6px;
+        left: 9px;
+        top: 13px;
+        width: 19px;
     }
 }

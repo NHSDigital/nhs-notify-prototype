@@ -13,7 +13,7 @@
 
       <ul class="nhsuk-list app-side-nav__list">
 
-        {{sideNavItem(title='Message groups', link='folders', active='0')}}
+        {{sideNavItem(title='Campaigns', link='folders', active='0')}}
 
         <li class="app-side-nav__item nhsuk-u-margin-left-3 app-side-nav__item--current"><a href="folder" class="app-side-nav__link">{{ data['folder-name-1'] }}</a></li>
 
@@ -25,7 +25,7 @@
 
             {{sideNavSubItem(title='Templates', link='folder-templates', active='0')}}
 
-            {{sideNavSubItem(title='Settings', link='folder-settings', active='0')}}
+            <!--{{sideNavSubItem(title='Settings', link='folder-settings', active='0')}}-->
 
           </ul>
 
@@ -37,33 +37,35 @@
 
     <div class="nhsuk-grid-column-three-quarters">
 
-      <span class="nhsuk-caption-xl">Message group</span>
+      <span class="nhsuk-caption-l">Campaign</span>
       <h1 class="nhsuk-heading-xl">
         {{ data['folder-name-1'] }}
       </h1>
 
-      {{ card({
-        href: "folder-messages",
-        primary: "true",
-        clickable: "true",
-        heading: "Messages (0)",
-        headingClasses: "nhsuk-heading-m"
-      }) }}
+      <div class="nhsuk-card nhsuk-card--clickable nhsuk-u-margin-bottom-4">
+        <div class="nhsuk-card__content nhsuk-card__content--primary">
+          <h2 class="nhsuk-card__heading nhsuk-heading-m nhsuk-u-margin-bottom-0">
+            <a class="nhsuk-card__link" href="folder-messages">Messages ({% if data['messages-draft'] == '1' or data['messages-prod'] == '1' %}1{% else %}0{% endif %})</a>
+          </h2>
+  
+          <svg class="nhsuk-icon" xmlns="http://www.w3.org/2000/svg" width="27" height="27" aria-hidden="true" focusable="false">
+            <circle cx="13.333" cy="13.333" r="13.333" fill="" />
+            <g data-name="Group 1" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.667">
+              <path d="M15.438 13l-3.771 3.771" />
+              <path data-name="Path" d="M11.667 9.229L15.438 13" />
+            </g>
+          </svg>
+  
+        </div>
+      </div>
 
       {{ card({
         href: "folder-templates",
         primary: "true",
         clickable: "true",
         heading: "Templates (0)",
-        headingClasses: "nhsuk-heading-m"
-      }) }}
-
-      {{ card({
-        href: "folder-settings",
-        primary: "true",
-        clickable: "true",
-        heading: "Settings",
-        headingClasses: "nhsuk-heading-m"
+        headingClasses: "nhsuk-heading-m nhsuk-u-margin-bottom-0",
+        classes: "nhsuk-u-margin-bottom-4"
       }) }}
       
     </div>

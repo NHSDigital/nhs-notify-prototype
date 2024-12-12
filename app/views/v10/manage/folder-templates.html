@@ -7,13 +7,16 @@
 {% endblock %}
 
 {% block content %}
+
+{% from '../includes/template-folder-table-row.njk' import row %}
+
   <div class="nhsuk-grid-row">
 
     <div class="nhsuk-grid-column-one-quarter">
 
       <ul class="nhsuk-list app-side-nav__list">
 
-        {{sideNavItem(title='Message groups', link='folders', active='0')}}
+        {{sideNavItem(title='Campaigns', link='folders', active='0')}}
 
         <li class="app-side-nav__item nhsuk-u-margin-left-3"><a href="folder" class="app-side-nav__link">{{ data['folder-name-1'] }}</a></li>
 
@@ -25,8 +28,6 @@
 
             {{sideNavSubItem(title='Templates', link='folder-templates', active='1')}}
 
-            {{sideNavSubItem(title='Settings', link='folder-settings', active='0')}}
-
           </ul>
 
         </li>
@@ -37,22 +38,21 @@
 
     <div class="nhsuk-grid-column-three-quarters">
 
-      <span class="nhsuk-caption-xl">{{ data['folder-name-1'] }}</span>
+      <span class="nhsuk-caption-l">{{ data['folder-name-1'] }}</span>
       <h1 class="nhsuk-heading-xl">
         Templates
       </h1>
 
-      <form action="template-type">
+      <form action="">
+        <input type="hidden" name="show-templates" value="1">
         {{ button({
           'text': 'Create template'
         }) }}
       </form>
 
-      {% if data['folder-1-app-templates'] == '1' or data['folder-1-email-templates'] == '1' or data['folder-1-sms-templates'] == '1' or data['folder-1-letter-templates'] == '1'%}
+      {% if data['show-templates'] == '1' %}
 
       <table role="table" class="nhsuk-table-responsive">
-
-        <caption class="nhsuk-table__caption">List of templates</caption>
 
         <thead role="rowgroup" class="nhsuk-table__head">
           <tr role="row">
@@ -75,225 +75,352 @@
         </thead>
         <tbody class="nhsuk-table__body">
 
+<!--
+##################################################
 
-          {% if data['folder-1-app-templates'] == '1' %}
-          
-          <tr role="row" class="nhsuk-table__row">
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Name </span>
-              <a href="template-app-1?message-type=app&show-save-banner=no">
-                {{ data['template-app-name-1'] }}
-              </a>
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Type </span>
-              NHS App
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Status </span>
-              {% if data['template-app-name-1-approved'] == '1' %}
+Template 1
 
-              {{ tag({
-                text: "Submitted",
-                classes: "nhsuk-tag--grey"
-              })}}
+##################################################
+-->
 
-              {% else %}
+        {% if 
+          data['messages-prod'] == '1' 
+        %}
 
-              {{ tag({
-                text: "Draft"
-              })}}
+          {% if 
+            data['channel-1-template'] == 'Template 1' or 
+            data['channel-2-template'] == 'Template 1' or 
+            data['channel-3-template'] == 'Template 1' 
+          %}
 
-              {% endif %}
-            </td>
-            <td role="cell" class="nhsuk-table__cell nhsuk-body-s">
-              <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />09:34
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Action </span>
-              <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type?template-copy-name={{ data['template-app-name-1'] }}">Copy</a></p>
-              {% if data['template-app-name-1-approved'] != '1' %}
-              <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=app&approve-template-name={{ data['template-app-name-1'] }}">Delete</a></p>
-              {% endif %}
-            </td>
-          </tr>
+            {{row(templateNumber='1', locked='1', templateTypeName='NHS App', templateType='app')}}
+
+          {% else %}
+
+            {{row(templateNumber='1', locked='', templateTypeName='NHS App', templateType='app')}}
 
           {% endif %}
 
+        {% else %}
 
-          {% if data['app-duplicate-template'] == 'yes' %}
+          {{row(templateNumber='1', locked='', templateTypeName='NHS App', templateType='app')}}
 
-          <tr role="row" class="nhsuk-table__row">
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Name </span>
-              <a href="/404">
-                Copy: {{ data['template-copy-name'] }}
-              </a>
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Type </span>
-              NHS App
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Status </span>
-
-              {{ tag({
-                text: "Draft"
-              })}}
-
-            </td>
-            <td role="cell" class="nhsuk-table__cell nhsuk-body-s">
-              <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />09:55
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Action </span>
-              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Copy</a></p>
-              {% if data['template-app-name-1-approved'] != '1' %}
-              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Delete</a></p>
-              {% endif %}
-            </td>
-          </tr>
-
-          {% endif %}
+        {% endif %}
 
 
-          {% if data['folder-1-email-templates'] == '1' %}
-          
-          <tr role="row" class="nhsuk-table__row">
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Name </span>
-              <a href="template-email-1?message-type=email&show-save-banner=no">
-                {{ data['template-email-name-1'] }}
-              </a>
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Type </span>
-              Email
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Status </span>
-              {% if data['template-email-name-1-approved'] == '1' %}
+<!--
+##################################################
 
-              {{ tag({
-                text: "Submitted",
-                classes: "nhsuk-tag--grey"
-              })}}
+Template 2
 
-              {% else %}
+##################################################
+-->
 
-              {{ tag({
-                text: "Draft"
-              })}}
 
-              {% endif %}
-            </td>
-            <td role="cell" class="nhsuk-table__cell nhsuk-body-s">
-              <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />10:07
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Action </span>
-              <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type?template-copy-name={{ data['template-email-name-1'] }}">Copy</a></p>
-              {% if data['template-email-name-1-approved'] != '1' %}
-              <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=email&approve-template-name={{ data['template-email-name-1'] }}">Delete</a></p>
-              {% endif %}
-            </td>
-          </tr>
+
+        {% if 
+          data['messages-prod'] == '1' 
+        %}
+
+          {% if 
+              data['channel-1-template'] == 'Template 2' or 
+              data['channel-2-template'] == 'Template 2' or 
+              data['channel-3-template'] == 'Template 2' 
+          %}
+
+            {{row(templateNumber='2', locked='1', templateTypeName='NHS App', templateType='app')}}
+
+          {% else %}
+
+            {{row(templateNumber='2', locked='', templateTypeName='NHS App', templateType='app')}}
 
           {% endif %}
 
+        {% else %}
+
+          {{row(templateNumber='2', locked='', templateTypeName='NHS App', templateType='app')}}
+
+        {% endif %}
 
 
-          {% if data['folder-1-sms-templates'] == '1' %}
-          
-          <tr role="row" class="nhsuk-table__row">
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Name </span>
-              <a href="template-sms-1?message-type=sms&show-save-banner=no">
-                {{ data['template-sms-name-1'] }}
-              </a>
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Type </span>
-              Text message
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Status </span>
-              {% if data['template-sms-name-1-approved'] == '1' %}
 
-              {{ tag({
-                text: "Submitted",
-                classes: "nhsuk-tag--grey"
-              })}}
+<!--
+##################################################
 
-              {% else %}
+Template 3
 
-              {{ tag({
-                text: "Draft"
-              })}}
+##################################################
+-->
 
-              {% endif %}
-            </td>
-            <td role="cell" class="nhsuk-table__cell nhsuk-body-s">
-              <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />11:45
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Action </span>
-              <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type?template-copy-name={{ data['template-sms-name-1'] }}">Copy</a></p>
-              {% if data['template-sms-name-1-approved'] != '1' %}
-              <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=sms&approve-template-name={{ data['template-sms-name-1'] }}">Delete</a></p>
-              {% endif %}
-            </td>
-          </tr>
+
+
+
+        {% if 
+          data['messages-prod'] == '1' 
+        %}
+
+          {% if 
+              data['channel-1-template'] == 'Template 3' or 
+              data['channel-2-template'] == 'Template 3' or 
+              data['channel-3-template'] == 'Template 3' 
+          %}
+
+            {{row(templateNumber='3', locked='1', templateTypeName='NHS App', templateType='app')}}
+
+          {% else %}
+
+            {{row(templateNumber='3', locked='', templateTypeName='NHS App', templateType='app')}}
 
           {% endif %}
 
+        {% else %}
+
+          {{row(templateNumber='3', locked='', templateTypeName='NHS App', templateType='app')}}
+
+        {% endif %}
 
 
-          {% if data['folder-1-letter-templates'] == '1' %}
-          
-          <tr role="row" class="nhsuk-table__row">
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Name </span>
-              <a href="template-letter-1?message-type=letter&show-save-banner=no">
-                {{ data['template-letter-name-1'] }}
-              </a>
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Type </span>
-              Letter
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Status </span>
-              {% if data['template-letter-name-1-approved'] == '1' %}
 
-              {{ tag({
-                text: "Submitted",
-                classes: "nhsuk-tag--grey"
-              })}}
 
-              {% else %}
+<!--
+##################################################
 
-              {{ tag({
-                text: "Draft"
-              })}}
+Template 4
 
-              {% endif %}
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />11:49
-            </td>
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Action </span>
-              <p class="nhsuk-u-margin-bottom-2"><a href="template-duplicate-type?template-copy-name={{ data['template-letter-name-1'] }}">Copy</a></p>
-              {% if data['template-letter-name-1-approved'] != '1' %}
-              <p class="nhsuk-u-margin-bottom-2"><a href="template-delete?message-type=letter&approve-template-name={{ data['template-letter-name-1'] }}">Delete</a></p>
-              {% endif %}
-            </td>
-          </tr>
+##################################################
+-->
+
+
+
+
+        {% if 
+          data['messages-prod'] == '1' 
+        %}
+
+          {% if 
+              data['channel-1-template'] == 'Template 4' or 
+              data['channel-2-template'] == 'Template 4' or 
+              data['channel-3-template'] == 'Template 4' 
+          %}
+
+            {{row(templateNumber='4', locked='1', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+          {% else %}
+
+            {{row(templateNumber='4', locked='', templateTypeName='Text message (SMS)', templateType='sms')}}
 
           {% endif %}
 
-          
+        {% else %}
+
+          {{row(templateNumber='4', locked='', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+        {% endif %}
+
+
+
+
+<!--
+##################################################
+
+Template 5
+
+##################################################
+-->
+
+
+
+
+        {% if 
+          data['messages-prod'] == '1' 
+        %}
+
+          {% if 
+              data['channel-1-template'] == 'Template 5' or 
+              data['channel-2-template'] == 'Template 5' or 
+              data['channel-3-template'] == 'Template 5' 
+          %}
+
+            {{row(templateNumber='5', locked='1', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+          {% else %}
+
+            {{row(templateNumber='5', locked='', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+          {% endif %}
+
+        {% else %}
+
+          {{row(templateNumber='5', locked='', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+        {% endif %}
+
+
+
+
+<!--
+##################################################
+
+Template 6
+
+##################################################
+-->
+
+
+
+
+        {% if 
+          data['messages-prod'] == '1' 
+        %}
+
+          {% if 
+              data['channel-1-template'] == 'Template 6' or 
+              data['channel-2-template'] == 'Template 6' or 
+              data['channel-3-template'] == 'Template 6' 
+          %}
+
+            {{row(templateNumber='6', locked='1', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+          {% else %}
+
+            {{row(templateNumber='6', locked='', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+          {% endif %}
+
+        {% else %}
+
+          {{row(templateNumber='6', locked='', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+        {% endif %}
+
+
+
+
+<!--
+##################################################
+
+Template 7
+
+##################################################
+-->
+
+
+
+
+        {% if 
+          data['messages-prod'] == '1' 
+        %}
+
+          {% if 
+              data['channel-1-template'] == 'Template 7' or 
+              data['channel-2-template'] == 'Template 7' or 
+              data['channel-3-template'] == 'Template 7' 
+          %}
+
+            {{row(templateNumber='7', locked='1', templateTypeName='Email', templateType='email')}}
+
+          {% else %}
+
+            {{row(templateNumber='7', locked='', templateTypeName='Email', templateType='email')}}
+
+          {% endif %}
+
+        {% else %}
+
+          {{row(templateNumber='7', locked='', templateTypeName='Email', templateType='email')}}
+
+        {% endif %}
+
+
+
+
+<!--
+##################################################
+
+Template 8
+
+##################################################
+-->
+
+
+
+
+        {% if 
+          data['messages-prod'] == '1' 
+        %}
+
+          {% if 
+              data['channel-1-template'] == 'Template 8' or 
+              data['channel-2-template'] == 'Template 8' or 
+              data['channel-3-template'] == 'Template 8' 
+          %}
+
+            {{row(templateNumber='8', locked='1', templateTypeName='Email', templateType='email')}}
+
+          {% else %}
+
+            {{row(templateNumber='8', locked='', templateTypeName='Email', templateType='email')}}
+
+          {% endif %}
+
+        {% else %}
+
+          {{row(templateNumber='8', locked='', templateTypeName='Email', templateType='email')}}
+
+        {% endif %}
+
+
+
+
+<!--
+##################################################
+
+Template 9
+
+##################################################
+-->
+
+
+
+
+        {% if 
+          data['messages-prod'] == '1' 
+        %}
+
+          {% if 
+              data['channel-1-template'] == 'Template 9' or 
+              data['channel-2-template'] == 'Template 9' or 
+              data['channel-3-template'] == 'Template 9' 
+          %}
+
+            {{row(templateNumber='9', locked='1', templateTypeName='Email', templateType='email')}}
+
+          {% else %}
+
+            {{row(templateNumber='9', locked='', templateTypeName='Email', templateType='email')}}
+
+          {% endif %}
+
+        {% else %}
+
+          {{row(templateNumber='9', locked='', templateTypeName='Email', templateType='email')}}
+
+        {% endif %}
+
+
+
+
+
+<!--
+##################################################
+
+End
+
+##################################################
+-->
+
+
+
 
         </tbody>
       </table>

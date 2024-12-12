@@ -1,0 +1,271 @@
+{% extends 'v10/layout.html' %}
+
+{% block head %}
+
+<!-- Script to convert markdown to formatted content -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+<script>
+window.onload = function () {
+
+  var text = document.getElementById('sourceTA').value,
+  target = document.getElementById('targetDiv'),
+  converter = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
+  html = converter.makeHtml(text);
+    
+  target.innerHTML = html;
+
+  var text2 = document.getElementById('sourceTA2').value,
+  target2 = document.getElementById('targetDiv2'),
+  converter2 = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
+  html2 = converter2.makeHtml(text2);
+    
+  target2.innerHTML = html2;
+
+  var text3 = document.getElementById('sourceTA3').value,
+    target3 = document.getElementById('targetDiv3'),
+    converter3 = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
+    html3 = converter3.makeHtml(text3);
+    
+  target3.innerHTML = html3;
+}
+</script>
+
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+{{ backLink({
+  "href": "move-message-production",
+  "text": "Go back",
+  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+
+      <span class="nhsuk-caption-l">Message</span>
+      <h1 class="nhsuk-heading-l">
+        {{data['message-name-1']}}
+      </h1>
+
+      <dl class="nhsuk-summary-list notify-summary-list">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            routingPlanId
+          </dt>
+          <dd class="nhsuk-summary-list__value" style="font-family: monospace;">
+            b838b13c-f98c-4def-93f0-515d4e4f4ee1
+          </dd>
+      
+        </div>
+      
+      </dl>
+
+      <p><a href="#" id="templatesExpander">View all templates</a></p>
+
+      <div class="notify-routing-plan">
+
+        <div class="notify-channel-block">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">1</div>
+            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">First channel</h3>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h4 class="nhsuk-heading-xs">NHS App</h4>
+
+              <p>
+                {{ data['channel-1-template'] }}
+              </p>
+
+              <details class="nhsuk-details nhsuk-u-margin-bottom-0">
+                <summary class="nhsuk-details__summary">
+                  <span class="nhsuk-details__summary-text">
+                    View template
+                  </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  
+                  <textarea id="sourceTA">{{ data["template-app-message-1"] }}</textarea>
+                  <div id="targetDiv"></div>
+              
+                </div>
+              </details>
+              
+            </div>
+          </div>
+
+        </div>
+
+
+
+        {% if data['channel-amount'] == '2' or data['channel-amount'] == '3' %}
+
+        <div class="notify-channel-block">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">2</div>
+            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Second channel</h3>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h4 class="nhsuk-heading-xs">{{ data['channel-2-type'] }}</h4>
+
+              <p>
+                {{ data['channel-2-template'] }}
+              </p>
+
+              <details class="nhsuk-details nhsuk-u-margin-bottom-0">
+                <summary class="nhsuk-details__summary">
+                  <span class="nhsuk-details__summary-text">
+                    View template
+                  </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  
+                  {% if data['channel-2-type'] == "NHS App" %}
+                  <textarea id="sourceTA2" class="hidden">{{ data["template-app-message-1"] }}</textarea>
+                  <div id="targetDiv2"></div>
+                  {% endif %}
+
+                  {% if data['channel-2-type'] == "Text message (SMS)" %}
+                  {{ data["template-sms-message-1"] }}
+                  {% endif %}
+
+                  {% if data['channel-2-type'] == "Email" %}
+                  <textarea id="sourceTA2" class="hidden">{{ data["template-email-message-1"] }}</textarea>
+                  <div id="targetDiv2"></div>
+                  {% endif %}
+              
+                </div>
+              </details>
+              
+            </div>
+          </div>
+
+        </div>
+
+        {% endif %}
+
+
+
+        {% if data['channel-amount'] == '3' %}
+
+        <div class="notify-channel-block">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">3</div>
+            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Third channel</h3>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h4 class="nhsuk-heading-xs">{{ data['channel-3-type'] }}</h4>
+
+              <p>
+                {{ data['channel-3-template'] }}
+              </p>
+
+              <details class="nhsuk-details nhsuk-u-margin-bottom-0">
+                <summary class="nhsuk-details__summary">
+                  <span class="nhsuk-details__summary-text">
+                    View template
+                  </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  
+                  {% if data['channel-3-type'] == "NHS App" %}
+                  <textarea id="sourceTA3" class="hidden">{{ data["template-app-message-1"] }}</textarea>
+                  <div id="targetDiv3"></div>
+                  {% endif %}
+
+                  {% if data['channel-3-type'] == "Text message (SMS)" %}
+                  {{ data["template-sms-message-1"] }}
+                  {% endif %}
+
+                  {% if data['channel-3-type'] == "Email" %}
+                  <textarea id="sourceTA3" class="hidden">{{ data["template-email-message-1"] }}</textarea>
+                  <div id="targetDiv3"></div>
+                  {% endif %}
+              
+                </div>
+              </details>
+              
+            </div>
+          </div>
+
+        </div>
+
+        {% endif %}
+
+      </div>
+
+      <p><a href="move-message-production">Go back</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+
+  /*document.getElementById("templatesExpander").addEventListener("click", (event) => {
+  
+    document.body.querySelectorAll('details')
+    .forEach((e) => {(e.hasAttribute('open')) ?
+      e.removeAttribute('open') : e.setAttribute('open',true);
+      console.log(e.hasAttribute('open'))
+    })
+  
+  });*/
+  
+  // Reference the toggle link
+  const xa = document.getElementById('templatesExpander');
+
+  // Register link on click event
+  xa.addEventListener('click', function(e) {
+
+  /* Toggle the two classes that represent "state"
+  || determined when link is clicked
+  */
+  e.currentTarget.classList.toggle('exp');
+  e.currentTarget.classList.toggle('col');
+
+  // Collect all <details> into a NodeList
+  const details = document.querySelectorAll('details');
+
+  /* Convert NodeList into an array then iterate
+  || through it...
+  */
+  Array.from(details).forEach(function(obj, idx) {
+
+    /* If the link has the class .exp...
+    || make each <detail>'s open attribute true
+    */
+    if (e.currentTarget.classList.contains('exp')) {
+      obj.open = true;
+      // Otherwise remove [open]
+    } else {
+      obj.removeAttribute('open');
+    }
+
+  });
+
+  }, false);
+
+  </script>
+  
+  {% endblock %}

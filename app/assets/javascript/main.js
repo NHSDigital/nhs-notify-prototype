@@ -193,7 +193,29 @@ function checkFormTestEmail() {
     } else {
         document.getElementById("test-email-1").classList.remove("nhsuk-input--error");
         document.getElementById("test-email-1").closest(".nhsuk-form-group").classList.remove("nhsuk-form-group--error");
-        document.getElementById("test-semailms-1--error").style.display = "none";
+        document.getElementById("test-email-1--error").style.display = "none";
+    }
+
+    return ok;
+}
+
+
+
+function checkFormCreateMessage() {
+    var ok = true;
+    var message_name_1 = document.getElementById("message-name-1");
+    var message_name_1_error = document.getElementById("message-name-1--error");
+
+    if (message_name_1.value == "") {
+        message_name_1.classList.add("nhsuk-input--error");
+        message_name_1.closest(".nhsuk-form-group").classList.add("nhsuk-form-group--error");
+        message_name_1_error.style.display = "block";
+        message_name_1.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+        ok = false;
+    } else {
+        message_name_1.classList.remove("nhsuk-input--error");
+        message_name_1.closest(".nhsuk-form-group").classList.remove("nhsuk-form-group--error");
+        message_name_1_error.style.display = "none";
     }
 
     return ok;
