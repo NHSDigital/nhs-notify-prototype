@@ -83,23 +83,17 @@ Template 1
 ##################################################
 -->
 
+
         {% if 
-          data['messages-prod'] == '1' 
+          data['messages-prod'] == '1' and 
+          data['channel-1-template'] == 'Template 1' or 
+          data['messages-prod'] == '1' and 
+          data['channel-2-template'] == 'Template 1' or 
+          data['messages-prod'] == '1' and 
+          data['channel-3-template'] == 'Template 1' 
         %}
 
-          {% if 
-            data['channel-1-template'] == 'Template 1' or 
-            data['channel-2-template'] == 'Template 1' or 
-            data['channel-3-template'] == 'Template 1' 
-          %}
-
-            {{row(templateNumber='1', locked='1', templateTypeName='NHS App', templateType='app')}}
-
-          {% else %}
-
-            {{row(templateNumber='1', locked='', templateTypeName='NHS App', templateType='app')}}
-
-          {% endif %}
+          {{row(templateNumber='1', locked='1', templateTypeName='NHS App', templateType='app')}}
 
         {% else %}
 
@@ -119,22 +113,15 @@ Template 2
 
 
         {% if 
-          data['messages-prod'] == '1' 
+          data['messages-prod'] == '1' and 
+          data['channel-1-template'] == 'Template 2' or 
+          data['messages-prod'] == '1' and 
+          data['channel-2-template'] == 'Template 2' or 
+          data['messages-prod'] == '1' and 
+          data['channel-3-template'] == 'Template 2' 
         %}
 
-          {% if 
-              data['channel-1-template'] == 'Template 2' or 
-              data['channel-2-template'] == 'Template 2' or 
-              data['channel-3-template'] == 'Template 2' 
-          %}
-
-            {{row(templateNumber='2', locked='1', templateTypeName='NHS App', templateType='app')}}
-
-          {% else %}
-
-            {{row(templateNumber='2', locked='', templateTypeName='NHS App', templateType='app')}}
-
-          {% endif %}
+          {{row(templateNumber='2', locked='1', templateTypeName='NHS App', templateType='app')}}
 
         {% else %}
 
@@ -156,22 +143,15 @@ Template 3
 
 
         {% if 
-          data['messages-prod'] == '1' 
+          data['messages-prod'] == '1' and 
+          data['channel-1-template'] == 'Template 3' or 
+          data['messages-prod'] == '1' and 
+          data['channel-2-template'] == 'Template 3' or 
+          data['messages-prod'] == '1' and 
+          data['channel-3-template'] == 'Template 3' 
         %}
 
-          {% if 
-              data['channel-1-template'] == 'Template 3' or 
-              data['channel-2-template'] == 'Template 3' or 
-              data['channel-3-template'] == 'Template 3' 
-          %}
-
-            {{row(templateNumber='3', locked='1', templateTypeName='NHS App', templateType='app')}}
-
-          {% else %}
-
-            {{row(templateNumber='3', locked='', templateTypeName='NHS App', templateType='app')}}
-
-          {% endif %}
+          {{row(templateNumber='3', locked='1', templateTypeName='NHS App', templateType='app')}}
 
         {% else %}
 
@@ -194,22 +174,15 @@ Template 4
 
 
         {% if 
-          data['messages-prod'] == '1' 
+          data['messages-prod'] == '1' and 
+          data['channel-1-template'] == 'Template 4' or 
+          data['messages-prod'] == '1' and 
+          data['channel-2-template'] == 'Template 4' or 
+          data['messages-prod'] == '1' and 
+          data['channel-3-template'] == 'Template 4' 
         %}
 
-          {% if 
-              data['channel-1-template'] == 'Template 4' or 
-              data['channel-2-template'] == 'Template 4' or 
-              data['channel-3-template'] == 'Template 4' 
-          %}
-
-            {{row(templateNumber='4', locked='1', templateTypeName='Text message (SMS)', templateType='sms')}}
-
-          {% else %}
-
-            {{row(templateNumber='4', locked='', templateTypeName='Text message (SMS)', templateType='sms')}}
-
-          {% endif %}
+          {{row(templateNumber='4', locked='1', templateTypeName='Text message (SMS)', templateType='sms')}}
 
         {% else %}
 
@@ -232,22 +205,15 @@ Template 5
 
 
         {% if 
-          data['messages-prod'] == '1' 
+          data['messages-prod'] == '1' and 
+          data['channel-1-template'] == 'Template 5' or 
+          data['messages-prod'] == '1' and 
+          data['channel-2-template'] == 'Template 5' or 
+          data['messages-prod'] == '1' and 
+          data['channel-3-template'] == 'Template 5' 
         %}
 
-          {% if 
-              data['channel-1-template'] == 'Template 5' or 
-              data['channel-2-template'] == 'Template 5' or 
-              data['channel-3-template'] == 'Template 5' 
-          %}
-
-            {{row(templateNumber='5', locked='1', templateTypeName='Text message (SMS)', templateType='sms')}}
-
-          {% else %}
-
-            {{row(templateNumber='5', locked='', templateTypeName='Text message (SMS)', templateType='sms')}}
-
-          {% endif %}
+          {{row(templateNumber='5', locked='1', templateTypeName='Text message (SMS)', templateType='sms')}}
 
         {% else %}
 
@@ -270,22 +236,15 @@ Template 6
 
 
         {% if 
-          data['messages-prod'] == '1' 
+          data['messages-prod'] == '1' and 
+          data['channel-1-template'] == 'Template 6' or 
+          data['messages-prod'] == '1' and 
+          data['channel-2-template'] == 'Template 6' or 
+          data['messages-prod'] == '1' and 
+          data['channel-3-template'] == 'Template 6' 
         %}
 
-          {% if 
-              data['channel-1-template'] == 'Template 6' or 
-              data['channel-2-template'] == 'Template 6' or 
-              data['channel-3-template'] == 'Template 6' 
-          %}
-
-            {{row(templateNumber='6', locked='1', templateTypeName='Text message (SMS)', templateType='sms')}}
-
-          {% else %}
-
-            {{row(templateNumber='6', locked='', templateTypeName='Text message (SMS)', templateType='sms')}}
-
-          {% endif %}
+          {{row(templateNumber='6', locked='1', templateTypeName='Text message (SMS)', templateType='sms')}}
 
         {% else %}
 
@@ -308,22 +267,16 @@ Template 7
 
 
         {% if 
-          data['messages-prod'] == '1' 
+          data['messages-prod'] == '1' and 
+          data['channel-1-template'] == 'Template 7' or 
+          data['messages-prod'] == '1' and 
+          data['channel-2-template'] == 'Template 7' or 
+          data['messages-prod'] == '1' and 
+          data['channel-3-template'] == 'Template 7' 
         %}
 
-          {% if 
-              data['channel-1-template'] == 'Template 7' or 
-              data['channel-2-template'] == 'Template 7' or 
-              data['channel-3-template'] == 'Template 7' 
-          %}
 
-            {{row(templateNumber='7', locked='1', templateTypeName='Email', templateType='email')}}
-
-          {% else %}
-
-            {{row(templateNumber='7', locked='', templateTypeName='Email', templateType='email')}}
-
-          {% endif %}
+          {{row(templateNumber='7', locked='1', templateTypeName='Email', templateType='email')}}
 
         {% else %}
 
@@ -346,22 +299,15 @@ Template 8
 
 
         {% if 
-          data['messages-prod'] == '1' 
+          data['messages-prod'] == '1' and 
+          data['channel-1-template'] == 'Template 8' or 
+          data['messages-prod'] == '1' and 
+          data['channel-2-template'] == 'Template 8' or 
+          data['messages-prod'] == '1' and 
+          data['channel-3-template'] == 'Template 8' 
         %}
 
-          {% if 
-              data['channel-1-template'] == 'Template 8' or 
-              data['channel-2-template'] == 'Template 8' or 
-              data['channel-3-template'] == 'Template 8' 
-          %}
-
-            {{row(templateNumber='8', locked='1', templateTypeName='Email', templateType='email')}}
-
-          {% else %}
-
-            {{row(templateNumber='8', locked='', templateTypeName='Email', templateType='email')}}
-
-          {% endif %}
+          {{row(templateNumber='8', locked='1', templateTypeName='Email', templateType='email')}}
 
         {% else %}
 
@@ -384,22 +330,15 @@ Template 9
 
 
         {% if 
-          data['messages-prod'] == '1' 
+          data['messages-prod'] == '1' and 
+          data['channel-1-template'] == 'Template 9' or 
+          data['messages-prod'] == '1' and 
+          data['channel-2-template'] == 'Template 9' or 
+          data['messages-prod'] == '1' and 
+          data['channel-3-template'] == 'Template 9' 
         %}
 
-          {% if 
-              data['channel-1-template'] == 'Template 9' or 
-              data['channel-2-template'] == 'Template 9' or 
-              data['channel-3-template'] == 'Template 9' 
-          %}
-
-            {{row(templateNumber='9', locked='1', templateTypeName='Email', templateType='email')}}
-
-          {% else %}
-
-            {{row(templateNumber='9', locked='', templateTypeName='Email', templateType='email')}}
-
-          {% endif %}
+          {{row(templateNumber='9', locked='1', templateTypeName='Email', templateType='email')}}
 
         {% else %}
 

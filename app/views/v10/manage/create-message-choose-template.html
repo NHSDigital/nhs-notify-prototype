@@ -13,18 +13,19 @@
 
       <span class="nhsuk-caption-l">{{ data['message-name-1'] }}</span>
       <h1 class="nhsuk-heading-xl">Choose  
-        {% if data['message-type'] == 'app' %}a NHS App{%endif%}
-        {% if data['message-type'] == 'email' %}an email{%endif%}
-        {% if data['message-type'] == 'sms' %}a text message (SMS){%endif%}
+        {% if data['message-type'] == 'NHS App' %}a NHS App{%endif%}
+        {% if data['message-type'] == 'Email' %}an email{%endif%}
+        {% if data['message-type'] == 'Text message (SMS)' %}a text message (SMS){%endif%}
          template</h1>
+
+
+      {% if data['show-templates'] == '1' %}
 
       <form action="create-message" autocomplete="off">
 
         <p class="nhsuk-hint">Choose one option</p>
 
-
-
-
+        
 
 
 
@@ -371,6 +372,20 @@
         </div>
 
       </form>
+
+      {% else%}
+
+      <p>You do not have any templates yet.</p>
+      
+      <div class="nhsuk-form-group">
+
+        <a href="folder-templates" class="nhsuk-button nhsuk-button--secondary">Create template</a>
+
+        <a href="create-message" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+
+      </div>
+
+      {% endif %}
 
     </div>
   </div>
