@@ -7,25 +7,22 @@
 <script>
 window.onload = function () {
 
-  var text = document.getElementById('sourceTA').value,
-  target = document.getElementById('targetDiv'),
-  converter = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
-  html = converter.makeHtml(text);
-    
-  target.innerHTML = html;
+  var text1 = document.getElementById('sourceTA1').value;
+  var target1 = document.getElementById('targetDiv1');
+  converter1 = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
+  html1 = converter1.makeHtml(text1);
+  target1.innerHTML = html1;
 
-  var text2 = document.getElementById('sourceTA2').value,
-  target2 = document.getElementById('targetDiv2'),
+  var text2 = document.getElementById('sourceTA2').value;
+  var target2 = document.getElementById('targetDiv2');
   converter2 = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
   html2 = converter2.makeHtml(text2);
-    
   target2.innerHTML = html2;
 
-  var text3 = document.getElementById('sourceTA3').value,
-    target3 = document.getElementById('targetDiv3'),
-    converter3 = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
-    html3 = converter3.makeHtml(text3);
-    
+  var text3 = document.getElementById('sourceTA3').value;
+  var target3 = document.getElementById('targetDiv3');
+  converter3 = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
+  html3 = converter3.makeHtml(text3);
   target3.innerHTML = html3;
 }
 </script>
@@ -51,7 +48,7 @@ window.onload = function () {
     <div class="nhsuk-grid-column-full">
 
       <span class="nhsuk-caption-l">Message</span>
-      <h1 class="nhsuk-heading-l">
+      <h1 class="nhsuk-heading-xl">
         {{data['message-name-1']}}
       </h1>
 
@@ -96,8 +93,8 @@ window.onload = function () {
                 </summary>
                 <div class="nhsuk-details__text">
                   
-                  <textarea id="sourceTA">{{ data["template-app-message-1"] }}</textarea>
-                  <div id="targetDiv"></div>
+                  <textarea id="sourceTA1" class="hidden">{{ data["template-app-message-1"] }}</textarea>
+                  <div id="targetDiv1"></div>
               
                 </div>
               </details>
@@ -140,6 +137,8 @@ window.onload = function () {
                   {% endif %}
 
                   {% if data['channel-2-type'] == "Text message (SMS)" %}
+                  <textarea id="sourceTA2" class="hidden">{{ data["template-sms-message-1"] }}</textarea>
+                  <div id="targetDiv2" class="hidden"></div>
                   {{ data["template-sms-message-1"] }}
                   {% endif %}
 
@@ -191,6 +190,8 @@ window.onload = function () {
                   {% endif %}
 
                   {% if data['channel-3-type'] == "Text message (SMS)" %}
+                  <textarea id="sourceTA3" class="hidden">{{ data["template-sms-message-1"] }}</textarea>
+                  <div id="targetDiv3" class="hidden"></div>
                   {{ data["template-sms-message-1"] }}
                   {% endif %}
 
@@ -221,16 +222,6 @@ window.onload = function () {
 {% block pageScripts %}
 
 <script>
-
-  /*document.getElementById("templatesExpander").addEventListener("click", (event) => {
-  
-    document.body.querySelectorAll('details')
-    .forEach((e) => {(e.hasAttribute('open')) ?
-      e.removeAttribute('open') : e.setAttribute('open',true);
-      console.log(e.hasAttribute('open'))
-    })
-  
-  });*/
   
   // Reference the toggle link
   const xa = document.getElementById('templatesExpander');

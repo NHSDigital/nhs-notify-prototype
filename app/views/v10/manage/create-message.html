@@ -236,7 +236,17 @@
 
           {% if data['messages-draft'] == '1' %}
 
-            {% if data['channel-amount'] == '1' and data['channel-1-template'] or data['channel-amount'] == '2' and data['channel-1-template'] and data['channel-2-template'] or data['channel-amount'] == '3' and data['channel-1-template'] and data['channel-2-template'] and data['channel-3-template'] %}
+            {% if 
+              data['channel-amount'] == '1' and 
+              data['channel-1-template'] or 
+              data['channel-amount'] == '2' and 
+              data['channel-1-template'] and 
+              data['channel-2-template'] or 
+              data['channel-amount'] == '3' and 
+              data['channel-1-template'] and 
+              data['channel-2-template'] and 
+              data['channel-3-template'] 
+            %}
 
             <a href="move-message-production" class="nhsuk-button">Move to production</a>
 
