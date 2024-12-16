@@ -9,31 +9,7 @@
 {% block content %}
   <div class="nhsuk-grid-row">
 
-    <div class="nhsuk-grid-column-one-quarter">
-
-      <ul class="nhsuk-list app-side-nav__list">
-
-        {{sideNavItem(title='Campaigns', link='folders', active='0')}}
-
-        <li class="app-side-nav__item nhsuk-u-margin-left-3 app-side-nav__item--current"><a href="folder" class="app-side-nav__link">{{ data['folder-name-1'] }}</a></li>
-
-        <li class="app-side-nav__item nhsuk-u-margin-left-5">
-
-          <ul class="nhsuk-list app-side-nav__list nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-3">
-
-            {{sideNavSubItem(title='Messages', link='folder-messages', active='0')}}
-
-            {{sideNavSubItem(title='Templates', link='folder-templates', active='0')}}
-
-            <!--{{sideNavSubItem(title='Settings', link='folder-settings', active='0')}}-->
-
-          </ul>
-
-        </li>
-
-      </ul>
-
-    </div>
+    {{sideNav(active='2', folderName=data['folder-name-1'])}}
 
     <div class="nhsuk-grid-column-three-quarters">
 

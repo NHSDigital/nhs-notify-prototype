@@ -1,0 +1,35 @@
+{% macro sideNav(active,folderName) %}
+
+<div class="nhsuk-grid-column-one-quarter">
+
+  <ul class="nhsuk-list app-side-nav__list">
+
+    <li class="app-side-nav__item {% if active == '1' %}app-side-nav__item--current{% endif %}">
+      <a class="app-side-nav__link" href="folders">Campaigns</a>
+    </li>
+
+    <li class="app-side-nav__item nhsuk-u-margin-left-3 {% if active == '2' %}app-side-nav__item--current{% endif %}">
+      <a href="folder" class="app-side-nav__link">{{ folderName }}</a>
+    </li>
+
+    <li class="app-side-nav__item nhsuk-u-margin-left-5">
+
+      <ul class="nhsuk-list app-side-nav__list nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-3">
+
+        <li class="app-side-nav__item {% if active == '3' %}app-side-nav__item--current{% endif %}">
+          <a class="app-side-nav__link" href="folder-messages">Messages</a>
+        </li>
+
+        <li class="app-side-nav__item {% if active == '4' %}app-side-nav__item--current{% endif %}">
+          <a class="app-side-nav__link" href="folder-templates">Templates</a>
+        </li>
+
+      </ul>
+
+    </li>
+
+  </ul>
+
+</div>
+
+{% endmacro %}
