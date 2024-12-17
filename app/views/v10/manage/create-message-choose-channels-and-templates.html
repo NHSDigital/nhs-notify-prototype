@@ -1,0 +1,242 @@
+{% extends 'v10/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+{% from '../includes/template-folder-table-row-choose.njk' import row_choose %}
+
+  <div class="nhsuk-grid-row">
+
+    {{sideNav(active='3', folderName=data['folder-name-1'])}}
+
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <span class="nhsuk-caption-l">{{ data['folder-name-1'] }}</span>
+      <h1 class="nhsuk-heading-xl">
+        Choose channels and templates
+      </h1>
+
+      <form action="create-message" method="post">
+
+      {% if data['show-templates'] == '1' %}
+
+      <table role="table" class="nhsuk-table-responsive">
+
+        <thead role="rowgroup" class="nhsuk-table__head">
+          <tr role="row">
+            <th role="columnheader" class="" scope="col">
+              Select
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Name
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Type
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Date and <br />time created
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+
+<!--
+##################################################
+
+Template 1
+
+##################################################
+-->
+
+
+
+          {{row_choose(templateNumber='1', templateTypeName='NHS App', templateType='app')}}
+
+
+
+<!--
+##################################################
+
+Template 2
+
+##################################################
+-->
+
+
+
+        {{row_choose(templateNumber='2', templateTypeName='NHS App', templateType='app')}}
+
+
+
+<!--
+##################################################
+
+Template 3
+
+##################################################
+-->
+
+
+
+
+        {{row_choose(templateNumber='3', templateTypeName='NHS App', templateType='app')}}
+
+
+
+
+<!--
+##################################################
+
+Template 4
+
+##################################################
+-->
+
+
+
+        {{row_choose(templateNumber='4', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+
+
+
+
+<!--
+##################################################
+
+Template 5
+
+##################################################
+-->
+
+
+
+
+        {{row_choose(templateNumber='5', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+
+
+
+<!--
+##################################################
+
+Template 6
+
+##################################################
+-->
+
+
+
+
+        {{row_choose(templateNumber='6', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+
+
+
+<!--
+##################################################
+
+Template 7
+
+##################################################
+-->
+
+
+
+        {{row_choose(templateNumber='7', templateTypeName='Email', templateType='email')}}
+
+
+
+
+
+<!--
+##################################################
+
+Template 8
+
+##################################################
+-->
+
+
+
+
+        {{row_choose(templateNumber='8', templateTypeName='Email', templateType='email')}}
+
+
+
+
+<!--
+##################################################
+
+Template 9
+
+##################################################
+-->
+
+
+
+
+        {{row_choose(templateNumber='9', templateTypeName='Email', templateType='email')}}
+
+
+
+
+
+<!--
+##################################################
+
+End
+
+##################################################
+-->
+
+
+
+
+        </tbody>
+      </table>
+
+      <div class="nhsuk-form-group nhsuk-u-padding-top-4">
+
+        <input type="hidden" name="channel-1-type" value="Email">
+        <input type="hidden" name="channel-1-template" value="Template 8">
+        <input type="hidden" name="channel-2-type" value="NHS App">
+        <input type="hidden" name="channel-2-template" value="Template 1">
+        <input type="hidden" name="channel-3-type" value="Text message (SMS)">
+        <input type="hidden" name="channel-3-template" value="Template 6">
+        <input type="hidden" name="channel-amount" value="3">
+
+        {{ button({
+          text: 'Save and continue'
+        }) }}
+
+        <a href="create-message" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+
+      </div>
+
+      </form>
+
+      {% else %}
+ 
+      <p>You do not have any templates yet.</p>
+      
+      <div class="nhsuk-form-group">
+
+        <a href="folder-templates" class="nhsuk-button nhsuk-button--secondary">Create template</a>
+
+        <a href="create-message" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+
+      </div>
+
+      {% endif %}
+      
+    </div>
+  </div>
+{% endblock %}

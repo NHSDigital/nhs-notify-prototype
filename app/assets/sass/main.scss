@@ -283,6 +283,10 @@ a:visited{
 .notify-channel-add-fallback{
     margin-bottom: 50px;
 
+    &.notify-channel-add-fallback_last {
+        margin-bottom: 50px;
+    }
+
     .nhsuk-icon__plus{
         width: 48px;
         height: 48px;

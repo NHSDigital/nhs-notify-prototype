@@ -9,9 +9,9 @@
 {% block content %}
   <div class="nhsuk-grid-row">
 
-    {{sideNav(active='3', folderName=data['folder-name-1'])}}
+    <!--{{sideNav(active='3', folderName=data['folder-name-1'])}}-->
 
-    <div class="nhsuk-grid-column-three-quarters">
+    <div class="nhsuk-grid-column-full">
 
       <h1 class="nhsuk-heading-xl">
         Create a message
@@ -71,6 +71,8 @@
 
         <div class="notify-routing-plan">
 
+          {% if data['channel-amount'] == '1' or data['channel-amount'] == '2' or data['channel-amount'] == '3' %}
+
           <div class="notify-channel-block">
 
             <div class="notify-channel-block-channel">
@@ -80,17 +82,17 @@
 
             <div class="notify-channel-block-outer">
               <div class="notify-channel-block-inner">
-                <h4 class="nhsuk-heading-xs">NHS App</h4>
+                <h4 class="nhsuk-heading-xs">{{ data['channel-1-type'] }}</h4>
                 {% if data['channel-1-template'] %}
 
                 <p>
                   {{ data['channel-1-template'] }}<br />
-                  <a href="create-message-choose-template?message-type=NHS App&channel-number=1">Change template</a>
+                  <a href="create-message-choose-template?message-type={{ data['channel-1-type'] }}&channel-number=1">Change template</a>
                 </p>
 
                 {% else %}
                 
-                <p class="nhsuk-u-margin-bottom-0"><a href="create-message-choose-template?message-type=NHS App&channel-number=1">Choose template</a></p>
+                <p class="nhsuk-u-margin-bottom-0"><a href="create-message-choose-template?message-type={{ data['channel-1-type'] }}&channel-number=1">Choose template</a></p>
                 
                 {%endif%}
                 
@@ -98,6 +100,8 @@
             </div>
 
           </div>
+
+          {% endif %}
 
 
 
@@ -206,11 +210,27 @@
           </a>
         </div>
 
+        <!--<div class="notify-channel-add-fallback notify-channel-add-fallback_last">
+          <a href="{% if data['channel-amount'] != '3' %}create-message-choose-channels-and-templates{% endif %}" class="nhsuk-u-font-size-19">
+            <svg class="nhsuk-icon nhsuk-icon__plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" aria-hidden="true" height="34">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M12 8v8M8 12h8"></path>
+            </svg>Add channels and templates
+          </a>
+        </div>-->
+
         <div class="nhsuk-form-group" style="margin-left: 60px;">
 
           <input type="hidden" name="messages-draft" value="1">
 
-          {% if data['messages-draft'] == '1' %}
+          {% if 
+            data['messages-draft'] == '1' and 
+            data['channel-amount'] == '1' or
+            data['messages-draft'] == '1' and 
+            data['channel-amount'] == '2' or
+            data['messages-draft'] == '1' and 
+            data['channel-amount'] == '3' 
+          %}
 
             {% if 
               data['channel-amount'] == '1' and 

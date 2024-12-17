@@ -1,6 +1,23 @@
 {% extends 'v10/layout.html' %}
 
 {% block beforeContent %}
+
+<!--{{ breadcrumb({
+  items: [
+    {
+      href: "folders",
+      text: "Campaigns"
+    },
+    {
+      href: "folder",
+      text: data['folder-name-1']
+    }
+  ],
+  href: "folder-messages",
+  text: "Messages",
+  classes: "nhsuk-u-margin-bottom-5"
+}) }}-->
+
 {% endblock %}
 
 {% block outerContent %}
@@ -18,8 +35,6 @@
         Messages
       </h1>
 
-      <p>Some content here...</p>
-
       <form action="{% if data['messages-draft'] == '1' %}{% else %}create-message{% endif %}">
         {{ button({
           'text': 'Create message'
@@ -33,8 +48,6 @@
           </span>
         </summary>
         <div class="nhsuk-details__text">
-
-          <p>Explainer text...</p>
           
 
           {% if data['messages-draft'] == '1' %}
@@ -150,7 +163,6 @@
         </summary>
         <div class="nhsuk-details__text">
           
-          <p>Explainer text...</p>
 
           {% if data['messages-prod'] == '1' %}
 
