@@ -13,6 +13,41 @@
 
       <form action="create-message" autocomplete="off">
 
+        {% if data['channel-amount'] == '0' %}
+
+        {{ radios({
+          "name": "channel-1-type",
+          fieldset: {
+            legend: {
+              text: "Add a fallback channel",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          },
+          "hint": {
+            "text": "Select one option"
+          },
+          "items": [
+            {
+              "value": "NHS App",
+              "text": "NHS App"
+            },
+            {
+              "value": "Email",
+              "text": "Email"
+            },
+            {
+              "value": "Text message (SMS)",
+              "text": "Text message (SMS)"
+            }
+          ]
+        }) }}
+
+        <input type="hidden" name="channel-amount" value="1">
+
+        {% endif %}
+        
+        
         {% if data['channel-amount'] == '1' %}
 
         {{ radios({

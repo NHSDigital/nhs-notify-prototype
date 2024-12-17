@@ -18,6 +18,8 @@
 
       <form action="create-message" autocomplete="off">
 
+        {% if data['channel-amount'] == '1' or data['channel-amount'] == '2' or data['channel-amount'] == '3' %}
+
         <h2 class="nhsuk-heading-l">First channel</h2>
 
         <p class="nhsuk-hint">Choose one option</p>
@@ -122,6 +124,8 @@
 
           </tbody>
         </table>
+
+        {% endif %}
 
 
 

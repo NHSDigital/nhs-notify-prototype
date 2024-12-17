@@ -4,14 +4,21 @@
 {% endblock %}
 
 {% block outerContent %}
+
+{{ backLink({
+  href: "folder-messages",
+  text: "Back to all messages",
+  classes: "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+
 {% endblock %}
 
 {% block content %}
   <div class="nhsuk-grid-row">
 
-    {{sideNav(active='3', folderName=data['folder-name-1'])}}
+    <!--{{sideNav(active='3', folderName=data['folder-name-1'])}}-->
 
-    <div class="nhsuk-grid-column-three-quarters">
+    <div class="nhsuk-grid-column-full">
 
       <span class="nhsuk-caption-l">Message</span>
       <h1 class="nhsuk-heading-l">
