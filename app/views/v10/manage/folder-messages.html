@@ -35,7 +35,7 @@
         Messages
       </h1>
 
-      <form action="{% if data['messages-draft'] == '1' %}{% else %}create-message{% endif %}">
+      <form action="{% if data['messages-prod'] != '1' %}create-message{% endif %}">
         {{ button({
           'text': 'Create message'
         }) }}
