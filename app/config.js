@@ -16,4 +16,6 @@ module.exports = {
 
   // Enable or disable built-in docs and examples.
   useDocumentation: true,
+
+  useAuth: false
 };
