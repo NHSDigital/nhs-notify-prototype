@@ -1,4 +1,4 @@
-{% extends 'v8/layout.html' %}
+{% extends 'v11/layout.html' %}
 
 {% block beforeContent %}
 {% endblock %}
@@ -20,12 +20,12 @@
 
       {% if data['message-type'] == "app" %}
 
-      <h1>
+      <h1 class="nhsuk-heading-xl">
         Send a test NHS App message
       </h1>
 
       <p>
-        Preview your message template by sending it to one of your test NHS App accounts.
+        Preview your message by sending it to one of your test NHS App accounts.
       </p>
       <p>If you don't have access to a test NHS App account <a href="">[do this...]</a></p>
 
@@ -95,12 +95,12 @@
 
       {% if data['message-type'] == "sms" %}
 
-      <h1>
+      <h1 class="nhsuk-heading-xl">
         Send a test text message
       </h1>
 
       <p>
-        Preview your message template by sending it to your mobile phone.
+        Preview your message by sending it to your mobile phone.
       </p>
 
       <form action="template-test-confirmation" method="post" onsubmit="return checkFormTestSMS();" autocomplete="off">
@@ -169,12 +169,12 @@
 
       {% if data['message-type'] == "email" %}
 
-      <h1>
+      <h1 class="nhsuk-heading-xl">
         Send a test email
       </h1>
 
       <p>
-        Preview your email template by sending it to your email address.
+        Preview your email by sending it to your email address.
       </p>
 
       <form action="template-test-confirmation" method="post" onsubmit="return checkFormTestEmail();" autocomplete="off">
@@ -243,7 +243,7 @@
 
       {% if data['message-type'] == "letter" %}
 
-      <h1>
+      <h1 class="nhsuk-heading-xl">
         Preview '{{data['template-letter-name-1']}}'
       </h1>
 

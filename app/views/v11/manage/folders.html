@@ -1,0 +1,84 @@
+{% extends 'v11/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1 class="nhsuk-heading-xl">
+        Campaigns
+      </h1>
+
+      <form action="create-folder">
+        {{ button({
+          'text': 'Create a campaign'
+        }) }}
+      </form>
+
+      <!--{{ details({
+        text: "What is a campaign?",
+        HTML: "
+        <p>Campaigns contain templates and messages that are related to each other by the same topic. For example, 'Health campaign June 2024' or 'Screening invitations'.</p>
+        <p>You can set up templates and messages after you create a campaign.</p>
+        "
+    }) }}-->
+
+      {% if data['folders'] == '1' %}
+
+      <table role="table" class="nhsuk-table-responsive">
+
+        <!--<caption class="nhsuk-table__caption">List of message groups</caption>-->
+
+        <thead role="rowgroup" class="nhsuk-table__head">
+          <tr role="row">
+            <th role="columnheader" class="" scope="col">
+              Name
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Date and <br />time created
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+          
+          <tr role="row" class="nhsuk-table__row">
+
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Name </span>
+              <a href="folder">
+                {{ data['folder-name-1'] }}
+              </a>
+            </td>
+            
+            <td role="cell" class="nhsuk-table__cell nhsuk-body-s">
+              <span class="nhsuk-table-responsive__heading">Date and time created </span>30 Apr 2024<br />09:34
+            </td>
+
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Action </span>
+              <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="">Copy</a></p>
+              <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="">Archive</a></p>
+            </td>
+
+          </tr>
+
+        </tbody>
+      </table>
+
+      {% else %}
+ 
+      <p>You don't have any campaigns yet.</p>
+
+      {% endif %}
+      
+    </div>
+  </div>
+{% endblock %}

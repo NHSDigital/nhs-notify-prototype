@@ -1,0 +1,143 @@
+{% extends 'v11/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+{{ backLink({
+  href: "folder-messages",
+  text: "Back to all messages",
+  classes: "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <!--{{sideNav(active='3', folderName=data['folder-name-1'])}}-->
+
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <span class="nhsuk-caption-l">Message</span>
+      <h1 class="nhsuk-heading-l">
+        {{data['message-name-1']}}
+      </h1>
+
+      <dl class="nhsuk-summary-list notify-summary-list">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            routingPlanId
+          </dt>
+          <dd class="nhsuk-summary-list__value" style="font-family: monospace;">
+            b838b13c-f98c-4def-93f0-515d4e4f4ee1
+          </dd>
+      
+        </div>
+        
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Status
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+
+            {{ tag({
+              text: "Production",
+              classes: "nhsuk-tag--red"
+          })}}
+          </dd>
+      
+        </div>
+      
+      </dl>
+
+      <div class="notify-routing-plan">
+
+        <div class="notify-channel-block">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">1</div>
+            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">First channel</h3>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h4 class="nhsuk-heading-xs">NHS App</h4>
+
+              <p>
+                {{ data['channel-1-template'] }}
+              </p>
+              
+            </div>
+          </div>
+
+        </div>
+
+
+
+        {% if data['channel-amount'] == '2' or data['channel-amount'] == '3' %}
+
+        <div class="notify-channel-block">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">2</div>
+            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Second channel</h3>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h4 class="nhsuk-heading-xs">{{ data['channel-2-type'] }}</h4>
+
+              <p>
+                {{ data['channel-2-template'] }}
+              </p>
+              
+            </div>
+
+          </div>
+
+        </div>
+
+        {% endif %}
+
+
+
+        {% if data['channel-amount'] == '3' %}
+
+        <div class="notify-channel-block">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">3</div>
+            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Third channel</h3>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h4 class="nhsuk-heading-xs">{{ data['channel-3-type'] }}</h4>
+
+              <p>
+                {{ data['channel-3-template'] }}
+              </p>
+              
+            </div>
+
+          </div>
+
+        </div>
+
+        {% endif %}
+
+      </div>
+
+      <div class="nhsuk-form-group" style="margin-left: 60px;">
+
+        <p><a href="folder-messages">Back to all messages</a></p>
+
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

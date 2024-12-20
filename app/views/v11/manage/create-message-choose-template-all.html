@@ -1,0 +1,389 @@
+{% extends 'v11/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+
+      <span class="nhsuk-caption-l">{{ data['message-name-1'] }}</span>
+      <h1 class="nhsuk-heading-xl">Choose templates</h1>
+
+      {% if data['show-templates'] == '1' %}
+
+      <form action="create-message" autocomplete="off">
+
+        {% if data['channel-amount'] == '1' or data['channel-amount'] == '2' or data['channel-amount'] == '3' %}
+
+        <h2 class="nhsuk-heading-l">First channel</h2>
+
+        <p class="nhsuk-hint">Choose one option</p>
+
+        <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-9">
+ 
+          <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+              <th role="columnheader" class="" scope="col">
+                Select
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Name
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Type
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Date and <br />time created
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+              
+            <tr role="row" class="nhsuk-table__row">
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Select </span>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="template-1" name="channel-1-template" type="radio" value="Template 1" {% if data['channel-1-template'] == 'Template 1' %}checked{% endif %}>
+                  <label class="nhsuk-label nhsuk-radios__label" for="template-1"></label>
+                </div>
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Name </span>
+                Template 1
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Type </span>
+                NHS App
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />09:34
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Action </span>
+                <p class="nhsuk-u-margin-bottom-2"><a href="create-message-preview-template-app?preview-template-name=Template 1">Preview</a></p>
+              </td>
+            </tr>
+
+            <tr role="row" class="nhsuk-table__row">
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Select </span>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="template-2" name="channel-1-template" type="radio" value="Template 2" {% if data['channel-1-template'] == 'Template 2' %}checked{% endif %}>
+                  <label class="nhsuk-label nhsuk-radios__label" for="template-2"></label>
+                </div>
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Name </span>
+                Template 2
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Type </span>
+                NHS App
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />09:34
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Action </span>
+                <p class="nhsuk-u-margin-bottom-2"><a href="create-message-preview-template-app?preview-template-name=Template 2">Preview</a></p>
+              </td>
+            </tr>
+
+            <tr role="row" class="nhsuk-table__row">
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Select </span>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="template-3" name="channel-1-template" type="radio" value="Template 3" {% if data['channel-1-template'] == 'Template 3' %}checked{% endif %}>
+                  <label class="nhsuk-label nhsuk-radios__label" for="template-3"></label>
+                </div>
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Name </span>
+                Template 3
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Type </span>
+                NHS App
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />09:34
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Action </span>
+                <p class="nhsuk-u-margin-bottom-2"><a href="create-message-preview-template-app?preview-template-name=Template 3">Preview</a></p>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        {% endif %}
+
+
+
+
+        {% if data['channel-amount'] == '2' or data['channel-amount'] == '3' %}
+
+        <h2 class="nhsuk-heading-l">Second channel</h2>
+
+        <p class="nhsuk-hint">Choose one option</p>
+
+        <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-9">
+ 
+          <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+              <th role="columnheader" class="" scope="col">
+                Select
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Name
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Type
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Date and <br />time created
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+              
+            <tr role="row" class="nhsuk-table__row">
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Select </span>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="template-4" name="channel-2-template" type="radio" value="Template 4" {% if data['channel-2-template'] == 'Template 4' %}checked{% endif %}>
+                  <label class="nhsuk-label nhsuk-radios__label" for="template-4"></label>
+                </div>
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Name </span>
+                Template 4
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Type </span>
+                Text message (SMS)
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />09:34
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Action </span>
+                <p class="nhsuk-u-margin-bottom-2"><a href="create-message-preview-template-sms?preview-template-name=Template 4">Preview</a></p>
+              </td>
+            </tr>
+
+            <tr role="row" class="nhsuk-table__row">
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Select </span>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="template-5" name="channel-2-template" type="radio" value="Template 5" {% if data['channel-2-template'] == 'Template 5' %}checked{% endif %}>
+                  <label class="nhsuk-label nhsuk-radios__label" for="template-5"></label>
+                </div>
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Name </span>
+                Template 5
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Type </span>
+                Text message (SMS)
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />09:34
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Action </span>
+                <p class="nhsuk-u-margin-bottom-2"><a href="create-message-preview-template-sms?preview-template-name=Template 5">Preview</a></p>
+              </td>
+            </tr>
+
+            <tr role="row" class="nhsuk-table__row">
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Select </span>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="template-6" name="channel-2-template" type="radio" value="Template 6" {% if data['channel-2-template'] == 'Template 6' %}checked{% endif %}>
+                  <label class="nhsuk-label nhsuk-radios__label" for="template-6"></label>
+                </div>
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Name </span>
+                Template 6
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Type </span>
+                Text message (SMS)
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />09:34
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Action </span>
+                <p class="nhsuk-u-margin-bottom-2"><a href="create-message-preview-template-sms?preview-template-name=Template 6">Preview</a></p>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        {% endif %}
+
+
+
+
+        {% if data['channel-amount'] == '3' %}
+
+        <h2 class="nhsuk-heading-l">Third channel</h2>
+
+        <p class="nhsuk-hint">Choose one option</p>
+
+        <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-9">
+ 
+          <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+              <th role="columnheader" class="" scope="col">
+                Select
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Name
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Type
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Date and <br />time created
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+              
+            <tr role="row" class="nhsuk-table__row">
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Select </span>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="template-7" name="channel-3-template" type="radio" value="Template 7" {% if data['channel-3-template'] == 'Template 7' %}checked{% endif %}>
+                  <label class="nhsuk-label nhsuk-radios__label" for="template-7"></label>
+                </div>
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Name </span>
+                Template 7
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Type </span>
+                Email
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />09:34
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Action </span>
+                <p class="nhsuk-u-margin-bottom-2"><a href="create-message-preview-template-email?preview-template-name=Template 7">Preview</a></p>
+              </td>
+            </tr>
+
+            <tr role="row" class="nhsuk-table__row">
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Select </span>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="template-8" name="channel-3-template" type="radio" value="Template 8" {% if data['channel-3-template'] == 'Template 8' %}checked{% endif %}>
+                  <label class="nhsuk-label nhsuk-radios__label" for="template-8"></label>
+                </div>
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Name </span>
+                Template 8
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Type </span>
+                Email
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />09:34
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Action </span>
+                <p class="nhsuk-u-margin-bottom-2"><a href="create-message-preview-template-email?preview-template-name=Template 8">Preview</a></p>
+              </td>
+            </tr>
+
+            <tr role="row" class="nhsuk-table__row">
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Select </span>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="template-9" name="channel-3-template" type="radio" value="Template 9" {% if data['channel-3-template'] == 'Template 9' %}checked{% endif %}>
+                  <label class="nhsuk-label nhsuk-radios__label" for="template-9"></label>
+                </div>
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Name </span>
+                Template 9
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Type </span>
+                Email
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />09:34
+              </td>
+              <td role="cell" class="nhsuk-table__cell">
+                <span class="nhsuk-table-responsive__heading">Action </span>
+                <p class="nhsuk-u-margin-bottom-2"><a href="create-message-preview-template-email?preview-template-name=Template 9">Preview</a></p>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        {% endif %}
+
+
+
+
+
+
+
+
+        <div class="nhsuk-form-group">
+
+          {{ button({
+            text: 'Save and continue'
+          }) }}
+
+          <a href="create-message" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+
+        </div>
+
+      </form>
+
+      {% else%}
+
+      <p>You do not have any templates yet.</p>
+      
+      <div class="nhsuk-form-group">
+
+        <a href="folder-templates" class="nhsuk-button nhsuk-button--secondary">Create template</a>
+
+        <a href="create-message" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+
+      </div>
+
+      {% endif %}
+
+    </div>
+  </div>
+{% endblock %}
