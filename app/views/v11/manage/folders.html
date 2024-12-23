@@ -11,20 +11,20 @@
     <div class="nhsuk-grid-column-full">
 
       <h1 class="nhsuk-heading-xl">
-        Campaigns
+        Folders
       </h1>
 
       <form action="create-folder">
         {{ button({
-          'text': 'Create a campaign'
+          'text': 'Create a folder'
         }) }}
       </form>
 
       <!--{{ details({
-        text: "What is a campaign?",
+        text: "What is a folder?",
         HTML: "
-        <p>Campaigns contain templates and messages that are related to each other by the same topic. For example, 'Health campaign June 2024' or 'Screening invitations'.</p>
-        <p>You can set up templates and messages after you create a campaign.</p>
+        <p>Folders contain templates and messages that are related to each other by the same topic. For example, 'Health folder June 2024' or 'Screening invitations'.</p>
+        <p>You can set up templates and messages after you create a folder.</p>
         "
     }) }}-->
 
@@ -75,7 +75,7 @@
 
       {% else %}
  
-      <p>You don't have any campaigns yet.</p>
+      <p>You don't have any folders yet.</p>
 
       {% endif %}
       

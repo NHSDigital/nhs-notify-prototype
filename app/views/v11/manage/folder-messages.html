@@ -6,7 +6,7 @@
   items: [
     {
       href: "folders",
-      text: "Campaigns"
+      text: "Folders"
     },
     {
       href: "folder",
@@ -14,7 +14,7 @@
     }
   ],
   href: "folder-messages",
-  text: "Messages",
+  text: "Message plans",
   classes: "nhsuk-u-margin-bottom-5"
 }) }}-->
 
@@ -32,12 +32,12 @@
 
       <span class="nhsuk-caption-l">{{ data['folder-name-1'] }}</span>
       <h1 class="nhsuk-heading-xl">
-        Messages
+        Message plans
       </h1>
 
       <form action="{% if data['messages-prod'] != '1' %}create-message{% endif %}">
         {{ button({
-          'text': 'Create message'
+          'text': 'Create message plan'
         }) }}
       </form>
 
@@ -48,6 +48,10 @@
           </span>
         </summary>
         <div class="nhsuk-details__text">
+
+          <p class="nhsuk-hint">
+            Message plans that you are working on.
+          </p>
           
 
           {% if data['messages-draft'] == '1' %}
@@ -146,7 +150,7 @@
     
           {% else %}
      
-          <p>You do not have any draft messages yet.</p>
+          <p>You do not have any draft message plans yet.</p>
     
           {% endif %}
 
@@ -163,6 +167,9 @@
         </summary>
         <div class="nhsuk-details__text">
           
+          <p class="nhsuk-hint">
+            Message plans that you can put live using the NHS Notify API or MESH.
+          </p>
 
           {% if data['messages-prod'] == '1' %}
 
@@ -204,7 +211,7 @@
     
           {% else %}
      
-          <p>You do not have any messages in production yet.</p>
+          <p>You do not have any message plans in production yet.</p>
     
           {% endif %}
 

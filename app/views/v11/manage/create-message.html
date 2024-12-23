@@ -14,7 +14,7 @@
     <div class="nhsuk-grid-column-three-quarters">
 
       <h1 class="nhsuk-heading-xl">
-        Create a message
+        Create a message plan
       </h1>
 
       <form action="folder-messages" id="messageNameForm" method="post" autocomplete="off" onsubmit="return checkFormCreateMessage();">
@@ -22,7 +22,7 @@
         <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
             
           <label class="nhsuk-label nhsuk-u-font-size-22" for="message-name-1">
-            Message name
+            Message plan name
           </label>
           <div class="nhsuk-hint">
             This will not be visible to recipients.
@@ -31,13 +31,23 @@
           <input class="nhsuk-input nhsuk-u-margin-bottom-2 nhsuk-u-width-three-quarters" id="message-name-1" name="message-name-1" type="text" value="{{data['message-name-1']}}">
 
           <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="message-name-1--error">
-            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
-          </span>  
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message plan name
+          </span>
 
         </div>
 
         <dl class="nhsuk-summary-list notify-summary-list">
 
+          <!--<div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              routingPlanName
+            </dt>
+            <dd class="nhsuk-summary-list__value" style="font-family: monospace;">
+              {{ data['message-name-1'] | replace(" ", "_") }}
+            </dd>
+        
+          </div>-->
+          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               routingPlanId
@@ -67,7 +77,7 @@
         
         </dl>
 
-        <h2 class="nhsuk-heading-m">Plan how this message is sent</h2>
+        <!--<h2 class="nhsuk-heading-m">Plan how this message is sent</h2>-->
 
         <div class="notify-routing-plan">
 
@@ -77,7 +87,7 @@
 
             <div class="notify-channel-block-channel">
               <div class="notify-channel-block-number">1</div>
-              <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">First channel</h3>
+              <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">First message</h3>
             </div>
 
             <div class="notify-channel-block-outer">
@@ -111,7 +121,7 @@
 
             <div class="notify-channel-block-channel">
               <div class="notify-channel-block-number">2</div>
-              <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Second channel</h3>
+              <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Second message</h3>
             </div>
 
             <div class="notify-channel-block-outer">
@@ -159,7 +169,7 @@
 
             <div class="notify-channel-block-channel">
               <div class="notify-channel-block-number">3</div>
-              <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Third channel</h3>
+              <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Third message</h3>
             </div>
 
             <div class="notify-channel-block-outer">
@@ -201,23 +211,26 @@
 
         </div>
 
-        <div class="notify-channel-add-fallback">
+        <div class="notify-channel-add-fallback" style="margin-bottom: 20px;">
           <a href="{% if data['channel-amount'] != '3' %}create-message-add-fallback{% endif %}" class="nhsuk-u-font-size-19">
             <svg class="nhsuk-icon nhsuk-icon__plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" aria-hidden="true" height="34">
               <circle cx="12" cy="12" r="10"></circle>
               <path fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M12 8v8M8 12h8"></path>
-            </svg>Add a fallback channel
+            </svg>{% if data['channel-amount'] > "0" %}Add another message{% else %}Add a message{% endif %}
           </a>
         </div>
 
-        <!--<div class="notify-channel-add-fallback notify-channel-add-fallback_last">
+        <div class="notify-channel-add-fallback">
           <a href="{% if data['channel-amount'] != '3' %}create-message-choose-channels-and-templates{% endif %}" class="nhsuk-u-font-size-19">
             <svg class="nhsuk-icon nhsuk-icon__plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" aria-hidden="true" height="34">
               <circle cx="12" cy="12" r="10"></circle>
               <path fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M12 8v8M8 12h8"></path>
-            </svg>Add channels and templates
+            </svg><svg class="nhsuk-icon nhsuk-icon__plus notify-add-second" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" aria-hidden="true" height="34">
+              <circle cx="12" cy="12" r="10" stroke="#f0f4f5" stroke-width="1"></circle>
+              <path fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M12 8v8M8 12h8"></path>
+            </svg>Add multiple messages
           </a>
-        </div>-->
+        </div>
 
         <div class="nhsuk-form-group" style="margin-left: 60px;">
 

@@ -18,19 +18,35 @@
 
       <span class="nhsuk-caption-l">{{ data['folder-name-1'] }}</span>
       <h1 class="nhsuk-heading-xl">
-        Choose channels and templates
+        Choose message templates
       </h1>
 
-      <form action="create-message" method="post">
-
       {% if data['show-templates'] == '1' %}
+
+      <div class="nhsuk-form-group">
+
+        <label class="nhsuk-label" for="template-search">
+          Search by template name
+        </label>
+        <div class="nhsuk-hint">
+          The list of templates will be filtered as soon as you start typing
+        </div>
+
+        <input class="nhsuk-input nhsuk-u-margin-bottom-2 nhsuk-u-width-three-quarters" id="template-search" name="template-search" type="text">
+
+      </div>
+
+      <form action="create-message" method="post">
 
       <table role="table" class="nhsuk-table-responsive">
 
         <thead role="rowgroup" class="nhsuk-table__head">
           <tr role="row">
             <th role="columnheader" class="" scope="col">
-              Select
+              <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input checkboxes" id="template-{{ templateNumber }}" name="" type="checkbox" value="Template {{ templateNumber }}">
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="template-{{ templateNumber }}"></label>
+              </div>
             </th>
             <th role="columnheader" class="" scope="col">
               Name
