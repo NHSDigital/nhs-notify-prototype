@@ -8,7 +8,7 @@
 
 {% block content %}
 
-{% from '../includes/template-folder-table-row-choose.njk' import row_choose %}
+{% from '../includes/choose-templates-channels-table-row.njk' import choose_templates_channels_row %}
 
   <div class="nhsuk-grid-row">
 
@@ -72,7 +72,7 @@ Template 1
 
 
 
-          {{row_choose(templateNumber='1', templateTypeName='NHS App', templateType='app')}}
+          {{choose_templates_channels_row(templateNumber='1', templateTypeName='NHS App', templateType='app')}}
 
 
 
@@ -86,7 +86,7 @@ Template 2
 
 
 
-        {{row_choose(templateNumber='2', templateTypeName='NHS App', templateType='app')}}
+        {{choose_templates_channels_row(templateNumber='2', templateTypeName='NHS App', templateType='app')}}
 
 
 
@@ -101,7 +101,7 @@ Template 3
 
 
 
-        {{row_choose(templateNumber='3', templateTypeName='NHS App', templateType='app')}}
+        {{choose_templates_channels_row(templateNumber='3', templateTypeName='NHS App', templateType='app')}}
 
 
 
@@ -116,7 +116,7 @@ Template 4
 
 
 
-        {{row_choose(templateNumber='4', templateTypeName='Text message (SMS)', templateType='sms')}}
+        {{choose_templates_channels_row(templateNumber='4', templateTypeName='Text message (SMS)', templateType='sms')}}
 
 
 
@@ -133,7 +133,7 @@ Template 5
 
 
 
-        {{row_choose(templateNumber='5', templateTypeName='Text message (SMS)', templateType='sms')}}
+        {{choose_templates_channels_row(templateNumber='5', templateTypeName='Text message (SMS)', templateType='sms')}}
 
 
 
@@ -149,7 +149,7 @@ Template 6
 
 
 
-        {{row_choose(templateNumber='6', templateTypeName='Text message (SMS)', templateType='sms')}}
+        {{choose_templates_channels_row(templateNumber='6', templateTypeName='Text message (SMS)', templateType='sms')}}
 
 
 
@@ -164,7 +164,7 @@ Template 7
 
 
 
-        {{row_choose(templateNumber='7', templateTypeName='Email', templateType='email')}}
+        {{choose_templates_channels_row(templateNumber='7', templateTypeName='Email', templateType='email')}}
 
 
 
@@ -181,7 +181,7 @@ Template 8
 
 
 
-        {{row_choose(templateNumber='8', templateTypeName='Email', templateType='email')}}
+        {{choose_templates_channels_row(templateNumber='8', templateTypeName='Email', templateType='email')}}
 
 
 
@@ -197,7 +197,7 @@ Template 9
 
 
 
-        {{row_choose(templateNumber='9', templateTypeName='Email', templateType='email')}}
+        {{choose_templates_channels_row(templateNumber='9', templateTypeName='Email', templateType='email')}}
 
 
 

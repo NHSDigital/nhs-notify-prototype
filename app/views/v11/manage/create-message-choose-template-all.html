@@ -7,6 +7,9 @@
 {% endblock %}
 
 {% block content %}
+
+{% from '../includes/choose-template-table-row.njk' import choose_template_row %}
+
   <div class="nhsuk-grid-row">
 
     <div class="nhsuk-grid-column-full">
@@ -46,8 +49,14 @@
             </tr>
           </thead>
           <tbody class="nhsuk-table__body">
+
+            {{choose_template_row( templateNumber='1', templateTypeName='NHS App', templateType='app', channelNumber='1' )}}
+
+            {{choose_template_row( templateNumber='2', templateTypeName='NHS App', templateType='app', channelNumber='1' )}}
+
+            {{choose_template_row( templateNumber='3', templateTypeName='NHS App', templateType='app', channelNumber='1' )}}
               
-            <tr role="row" class="nhsuk-table__row">
+            <!--<tr role="row" class="nhsuk-table__row">
               <td role="cell" class="nhsuk-table__cell">
                 <span class="nhsuk-table-responsive__heading">Select </span>
                 <div class="nhsuk-radios__item">
@@ -120,7 +129,7 @@
                 <span class="nhsuk-table-responsive__heading">Action </span>
                 <p class="nhsuk-u-margin-bottom-2"><a href="create-message-preview-template-app?preview-template-name=Template 3">Preview</a></p>
               </td>
-            </tr>
+            </tr>-->
 
           </tbody>
         </table>
@@ -158,8 +167,14 @@
             </tr>
           </thead>
           <tbody class="nhsuk-table__body">
+
+            {{choose_template_row( templateNumber='4', templateTypeName='Text message (SMS)', templateType='sms', channelNumber='2' )}}
+
+            {{choose_template_row( templateNumber='5', templateTypeName='Text message (SMS)', templateType='sms', channelNumber='2' )}}
+
+            {{choose_template_row( templateNumber='6', templateTypeName='Text message (SMS)', templateType='sms', channelNumber='2' )}}
               
-            <tr role="row" class="nhsuk-table__row">
+            <!--<tr role="row" class="nhsuk-table__row">
               <td role="cell" class="nhsuk-table__cell">
                 <span class="nhsuk-table-responsive__heading">Select </span>
                 <div class="nhsuk-radios__item">
@@ -232,7 +247,7 @@
                 <span class="nhsuk-table-responsive__heading">Action </span>
                 <p class="nhsuk-u-margin-bottom-2"><a href="create-message-preview-template-sms?preview-template-name=Template 6">Preview</a></p>
               </td>
-            </tr>
+            </tr>-->
 
           </tbody>
         </table>
@@ -270,8 +285,14 @@
             </tr>
           </thead>
           <tbody class="nhsuk-table__body">
+
+            {{choose_template_row( templateNumber='7', templateTypeName='Email', templateType='email', channelNumber='3' )}}
+
+            {{choose_template_row( templateNumber='8', templateTypeName='Email', templateType='email', channelNumber='3' )}}
+
+            {{choose_template_row( templateNumber='9', templateTypeName='Email', templateType='email', channelNumber='3' )}}
               
-            <tr role="row" class="nhsuk-table__row">
+            <!--<tr role="row" class="nhsuk-table__row">
               <td role="cell" class="nhsuk-table__cell">
                 <span class="nhsuk-table-responsive__heading">Select </span>
                 <div class="nhsuk-radios__item">
@@ -344,7 +365,7 @@
                 <span class="nhsuk-table-responsive__heading">Action </span>
                 <p class="nhsuk-u-margin-bottom-2"><a href="create-message-preview-template-email?preview-template-name=Template 9">Preview</a></p>
               </td>
-            </tr>
+            </tr>-->
 
           </tbody>
         </table>

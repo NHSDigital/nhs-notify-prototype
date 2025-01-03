@@ -1,0 +1,33 @@
+{% macro choose_template_row(templateNumber, templateTypeName, templateType, channelNumber) %}
+
+<tr role="row" class="nhsuk-table__row">
+
+    <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Select </span>
+        <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="template-{{templateNumber}}" name="channel-{{channelNumber}}-template" type="radio" value="Template {{templateNumber}}">
+            <label class="nhsuk-label nhsuk-radios__label" for="template-{{templateNumber}}"></label>
+        </div>
+    </td>
+
+    <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Name </span>
+        Template {{templateNumber}}
+    </td>
+
+    <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Type </span>
+        {{templateTypeName}}
+        </td>
+        <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />09:34
+    </td>
+
+    <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Action </span>
+        <p class="nhsuk-u-margin-bottom-2"><a href="create-message-preview-template-{{templateType}}?preview-template-number={{templateNumber}}">Preview</a></p>
+    </td>
+    
+</tr>
+
+{% endmacro %}
