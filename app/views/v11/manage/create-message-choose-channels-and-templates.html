@@ -12,13 +12,11 @@
 
   <div class="nhsuk-grid-row">
 
-    {{sideNav(active='3', folderName=data['folder-name-1'])}}
+    <div class="nhsuk-grid-column-full">
 
-    <div class="nhsuk-grid-column-three-quarters">
-
-      <span class="nhsuk-caption-l">{{ data['folder-name-1'] }}</span>
+      <span class="nhsuk-caption-l">{{ data['message-name-1'] }}</span>
       <h1 class="nhsuk-heading-xl">
-        Choose message templates
+        Add channels and templates
       </h1>
 
       {% if data['show-templates'] == '1' %}
@@ -44,15 +42,15 @@
           <tr role="row">
             <th role="columnheader" class="" scope="col">
               <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input checkboxes" id="template-{{ templateNumber }}" name="" type="checkbox" value="Template {{ templateNumber }}">
+                  <input class="nhsuk-checkboxes__input checkboxes" id="template-{{ templateNumber }}" name="" type="checkbox" value="Template {{ templateNumber }}" onclick="selectAll(this);">
                   <label class="nhsuk-label nhsuk-checkboxes__label" for="template-{{ templateNumber }}"></label>
               </div>
             </th>
             <th role="columnheader" class="" scope="col">
-              Name
+              Template name
             </th>
             <th role="columnheader" class="" scope="col">
-              Type
+              Channel
             </th>
             <th role="columnheader" class="" scope="col">
               Date and <br />time created
@@ -245,9 +243,9 @@ End
       
       <div class="nhsuk-form-group">
 
-        <a href="folder-templates" class="nhsuk-button nhsuk-button--secondary">Create template</a>
+        <p><a href="folder-templates">Go to the templates area</a></p>
 
-        <a href="create-message" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+        <p><a href="create-message">Go back</a></p>
 
       </div>
 
@@ -255,4 +253,16 @@ End
       
     </div>
   </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  function selectAll(source) {
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      for (var i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i] != source)
+              checkboxes[i].checked = source.checked;
+      }
+  }
+</script>
 {% endblock %}

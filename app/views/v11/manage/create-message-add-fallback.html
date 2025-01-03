@@ -13,14 +13,16 @@
 
       <form action="create-message" autocomplete="off">
 
+        <span class="nhsuk-caption-l">{{ data['message-name-1'] }}</span>
+
         {% if data['channel-amount'] == '0' %}
 
         {{ radios({
           "name": "channel-1-type",
           fieldset: {
             legend: {
-              text: "Add a fallback channel",
-              classes: "nhsuk-fieldset__legend--l",
+              text: "Add a channel",
+              classes: "nhsuk-fieldset__legend--xl",
               isPageHeading: true
             }
           },
@@ -54,8 +56,8 @@
           "name": "channel-2-type",
           fieldset: {
             legend: {
-              text: "Add a fallback channel",
-              classes: "nhsuk-fieldset__legend--l",
+              text: "Add a channel",
+              classes: "nhsuk-fieldset__legend--xl",
               isPageHeading: true
             }
           },
@@ -88,8 +90,8 @@
           "name": "channel-3-type",
           fieldset: {
             legend: {
-              text: "Add a fallback channel",
-              classes: "nhsuk-fieldset__legend--l",
+              text: "Add a channel",
+              classes: "nhsuk-fieldset__legend--xl",
               isPageHeading: true
             }
           },
