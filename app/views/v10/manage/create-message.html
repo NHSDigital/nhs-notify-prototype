@@ -19,7 +19,7 @@
 
       <form action="create-message" method="post" autocomplete="off" onsubmit="return checkFormCreateMessage();">
 
-        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
             
           <label class="nhsuk-label nhsuk-u-font-size-22" for="message-name-1">
             Message name
@@ -32,7 +32,7 @@
 
           <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="message-name-1--error">
             <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message name
-          </span>  
+          </span>
 
         </div>
 
@@ -40,7 +40,7 @@
 
       </form>
 
-      <dl class="nhsuk-summary-list notify-summary-list">
+      <dl class="nhsuk-summary-list notify-summary-list nhsuk-u-margin-bottom-7">
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
@@ -71,9 +71,9 @@
       
       </dl>
 
-      <h2 class="nhsuk-heading-m">Plan how this message is sent</h2>
+      <div class="notify-routing-plan nhsuk-u-margin-bottom-7">
 
-      <div class="notify-routing-plan">
+        <h2 class="nhsuk-heading-m">Plan how this message is sent</h2>
 
         {% if data['channel-amount'] == '1' or data['channel-amount'] == '2' or data['channel-amount'] == '3' %}
 
@@ -205,7 +205,7 @@
 
       </div>
 
-      <div class="notify-channel-add-fallback">
+      <div class="notify-channel-add-fallback nhsuk-u-margin-bottom-7">
         <a href="{% if data['channel-amount'] != '3' %}create-message-add-fallback{% endif %}" class="nhsuk-u-font-size-19">
           <svg class="nhsuk-icon nhsuk-icon__plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" aria-hidden="true" height="34">
             <circle cx="12" cy="12" r="10"></circle>
@@ -216,7 +216,7 @@
  
       <form action="folder-messages" method="post" autocomplete="off" onsubmit="return checkFormCreateMessage();">
         
-        <div class="nhsuk-form-group" style="margin-left: 60px;">
+        <div class="nhsuk-form-group notify-message-button-container">
 
           {% if 
             data['messages-draft'] == '1' and 

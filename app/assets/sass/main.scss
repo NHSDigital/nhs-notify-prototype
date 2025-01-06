@@ -281,12 +281,7 @@ a:visited{
 }
 
 .notify-channel-add-fallback{
-    margin-bottom: 50px;
     position: relative;
-
-    &.notify-channel-add-fallback_last {
-        margin-bottom: 50px;
-    }
 
     .nhsuk-icon__plus{
         width: 48px;
@@ -297,11 +292,28 @@ a:visited{
         text-decoration: none;
     }
 
-    .notify-add-second{
-        position: absolute;
-        top: -6px;
-        left: 6px;
+    &.notify-channel-add-fallback_first{
     }
+
+    &.notify-channel-add-fallback_second{
+        padding-left: 60px;
+        padding-top: 10px;
+        
+        .nhsuk-icon__plus{
+            position: absolute;
+            top: 5px;
+            left: -5px;
+            z-index: 0;
+        }
+
+        .notify-add-second{
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+    }
+    
 }
 
 
@@ -352,4 +364,8 @@ a:visited{
     padding-top: 5px;
     padding-bottom: 5px;
     font-size: 1rem;
+}
+
+.notify-message-button-container{
+    margin-left: 60px;
 }
