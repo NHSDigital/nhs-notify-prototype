@@ -15,15 +15,32 @@
       </h1>
 
       <p>
-        A test message has been sent to
-        {% if data['message-type'] == 'app' %} the NHS App test account: {{data['test-app-1']}}{%endif%}
-        {% if data['message-type'] == 'sms' %}: {{data['test-sms-1']}}{%endif%}
-        {% if data['message-type'] == 'email' %}: {{data['test-email-1']}}{%endif%}
+        {% if data['message-type'] == 'app' %}
+          A test message has been sent to the test NHS App account: {{data['test-nhsno-1']}}
+        {%endif%}
+
+        {% if data['message-type'] == 'sms' %}
+          A test text message (SMS) has been sent to: 07711223344
+        {%endif%}
+
+        {% if data['message-type'] == 'email' %}
+          A test email has been sent to: mary.poppins5@nhs.net
+        {%endif%}
       </p>
 
       {% if data['message-type'] == 'app' %}<p>To preview your test message, <a href="https://www-onboardingaos.nhsapp.service.nhs.uk/login" target="_blank">log in to the NHS App (opens in a new tab)</a> using your test NHS App account details.</p>{%endif%}
 
-      <a href="{{ data['continue-url'] }}" class="nhsuk-button">Continue</a>
+      {% if data['message-type'] == 'app' %}
+        <a href="template-app-1" class="nhsuk-button">Continue</a>
+      {%endif%}
+
+      {% if data['message-type'] == 'sms' %}
+        <a href="template-sms-1" class="nhsuk-button">Continue</a>
+      {%endif%}
+
+      {% if data['message-type'] == 'email' %}
+        <a href="template-email-1" class="nhsuk-button">Continue</a>
+      {%endif%}
 
     </div>
   </div>

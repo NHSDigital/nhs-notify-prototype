@@ -146,18 +146,18 @@ function checkFormLetter() {
 
 
 
-function checkFormTestApp() {
+function checkFormTestNhsNo() {
     var ok = true;
 
-    if (document.getElementById("test-app-1").value == "") {
-        document.getElementById("test-app-1").classList.add("nhsuk-input--error");
-        document.getElementById("test-app-1").closest(".nhsuk-form-group").classList.add("nhsuk-form-group--error");
-        document.getElementById("test-app-1--error").style.display = "block";
+    if (document.getElementById("test-nhsno-1").value == "") {
+        document.getElementById("test-nhsno-1").classList.add("nhsuk-input--error");
+        document.getElementById("test-nhsno-1").closest(".nhsuk-form-group").classList.add("nhsuk-form-group--error");
+        document.getElementById("test-nhsno-1--error").style.display = "block";
         ok = false;
     } else {
-        document.getElementById("test-app-1").classList.remove("nhsuk-input--error");
-        document.getElementById("test-app-1").closest(".nhsuk-form-group").classList.remove("nhsuk-form-group--error");
-        document.getElementById("test-app-1--error").style.display = "none";
+        document.getElementById("test-nhsno-1").classList.remove("nhsuk-input--error");
+        document.getElementById("test-nhsno-1").closest(".nhsuk-form-group").classList.remove("nhsuk-form-group--error");
+        document.getElementById("test-nhsno-1--error").style.display = "none";
     }
 
     return ok;

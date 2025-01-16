@@ -24,35 +24,28 @@
         Send a test NHS App message
       </h1>
 
-      <p>
-        See your NHS App message like your recipients would by sending a test message to your test NHS App account.
-      </p>
+      <p>Preview your NHS App message like your recipients would by sending a test message to your test NHS App account.</p>
 
-      {{ details({
-        text: 'Before you send test NHS App messages',
-        HTML: '
-        <p>You will need an NHS App test account.</p>
-        <p>If you do not have an NHS App test account, contact NHS Notify to get one.</p>
-        <p>To preview your test message, <a href="https://www-onboardingaos.nhsapp.service.nhs.uk/login" target="_blank">log in to the NHS App (opens in a new tab)</a> using your test NHS App account details.</p>
-        '
-      }) }}
+      <p>If you do not have a test NHS App account, contact NHS Notify to get one.</p>
 
-      <form action="template-test-confirmation" method="post" onsubmit="return checkFormTestApp();" autocomplete="off">
+      <form action="template-test-confirmation" method="post" onsubmit="return checkFormTestNhsNo();" autocomplete="off">
 
         <div class="nhsuk-form-group">
 
-          <label class="nhsuk-label" for="test-app-1">
-            Test NHS number
+          <label class="nhsuk-label" for="test-nhsno-1">
+            Test patient NHS number
           </label>
-          <span class="nhsuk-hint">This is the NHS number for your NHS App test account</span>
+          <span class="nhsuk-hint">This is the NHS number from the test NHS App account</span>
 
-          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="test-app-1--error">
-            <span class="nhsuk-u-visually-hidden">Error:</span> Enter the NHS number for your test NHS App account
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="test-nhsno-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter the NHS number from the test NHS App account
           </span>
 
-          <input class="nhsuk-input" id="test-app-1" name="test-app-1" type="text" value="{{ data['test-app-1'] }}">
+          <input class="nhsuk-input" id="test-nhsno-1" name="test-nhsno-1" type="text" value="{{ data['test-nhsno-1'] }}">
 
         </div>
+
+        <p><a href="https://www-onboardingaos.nhsapp.service.nhs.uk/login" target="_blank">Log in to the NHS App (opens in a new tab)</a> with the test NHS App account to preview your test message.</p>
 
         <div class="nhsuk-form-group nhsuk-u-padding-top-4">
 
@@ -69,7 +62,7 @@
 
           {{ input({
             label: {
-              text: "fieldName1 (optional)"
+              text: "fieldName1"
             },
             id: "fieldName1",
             name: "fieldName1",
@@ -78,7 +71,7 @@
 
           {{ input({
             label: {
-              text: "fieldName2 (optional)"
+              text: "fieldName2"
             },
             id: "fieldName2",
             name: "fieldName2",
@@ -103,46 +96,45 @@
         Send a test text message (SMS)
       </h1>
 
-      <p>
-        See your text message like your recipients would by sending a test text message to your mobile phone.
-      </p>
+      <p>Preview your text message like your recipients would by sending a test text message to your mobile phone.</p>
 
-      <form action="template-test-confirmation" method="post" onsubmit="return checkFormTestSMS();" autocomplete="off">
+      <p>This test text message will be sent to: 07711223344</p>
 
-        <div class="nhsuk-form-group">
+      <form action="template-test-confirmation" method="post" onsubmit="return checkFormTestNhsNo();" autocomplete="off">
 
-          <label class="nhsuk-label" for="test-sms-1">
-            Mobile number
-          </label>
+        <div class="nhsuk-u-padding-top-4">
 
-          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="test-sms-1--error">
-            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a mobile number
-          </span>
+          <h2 class="nhsuk-heading-m">Personalisation fields that use PDS</h2>
 
-          <input class="nhsuk-input" id="test-sms-1" name="test-sms-1" type="text" value="{{ data['test-sms-1'] }}">
+          <p>Populate personalisation fields that use PDS by entering a test patient's NHS number.</p>
+
+          <p>If you do not have a test patient, contact NHS Notify to get one.</p>
+
+          <div class="nhsuk-form-group">
+
+            <label class="nhsuk-label" for="test-nhsno-1">
+              Test patient NHS number
+            </label>
+  
+            <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="test-nhsno-1--error">
+              <span class="nhsuk-u-visually-hidden">Error:</span> Enter the NHS number for a test patient
+            </span>
+  
+            <input class="nhsuk-input" id="test-nhsno-1" name="test-nhsno-1" type="text" value="{{ data['test-nhsno-1'] }}">
+  
+          </div>
 
         </div>
 
-        <div class="nhsuk-form-group nhsuk-u-padding-top-4">
+        <div class="nhsuk-u-padding-top-4">
 
-          <h2 class="nhsuk-heading-m">Personalisation fields</h2>
+          <h2 class="nhsuk-heading-m">Custom personalisation fields</h2>
 
-          <p>Populate personalisation fields that use PDS by entering your test patient's NHS number.</p>
-
-          {{ input({
-            "label": {
-              "text": "Test patient NHS number (optional)"
-            },
-            "id": "test-nhsno-1",
-            "name": "test-nhsno-1",
-            "value": data['test-nhsno-1']
-          }) }}
-
-          <p class="nhsuk-u-margin-top-7">Enter test data for your own personalisation fields to see how they will appear in your NHS App messages.</p>
+          <p>Enter test data for your own personalisation fields to see how they will appear in your test messages.</p>
 
           {{ input({
             label: {
-              text: "fieldName1 (optional)"
+              text: "fieldName1"
             },
             id: "fieldName1",
             name: "fieldName1",
@@ -151,7 +143,7 @@
 
           {{ input({
             label: {
-              text: "fieldName2 (optional)"
+              text: "fieldName2"
             },
             id: "fieldName2",
             name: "fieldName2",
@@ -176,46 +168,45 @@
         Send a test email
       </h1>
 
-      <p>
-        See your email like your recipients would by sending a test email to your nhs.net email address.
-      </p>
+      <p>Preview your email like your recipients would by sending a test email to your email address.</p>
 
-      <form action="template-test-confirmation" method="post" onsubmit="return checkFormTestEmail();" autocomplete="off">
+      <p>This test email will be sent to: mary.poppins5@nhs.net</p>
 
-        <div class="nhsuk-form-group">
+      <form action="template-test-confirmation" method="post" onsubmit="return checkFormTestNhsNo();" autocomplete="off">
 
-          <label class="nhsuk-label" for="test-email-1">
-            Email address
-          </label>
+        <div class="nhsuk-u-padding-top-4">
 
-          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="test-email-1--error">
-            <span class="nhsuk-u-visually-hidden">Error:</span> Enter an email address
-          </span>
+          <h2 class="nhsuk-heading-m">Personalisation fields that use PDS</h2>
 
-          <input class="nhsuk-input" id="test-email-1" name="test-email-1" type="text" value="{{ data['test-email-1'] }}">
+          <p>Populate personalisation fields that use PDS by entering a test patient's NHS number.</p>
+
+          <p>If you do not have a test patient, contact NHS Notify to get one.</p>
+
+          <div class="nhsuk-form-group">
+
+            <label class="nhsuk-label" for="test-nhsno-1">
+              Test patient NHS number
+            </label>
+  
+            <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="test-nhsno-1--error">
+              <span class="nhsuk-u-visually-hidden">Error:</span> Enter the NHS number for a test patient
+            </span>
+  
+            <input class="nhsuk-input" id="test-nhsno-1" name="test-nhsno-1" type="text" value="{{ data['test-nhsno-1'] }}">
+  
+          </div>
 
         </div>
 
-        <div class="nhsuk-form-group nhsuk-u-padding-top-4">
+        <div class="nhsuk-u-padding-top-4">
 
-          <h2 class="nhsuk-heading-m">Personalisation fields</h2>
+          <h2 class="nhsuk-heading-m">Custom personalisation fields</h2>
 
-          <p>Populate personalisation fields that use PDS by entering your test patient's NHS number.</p>
-
-          {{ input({
-            "label": {
-              "text": "Test patient NHS number (optional)"
-            },
-            "id": "test-nhsno-1",
-            "name": "test-nhsno-1",
-            "value": data['test-nhsno-1']
-          }) }}
-
-          <p class="nhsuk-u-margin-top-7">Enter test data for your own personalisation fields to see how they will appear in your NHS App messages.</p>
+          <p>Enter test data for your own personalisation fields to see how they will appear in your test messages.</p>
 
           {{ input({
             label: {
-              text: "fieldName1 (optional)"
+              text: "fieldName1"
             },
             id: "fieldName1",
             name: "fieldName1",
@@ -224,7 +215,7 @@
 
           {{ input({
             label: {
-              text: "fieldName2 (optional)"
+              text: "fieldName2"
             },
             id: "fieldName2",
             name: "fieldName2",

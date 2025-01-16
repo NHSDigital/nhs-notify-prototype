@@ -16,14 +16,14 @@
 
       <span class="nhsuk-caption-l">{{ data['message-name-1'] }}</span>
       <h1 class="nhsuk-heading-xl">
-        Add channels and templates
+        Add messages by template
       </h1>
 
       {% if data['show-templates'] == '1' %}
 
       <div class="nhsuk-form-group">
 
-        <label class="nhsuk-label" for="template-search">
+        <label class="nhsuk-label" for="template-search-name">
           Search by template name
         </label>
         <div class="nhsuk-hint">
@@ -31,6 +31,26 @@
         </div>
 
         <input class="nhsuk-input nhsuk-u-margin-bottom-2 nhsuk-u-width-three-quarters" id="template-search" name="template-search" type="text">
+
+      </div>
+
+      <div class="nhsuk-form-group">
+
+        <label class="nhsuk-label" for="template-search-channel">
+          Filter templates by folder
+        </label>
+
+        <select class="nhsuk-select" id="select-1" name="select-1">
+          <option value="0" selected></option>
+          <option value="1">NHS App</option>
+          <option value="2">Email</option>
+          <option value="3">Text message (SMS)</option>
+          <option value="4">Standard letter</option>
+          <option value="4">Additional language letter</option>
+          <option value="5">Braille letter</option>
+          <option value="6">Audio CD letter</option>
+          <option value="7">Large print letter</option>
+        </select>
 
       </div>
 
@@ -47,10 +67,10 @@
               </div>
             </th>
             <th role="columnheader" class="" scope="col">
-              Template name
+              Name
             </th>
             <th role="columnheader" class="" scope="col">
-              Channel
+              Type
             </th>
             <th role="columnheader" class="" scope="col">
               Date and <br />time created
@@ -62,157 +82,31 @@
         </thead>
         <tbody class="nhsuk-table__body">
 
-<!--
-##################################################
+          {{choose_templates_channels_row(templateNumber='1', templateTypeName='NHS App', templateType='app', language='')}}
 
-Template 1
+          {{choose_templates_channels_row(templateNumber='2', templateTypeName='NHS App', templateType='app', language='')}}
 
-##################################################
--->
+          {{choose_templates_channels_row(templateNumber='3', templateTypeName='NHS App', templateType='app', language='')}}
 
+          {{choose_templates_channels_row(templateNumber='4', templateTypeName='Text message (SMS)', templateType='sms', language='')}}
 
+          {{choose_templates_channels_row(templateNumber='5', templateTypeName='Text message (SMS)', templateType='sms', language='')}}
 
-          {{choose_templates_channels_row(templateNumber='1', templateTypeName='NHS App', templateType='app')}}
+          {{choose_templates_channels_row(templateNumber='6', templateTypeName='Text message (SMS)', templateType='sms', language='')}}
 
+          {{choose_templates_channels_row(templateNumber='7', templateTypeName='Email', templateType='email', language='')}}
 
+          {{choose_templates_channels_row(templateNumber='8', templateTypeName='Email', templateType='email', language='')}}
 
-<!--
-##################################################
+          {{choose_templates_channels_row(templateNumber='9', templateTypeName='Email', templateType='email', language='')}}
 
-Template 2
+          <!--{{choose_templates_channels_row(templateNumber='10', templateTypeName='Standard letter', templateType='letter', language='')}}
 
-##################################################
--->
+          {{choose_templates_channels_row(templateNumber='11', templateTypeName='Additional language letter', templateType='letter', language='Chinese')}}
 
+          {{choose_templates_channels_row(templateNumber='12', templateTypeName='Additional language letter', templateType='letter', language='Italian')}}
 
-
-        {{choose_templates_channels_row(templateNumber='2', templateTypeName='NHS App', templateType='app')}}
-
-
-
-<!--
-##################################################
-
-Template 3
-
-##################################################
--->
-
-
-
-
-        {{choose_templates_channels_row(templateNumber='3', templateTypeName='NHS App', templateType='app')}}
-
-
-
-
-<!--
-##################################################
-
-Template 4
-
-##################################################
--->
-
-
-
-        {{choose_templates_channels_row(templateNumber='4', templateTypeName='Text message (SMS)', templateType='sms')}}
-
-
-
-
-
-<!--
-##################################################
-
-Template 5
-
-##################################################
--->
-
-
-
-
-        {{choose_templates_channels_row(templateNumber='5', templateTypeName='Text message (SMS)', templateType='sms')}}
-
-
-
-
-<!--
-##################################################
-
-Template 6
-
-##################################################
--->
-
-
-
-
-        {{choose_templates_channels_row(templateNumber='6', templateTypeName='Text message (SMS)', templateType='sms')}}
-
-
-
-
-<!--
-##################################################
-
-Template 7
-
-##################################################
--->
-
-
-
-        {{choose_templates_channels_row(templateNumber='7', templateTypeName='Email', templateType='email')}}
-
-
-
-
-
-<!--
-##################################################
-
-Template 8
-
-##################################################
--->
-
-
-
-
-        {{choose_templates_channels_row(templateNumber='8', templateTypeName='Email', templateType='email')}}
-
-
-
-
-<!--
-##################################################
-
-Template 9
-
-##################################################
--->
-
-
-
-
-        {{choose_templates_channels_row(templateNumber='9', templateTypeName='Email', templateType='email')}}
-
-
-
-
-
-<!--
-##################################################
-
-End
-
-##################################################
--->
-
-
-
+          {{choose_templates_channels_row(templateNumber='13', templateTypeName='Large print letter', templateType='letter', language='')}}-->
 
         </tbody>
       </table>

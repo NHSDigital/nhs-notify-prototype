@@ -1,7 +1,7 @@
 module.exports = {
 
     "folders": "0",
-    "folder-name-1": "Health campaign Mar 2024",
+    "folder-name-1": "My project name",
 
     "folder-1-app-templates": "0",
     "folder-1-email-templates": "0",

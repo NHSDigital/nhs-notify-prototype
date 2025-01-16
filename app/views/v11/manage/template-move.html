@@ -1,0 +1,58 @@
+{% extends 'v11/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/404" autocomplete="off">
+
+        {{ radios({
+          "name": "channel-1-type",
+          fieldset: {
+            legend: {
+              text: "Which folder do you want to move this template to?",
+              classes: "nhsuk-fieldset__legend--xl",
+              isPageHeading: true
+            }
+          },
+          "hint": {
+            "text": "Select one option"
+          },
+          "items": [
+            {
+              "value": "Folder 1",
+              "text": "Folder 1"
+            },
+            {
+              "value": "Folder 2",
+              "text": "Folder 2"
+            },
+            {
+              "value": "Folder 3",
+              "text": "Folder 3"
+            }
+          ]
+        }) }}
+
+        <div class="nhsuk-form-group">
+
+          {{ button({
+            text: 'Move template'
+          }) }}
+
+          <a href="javascript:history.go(-1);" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
