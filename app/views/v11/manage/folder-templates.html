@@ -51,10 +51,12 @@
         <thead role="rowgroup" class="nhsuk-table__head">
           <tr role="row">
             <th role="columnheader" class="" scope="col">
+              {% if data['show-templates'] == '1' %}
               <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input checkboxes" id="" name="" type="checkbox" value="" onclick="selectAll(this);">
+                  <input class="nhsuk-checkboxes__input checkboxes" id="" name="" type="checkbox" value="" onclick="selectAll(this); toggleActionsByCheckboxes();">
                   <label class="nhsuk-label nhsuk-checkboxes__label" for=""></label>
               </div>
+              {% endif %}
             </th>
             <th role="columnheader" class="" scope="col">
               Name
@@ -77,8 +79,6 @@
           {{row_folder(folderNumber='1', type='Folder', numberOfTemplates='3')}}
 
           {{row_folder(folderNumber='2', type='Folder', numberOfTemplates='2')}}
-
-          {{row_folder(folderNumber='3', type='Folder', numberOfTemplates='0')}}
 
           {% endif %}
 
@@ -401,6 +401,19 @@
         </tbody>
       </table>
 
+      <div class="notify-sticky-actions" id="notify-sticky-actions">
+        <div class="nhsuk-width-container">
+          <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-one-quarter">&nbsp;</div>
+            <div class="nhsuk-grid-column-three-quarters">
+
+              <a href="/404" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-bottom-0">Move to folder</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
       {% else %}
  
       <p>You do not have any templates or folders yet.</p>
@@ -409,16 +422,4 @@
       
     </div>
   </div>
-{% endblock %}
-
-{% block pageScripts %}
-<script>
-  function selectAll(source) {
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-      for (var i = 0; i < checkboxes.length; i++) {
-          if (checkboxes[i] != source)
-              checkboxes[i].checked = source.checked;
-      }
-  }
-</script>
 {% endblock %}

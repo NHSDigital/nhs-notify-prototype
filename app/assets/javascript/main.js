@@ -220,3 +220,41 @@ function checkFormCreateMessage() {
 
     return ok;
 }
+
+
+
+function showTemplateError() {
+
+    var error_summary = document.getElementById("create-message-template-error");
+    
+    error_summary.style.display = "block";
+    error_summary.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+
+    return false;
+    
+}
+
+
+
+function selectAll(source) {
+
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i] != source)
+            checkboxes[i].checked = source.checked;
+    }
+}
+
+function toggleActionsByCheckboxes(){
+
+    let checkedCheckboxes = document.querySelectorAll('input[type=checkbox]:checked');
+    var stickyActions = document.getElementById('notify-sticky-actions');
+
+    if(checkedCheckboxes.length == 0) {
+        stickyActions.style.display = "none";
+    } else {
+        stickyActions.style.display = "block";
+    }
+
+}

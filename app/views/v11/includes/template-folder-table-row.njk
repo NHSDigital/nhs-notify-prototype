@@ -5,7 +5,7 @@
     <td role="cell" class="nhsuk-table__cell">
         
         <div class="nhsuk-checkboxes__item">
-            <input class="nhsuk-checkboxes__input checkboxes" id="template-{{ templateNumber }}" name="" type="checkbox" value="Template {{ templateNumber }}">
+            <input class="nhsuk-checkboxes__input checkboxes" id="template-{{ templateNumber }}" name="" type="checkbox" value="Template {{ templateNumber }}" onclick="toggleActionsByCheckboxes()">
             <label class="nhsuk-label nhsuk-checkboxes__label" for="template-{{ templateNumber }}"></label>
         </div>
        
@@ -19,7 +19,8 @@
         </a>
 
         {% if locked == '1' %}
-
+        
+        <br />
         <strong class="nhsuk-tag nhsuk-tag--orange">
             Locked
         </strong>
@@ -39,13 +40,13 @@
 
     <td role="cell" class="nhsuk-table__cell">
         <span class="nhsuk-table-responsive__heading">Action </span>
+
         <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="template-move">Move</a></p>
+
         <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="/404">Copy</a></p>
 
         {% if locked != '1' %}
-
         <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="/404">Delete</a></p>
-
         {% endif %}
 
     </td>

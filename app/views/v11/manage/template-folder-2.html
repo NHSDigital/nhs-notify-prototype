@@ -48,7 +48,7 @@
           </svg>Folder
       </span>
       <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-2">
-        Folder 1
+        Folder 2
       </h1>
 
       <p class="nhsuk-u-margin-bottom-7 nhsuk-body-s"><a href="">Rename folder</a></p>
@@ -118,24 +118,6 @@
           {% else %}
 
             {{row(templateNumber='2', locked='', templateTypeName='NHS App', templateType='app')}}
-
-          {% endif %}
-
-
-          {% if 
-            data['messages-prod'] == '1' and 
-            data['channel-1-template'] == 'Template 3' or 
-            data['messages-prod'] == '1' and 
-            data['channel-2-template'] == 'Template 3' or 
-            data['messages-prod'] == '1' and 
-            data['channel-3-template'] == 'Template 3' 
-          %}
-
-            {{row(templateNumber='3', locked='1', templateTypeName='NHS App', templateType='app')}}
-
-          {% else %}
-
-            {{row(templateNumber='3', locked='', templateTypeName='NHS App', templateType='app')}}
 
           {% endif %}
 

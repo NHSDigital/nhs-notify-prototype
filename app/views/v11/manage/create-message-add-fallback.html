@@ -11,136 +11,50 @@
 
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="create-message" autocomplete="off">
+        <form action="create-message" autocomplete="off">
 
         <span class="nhsuk-caption-l">{{ data['message-name-1'] }}</span>
 
-        {% if data['channel-amount'] == '0' %}
+        <div class="nhsuk-form-group">
 
-        {{ radios({
-          "name": "channel-1-type",
-          fieldset: {
-            legend: {
-              text: "Add a message",
-              classes: "nhsuk-fieldset__legend--xl",
-              isPageHeading: true
-            }
-          },
-          "hint": {
-            "text": "Select one option"
-          },
-          "items": [
-            {
-              "value": "NHS App",
-              "text": "NHS App"
-            },
-            {
-              "value": "Email",
-              "text": "Email"
-            },
-            {
-              "value": "Text message (SMS)",
-              "text": "Text message (SMS)"
-            },
-            {
-              "value": "Standard letter",
-              "text": "Standard letter"
-            },
-            {
-              "value": "Large print letter",
-              "text": "Large print letter"
-            }
-          ]
-        }) }}
-
-        <input type="hidden" name="channel-amount" value="1">
-
-        {% endif %}
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+              <h1 class="nhsuk-fieldset__heading">
+                Add a message
+              </h1>
+            </legend>
         
+            <div class="nhsuk-radios">
+
+              <span class="nhsuk-hint">Select one option</span>
         
-        {% if data['channel-amount'] == '1' %}
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-1" name="channel-{{ data['channel-amount']|float + 1 }}-type" type="radio" value="NHS App">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                  NHS App
+                </label>
+              </div>
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-2" name="channel-{{ data['channel-amount']|float + 1 }}-type" type="radio" value="Email">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                  Email
+                </label>
+              </div>
 
-        {{ radios({
-          "name": "channel-2-type",
-          fieldset: {
-            legend: {
-              text: "Add a message",
-              classes: "nhsuk-fieldset__legend--xl",
-              isPageHeading: true
-            }
-          },
-          "hint": {
-            "text": "Select one option"
-          },
-          "items": [
-            {
-              "value": "NHS App",
-              "text": "NHS App"
-            },
-            {
-              "value": "Email",
-              "text": "Email"
-            },
-            {
-              "value": "Text message (SMS)",
-              "text": "Text message (SMS)"
-            },
-            {
-              "value": "Standard letter",
-              "text": "Standard letter"
-            },
-            {
-              "value": "Large print letter",
-              "text": "Large print letter"
-            }
-          ]
-        }) }}
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-3" name="channel-{{ data['channel-amount']|float + 1 }}-type" type="radio" value="Text message (SMS)">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-3">
+                  Text message (SMS)
+                </label>
+              </div>
+        
+            </div>
+          </fieldset>
+        
+        </div>
 
-        <input type="hidden" name="channel-amount" value="2">
-
-        {% endif %}
-
-        {% if data['channel-amount'] == '2' %}
-
-        {{ radios({
-          "name": "channel-3-type",
-          fieldset: {
-            legend: {
-              text: "Add a message",
-              classes: "nhsuk-fieldset__legend--xl",
-              isPageHeading: true
-            }
-          },
-          "hint": {
-            "text": "Select one option"
-          },
-          "items": [
-            {
-              "value": "NHS App",
-              "text": "NHS App"
-            },
-            {
-              "value": "Email",
-              "text": "Email"
-            },
-            {
-              "value": "Text message (SMS)",
-              "text": "Text message (SMS)"
-            },
-            {
-              "value": "Standard letter",
-              "text": "Standard letter"
-            },
-            {
-              "value": "Large print letter",
-              "text": "Large print letter"
-            }
-          ]
-        }) }}
-
-        <input type="hidden" name="channel-amount" value="3">
-
-        {% endif %}
+        <input type="hidden" name="channel-amount" value="{{ data['channel-amount']|float + 1 }}">
 
         <div class="nhsuk-form-group">
 

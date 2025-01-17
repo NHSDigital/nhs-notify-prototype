@@ -11,6 +11,8 @@
 
     <div class="nhsuk-grid-column-two-thirds">
 
+      {% if data['show-folders'] == '1' %}
+
       <form action="/404" autocomplete="off">
 
         {{ radios({
@@ -18,7 +20,7 @@
           fieldset: {
             legend: {
               text: "Which folder do you want to move this template to?",
-              classes: "nhsuk-fieldset__legend--xl",
+              classes: "nhsuk-fieldset__legend--l",
               isPageHeading: true
             }
           },
@@ -33,10 +35,6 @@
             {
               "value": "Folder 2",
               "text": "Folder 2"
-            },
-            {
-              "value": "Folder 3",
-              "text": "Folder 3"
             }
           ]
         }) }}
@@ -52,6 +50,14 @@
         </div>
 
       </form>
+
+      {% else %}
+
+      <p>There are no folders to move this template into.</p>
+
+      <p><a href="javascript:history.go(-1);">Go back</a></p>
+
+      {% endif %}
 
     </div>
   </div>

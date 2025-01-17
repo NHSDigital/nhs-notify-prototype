@@ -26,6 +26,9 @@ module.exports = {
     "checkbox-accessible-letter": "",
     "messages-draft": "0",
     "messages-prod": "0",
-    "channel-amount": "0"
+    "channel-amount": "0",
+    "channel-1-template": "",
+    "channel-2-template": "",
+    "channel-3-template": ""
   
   }

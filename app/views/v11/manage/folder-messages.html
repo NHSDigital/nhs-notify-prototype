@@ -134,7 +134,6 @@
           </table>
 
           <div class="notify-sticky-actions" id="notify-sticky-actions">
-
             <div class="nhsuk-width-container">
               <div class="nhsuk-grid-row">
                 <div class="nhsuk-grid-column-one-quarter">&nbsp;</div>
@@ -145,7 +144,6 @@
                 </div>
               </div>
             </div>
-    
           </div>
     
           {% else %}
@@ -234,23 +232,6 @@
 {% endblock %}
 
 {% block pageScripts %}
-
-<script>
-
-  function toggleActionsByCheckboxes(){
-  
-    let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
-    var stickyActions = document.getElementById('notify-sticky-actions');
-  
-    if(checkboxes.length == 0) {
-      stickyActions.style.display = "none";
-    } else {
-      stickyActions.style.display = "block";
-    }
-  
-  }
-  
-</script>
 
 <script src="/js/expanderToggle.js" ></script>
 
