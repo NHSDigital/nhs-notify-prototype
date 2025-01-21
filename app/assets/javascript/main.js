@@ -246,6 +246,7 @@ function selectAll(source) {
     }
 }
 
+
 function toggleActionsByCheckboxes(){
 
     let checkedCheckboxes = document.querySelectorAll('input[type=checkbox]:checked');
@@ -255,6 +256,45 @@ function toggleActionsByCheckboxes(){
         stickyActions.style.display = "none";
     } else {
         stickyActions.style.display = "block";
+    }
+
+}
+
+
+
+function toggleTable() {
+
+    let filter_folders = document.getElementById("filter-folders").value;
+    let rows = document.getElementsByClassName("nhsuk-table__row");
+    let rows1 = document.getElementsByClassName("template-folder-1");
+    let rows2 = document.getElementsByClassName("template-folder-2");
+
+    if (filter_folders === "1") {
+
+        for (let i = 0; i < rows.length; i++) {
+        rows[i].style.display = "none";
+        }
+
+        for (let k = 0; k < rows1.length; k++) {
+        rows1[k].style.display = "table-row";
+        }
+
+    } else if (filter_folders === "2") {
+
+        for (let i = 0; i < rows.length; i++) {
+        rows[i].style.display = "none";
+        }
+
+        for (let j = 0; j < rows2.length; j++) {
+        rows2[j].style.display = "table-row";
+        }
+
+    } else {
+
+        for (let i = 0; i < rows.length; i++) {
+        rows[i].style.display = "table-row";
+        }
+        
     }
 
 }

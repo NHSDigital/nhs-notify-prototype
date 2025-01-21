@@ -23,7 +23,7 @@ window.onload = function () {
 {% block outerContent %}
 
 {{ backLink({
-  "href": "folder-templates",
+  "href": "javascript:history.go(-1);",
   "text": "Back to all templates",
   "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
 }) }}
@@ -37,55 +37,14 @@ window.onload = function () {
       <div class="nhsuk-u-reading-width">
 
         <h1 class="nhsuk-heading-xl">
-          Template {{ data['preview-template-number'] }}
+          {{ data['preview-template-name'] }}
         </h1>
 
       </div>
 
       {% if data['template-locked'] == '1' %}
 
-      <div class="nhsuk-warning-callout-nhs-notify nhsuk-u-padding-4 nhsuk-u-margin-bottom-6">
-
-        <p class="nhsuk-u-margin-bottom-3">
-          {{ tag({
-            text: "Locked",
-            classes: "nhsuk-u-margin-right-2 nhsuk-tag--orange"
-          })}}
-          You cannot edit this template as it's assigned to messages in production.
-        </p>
-
-        <details class="nhsuk-details nhsuk-u-margin-bottom-0">
-          <summary class="nhsuk-details__summary">
-            <span class="nhsuk-details__summary-text">
-              Show messages this template is assigned to
-            </span>
-          </summary>
-          <div class="nhsuk-details__text">
-            
-            <p>
-              <strong class="nhsuk-tag nhsuk-tag--red">
-                Production
-              </strong> 
-              <a href="create-message-production">{{ data["message-name-1"] }}</a>
-            </p>
-        
-          </div>
-        </details>
-
-      </div>
-
-      {% else %}
-
-      <div class="nhsuk-u-margin-bottom-6">
-
-        <p class="nhsuk-u-margin-bottom-3">
-          {{ tag({
-            text: "Unlocked",
-            classes: "nhsuk-u-margin-right-2"
-          })}}
-        </p>
-  
-      </div>
+      {% include "../includes/template-locked-message.html" %}
 
       {% endif %}
 
@@ -97,7 +56,7 @@ window.onload = function () {
               Template ID
             </th>
             <td role="cell" class="nhsuk-table__cell" style="font-family: monospace;">
-              app-a4b171b5-431f-4a5b-9d7a-9a4903c98e66
+              a4b171b5-431f-4a5b-9d7a-9a4903c98e66
             </td>
           </tr>
 
@@ -110,14 +69,14 @@ window.onload = function () {
             </td>
           </tr>
 
-          <tr role="row" class="nhsuk-table__row">
+          <!--<tr role="row" class="nhsuk-table__row">
             <th role="cell" class="nhsuk-table__cell">
               Folder
             </th>
             <td role="cell" class="nhsuk-table__cell">
               None
             </td>
-          </tr>
+          </tr>-->
 
         </tbody>
       </table>
@@ -188,7 +147,7 @@ window.onload = function () {
 
       {% endif %}
 
-      <p><a href="folder-templates">Back to all templates</a></p>
+      <p><a href="javascript:history.go(-1);">Back to all templates</a></p>
 
     </div>
   </div>

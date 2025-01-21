@@ -48,15 +48,15 @@
           </svg>Folder
       </span>
       <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-2">
-        Folder 1
+        {{ data['template-folder-1-name'] }}
       </h1>
 
-      <p class="nhsuk-u-margin-bottom-7 nhsuk-body-s"><a href="">Rename folder</a></p>
+      <p class="nhsuk-u-margin-bottom-7 nhsuk-body-s"><a href="/404">Rename folder</a></p>
 
-      <form action="" style="float: left; padding-right: 15px;">
+      <form action="">
         <input type="hidden" name="show-templates" value="1">
         {{ button({
-          'text': 'Create template'
+          'text': 'New template'
         }) }}
       </form>
 
@@ -88,54 +88,54 @@
 
           {% if 
             data['messages-prod'] == '1' and 
-            data['channel-1-template'] == 'Template 1' or 
+            data['channel-1-template'] == data['template-10-name'] or 
             data['messages-prod'] == '1' and 
-            data['channel-2-template'] == 'Template 1' or 
+            data['channel-2-template'] == data['template-10-name'] or 
             data['messages-prod'] == '1' and 
-            data['channel-3-template'] == 'Template 1' 
+            data['channel-3-template'] == data['template-10-name'] 
           %}
 
-            {{row(templateNumber='1', locked='1', templateTypeName='NHS App', templateType='app')}}
+            {{row(templateName=data['template-10-name'], templateNumber='10', locked='1', templateTypeName='NHS App', templateType='app')}}
 
           {% else %}
 
-            {{row(templateNumber='1', locked='', templateTypeName='NHS App', templateType='app')}}
+            {{row(templateName=data['template-10-name'], templateNumber='10', locked='', templateTypeName='NHS App', templateType='app')}}
 
           {% endif %}
 
 
           {% if 
             data['messages-prod'] == '1' and 
-            data['channel-1-template'] == 'Template 2' or 
+            data['channel-1-template'] == data['template-11-name'] or 
             data['messages-prod'] == '1' and 
-            data['channel-2-template'] == 'Template 2' or 
+            data['channel-2-template'] == data['template-11-name'] or 
             data['messages-prod'] == '1' and 
-            data['channel-3-template'] == 'Template 2' 
+            data['channel-3-template'] == data['template-11-name'] 
           %}
 
-            {{row(templateNumber='2', locked='1', templateTypeName='NHS App', templateType='app')}}
+            {{row(templateName=data['template-11-name'], templateNumber='11', locked='1', templateTypeName='Email', templateType='email')}}
 
           {% else %}
 
-            {{row(templateNumber='2', locked='', templateTypeName='NHS App', templateType='app')}}
+            {{row(templateName=data['template-11-name'], templateNumber='11', locked='', templateTypeName='Email', templateType='email')}}
 
           {% endif %}
 
 
           {% if 
             data['messages-prod'] == '1' and 
-            data['channel-1-template'] == 'Template 3' or 
+            data['channel-1-template'] == data['template-12-name'] or 
             data['messages-prod'] == '1' and 
-            data['channel-2-template'] == 'Template 3' or 
+            data['channel-2-template'] == data['template-12-name'] or 
             data['messages-prod'] == '1' and 
-            data['channel-3-template'] == 'Template 3' 
+            data['channel-3-template'] == data['template-12-name'] 
           %}
 
-            {{row(templateNumber='3', locked='1', templateTypeName='NHS App', templateType='app')}}
+            {{row(templateName=data['template-12-name'], templateNumber='12', locked='1', templateTypeName='Text message (SMS)', templateType='sms')}}
 
           {% else %}
 
-            {{row(templateNumber='3', locked='', templateTypeName='NHS App', templateType='app')}}
+            {{row(templateName=data['template-12-name'], templateNumber='12', locked='', templateTypeName='Text message (SMS)', templateType='sms')}}
 
           {% endif %}
 

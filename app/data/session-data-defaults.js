@@ -29,6 +29,22 @@ module.exports = {
     "channel-amount": "0",
     "channel-1-template": "",
     "channel-2-template": "",
-    "channel-3-template": ""
+    "channel-3-template": "",
+    "template-1-name": "My test template 1",
+    "template-2-name": "Another test template 2",
+    "template-3-name": "A template for testing 3",
+    "template-4-name": "My test template 4",
+    "template-5-name": "Another test template 5",
+    "template-6-name": "A template for testing 6",
+    "template-7-name": "My test template 7",
+    "template-8-name": "Another test template 8",
+    "template-9-name": "A template for testing 9",
+    "template-10-name": "Another test template 10",
+    "template-11-name": "A template for testing 11",
+    "template-12-name": "My test template 12",
+    "template-13-name": "My test template 13",
+    "template-14-name": "A template for testing 14",
+    "template-folder-1-name": "A folder to put templates in 1",
+    "template-folder-2-name": "Another folder 2"
   
   }

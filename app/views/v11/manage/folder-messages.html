@@ -37,7 +37,7 @@
 
       <form action="{% if data['messages-prod'] != '1' %}create-message{% endif %}">
         {{ button({
-          'text': 'Create message plan'
+          'text': 'New message plan'
         }) }}
       </form>
 
@@ -50,7 +50,7 @@
         <div class="nhsuk-details__text">
 
           <p class="nhsuk-hint">
-            Message plans that you are working on.
+            Message plans that you're working on and are not ready to be sent. You can test these in your integration environment.
           </p>
           
 
@@ -62,12 +62,10 @@
               <tr role="row">
                 <th role="columnheader" class="" scope="col">
 
-                  Select
-
-                  <!--<div class="nhsuk-checkboxes__item">
-                      <input class="nhsuk-checkboxes__input" id="selectAllCheckbox" name="example" type="checkbox" value="email" onclick="toggleActionsByCheckboxes()">
-                      <label class="nhsuk-label nhsuk-checkboxes__label" for="selectAllCheckbox"></label>
-                  </div>-->
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input checkboxes" id="" name="" type="checkbox" value="" onclick="selectAll(this); toggleActionsByCheckboxes();">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for=""></label>
+                  </div>
 
                 </th>
                 <th role="columnheader" class="" scope="col">
@@ -133,6 +131,18 @@
             </tbody>
           </table>
 
+          {% 
+            if data['channel-amount'] == '1' and 
+            data['channel-1-template'] or 
+            data['channel-amount'] == '2' and 
+            data['channel-1-template'] and 
+            data['channel-2-template'] or 
+            data['channel-amount'] == '3' and 
+            data['channel-1-template'] and 
+            data['channel-2-template'] and 
+            data['channel-3-template'] 
+          %}
+
           <div class="notify-sticky-actions" id="notify-sticky-actions">
             <div class="nhsuk-width-container">
               <div class="nhsuk-grid-row">
@@ -145,6 +155,8 @@
               </div>
             </div>
           </div>
+
+          {% endif %}
     
           {% else %}
      
@@ -166,7 +178,7 @@
         <div class="nhsuk-details__text">
           
           <p class="nhsuk-hint">
-            Message plans that you can put live using the NHS Notify API or MESH.
+            Message plans that are ready to be sent using NHS Notify API or NHS Notify MESH.
           </p>
 
           {% if data['messages-prod'] == '1' %}

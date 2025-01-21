@@ -1,23 +1,24 @@
-{% macro choose_templates_channels_row(templateNumber, templateType, templateTypeName, language) %}
+{% macro choose_templates_channels_row(templateName, templateNumber, templateType, templateTypeName, templateFolder, templateFolderName) %}
 
-<tr role="row" class="nhsuk-table__row">
+<tr role="row" class="nhsuk-table__row {% if templateFolder %}template-folder-{{templateFolder}}{% endif %}">
     
     <td role="cell" class="nhsuk-table__cell">
         <span class="nhsuk-table-responsive__heading">Select </span>
         <div class="nhsuk-checkboxes__item">
-            <input class="nhsuk-checkboxes__input checkboxes" id="template-{{ templateNumber }}" name="" type="checkbox" value="Template {{ templateNumber }}">
+            <input class="nhsuk-checkboxes__input checkboxes" id="template-{{ templateNumber }}" name="" type="checkbox" value="{{templateName}}">
             <label class="nhsuk-label nhsuk-checkboxes__label" for="template-{{ templateNumber }}"></label>
         </div>
     </td>
     
     <td role="cell" class="nhsuk-table__cell">
         <span class="nhsuk-table-responsive__heading">Name </span>
-        Template {{ templateNumber }}
+        {{templateName}}
+        {% if templateFolder %}<span class="notify-body-s-grey">Folder: {{templateFolderName}}</span>{% endif %}
     </td>
 
     <td role="cell" class="nhsuk-table__cell">
         <span class="nhsuk-table-responsive__heading">Type </span>
-        {{ templateTypeName }}
+        {{templateTypeName}}
     </td>
 
     <td role="cell" class="nhsuk-table__cell nhsuk-body-s">
@@ -26,7 +27,7 @@
 
     <td role="cell" class="nhsuk-table__cell">
         <span class="nhsuk-table-responsive__heading">Action </span>
-        <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="create-message-preview-template-{{templateType}}?preview-template-number={{ templateNumber }}">Preview</a></p>
+        <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="create-message-preview-template-{{templateType}}?preview-template-name={{templateName}}">Preview</a></p>
     </td>
 
 </tr>

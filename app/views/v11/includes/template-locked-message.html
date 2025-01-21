@@ -1,0 +1,29 @@
+<div class="nhsuk-warning-callout-nhs-notify nhsuk-u-padding-4 nhsuk-u-margin-bottom-6">
+
+    <p class="nhsuk-u-margin-bottom-3">
+        {{ tag({
+        text: "Locked",
+        classes: "nhsuk-u-margin-right-2 nhsuk-tag--orange"
+        })}}
+        You cannot edit this template because it's used in a message plan that's in production.
+    </p>
+
+    <details class="nhsuk-details nhsuk-u-margin-bottom-0">
+        <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+            Show message plans that use this template
+        </span>
+        </summary>
+        <div class="nhsuk-details__text">
+        
+        <p>
+            <!--<strong class="nhsuk-tag nhsuk-tag--red">
+            Production
+            </strong>-->
+            <a href="create-message-production">{{ data["message-name-1"] }}</a>
+        </p>
+
+        </div>
+    </details>
+
+</div>

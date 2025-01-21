@@ -21,9 +21,16 @@
     <div class="nhsuk-grid-column-three-quarters">
 
       <span class="nhsuk-caption-l">Message plan</span>
-      <h1 class="nhsuk-heading-l">
+      <h1 class="nhsuk-heading-xl">
         {{data['message-name-1']}}
       </h1>
+
+      <div class="nhsuk-warning-callout-nhs-notify nhsuk-u-padding-4 nhsuk-u-margin-bottom-6">
+
+          <p>You cannot edit this message plan because it's in production.</p>
+          <p class="nhsuk-u-margin-bottom-0"><a href="/404">Copy this message plan into draft</a> to create a new one with the same messages.</p>
+      
+      </div>
 
       <dl class="nhsuk-summary-list notify-summary-list">
 
@@ -62,8 +69,6 @@
         </div>
       
       </dl>
-
-      <p>You cannot edit this message plan because it is in production. However you can <a href="/404">copy this message plan</a> to quickly create a new one with the same messages.</p>
 
       <div class="notify-routing-plan">
 

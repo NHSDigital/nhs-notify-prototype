@@ -74,12 +74,12 @@ window.onload = function () {
 
           <div class="notify-channel-block-channel">
             <div class="notify-channel-block-number">1</div>
-            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">First channel</h3>
+            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">First message</h3>
           </div>
 
           <div class="notify-channel-block-outer">
             <div class="notify-channel-block-inner">
-              <h4 class="nhsuk-heading-xs">NHS App</h4>
+              <h4 class="nhsuk-heading-xs">{{ data['channel-1-type'] }}</h4>
 
               <p>
                 {{ data['channel-1-template'] }}
@@ -93,8 +93,21 @@ window.onload = function () {
                 </summary>
                 <div class="nhsuk-details__text">
                   
+                  {% if data['channel-1-type'] == "NHS App" %}
                   <textarea id="sourceTA1" class="hidden">{{ data["template-app-message-1"] }}</textarea>
                   <div id="targetDiv1"></div>
+                  {% endif %}
+
+                  {% if data['channel-1-type'] == "Text message (SMS)" %}
+                  <textarea id="sourceTA1" class="hidden">{{ data["template-sms-message-1"] }}</textarea>
+                  <div id="targetDiv1" class="hidden"></div>
+                  {{ data["template-sms-message-1"] }}
+                  {% endif %}
+
+                  {% if data['channel-1-type'] == "Email" %}
+                  <textarea id="sourceTA1" class="hidden">{{ data["template-email-message-1"] }}</textarea>
+                  <div id="targetDiv1"></div>
+                  {% endif %}
               
                 </div>
               </details>
@@ -112,7 +125,7 @@ window.onload = function () {
 
           <div class="notify-channel-block-channel">
             <div class="notify-channel-block-number">2</div>
-            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Second channel</h3>
+            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Second message</h3>
           </div>
 
           <div class="notify-channel-block-outer">
@@ -165,7 +178,7 @@ window.onload = function () {
 
           <div class="notify-channel-block-channel">
             <div class="notify-channel-block-number">3</div>
-            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Third channel</h3>
+            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Third message</h3>
           </div>
 
           <div class="notify-channel-block-outer">

@@ -1,4 +1,4 @@
-{% macro row_folder(folderNumber, type, numberOfTemplates) %}
+{% macro row_folder(folderName, folderNumber, numberOfTemplates) %}
 
 <tr role="row" class="nhsuk-table__row">
 
@@ -32,15 +32,15 @@
         <span class="nhsuk-table-responsive__heading">Name </span>
 
         <a href="template-folder-{{ folderNumber }}">
-            Folder {{ folderNumber }}
+            {{ folderName }}
         </a>
-        <span class="nhsuk-body-s">{{ numberOfTemplates }} templates</span>
+        <span class="notify-body-s-grey">{{ numberOfTemplates }} templates</span>
 
     </td>
 
     <td role="cell" class="nhsuk-table__cell">
         <span class="nhsuk-table-responsive__heading">Type </span>
-        {{ type }}
+        Folder
     </td>
 
     <td role="cell" class="nhsuk-table__cell nhsuk-body-s">
