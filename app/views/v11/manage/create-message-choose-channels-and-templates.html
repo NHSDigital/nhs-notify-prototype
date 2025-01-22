@@ -125,13 +125,14 @@
       <div class="nhsuk-form-group nhsuk-u-padding-top-4">
 
         <input type="hidden" name="channel-1-type" value="NHS App">
-        <input type="hidden" name="channel-1-template" value="My test template 1">
+        <input type="hidden" name="channel-1-template" value="{{ data['template-10-name'] }}">
 
         <input type="hidden" name="channel-2-type" value="Email">
-        <input type="hidden" name="channel-2-template" value="My test template 7">
+        <input type="hidden" name="channel-2-template" value="{{ data['template-11-name'] }}">
         
         <input type="hidden" name="channel-3-type" value="Text message (SMS)">
-        <input type="hidden" name="channel-3-template" value="My test template 4">
+        <input type="hidden" name="channel-3-template" value="{{ data['template-12-name'] }}">
+
         <input type="hidden" name="channel-amount" value="3">
 
         {{ button({

@@ -198,7 +198,7 @@ a:visited{
 
     &::after{
         content: "";
-        height: 105%;
+        height: 104%;
         display: block;
         border: dashed 2px $nhsuk-link-color;
         position: absolute;
@@ -374,6 +374,13 @@ a:visited{
 .notify-icon-folder{
     width: 34px;
     height: 34px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.notify-icon-folder-small{
+    width: 24px;
+    height: 24px;
     vertical-align: middle;
     margin-right: 5px;
 }

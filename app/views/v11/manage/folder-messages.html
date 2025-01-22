@@ -35,6 +35,20 @@
         Message plans
       </h1>
 
+      {{ details({
+        text: "What draft and production mean",
+        HTML: "
+        <h2 class='nhsuk-heading-s'>Draft</h2>
+        <p>Message plans that you're working on and are not ready to be sent. You can test these using our:</p>
+        <ul>
+          <li><a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify#overview--environments-and-testing' target='_blank'>API integration environment</a></li>
+          <li><a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify-mesh/sending-a-message#sending-your-request' target='_blank'>Integration MESH mailbox</a></li>
+        </ul>
+        <h2 class='nhsuk-heading-s'>Production</h2>
+        <p>Message plans that are ready to be sent using <a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify' target='blank'>NHS Notify API</a> or <a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify-mesh/' target='blank'>NHS Notify MESH</a>.</p>
+        "
+      }) }}
+
       <form action="{% if data['messages-prod'] != '1' %}create-message{% endif %}">
         {{ button({
           'text': 'New message plan'
@@ -49,9 +63,9 @@
         </summary>
         <div class="nhsuk-details__text">
 
-          <p class="nhsuk-hint">
+          <!--<p class="nhsuk-hint">
             Message plans that you're working on and are not ready to be sent. You can test these in your integration environment.
-          </p>
+          </p>-->
           
 
           {% if data['messages-draft'] == '1' %}
@@ -94,8 +108,9 @@
                   <span class="nhsuk-table-responsive__heading">Name </span>
                   <a href="create-message">
                     {{ data['message-name-1'] }}
-                  </a><br />
-                  <!--<span class="nhsuk-body-s" style="color: #4c6272;">
+                  </a>
+                  <!--<br />
+                  <span class="notify-body-s-grey">
                     {% if data['channel-1-type'] %}{{ data['channel-1-type'] }}{% endif %}
                     {% if data['channel-2-type'] %} > {{ data['channel-2-type'] }}{% endif %}
                     {% if data['channel-3-type'] %} > {{ data['channel-3-type'] }}{% endif %}
@@ -177,9 +192,9 @@
         </summary>
         <div class="nhsuk-details__text">
           
-          <p class="nhsuk-hint">
+          <!--<p class="nhsuk-hint">
             Message plans that are ready to be sent using NHS Notify API or NHS Notify MESH.
-          </p>
+          </p>-->
 
           {% if data['messages-prod'] == '1' %}
 
