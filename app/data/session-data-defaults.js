@@ -24,8 +24,6 @@ module.exports = {
 
     "checkbox-accessible-letter": "",
 
-    "folder-name-1": "Autumn / winter 2024 campaign",
-
     "messages-draft": "0",
     "messages-prod": "0",
     "channel-amount": "0",
@@ -34,17 +32,20 @@ module.exports = {
     "channel-2-template": "",
     "channel-3-template": "",
     
-    "template-1-name": "Covid 65 plus invitation english v1 (T01)", // App
-    "template-2-name": "Covid 65 plus english v1 (T02)", // App
-    "template-3-name": "Covid 65 plus english v2 (T03)", // App
+    
+    "folder-name-1": "Autumn / winter 2024 campaign",
 
-    "template-4-name": "Covid 65 plus invitation english v1 (T04)", // SMS
-    "template-5-name": "Covid 65 plus english v1 (T05)", // SMS
-    "template-6-name": "Covid 65 plus english v2 (T06)", // SMS
+    "template-1-name": "Covid 65+ invitation english v1 (T01)", // App
+    "template-2-name": "Covid 65+ english v1 (T02)", // App
+    "template-3-name": "Covid 65+ english v2 (T03)", // App
 
-    "template-7-name": "Covid 65 plus invitation english v1 (T07)", // Email
-    "template-8-name": "Covid 65 plus english v1 (T08)", // Email
-    "template-9-name": "Covid 65 plus english v2 (T09)", // Email
+    "template-4-name": "Covid 65+ invitation english v1 (T04)", // SMS
+    "template-5-name": "Covid 65+ english v1 (T05)", // SMS
+    "template-6-name": "Covid 65+ english v2 (T06)", // SMS
+
+    "template-7-name": "Covid 65+ invitation english v1 (T07)", // Email
+    "template-8-name": "Covid 65+ english v1 (T08)", // Email
+    "template-9-name": "Covid 65+ english v2 (T09)", // Email
 
     "template-10-name": "Covid 16-64 english v1 (T10)", // App + folder 1
     "template-11-name": "Covid 16-64 english v1 (T11)", // Email + folder 1
@@ -55,5 +56,32 @@ module.exports = {
     
     "template-folder-1-name": "Covid Sep 2024",
     "template-folder-2-name": "RSV awareness Sep 2024"
+    
+
+/*
+    "folder-name-1": "Bowel cancer screening 2025",
+    
+    "template-1-name": "Fit kit reminder 50-65 (T01)", // App
+    "template-2-name": "Fit kit reminder 65+ (T02)", // App
+    "template-3-name": "Ceasing notification version 1 (T03)", // App
+
+    "template-4-name": "Fit kit reminder 50-65 (T04)", // SMS
+    "template-5-name": "Fit kit reminder 65+ (T05)", // SMS
+    "template-6-name": "Ceasing notification version 1 (T06)", // SMS
+
+    "template-7-name": "Fit kit reminder 50-65 (T07)", // Email
+    "template-8-name": "Fit kit reminder 65+ (T08)", // Email
+    "template-9-name": "Ceasing notification version 1 (T09)", // Email
+
+    "template-10-name": "Invitation EN version 1 (T10)", // App + folder 1
+    "template-11-name": "Invitation EN version 1 (T11)", // Email + folder 1
+    "template-12-name": "Invitation EN version 2 (T12)", // SMS + folder 1
+
+    "template-13-name": "Pre-invite EN version 1a (T13)", // App + folder 2
+    "template-14-name": "Pre-invite EN version 1a (T14)", // Email + folder 2
+    
+    "template-folder-1-name": "Screening invitations",
+    "template-folder-2-name": "Screening pre-invites"
+*/
   
   }
