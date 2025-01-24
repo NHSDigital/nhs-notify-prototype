@@ -32,7 +32,7 @@ module.exports = {
     "channel-2-template": "",
     "channel-3-template": "",
     
-    
+/*    
     "folder-name-1": "Autumn / winter 2024 campaign",
 
     "template-1-name": "Covid 65+ invitation english v1 (T01)", // App
@@ -54,11 +54,11 @@ module.exports = {
     "template-13-name": "RSV awareness 75-79 english v1 (T13)", // App + folder 2
     "template-14-name": "RSV awareness 75-79 english v1 (T14)", // Email + folder 2
     
-    "template-folder-1-name": "Covid Sep 2024",
+    "template-folder-1-name": "Covid 16-64 Sep 2024",
     "template-folder-2-name": "RSV awareness Sep 2024"
     
 
-/*
+*/
     "folder-name-1": "Bowel cancer screening 2025",
     
     "template-1-name": "Fit kit reminder 50-65 (T01)", // App
@@ -82,6 +82,6 @@ module.exports = {
     
     "template-folder-1-name": "Screening invitations",
     "template-folder-2-name": "Screening pre-invites"
-*/
+
   
   }
