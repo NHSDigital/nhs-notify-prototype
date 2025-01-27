@@ -35,26 +35,26 @@ module.exports = {
     
     "folder-name-1": "Autumn / winter 2024 campaign",
 
-    "template-1-name": "Covid 13+ invitation english v1 (T01)", // App
-    "template-2-name": "Covid 13+ english v1 (T02)", // App
-    "template-3-name": "Covid 13+ english v2 (T03)", // App
+    "template-1-name": "Covid 65+ invitation english v1 (T01)", // App
+    "template-2-name": "Covid 65+ english v1 (T02)", // App
+    "template-3-name": "Covid 65+ english v2 (T03)", // App
 
-    "template-4-name": "Covid 13+ invitation english v1 (T04)", // SMS
-    "template-5-name": "Covid 13+ english v1 (T05)", // SMS
-    "template-6-name": "Covid 13+ english v2 (T06)", // SMS
+    "template-4-name": "Covid 65+ invitation english v1 (T04)", // SMS
+    "template-5-name": "Covid 65+ english v1 (T05)", // SMS
+    "template-6-name": "Covid 65+ english v2 (T06)", // SMS
 
-    "template-7-name": "Covid 13+ invitation english v1 (T07)", // Email
-    "template-8-name": "Covid 13+ english v1 (T08)", // Email
-    "template-9-name": "Covid 13+ english v2 (T09)", // Email
+    "template-7-name": "Covid 65+ invitation english v1 (T07)", // Email
+    "template-8-name": "Covid 65+ english v1 (T08)", // Email
+    "template-9-name": "Covid 65+ english v2 (T09)", // Email
 
-    "template-10-name": "Covid 3-8 english v1 (T10)", // App + folder 1
-    "template-11-name": "Covid 3-8 english v1 (T11)", // Email + folder 1
-    "template-12-name": "Covid 3-8 english v1 (T12)", // SMS + folder 1
+    "template-10-name": "Covid 18-64 english v1 (T10)", // App + folder 1
+    "template-11-name": "Covid 18-64 english v1 (T11)", // Email + folder 1
+    "template-12-name": "Covid 18-64 english v1 (T12)", // SMS + folder 1
 
-    "template-13-name": "RSV awareness 13+ english v1 (T13)", // App + folder 2
-    "template-14-name": "RSV awareness 13+ english v1 (T14)", // Email + folder 2
+    "template-13-name": "RSV awareness 65+ english v1 (T13)", // App + folder 2
+    "template-14-name": "RSV awareness 65+ english v1 (T14)", // Email + folder 2
     
-    "template-folder-1-name": "Covid 3-8 Sep 2024",
+    "template-folder-1-name": "Covid 18-64 Sep 2024",
     "template-folder-2-name": "RSV awareness Sep 2024"
     
 
