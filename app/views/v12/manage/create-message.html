@@ -1,0 +1,293 @@
+{% extends 'v12/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <!--{{sideNav(active='3', folderName=data['folder-name-1'])}}-->
+
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <div id="create-message-template-error" style="display: none;" class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+        <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="nhsuk-error-summary__body">
+          <p>
+            You must choose a template for each message.
+          </p>
+          <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
+
+            <!-- Only show errors for channels that do not have templates assigned -->
+            {% if data['channel-1-type'] and data['channel-1-template'] == '' %}
+            <li>
+              <a href="#first-message">You have not chosen a template for your first message</a>
+            </li>
+            {% endif %}
+
+            {% if data['channel-2-type'] and data['channel-2-template'] == '' %}
+            <li>
+              <a href="#second-message">You have not chosen a template for your second message</a>
+            </li>
+            {% endif %}
+
+            {% if data['channel-3-type'] and data['channel-3-template'] == '' %}
+            <li>
+              <a href="#third-message">You have not chosen a template for your third message</a>
+            </li>
+            {% endif %}
+
+          </ul>
+        </div>
+      </div>
+
+      <h1 class="nhsuk-heading-xl">
+        Create a message plan
+      </h1>
+
+      <form action="create-message" method="post" autocomplete="off" onsubmit="return checkFormCreateMessage();">
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
+            
+          <label class="nhsuk-label nhsuk-label--s" for="message-name-1">
+            Message plan name
+          </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
+          </div>
+
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="message-name-1" name="message-name-1" type="text" value="{{data['message-name-1']}}" onblur="this.closest('form').submit();return false;">
+
+          <!-- Button replaced with onblur event
+          {{ button({
+            text: "Save",
+            classes: "nhsuk-button--secondary nhsuk-u-margin-left-3 nhsuk-u-margin-bottom-0 notify-button-small"
+          }) }}-->
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="message-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message plan name
+          </span>
+
+        </div>
+
+        <input type="hidden" name="messages-draft" value="1">
+
+      </form>
+
+      <dl class="nhsuk-summary-list notify-summary-list nhsuk-u-margin-bottom-7">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            routingPlanId
+          </dt>
+          <dd class="nhsuk-summary-list__value" style="font-family: monospace;">
+            b838b13c-f98c-4def-93f0-515d4e4f4ee1
+          </dd>
+      
+        </div>
+        
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Status
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ tag({
+              text: "Not yet submitted"
+            })}}
+          </dd>
+      
+        </div>
+      
+      </dl>
+
+      <div class="notify-routing-plan nhsuk-u-margin-bottom-7">
+
+        {% if data['channel-amount'] == '1' or data['channel-amount'] == '2' or data['channel-amount'] == '3' %}
+
+        <div class="notify-channel-block" id="first-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">1</div>
+            <h3 class="nhsuk-heading-s">First message</h3>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h4 class="nhsuk-heading-xs">{{ data['channel-1-type'] }}</h4>
+              {% if data['channel-1-template'] %}
+
+              <p>
+                {{ data['channel-1-template'] }}<br />
+                <a href="create-message-choose-template?message-type={{ data['channel-1-type'] }}&channel-number=1">Change template</a>
+              </p>
+
+              {% else %}
+              
+              <p><a href="create-message-choose-template?message-type={{ data['channel-1-type'] }}&channel-number=1">Choose template</a></p>
+              
+              {%endif%}
+              
+            </div>
+
+          </div>
+
+        </div>
+
+        {% endif %}
+
+
+
+        {% if data['channel-amount'] == '2' or data['channel-amount'] == '3' %}
+
+        <div class="notify-channel-block-between">
+
+          <div class="notify-channel-block-channel">
+            <p>Then</p>
+          </div>
+          
+        </div>
+
+        <div class="notify-channel-block" id="second-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">2</div>
+            <h3 class="nhsuk-heading-s">Second message</h3>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h4 class="nhsuk-heading-xs">{{ data['channel-2-type'] }}</h4>
+
+              {% if data['channel-2-template'] %}
+
+              <p>
+                {{ data['channel-2-template'] }}<br />
+                <a href="create-message-choose-template?message-type={{ data['channel-2-type'] }}&channel-number=2">Change template</a>
+              </p>
+
+              {% else %}
+              
+              <p><a href="create-message-choose-template?message-type={{ data['channel-2-type'] }}&channel-number=2">Choose template</a></p>
+              
+              {%endif%}
+              
+            </div>
+
+          </div>
+
+        </div>
+
+        {% endif %}
+
+
+
+        {% if data['channel-amount'] == '3' %}
+
+        <div class="notify-channel-block-between">
+          <div class="notify-channel-block-channel">
+            <p>Then</p>
+          </div>
+        </div>
+
+        <div class="notify-channel-block" id="third-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">3</div>
+            <h3 class="nhsuk-heading-s">Third message</h3>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h4 class="nhsuk-heading-xs">{{ data['channel-3-type'] }}</h4>
+
+              {% if data['channel-3-template'] %}
+
+              <p>
+                {{ data['channel-3-template'] }}<br />
+                <a href="create-message-choose-template?message-type={{ data['channel-3-type'] }}&channel-number=3">Change template</a>
+              </p>
+
+              {% else %}
+              
+              <p><a href="create-message-choose-template?message-type={{ data['channel-3-type'] }}&channel-number=3">Choose template</a></p>
+              
+              {% endif %}
+              
+            </div>
+
+          </div>
+
+        </div>
+
+        {% endif %}
+
+
+      </div>
+
+      <!--<div class="notify-channel-add-fallback notify-channel-add-fallback_first nhsuk-u-margin-bottom-3">
+        <a href="{% if data['channel-amount'] != '3' %}create-message-add-fallback{% endif %}" class="nhsuk-u-font-size-19">
+          <svg class="nhsuk-icon nhsuk-icon__plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" aria-hidden="true" height="34">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M12 8v8M8 12h8"></path>
+          </svg>{% if data['channel-amount'] > 0 %}Add another message{% else %}Add a message{% endif %}
+        </a>
+      </div>
+
+      <div class="notify-channel-add-fallback notify-channel-add-fallback_second nhsuk-u-margin-bottom-7">
+        <a href="create-message-choose-channels-and-templates" class="nhsuk-u-font-size-19">
+          <svg class="nhsuk-icon nhsuk-icon__plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" aria-hidden="true" height="34">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M12 8v8M8 12h8"></path>
+          </svg><svg class="nhsuk-icon nhsuk-icon__plus notify-add-second" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" aria-hidden="true" height="34">
+            <circle cx="12" cy="12" r="10" stroke="#f0f4f5" stroke-width="1"></circle>
+            <path fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M12 8v8M8 12h8"></path>
+          </svg>Add messages by template
+        </a>
+      </div>-->
+
+      <form action="folder-messages" method="post" autocomplete="off" onsubmit="return checkFormCreateMessage();">
+
+        <div class="nhsuk-form-group notify-message-button-container">
+
+            {% if 
+              data['channel-amount'] == '1' and 
+              data['channel-1-template'] or 
+              data['channel-amount'] == '2' and 
+              data['channel-1-template'] and 
+              data['channel-2-template'] or 
+              data['channel-amount'] == '3' and 
+              data['channel-1-template'] and 
+              data['channel-2-template'] and 
+              data['channel-3-template'] 
+            %}
+            <!-- If all the added channels have templates assigned -->
+
+            <a href="move-message-production" class="nhsuk-button">Submit</a>
+
+            {% else %}
+
+            <!-- If not all the added channels have templates assigned then show the error summary component -->
+            <a class="nhsuk-button" onclick="showTemplateError();">Submit</a>
+            
+            {% endif %}
+
+            {{ button({
+              text: "Save and close",
+              classes: "nhsuk-button--secondary nhsuk-u-margin-left-3"
+            }) }}
+
+        </div>
+
+        <input type="hidden" name="messages-draft" value="1">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

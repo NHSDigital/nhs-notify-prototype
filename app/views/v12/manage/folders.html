@@ -1,0 +1,77 @@
+{% extends 'v12/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1 class="nhsuk-heading-xl">
+        Projects
+      </h1>
+
+      <form action="create-folder" method="post">
+        {{ button({
+          'text': 'New project'
+        }) }}
+      </form>
+
+      {% if data['folders'] == '1' %}
+
+      <table role="table" class="nhsuk-table-responsive">
+
+        <!--<caption class="nhsuk-table__caption">List of message groups</caption>-->
+
+        <thead role="rowgroup" class="nhsuk-table__head">
+          <tr role="row">
+            <th role="columnheader" class="" scope="col">
+              Name
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Date and <br />time created
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+          
+          <tr role="row" class="nhsuk-table__row">
+
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Name </span>
+              <a href="folder">
+                {{ data['folder-name-1'] }}
+              </a>
+            </td>
+            
+            <td role="cell" class="nhsuk-table__cell nhsuk-body-s">
+              <span class="nhsuk-table-responsive__heading">Date and time created </span>30 Apr 2024<br />09:34
+            </td>
+
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Action </span>
+              <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="/404">Copy</a></p>
+              <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="/404">Archive</a></p>
+            </td>
+
+          </tr>
+
+        </tbody>
+      </table>
+
+      {% else %}
+ 
+      <p>Create a project to start creating messages and planning how they'll be sent.</p>
+      <p>You can add more projects later if you need to.</p>
+
+      {% endif %}
+      
+    </div>
+  </div>
+{% endblock %}

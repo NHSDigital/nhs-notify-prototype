@@ -1,0 +1,55 @@
+{% macro row_letter(templateNumber, locked, templateType, templateTypeName) %}
+
+<tr role="row" class="nhsuk-table__row">
+    <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Name </span>
+
+        <a href="template-{{ templateType }}?preview-template-number={{ templateNumber }}&template-locked={{ locked }}">
+        Template {{ templateNumber }}
+        </a>
+
+    </td>
+    <td role="cell" class="nhsuk-table__cell">
+        <p>
+            <span class="nhsuk-table-responsive__heading">Type </span>
+            {{ templateTypeName }}
+        </p>
+        <p class="nhsuk-body-s">
+        Additional languages: Chinese, Italian, French
+        </p>
+    </td>
+    <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Status </span>
+
+        {% if locked == '1' %}
+
+        <strong class="nhsuk-tag nhsuk-tag--orange">
+            Locked
+        </strong>
+
+        {% else %}
+
+        <strong class="nhsuk-tag nhsuk-tag--blue">
+            Unlocked
+        </strong>
+
+        {% endif %}
+        
+    </td>
+    <td role="cell" class="nhsuk-table__cell nhsuk-body-s">
+        <span class="nhsuk-table-responsive__heading">Date and time created </span>30 Apr 2024<br />09:34
+    </td>
+    <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Action </span>
+        <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="/404">Copy</a></p>
+
+        {% if locked != '1' %}
+
+        <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="/404">Delete</a></p>
+
+        {% endif %}
+
+    </td>
+</tr>
+
+{% endmacro %}

@@ -1,0 +1,170 @@
+{% extends 'v12/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+{% from '../includes/choose-templates-channels-table-row.njk' import choose_templates_channels_row %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+
+      <span class="nhsuk-caption-l">{{ data['message-name-1'] }}</span>
+      <h1 class="nhsuk-heading-xl">
+        Add messages by template
+      </h1>
+
+      {% if data['show-templates'] == '1' %}
+
+      <!--<div class="nhsuk-form-group">
+
+        <label class="nhsuk-label" for="template-search-name">
+          Search by template name
+        </label>
+        <div class="nhsuk-hint">
+          The list of templates will be filtered as soon as you start typing
+        </div>
+
+        <input class="nhsuk-input nhsuk-u-margin-bottom-2 nhsuk-u-width-three-quarters" id="template-search" name="template-search" type="text">
+
+      </div>
+
+      {% if data['show-templates'] == '1' and data['show-folders'] == '1' %}
+
+      <div class="nhsuk-form-group">
+
+        <label class="nhsuk-label" for="filter-folders">
+          Filter templates by folder
+        </label>
+
+        <select class="nhsuk-select" id="filter-folders" name="filter-folders" onchange="toggleTable();">
+          <option value="0" selected>All templates</option>
+          <option value="1">{{ data['template-folder-1-name'] }}</option>
+          <option value="2">{{ data['template-folder-2-name'] }}</option>
+        </select>
+
+      </div>
+
+      {% endif %}-->
+
+      <form action="create-message" method="post">
+
+      <table role="table" class="nhsuk-table-responsive">
+
+        <thead role="rowgroup" class="nhsuk-table__head">
+          <tr role="row">
+            <th role="columnheader" class="" scope="col">
+              <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input checkboxes" id="template-{{ templateNumber }}" name="" type="checkbox" value="Template {{ templateNumber }}" onclick="selectAll(this);">
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="template-{{ templateNumber }}"></label>
+              </div>
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Template name
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Type
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Date and <br />time created
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+
+          {{choose_templates_channels_row(templateName=data['template-1-name'], templateNumber='1', templateTypeName='NHS App', templateType='app')}}
+
+          {{choose_templates_channels_row(templateName=data['template-2-name'], templateNumber='2', templateTypeName='NHS App', templateType='app')}}
+
+          {{choose_templates_channels_row(templateName=data['template-3-name'], templateNumber='3', templateTypeName='NHS App', templateType='app')}}
+
+
+          {{choose_templates_channels_row(templateName=data['template-4-name'], templateNumber='4', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+          {{choose_templates_channels_row(templateName=data['template-5-name'], templateNumber='5', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+          {{choose_templates_channels_row(templateName=data['template-6-name'], templateNumber='6', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+
+          {{choose_templates_channels_row(templateName=data['template-7-name'], templateNumber='7', templateTypeName='Email', templateType='email')}}
+
+          {{choose_templates_channels_row(templateName=data['template-8-name'], templateNumber='8', templateTypeName='Email', templateType='email')}}
+
+          {{choose_templates_channels_row(templateName=data['template-9-name'], templateNumber='9', templateTypeName='Email', templateType='email')}}
+
+          {{choose_templates_channels_row(templateName=data['template-10-name'], templateNumber='10', templateTypeName='Letter', templateType='letter')}}
+
+          {{choose_templates_channels_row(templateName=data['template-11-name'], templateNumber='11', templateTypeName='Letter', templateType='letter')}}
+
+          {{choose_templates_channels_row(templateName=data['template-12-name'], templateNumber='12', templateTypeName='Letter', templateType='letter')}}
+
+
+          <!--{{choose_templates_channels_row(templateName=data['template-10-name'], templateNumber='10', templateTypeName='NHS App', templateType='app', templateFolder='1', templateFolderName=data['template-folder-1-name'])}}
+
+          {{choose_templates_channels_row(templateName=data['template-11-name'], templateNumber='11', templateTypeName='Email', templateType='email', templateFolder='1', templateFolderName=data['template-folder-1-name'])}}
+
+          {{choose_templates_channels_row(templateName=data['template-12-name'], templateNumber='12', templateTypeName='Text message (SMS)', templateType='sms', templateFolder='1', templateFolderName=data['template-folder-1-name'])}}
+
+          {{choose_templates_channels_row(templateName=data['template-13-name'], templateNumber='13', templateTypeName='NHS App', templateType='app', templateFolder='2', templateFolderName=data['template-folder-2-name'])}}
+
+          {{choose_templates_channels_row(templateName=data['template-14-name'], templateNumber='14', templateTypeName='Email', templateType='email', templateFolder='2', templateFolderName=data['template-folder-2-name'])}}
+
+          {{choose_templates_channels_row(templateNumber='10', templateTypeName='Standard letter', templateType='letter', language='')}}
+
+          {{choose_templates_channels_row(templateNumber='11', templateTypeName='Additional language letter', templateType='letter', language='Chinese')}}
+
+          {{choose_templates_channels_row(templateNumber='12', templateTypeName='Additional language letter', templateType='letter', language='Italian')}}
+
+          {{choose_templates_channels_row(templateNumber='13', templateTypeName='Large print letter', templateType='letter', language='')}}-->
+
+        </tbody>
+      </table>
+
+      <div class="nhsuk-form-group nhsuk-u-padding-top-4">
+
+        <input type="hidden" name="channel-1-type" value="NHS App">
+        <input type="hidden" name="channel-1-template" value="{{ data['template-10-name'] }}">
+
+        <input type="hidden" name="channel-2-type" value="Email">
+        <input type="hidden" name="channel-2-template" value="{{ data['template-11-name'] }}">
+        
+        <input type="hidden" name="channel-3-type" value="Text message (SMS)">
+        <input type="hidden" name="channel-3-template" value="{{ data['template-12-name'] }}">
+
+        <input type="hidden" name="channel-amount" value="3">
+
+        {{ button({
+          text: 'Save and continue'
+        }) }}
+
+        <a href="create-message" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+
+      </div>
+
+      </form>
+
+      {% else %}
+ 
+      <p>You do not have any templates yet.</p>
+      
+      <div class="nhsuk-form-group">
+
+        <p><a href="folder-templates">Go to templates</a></p>
+
+        <p><a href="create-message">Go back</a></p>
+
+      </div>
+
+      {% endif %}
+      
+    </div>
+  </div>
+{% endblock %}

@@ -23,6 +23,7 @@ module.exports = {
     "template-letter-message-1": "Here is the message body.",
 
     "checkbox-accessible-letter": "",
+    "letter-additional-languages": "",
 
     "messages-draft": "0",
     "messages-prod": "0",
@@ -33,7 +34,7 @@ module.exports = {
     "channel-3-template": "",
     
     
-    "folder-name-1": "Autumn / winter 2024 campaign",
+    "folder-name-1": "Dashboard",
 
     "template-1-name": "Covid 65+ invitation english v1 (T01)", // App
     "template-2-name": "Covid 65+ english v1 (T02)", // App
@@ -47,15 +48,17 @@ module.exports = {
     "template-8-name": "Covid 65+ english v1 (T08)", // Email
     "template-9-name": "Covid 65+ english v2 (T09)", // Email
 
-    "template-10-name": "Covid 18-64 english v1 (T10)", // App + folder 1
-    "template-11-name": "Covid 18-64 english v1 (T11)", // Email + folder 1
-    "template-12-name": "Covid 18-64 english v1 (T12)", // SMS + folder 1
+    "template-10-name": "Covid 18-64 english v1 (T10)", // Letter
+    "template-11-name": "Covid 18-64 french v1 (T11)", // Letter
+    "template-12-name": "Covid 18-64 braille v1 (T12)", // Letter
 
     "template-13-name": "RSV awareness 65+ english v1 (T13)", // App + folder 2
     "template-14-name": "RSV awareness 65+ english v1 (T14)", // Email + folder 2
     
     "template-folder-1-name": "Covid 18-64 Sep 2024",
-    "template-folder-2-name": "RSV awareness Sep 2024"
+    "template-folder-2-name": "RSV awareness Sep 2024",
+
+    "template-letter-url": "https://nhs.sharepoint.com/:f:/r/sites/msteams_8af52a-Templates/Shared%20Documents/Technical%20Onboarding%20-%20Tech%20Team?csf=1&web=1&e=w8nEAR"
     
 
 /*

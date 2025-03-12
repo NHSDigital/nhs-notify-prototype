@@ -198,7 +198,7 @@ a:visited{
 
     &::after{
         content: "";
-        height: 104%;
+        height: calc(100% + 25px);
         display: block;
         border: dashed 2px $nhsuk-link-color;
         position: absolute;
@@ -229,6 +229,7 @@ a:visited{
 
         h3{
             padding-top: 5px;
+            margin-bottom: 8px;
         }
         
     }
@@ -280,6 +281,54 @@ a:visited{
     }
 
 }
+
+
+
+.notify-channel-block-between {
+
+    margin-bottom: 50px;
+    position: relative;
+
+    &::after{
+        content: "";
+        height: calc(100% + 30px);
+        display: block;
+        border: dashed 2px $nhsuk-link-color;
+        position: absolute;
+        top: 20px;
+        left: 19px;
+    }
+
+    &:last-of-type::after{
+        display: none;
+    }
+
+    .notify-channel-block-channel {
+
+        padding-left: 60px;
+
+        .notify-channel-block-oval{
+            width: 20px;
+            height: 20px;
+            margin:3px 29px 0 11px;
+            background-color: $nhsuk-secondary-text-color;
+            border-radius: 10px;
+            color: $color_nhsuk-white;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            display: inline-block;
+            float: left;
+        }
+
+        p{
+            margin: 0;
+        }
+        
+    }
+
+}
+
 
 .notify-channel-add-fallback{
     position: relative;

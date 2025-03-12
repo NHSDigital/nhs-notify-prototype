@@ -1,0 +1,475 @@
+{% extends 'v12/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+{% from '../includes/template-folder-table-row.njk' import row %}
+{% from '../includes/template-folder-table-row-letter.njk' import row_letter %}
+{% from '../includes/template-folder-table-row-folder.njk' import row_folder %}
+
+  <div class="nhsuk-grid-row">
+
+    {{sideNav(active='4', folderName=data['folder-name-1'])}}
+
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <!--<span class="nhsuk-caption-l">{{ data['folder-name-1'] }}</span>-->
+      <h1 class="nhsuk-heading-xl">
+        Templates
+      </h1>
+
+      <!--{{ details({
+        text: "Organising your templates",
+        HTML: "
+        <p>Use folders to group related templates so it's easier to add them to your <a href='folder-messages'>message plans</a>.</p>
+        <p>For example, a folder could contain the templates used in a specific message plan.</p>
+        "
+      }) }}-->
+
+      <form action="" method="post">
+        <input type="hidden" name="show-templates" value="1">
+        <!--<input type="hidden" name="show-folders" value="1">-->
+        {{ button({
+          text: 'New template',
+          classes: 'nhsuk-u-margin-right-2'
+        }) }}
+
+        <!--{{ button({
+          text: 'New folder'
+        }) }}-->
+      </form>
+
+      {% if data['show-templates'] == '1' or data['show-folders'] == '1' %}
+
+      <table role="table" class="nhsuk-table-responsive">
+
+        <thead role="rowgroup" class="nhsuk-table__head">
+          <tr role="row">
+            <!--<th role="columnheader" class="" scope="col">
+              {% if data['show-templates'] == '1' %}
+              <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input checkboxes" id="" name="" type="checkbox" value="" onclick="selectAll(this); toggleActionsByCheckboxes();">
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for=""></label>
+              </div>
+              {% endif %}
+            </th>-->
+            <th role="columnheader" class="" scope="col">
+              Name
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Type
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Date and <br />time created
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+
+          {% if data['show-templates'] == '1' %}
+
+          <!--
+          ##################################################
+
+          Template 1
+
+          ##################################################
+          -->
+
+
+          {% if 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-1-template'] == data['template-1-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-2-template'] == data['template-1-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-3-template'] == data['template-1-name'] 
+          %}
+
+            {{row(templateName=data['template-1-name'], templateNumber='1', locked='1', templateTypeName='NHS App', templateType='app')}}
+
+          {% else %}
+
+            {{row(templateName=data['template-1-name'], templateNumber='1', locked='', templateTypeName='NHS App', templateType='app')}}
+
+          {% endif %}
+
+
+          <!--
+          ##################################################
+
+          Template 2
+
+          ##################################################
+          -->
+
+
+
+          {% if 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-1-template'] == data['template-2-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-2-template'] == data['template-2-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-3-template'] == data['template-2-name'] 
+          %}
+
+            {{row(templateName=data['template-2-name'], templateNumber='2', locked='1', templateTypeName='NHS App', templateType='app')}}
+
+          {% else %}
+
+            {{row(templateName=data['template-2-name'], templateNumber='2', locked='', templateTypeName='NHS App', templateType='app')}}
+
+          {% endif %}
+
+
+
+          <!--
+          ##################################################
+
+          Template 3
+
+          ##################################################
+          -->
+
+
+
+
+          {% if 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-1-template'] == data['template-3-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-2-template'] == data['template-3-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-3-template'] == data['template-3-name'] 
+          %}
+
+            {{row(templateName=data['template-3-name'], templateNumber='3', locked='1', templateTypeName='NHS App', templateType='app')}}
+
+          {% else %}
+
+            {{row(templateName=data['template-3-name'], templateNumber='3', locked='', templateTypeName='NHS App', templateType='app')}}
+
+          {% endif %}
+
+
+
+
+          <!--
+          ##################################################
+
+          Template 4
+
+          ##################################################
+          -->
+
+
+
+
+          {% if 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-1-template'] == data['template-4-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-2-template'] == data['template-4-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-3-template'] == data['template-4-name'] 
+          %}
+
+            {{row(templateName=data['template-4-name'], templateNumber='4', locked='1', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+          {% else %}
+
+            {{row(templateName=data['template-4-name'], templateNumber='4', locked='', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+          {% endif %}
+
+
+
+
+          <!--
+          ##################################################
+
+          Template 5
+
+          ##################################################
+          -->
+
+
+
+
+          {% if 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-1-template'] == data['template-5-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-2-template'] == data['template-5-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-3-template'] == data['template-5-name'] 
+          %}
+
+            {{row(templateName=data['template-5-name'], templateNumber='5', locked='1', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+          {% else %}
+
+            {{row(templateName=data['template-5-name'], templateNumber='5', locked='', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+          {% endif %}
+
+
+
+
+          <!--
+          ##################################################
+
+          Template 6
+
+          ##################################################
+          -->
+
+
+
+
+          {% if 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-1-template'] == data['template-6-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-2-template'] == data['template-6-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-3-template'] == data['template-6-name'] 
+          %}
+
+            {{row(templateName=data['template-6-name'], templateNumber='6', locked='1', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+          {% else %}
+
+            {{row(templateName=data['template-6-name'], templateNumber='6', locked='', templateTypeName='Text message (SMS)', templateType='sms')}}
+
+          {% endif %}
+
+
+
+
+          <!--
+          ##################################################
+
+          Template 7
+
+          ##################################################
+          -->
+
+
+
+
+          {% if 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-1-template'] == data['template-7-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-2-template'] == data['template-7-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-3-template'] == data['template-7-name'] 
+          %}
+
+
+            {{row(templateName=data['template-7-name'], templateNumber='7', locked='1', templateTypeName='Email', templateType='email')}}
+
+          {% else %}
+
+            {{row(templateName=data['template-7-name'], templateNumber='7', locked='', templateTypeName='Email', templateType='email')}}
+
+          {% endif %}
+
+
+
+
+          <!--
+          ##################################################
+
+          Template 8
+
+          ##################################################
+          -->
+
+
+
+
+          {% if 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-1-template'] == data['template-8-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-2-template'] == data['template-8-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-3-template'] == data['template-8-name'] 
+          %}
+
+            {{row(templateName=data['template-8-name'], templateNumber='8', locked='1', templateTypeName='Email', templateType='email')}}
+
+          {% else %}
+
+            {{row(templateName=data['template-8-name'], templateNumber='8', locked='', templateTypeName='Email', templateType='email')}}
+
+          {% endif %}
+
+
+
+
+          <!--
+          ##################################################
+
+          Template 9
+
+          ##################################################
+          -->
+
+
+
+
+          {% if 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-1-template'] == data['template-9-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-2-template'] == data['template-9-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-3-template'] == data['template-9-name'] 
+          %}
+
+            {{row(templateName=data['template-9-name'], templateNumber='9', locked='1', templateTypeName='Email', templateType='email')}}
+
+          {% else %}
+
+            {{row(templateName=data['template-9-name'], templateNumber='9', locked='', templateTypeName='Email', templateType='email')}}
+
+          {% endif %}
+
+
+
+          <!--
+          ##################################################
+
+          Template 10
+
+          ##################################################
+          -->
+
+
+
+          
+          {% if 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-1-template'] == data['template-10-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-2-template'] == data['template-10-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-3-template'] == data['template-10-name'] 
+          %}
+
+            {{row(templateName=data['template-10-name'], templateNumber='10', locked='1', templateTypeName='Standard letter', templateType='letter')}}
+
+          {% else %}
+
+            {{row(templateName=data['template-10-name'], templateNumber='10', locked='', templateTypeName='Standard letter', templateType='letter')}}
+
+          {% endif %}
+
+
+          <!--
+          ##################################################
+
+          Template 11
+
+          ##################################################
+          -->
+
+
+
+          
+          {% if 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-1-template'] == data['template-11-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-2-template'] == data['template-11-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-3-template'] == data['template-11-name'] 
+          %}
+
+            {{row(templateName=data['template-11-name'], templateNumber='11', locked='1', templateTypeName='Letter - French', templateType='letter')}}
+
+          {% else %}
+
+            {{row(templateName=data['template-11-name'], templateNumber='11', locked='', templateTypeName='Letter - French', templateType='letter')}}
+
+          {% endif %}
+
+
+
+            <!--
+          ##################################################
+
+          Template 12
+
+          ##################################################
+          -->
+
+
+
+          
+          {% if 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-1-template'] == data['template-12-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-2-template'] == data['template-12-name'] or 
+            data['message-plan-submitted'] == '1' and 
+            data['channel-3-template'] == data['template-12-name'] 
+          %}
+
+            {{row(templateName=data['template-12-name'], templateNumber='12', locked='1', templateTypeName='Braille letter', templateType='letter')}}
+
+          {% else %}
+
+            {{row(templateName=data['template-12-name'], templateNumber='12', locked='', templateTypeName='Braille letter', templateType='letter')}}
+
+          {% endif %}
+          
+
+
+          <!--
+          ##################################################
+
+          End
+
+          ##################################################
+          -->
+
+          {% endif %}
+
+        </tbody>
+      </table>
+
+      <div class="notify-sticky-actions" id="notify-sticky-actions">
+        <div class="nhsuk-width-container">
+          <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-one-quarter">&nbsp;</div>
+            <div class="nhsuk-grid-column-three-quarters">
+
+              <a href="/404" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-bottom-0">Move to folder</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% else %}
+ 
+      <p>You do not have any templates yet.</p>
+
+      {% endif %}
+      
+    </div>
+  </div>
+{% endblock %}
