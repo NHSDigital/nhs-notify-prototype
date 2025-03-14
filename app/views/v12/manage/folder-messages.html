@@ -133,7 +133,9 @@
               <td role="cell" class="nhsuk-table__cell">
                 <span class="nhsuk-table-responsive__heading">Action </span>
                 <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="/404">Copy</a></p>
+                {% if data['message-plan-submitted'] != '1' %}
                 <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="/404">Delete</a></p>
+                {% endif %}
               </td>
             </tr>
             
