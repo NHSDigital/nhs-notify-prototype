@@ -191,19 +191,25 @@ a:visited{
 // Custom styles for the routing plan creation
 
 
+.notify-routing-plan{
+    list-style: none;
+    padding: 0;
+    margin: 0 0 nhsuk-spacing(7) 0;
+}
+
 .notify-channel-block {
 
-    margin-bottom: 50px;
+    margin-bottom: 70px;
     position: relative;
 
     &::after{
         content: "";
-        height: calc(100% + 25px);
+        height: calc(100% + 30px);
         display: block;
         border: dashed 2px $nhsuk-link-color;
         position: absolute;
         top: 40px;
-        left: 19px;
+        left: 18px;
     }
 
     &:last-of-type::after{
@@ -284,30 +290,20 @@ a:visited{
 
 
 
-.notify-channel-block-between {
-
-    margin-bottom: 50px;
-    position: relative;
+.notify-channel-block__between {
 
     &::after{
         content: "";
-        height: calc(100% + 30px);
-        display: block;
-        border: dashed 2px $nhsuk-link-color;
-        position: absolute;
+        height: calc(100% + 50px);
         top: 20px;
-        left: 19px;
-    }
-
-    &:last-of-type::after{
-        display: none;
+        left: 18px;
     }
 
     .notify-channel-block-channel {
 
         padding-left: 60px;
 
-        .notify-channel-block-oval{
+        /*.notify-channel-block-oval{
             width: 20px;
             height: 20px;
             margin:3px 29px 0 11px;
@@ -323,12 +319,68 @@ a:visited{
 
         p{
             margin: 0;
-        }
+        }*/
+
+        // details ul{
+        //     margin-bottom: 24px;
+        //     margin-top: 0;
+        // }
         
     }
 
 }
 
+
+.notify-channel-block__rules {
+
+    &::after{
+        content: "";
+        height: calc(100% + 45px);
+        top: 40px;
+    }
+
+    .notify-channel-block-outer{
+        background: none;
+        border: none;
+        padding: 6px 0 0 0;
+    }
+
+    .notify-channel-block-channel{
+
+        .notify-channel-block-number{
+            content: "";
+            width: 25px;
+            height: 25px;
+            margin-right:20px;
+            margin-left: 8px;
+            background-color: $color_nhsuk-grey-5;
+            border: $nhsuk-link-color 3px solid;
+        }
+
+        .notify-channel-block-icon-branch{
+            content: "";
+            width: 40px;
+            height: 40px;
+            margin-right:20px;
+            padding-top: 5px;
+            background-color: $color_nhsuk-grey-5;
+            border: $nhsuk-link-color 3px solid;
+            border-radius: 20px;
+            text-align: center;
+            display: inline-block;
+            float: left;
+
+            svg {
+                width: 75%;
+                height: 75%;
+
+                path{
+                    fill: $nhsuk-link-color;
+                }
+            }
+        }
+    }
+}
 
 .notify-channel-add-fallback{
     position: relative;

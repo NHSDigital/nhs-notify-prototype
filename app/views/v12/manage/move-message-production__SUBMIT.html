@@ -1,4 +1,4 @@
-{% extends 'v11/layout.html' %}
+{% extends 'v12/layout.html' %}
 
 {% block beforeContent %}
 {% endblock %}
@@ -11,9 +11,9 @@
 
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-heading-xl">Move message(s) to production</h1>
+      <h1 class="nhsuk-heading-xl">Submit your message plan</h1>
 
-      <table role="table" class="notify-template-content nhsuk-u-margin-bottom-9">
+      <table role="table" class="notify-template-content">
         <tbody class="nhsuk-table__body">
 
           <tr role="row" class="nhsuk-table__row">
@@ -55,15 +55,14 @@
         </tbody>
       </table>
 
-      {{ details({
-        text: "What moving messages to production means",
+      <!--{{ details({
+        text: "What submitting a message plan means",
         HTML: "
-        <p>Moving messages from draft to production means that they are ready to send.</p>
-        <p>Message plans will only be sent when you make a request with <a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify'>NHS Notify API</a> or <a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify-mesh'>NHS Notify MESH</a>.</p>
+        <p>TBC...</p>
         "
-      }) }}
+    }) }}-->
 
-      <h2 class="nhsuk-heading-m">Before you move message plans to production</h2>
+      <h2 class="nhsuk-heading-m">Before you submit a message plan</h2>
 
       <p>Any templates used in these message plans will be locked.</p>
 
@@ -72,22 +71,22 @@
         <li>how you expect them to appear</li>
         <li>free from typo's or spelling mistakes</li>
         <li>signed off by the relevant stakeholders in your team</li>
-        <li>used in the correct message plans</li>
+        <li>used in the message plan correctly</li>
       </ul>
 
       {{ warningCallout({
         heading: "Important",
         HTML: "
-        <p>You cannot change message plans that are in production.</p>
-        <p>If you need to edit or change a message plan that is in production, you'll need to replace it with a new message plan.</p>
+        <p>You cannot change message plans that have been submitted.</p>
+        <p>If you need to edit or change a message plan that has been submitted, you'll need to replace it with a new message plan.</p>
           "
       }) }}
 
       <div class="nhsuk-form-group">
 
-        <a href="folder-messages" class="nhsuk-button nhsuk-button--secondary">Keep in draft</a>
+        <a href="create-message" class="nhsuk-button nhsuk-button--secondary">Go back</a>
 
-        <a href="folder-messages?messages-draft=0&messages-prod=1" class="nhsuk-button nhsuk-button--warning nhsuk-u-margin-left-3">Move to production</a>
+        <a href="folder-messages?message-plan-submitted=1" class="nhsuk-button nhsuk-u-margin-left-3">Submit message plan</a>
 
       </div>
 
