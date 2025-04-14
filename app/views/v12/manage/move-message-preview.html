@@ -43,6 +43,9 @@ window.onload = function () {
 {% endblock %}
 
 {% block content %}
+
+{% from '../includes/fallback-rules-app.njk' import fallback_rules_app %}
+
   <div class="nhsuk-grid-row">
 
     <div class="nhsuk-grid-column-full">
@@ -68,18 +71,18 @@ window.onload = function () {
 
       <p><a href="#" id="templatesExpander">Preview all templates</a></p>
 
-      <div class="notify-routing-plan">
+      <ul class="notify-routing-plan">
 
-        <div class="notify-channel-block">
+        <li class="notify-channel-block" id="first-message">
 
           <div class="notify-channel-block-channel">
             <div class="notify-channel-block-number">1</div>
-            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">First message</h3>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">First message</h2>
           </div>
 
           <div class="notify-channel-block-outer">
             <div class="notify-channel-block-inner">
-              <h4 class="nhsuk-heading-xs">{{ data['channel-1-type'] }}</h4>
+              <h3 class="nhsuk-heading-s">{{ data['channel-1-type'] }}</h3>
 
               <p>
                 {{ data['channel-1-template'] }}
@@ -115,22 +118,24 @@ window.onload = function () {
             </div>
           </div>
 
-        </div>
+        </li>
 
 
 
-        {% if data['channel-amount'] == '2' or data['channel-amount'] == '3' %}
+        {% if data['channel-amount'] >= '2' %}
 
-        <div class="notify-channel-block">
+        {{fallback_rules_app(showChange='')}}
+
+        <li class="notify-channel-block" id="second-message">
 
           <div class="notify-channel-block-channel">
             <div class="notify-channel-block-number">2</div>
-            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Second message</h3>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">Second message</h2>
           </div>
 
           <div class="notify-channel-block-outer">
             <div class="notify-channel-block-inner">
-              <h4 class="nhsuk-heading-xs">{{ data['channel-2-type'] }}</h4>
+              <h3 class="nhsuk-heading-s">{{ data['channel-2-type'] }}</h3>
 
               <p>
                 {{ data['channel-2-template'] }}
@@ -166,24 +171,26 @@ window.onload = function () {
             </div>
           </div>
 
-        </div>
+        </li>
 
         {% endif %}
 
 
 
-        {% if data['channel-amount'] == '3' %}
+        {% if data['channel-amount'] >= '3' %}
 
-        <div class="notify-channel-block">
+        {% include "../includes/fallback-rules-other-1.html" %}
+
+        <li class="notify-channel-block" id="third-message">
 
           <div class="notify-channel-block-channel">
             <div class="notify-channel-block-number">3</div>
-            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Third message</h3>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">Third message</h2>
           </div>
 
           <div class="notify-channel-block-outer">
             <div class="notify-channel-block-inner">
-              <h4 class="nhsuk-heading-xs">{{ data['channel-3-type'] }}</h4>
+              <h3 class="nhsuk-heading-s">{{ data['channel-3-type'] }}</h3>
 
               <p>
                 {{ data['channel-3-template'] }}
@@ -219,11 +226,111 @@ window.onload = function () {
             </div>
           </div>
 
-        </div>
+        </li>
 
         {% endif %}
 
-      </div>
+
+        {% if data['channel-amount'] >= '4' %}
+
+        {% include "../includes/fallback-rules-other-2.html" %}
+
+        <li class="notify-channel-block" id="fourth-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">3</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">Fourth message</h2>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h3 class="nhsuk-heading-s">Letter</h3>
+
+              <p>
+                <strong>Standard</strong><br />
+                <a href="/404" target="_blank">{{ data['channel-4-template'] }}</a>
+              </p>
+
+              {% if data['channel-4-large-print-template'] or data['channel-4-accessible-template'] %}
+
+              <p>
+                <strong>Accessible</strong><br />
+
+                {% if data['channel-4-large-print-template'] %}
+                <a href="/404" target="_blank">{{ data['channel-4-large-print-template'] }}</a><br />
+                {% endif %}
+
+                {% if data['channel-4-accessible-template'] %}
+                  {{ data['channel-4-accessible-template'] | escape | replace(",", "<br />") }}
+                {% endif %}
+
+              </p>
+
+              {% endif %}
+
+              {% if data['channel-4-language-template'] %}
+
+              <p>
+                <strong>Other language</strong><br />
+                <a href="/404" target="_blank">{{ data['channel-4-language-template'] | escape | replace(",", "<br />") }}</a>
+              </p>
+
+              {% endif %}
+
+              {#
+              <details class="nhsuk-details nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-4">
+                <summary class="nhsuk-details__summary">
+                  <span class="nhsuk-details__summary-text">
+                    Preview template
+                  </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  
+                  <table role="table" class="notify-template-content nhsuk-u-margin-bottom-0">
+                    <tbody class="nhsuk-table__body">
+            
+                      <tr role="row" class="nhsuk-table__row">
+                        <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
+                          Template file
+                        </th>
+                        <td role="cell" class="nhsuk-table__cell">
+                          <a href="/404">
+                            <svg class="notify-icon-file" width="20" height="26" viewBox="0 0 20 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                              <path d="M0 0V26H20V6.59375L19.7188 6.28125L13.7188 0.28125L13.4062 0H0ZM2 2H12V8H18V24H2V2ZM14 3.4375L16.5625 6H14V3.4375Z" fill="#4c6272"/>
+                            </svg>my_filename_for_my_template.pdf
+                          </a>
+                        </td>
+                      </tr>
+
+                      <tr role="row" class="nhsuk-table__row">
+                        <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
+                          Template proof file
+                        </th>
+                        <td role="cell" class="nhsuk-table__cell">
+                          <a href="/404">
+                            <svg class="notify-icon-file" width="20" height="26" viewBox="0 0 20 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                              <path d="M0 0V26H20V6.59375L19.7188 6.28125L13.7188 0.28125L13.4062 0H0ZM2 2H12V8H18V24H2V2ZM14 3.4375L16.5625 6H14V3.4375Z" fill="#4c6272"/>
+                            </svg>proof_file_name.pdf
+                          </a>
+                        </td>
+                      </tr>
+            
+                    </tbody>
+                  </table>
+              
+                </div>
+              </details>
+              #}
+              
+            </div>
+          </div>
+
+        </li>
+
+        {% endif %}
+
+
+      </ul>
 
       <p><a href="move-message-production">Go back</a></p>
 

@@ -18,9 +18,42 @@
         {{ templateName }}
         </a>
 
-        {% if locked == '1' %}
+    </td>
+
+    <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Type </span>
+        <span class="nhsuk-body-s">{{ templateTypeName }}</span>
+    </td>
+
+    <td role="cell" class="nhsuk-table__cell nhsuk-body-s">
+        <span class="nhsuk-table-responsive__heading">Status </span>
         
-        <br />
+        {% if locked == '1' and templateType != 'letter' %}
+        
+        <strong class="nhsuk-tag nhsuk-tag--orange">
+            Locked
+        </strong>
+
+        {% endif %}
+
+        {% if locked != '1' and templateType != 'letter' %}
+        
+        <strong class="nhsuk-tag nhsuk-tag--grey">
+            Draft
+        </strong>
+
+        {% endif %}
+
+        {% if templateType == 'letter' and locked != '1' %}
+
+        <strong class="nhsuk-tag nhsuk-tag--green">
+            Proof available
+        </strong>
+
+        {% endif %}
+
+        {% if templateType == 'letter' and locked == '1' %}
+
         <strong class="nhsuk-tag nhsuk-tag--orange">
             Locked
         </strong>
@@ -28,22 +61,19 @@
         {% endif %}
 
     </td>
-
-    <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">Type </span>
-        {{ templateTypeName }}
-    </td>
     
-    <td role="cell" class="nhsuk-table__cell nhsuk-body-s">
+    <!--<td role="cell" class="nhsuk-table__cell nhsuk-body-s">
         <span class="nhsuk-table-responsive__heading">Date and time created </span>30 Apr 2024<br />09:34
-    </td>
+    </td>-->
 
     <td role="cell" class="nhsuk-table__cell">
         <span class="nhsuk-table-responsive__heading">Action </span>
 
         <!--<p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="template-move">Move</a></p>-->
 
+        {% if templateType != 'letter' %}  
         <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="/404">Copy</a></p>
+        {% endif %}
 
         {% if locked != '1' %}
         <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="/404">Delete</a></p>

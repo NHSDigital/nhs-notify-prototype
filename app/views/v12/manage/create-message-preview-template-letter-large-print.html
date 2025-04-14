@@ -1,16 +1,13 @@
 {% extends 'v12/layout.html' %}
 
-{% block head %}
-{% endblock %}
-
 {% block beforeContent %}
 {% endblock %}
 
 {% block outerContent %}
 
 {{ backLink({
-  "href": "folder-templates",
-  "text": "Back to all templates",
+  "href": "javascript:history.go(-1);",
+  "text": "Go back",
   "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
 }) }}
 
@@ -18,6 +15,7 @@
 
 {% block content %}
   <div class="nhsuk-grid-row">
+
     <div class="nhsuk-grid-column-full">
 
       <div class="nhsuk-u-reading-width">
@@ -29,15 +27,9 @@
 
       </div>
 
-      {% if data['template-locked'] == '1' %}
-
-      {% include "../includes/template-locked-message-letter.html" %}
-
-      {% endif %}
-
       <table role="table" class="notify-template-content nhsuk-u-margin-bottom-4">
         <tbody class="nhsuk-table__body">
-          
+
           <tr role="row" class="nhsuk-table__row">
             <th role="cell" class="nhsuk-table__cell" style="width:20%;">
               Template ID
@@ -48,11 +40,11 @@
           </tr>
 
           <tr role="row" class="nhsuk-table__row">
-            <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
+            <th role="cell" class="nhsuk-table__cell">
               Type
             </th>
             <td role="cell" class="nhsuk-table__cell">
-              {{ data['preview-template-type'] }}
+              Large print letter
             </td>
           </tr>
 
@@ -82,11 +74,8 @@
             </td>
           </tr>
 
-          
-
         </tbody>
       </table>
-
 
       <table role="table" class="notify-template-content nhsuk-u-margin-bottom-4">
         <tbody class="nhsuk-table__body">
@@ -107,26 +96,7 @@
         </tbody>
       </table>
 
-      
-
-
-
-      {#
-      {% if data['template-locked'] != '1' %}
-
-      <form action="/404" method="post">        
-   
-        {{ button({
-          text: "Edit template",
-          classes: "nhsuk-button--secondary"
-        }) }}
-  
-      </form>
-
-      {% endif %}
-      #}
-
-      <p><a href="folder-templates">Back to all templates</a></p>
+      <p><a href="javascript:history.go(-1);">Go back</a></p>
 
     </div>
   </div>

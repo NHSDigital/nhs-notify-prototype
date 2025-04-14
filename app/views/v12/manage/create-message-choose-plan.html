@@ -32,31 +32,52 @@
                   NHS App &rarr; Email &rarr; SMS
                 </label>
               </div>
-        
+
               <div class="nhsuk-radios__item">
                 <input class="nhsuk-radios__input" id="option-2" name="message-plan" type="radio" value="2">
                 <label class="nhsuk-label nhsuk-radios__label" for="option-2">
-                  NHS App only
+                  NHS App &rarr; Email &rarr; SMS &rarr; Letter
                 </label>
               </div>
-             
+
               <div class="nhsuk-radios__item">
                 <input class="nhsuk-radios__input" id="option-3" name="message-plan" type="radio" value="3">
                 <label class="nhsuk-label nhsuk-radios__label" for="option-3">
-                  Email only
+                  NHS App &rarr; SMS &rarr; Letter
                 </label>
               </div>
 
               <div class="nhsuk-radios__item">
                 <input class="nhsuk-radios__input" id="option-4" name="message-plan" type="radio" value="4">
                 <label class="nhsuk-label nhsuk-radios__label" for="option-4">
+                  NHS App &rarr; SMS
+                </label>
+              </div>
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="option-5" name="message-plan" type="radio" value="5">
+                <label class="nhsuk-label nhsuk-radios__label" for="option-5">
+                  NHS App only
+                </label>
+              </div>
+             
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="option-6" name="message-plan" type="radio" value="6">
+                <label class="nhsuk-label nhsuk-radios__label" for="option-6">
+                  Email only
+                </label>
+              </div>
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="option-7" name="message-plan" type="radio" value="7">
+                <label class="nhsuk-label nhsuk-radios__label" for="option-7">
                   Text message (SMS) only
                 </label>
               </div>
 
               <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="option-5" name="message-plan" type="radio" value="5">
-                <label class="nhsuk-label nhsuk-radios__label" for="option-5">
+                <input class="nhsuk-radios__input" id="option-8" name="message-plan" type="radio" value="8">
+                <label class="nhsuk-label nhsuk-radios__label" for="option-8">
                   Letter only
                 </label>
               </div>
@@ -66,8 +87,9 @@
         
         </div>
 
+        {#
         <input type="hidden" name="message-name-1" value="">
-        <input type="hidden" name="messages-draft" value="">
+        <input type="hidden" name="messages-draft" value="0">
         <input type="hidden" name="message-plan-submitted" value="">
 
         <input type="hidden" name="channel-1-type" value="NHS App">
@@ -80,6 +102,7 @@
         <input type="hidden" name="channel-3-template" value="">
 
         <input type="hidden" name="channel-amount" value="3">
+        #}
 
         <div class="nhsuk-form-group">
 

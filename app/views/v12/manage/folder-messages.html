@@ -131,7 +131,12 @@
                     data['channel-amount'] == '3' and 
                     data['channel-1-template'] and 
                     data['channel-2-template'] and 
-                    data['channel-3-template'] 
+                    data['channel-3-template'] or 
+                    data['channel-amount'] == '4' and 
+                    data['channel-1-template'] and 
+                    data['channel-2-template'] and 
+                    data['channel-3-template'] and 
+                    data['channel-4-template'] 
                   %}
 
                   <p class="nhsuk-u-margin-bottom-2 nhsuk-body-s"><a href="move-message-production">Move to production</a></p>

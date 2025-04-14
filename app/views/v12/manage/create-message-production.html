@@ -14,6 +14,9 @@
 {% endblock %}
 
 {% block content %}
+
+{% from '../includes/fallback-rules-app.njk' import fallback_rules_app %}
+
   <div class="nhsuk-grid-row">
 
     <!--{{sideNav(active='3', folderName=data['folder-name-1'])}}-->
@@ -69,42 +72,49 @@
       
       </dl>
 
-      <div class="notify-routing-plan">
+      <ul class="notify-routing-plan">
 
-        <div class="notify-channel-block">
+        {% if data['channel-amount'] >= '1' %}
+
+        <li class="notify-channel-block" id="first-message">
 
           <div class="notify-channel-block-channel">
-            <div class="notify-channel-block-number">1</div>
-            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">First message</h3>
+            <div class="notify-channel-block-number" aria-hidden="true">1</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">First message</h2>
           </div>
 
           <div class="notify-channel-block-outer">
             <div class="notify-channel-block-inner">
-              <h4 class="nhsuk-heading-xs">{{ data['channel-1-type'] }}</h4>
+              <h3 class="nhsuk-heading-s">{{ data['channel-1-type'] }}</h3>
 
               <p>
                 {{ data['channel-1-template'] }}
               </p>
               
             </div>
+
           </div>
 
-        </div>
+        </li>
+
+        {% endif %}
 
 
 
-        {% if data['channel-amount'] == '2' or data['channel-amount'] == '3' %}
+        {% if data['channel-amount'] >= '2' %}
 
-        <div class="notify-channel-block">
+        {{fallback_rules_app(showChange='')}}
+
+        <li class="notify-channel-block" id="second-message">
 
           <div class="notify-channel-block-channel">
-            <div class="notify-channel-block-number">2</div>
-            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Second message</h3>
+            <div class="notify-channel-block-number" aria-hidden="true">2</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">Second message</h2>
           </div>
 
           <div class="notify-channel-block-outer">
             <div class="notify-channel-block-inner">
-              <h4 class="nhsuk-heading-xs">{{ data['channel-2-type'] }}</h4>
+              <h3 class="nhsuk-heading-s">{{ data['channel-2-type'] }}</h3>
 
               <p>
                 {{ data['channel-2-template'] }}
@@ -114,24 +124,26 @@
 
           </div>
 
-        </div>
+        </li>
 
         {% endif %}
 
 
 
-        {% if data['channel-amount'] == '3' %}
+        {% if data['channel-amount'] >= '3' %}
 
-        <div class="notify-channel-block">
+        {% include "../includes/fallback-rules-other-1.html" %}
+
+        <li class="notify-channel-block" id="third-message">
 
           <div class="notify-channel-block-channel">
-            <div class="notify-channel-block-number">3</div>
-            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Third message</h3>
+            <div class="notify-channel-block-number" aria-hidden="true">3</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">Third message</h2>
           </div>
 
           <div class="notify-channel-block-outer">
             <div class="notify-channel-block-inner">
-              <h4 class="nhsuk-heading-xs">{{ data['channel-3-type'] }}</h4>
+              <h3 class="nhsuk-heading-s">{{ data['channel-3-type'] }}</h3>
 
               <p>
                 {{ data['channel-3-template'] }}
@@ -141,11 +153,61 @@
 
           </div>
 
-        </div>
+        </li>
 
         {% endif %}
 
-      </div>
+
+        
+
+
+
+        {% if data['channel-amount'] >= '4' %}
+
+        {% include "../includes/fallback-rules-other-2.html" %}
+
+        <li class="notify-channel-block" id="fourth-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number" aria-hidden="true">4</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">Fourth message</h2>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h3 class="nhsuk-heading-s">Letter</h3>
+
+              <p>
+                <strong>Standard</strong><br />
+                {{ data['channel-4-template'] }}
+              </p>
+
+              <p>
+                <strong>Accessible</strong><br />
+                {% if data['channel-4-large-print-template'] %}{{ data['channel-4-large-print-template'] }}<br />{% endif %}
+                {{ data['channel-4-accessible-template'] | escape | replace(",", "<br />") }}
+              </p>
+
+
+              <p>
+                <strong>Other language</strong><br />
+                {{ data['channel-4-language-template'] | escape | replace(",", "<br />") }}
+              </p>
+              
+            </div>
+
+          </div>
+
+        </li>
+
+        {% endif %}
+
+
+        
+
+
+
+      </ul>
 
       <div class="nhsuk-form-group" style="margin-left: 60px;">
 

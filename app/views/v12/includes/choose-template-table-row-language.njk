@@ -1,18 +1,18 @@
-{% macro choose_template_row(templateName, templateNumber, templateTypeName, templateType, channelNumber, templateFolder, templateFolderName) %}
+{% macro choose_template_row_language(templateName, templateNumber, templateTypeName, templateType, channelNumber, templateFolder, templateFolderName) %}
 
 <tr role="row" class="nhsuk-table__row {% if templateFolder %}template-folder-{{templateFolder}}{% endif %}">
 
     <td role="cell" class="nhsuk-table__cell">
         <span class="nhsuk-table-responsive__heading">Select </span>
-        <div class="nhsuk-radios__item">
-            <input class="nhsuk-radios__input" id="template-{{templateNumber}}" name="channel-{{channelNumber}}-template" type="radio" value="{{templateName}}">
-            <label class="nhsuk-label nhsuk-radios__label" for="template-{{templateNumber}}"></label>
+        <div class="nhsuk-checkboxes__item">
+            <input class="nhsuk-checkboxes__input checkboxes" id="template-{{ templateNumber }}" name="channel-{{channelNumber}}-template" type="checkbox" value="{{templateName}}">
+            <label class="nhsuk-label nhsuk-checkboxes__label" for="template-{{ templateNumber }}"></label>
         </div>
     </td>
 
     <td role="cell" class="nhsuk-table__cell">
         <span class="nhsuk-table-responsive__heading">Name </span>
-        <label class="nhsuk-label nhsuk-radios__label" for="template-{{templateNumber}}">{{templateName}}</label>
+        <label class="nhsuk-label nhsuk-checkboxes__label" for="template-{{ templateNumber }}">{{templateName}}</label>
         {% if templateFolder %}
         <span class="notify-body-s-grey">
             <svg class="notify-icon-folder-small" version="1.0" xmlns="http://www.w3.org/2000/svg"

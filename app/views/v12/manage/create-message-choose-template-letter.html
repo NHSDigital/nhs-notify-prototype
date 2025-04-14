@@ -16,14 +16,14 @@
     <div class="nhsuk-grid-column-full">
 
       <span class="nhsuk-caption-l">{{ data['message-name-1'] }}</span>
-      <h1 class="nhsuk-heading-xl">  
-        {% if data['message-type'] == 'NHS App' %}Choose an NHS App template{%endif%}
-        {% if data['message-type'] == 'Email' %}Choose an email template{%endif%}
-        {% if data['message-type'] == 'Text message (SMS)' %}Choose a text message (SMS) template{%endif%}
-        {% if data['message-type'] == 'Letter' %}Choose a letter template{%endif%}
-        {% if data['message-type'] == 'Accessible' %}Choose accessible formats{%endif%}
-        {% if data['message-type'] == 'Other language' %}Choose other language templates{%endif%}
-      </h1>
+      <h1 class="nhsuk-heading-xl">Choose  
+        {% if data['message-type'] == 'NHS App' %}an NHS App{%endif%}
+        {% if data['message-type'] == 'Email' %}an email{%endif%}
+        {% if data['message-type'] == 'Text message (SMS)' %}a text message (SMS){%endif%}
+        {% if data['message-type'] == 'Letter' %}a letter{%endif%}
+        {% if data['message-type'] == 'Accessible' %}accessible letter{%endif%}
+        {% if data['message-type'] == 'Other language' %}other language letter{%endif%}
+         template{% if data['message-type'] == 'Other language' or data['message-type'] == 'Accessible' %}s{%endif%}</h1>
 
       {#
       {% if data['show-templates'] == '1' and data['show-folders'] == '1' %}
@@ -49,14 +49,13 @@
 
       <form action="create-message" method="post" autocomplete="off">
 
+        {% if data['message-type'] != 'Other language' %}<p class="nhsuk-hint">Choose one option</p>{% endif %}
 
         
 
 
 
         {% if data['message-type'] == 'NHS App' %}
-
-        <p class="nhsuk-hint">Choose one option.</p>
 
         <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
  
@@ -107,8 +106,6 @@
 
         {% if data['message-type'] == 'Text message (SMS)' %}
 
-        <p class="nhsuk-hint">Choose one option.</p>
-
         <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
  
           <thead role="rowgroup" class="nhsuk-table__head">
@@ -156,8 +153,6 @@
 
 
         {% if data['message-type'] == 'Email' %}
-
-        <p class="nhsuk-hint">Choose one option.</p>
 
         <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
  
@@ -209,8 +204,6 @@
 
         {% if data['message-type'] == 'Letter' %}
 
-        <p class="nhsuk-hint">Choose one option.</p>
-
         <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
  
           <thead role="rowgroup" class="nhsuk-table__head">
@@ -260,19 +253,7 @@
 
         {% if data['message-type'] == 'Accessible' %}
 
-        <p><a href="https://notify.nhs.uk/using-nhs-notify/accessible-formats" target="_blank">Learn about accessible format letters (opens in a new tab}</a></p>
-
-        <p>We'll send an accessible format to a recipient if:</p>
-        <ul>
-          <li>PDS confirms they have access needs</li>
-          <li>you've selected an accessible template that matches</li>
-        </ul>
-
-        <h2 class="nhsuk-heading-l">Large print</h2>
-
-        <p class="nhsuk-hint">Choose a large print template.</p>
-
-        <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-2">
+        <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
  
           <thead role="rowgroup" class="nhsuk-table__head">
             <tr role="row">
@@ -294,60 +275,15 @@
             </tr>
           </thead>
           <tbody class="nhsuk-table__body">
-            
-            {{choose_template_row(templateName=data['template-13-name'], templateNumber='13', templateTypeName='Large print letter', templateType='letter-large-print', channelNumber=data["channel-number"] )}}
 
-            {{choose_template_row(templateName=data['template-14-name'], templateNumber='14', templateTypeName='Large print letter', templateType='letter-large-print', channelNumber=data["channel-number"] )}}
+            {{choose_template_row(templateName=data['template-10-name'], templateNumber='10', templateTypeName='Letter', templateType='letter', channelNumber=data["channel-number"] )}}
 
-            {{choose_template_row(templateName=data['template-15-name'], templateNumber='15', templateTypeName='Large print letter', templateType='letter-large-print', channelNumber=data["channel-number"] )}}
+            {{choose_template_row(templateName=data['template-11-name'], templateNumber='11', templateTypeName='Letter - Braille', templateType='letter', channelNumber=data["channel-number"] )}}
+
+            {{choose_template_row(templateName=data['template-12-name'], templateNumber='12', templateTypeName='Letter - Large print', templateType='letter', channelNumber=data["channel-number"] )}}
 
           </tbody>
         </table>
-
-        <div class="nhsuk-radios nhsuk-u-margin-bottom-6">
-    
-          <div class="nhsuk-radios__divider">or</div>
-
-          <div class="nhsuk-radios__item">
-            <input class="nhsuk-radios__input" id="no-large-print" name="channel-4-large-print-template" type="radio" value="">
-            <label class="nhsuk-label nhsuk-radios__label" for="no-large-print">No large print template</label>
-          </div>
-    
-        </div>
-
-        <div class="nhsuk-u-reading-width nhsuk-u-margin-bottom-6">
-
-          <h2 class="nhsuk-heading-l">Accessible inserts</h2>
-
-          <p>We can include an accessible insert if PDS confirms a recipient has access needs.</p>
-
-          <!--<p>If any of your recipients need accessible formats, we can include accessible inserts with the standard letters we send them.</p>
-          
-          <p>You can include accessible inserts with your standard letter for recipients who need letters in those formats.</p>
-
-          <p>You can choose to send your standard letter '{{data['channel-4-template']}}' in accessible formats to recipients who need letters in those formats.</p>-->
-
-          {{ checkboxes({
-            name: "channel-4-accessible-template",
-            fieldset: {
-              legend: {
-                text: "Choose the accessible inserts for this message plan",
-                classes: "nhsuk-fieldset__legend--s"
-              }
-            },
-            items: [
-              {
-                value: "Braille",
-                text: "Braille"
-              },
-              {
-                value: "Audio CD",
-                text: "Audio CD"
-              }
-            ]
-          }) }}
-
-        </div>
 
         {% endif %}
 
@@ -359,22 +295,8 @@
 
         {% if data['message-type'] == 'Other language' %}
 
-        <div class="nhsuk-u-margin-bottom-6">
-        
-          <p><a href="https://notify.nhs.uk/using-nhs-notify/letters-in-other-languages" target="_blank">Learn about letters in other languages (opens in a new tab}</a></p>
-
-          <p>We'll send the letter in another language to a recipient if:</p>
-          <ul class="nhsuk-list nhsuk-list--bullet">
-            <li>PDS confirms they need messages in another language</li>
-            <li>you've selected a template in the other language that matches</li>
-          </ul>
-
-        </div>
-
-        <p class="nhsuk-hint">Select all templates that you want to include in this message plan.</p>
-
         <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
-
+ 
           <thead role="rowgroup" class="nhsuk-table__head">
             <tr role="row">
               <th role="columnheader" class="" scope="col">
@@ -401,11 +323,11 @@
           </thead>
           <tbody class="nhsuk-table__body">
 
-            {{choose_template_row_language(templateName=data['template-16-name'], templateNumber='16', templateTypeName='Letter - French', templateType='letter', channelNumber=data["channel-number"] )}}
+            {{choose_template_row_language(templateName=data['template-10-name'], templateNumber='10', templateTypeName='Letter - French', templateType='letter', channelNumber=data["channel-number"] )}}
 
-            {{choose_template_row_language(templateName=data['template-17-name'], templateNumber='17', templateTypeName='Letter - Italian', templateType='letter', channelNumber=data["channel-number"] )}}
+            {{choose_template_row_language(templateName=data['template-11-name'], templateNumber='11', templateTypeName='Letter - Italian', templateType='letter', channelNumber=data["channel-number"] )}}
 
-            {{choose_template_row_language(templateName=data['template-18-name'], templateNumber='18', templateTypeName='Letter - German', templateType='letter', channelNumber=data["channel-number"] )}}
+            {{choose_template_row_language(templateName=data['template-12-name'], templateNumber='12', templateTypeName='Letter - German', templateType='letter', channelNumber=data["channel-number"] )}}
 
           </tbody>
         </table>
