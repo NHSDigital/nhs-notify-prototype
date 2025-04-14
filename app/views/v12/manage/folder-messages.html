@@ -35,6 +35,12 @@
         Message plans
       </h1>
 
+      <form action="create-message-choose-plan" method="post">
+        {{ button({
+          'text': 'New message plan'
+        }) }}
+      </form>
+
       {{ details({
         text: "What draft and production mean",
         HTML: "
@@ -48,12 +54,6 @@
         <p>Message plans that are ready to be sent using <a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify' target='blank'>NHS Notify API</a> or <a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify-mesh/' target='blank'>NHS Notify MESH</a>.</p>
         "
       }) }}
-
-      <form action="create-message-choose-plan" method="post">
-        {{ button({
-          'text': 'New message plan'
-        }) }}
-      </form>
 
       <details class="nhsuk-details nhsuk-expander" open id="expanderDraft">
         <summary class="nhsuk-details__summary">
