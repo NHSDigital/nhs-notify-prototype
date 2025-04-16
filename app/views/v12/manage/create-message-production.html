@@ -182,17 +182,20 @@
                 {{ data['channel-4-template'] }}
               </p>
 
+              {% if data['channel-4-large-print-template'] or data['channel-4-accessible-template'] %}
               <p>
                 <strong>Accessible</strong><br />
                 {% if data['channel-4-large-print-template'] %}{{ data['channel-4-large-print-template'] }}<br />{% endif %}
                 {{ data['channel-4-accessible-template'] | escape | replace(",", "<br />") }}
               </p>
+              {% endif %}
 
-
+              {% if data['channel-4-language-template'] %}
               <p>
                 <strong>Other language</strong><br />
                 {{ data['channel-4-language-template'] | escape | replace(",", "<br />") }}
               </p>
+              {% endif %}
               
             </div>
 
