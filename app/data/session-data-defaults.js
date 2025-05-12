@@ -67,7 +67,9 @@ module.exports = {
     "template-folder-1-name": "Covid 18-64 Sep 2024",
     "template-folder-2-name": "RSV awareness Sep 2024",
 
-    "template-letter-url": "https://nhs.sharepoint.com/:f:/r/sites/msteams_8af52a-Templates/Shared%20Documents/Technical%20Onboarding%20-%20Tech%20Team?csf=1&web=1&e=w8nEAR"    
+    "template-letter-url": "https://nhs.sharepoint.com/:f:/r/sites/msteams_8af52a-Templates/Shared%20Documents/Technical%20Onboarding%20-%20Tech%20Team?csf=1&web=1&e=w8nEAR",
+
+    "app-fallback-time" : "24"
 
 /*
     "folder-name-1": "Bowel cancer screening 2025",

@@ -163,7 +163,7 @@
 
         {% if data['channel-amount'] >= '2' %}
 
-        {{fallback_rules_app(showChange='1')}}
+        {{fallback_rules_app(showChange='1',app_fallback_time=data['app-fallback-time'])}}
 
         <li class="notify-channel-block" id="second-message">
 
