@@ -1,0 +1,499 @@
+{% extends 'v13/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+{% if data['messages-draft'] != '1' and data['messages-prod'] != '1' %}
+{{ backLink({
+  href: "create-message-choose-plan",
+  text: "Back to choose a message order",
+  classes: "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+{% from '../includes/fallback-rules-app.njk' import fallback_rules_app %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <div id="create-message-template-error" style="display: none;" class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+        <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="nhsuk-error-summary__body">
+          <p>
+            You must choose a template for each message.
+          </p>
+          <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
+
+            <!-- Only show errors for channels that do not have templates assigned -->
+            {% if data['channel-1-type'] and data['channel-1-template'] == '' %}
+            <li>
+              <a href="#first-message">You have not chosen a template for your first message</a>
+            </li>
+            {% endif %}
+
+            {% if data['channel-2-type'] and data['channel-2-template'] == '' %}
+            <li>
+              <a href="#second-message">You have not chosen a template for your second message</a>
+            </li>
+            {% endif %}
+
+            {% if data['channel-3-type'] and data['channel-3-template'] == '' %}
+            <li>
+              <a href="#third-message">You have not chosen a template for your third message</a>
+            </li>
+            {% endif %}
+
+            {% if data['channel-4-type'] and data['channel-4-template'] == '' %}
+            <li>
+              <a href="#fourth-message">You have not chosen a template for your fourth message</a>
+            </li>
+            {% endif %}
+
+          </ul>
+        </div>
+      </div>
+
+      <h1 class="nhsuk-heading-xl">
+        Create a message plan
+      </h1>
+
+      <form action="create-message" method="post" autocomplete="off" onsubmit="return checkFormCreateMessage();">
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
+            
+          <label class="nhsuk-label nhsuk-label--s" for="message-name-1">
+            Message plan name
+          </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
+          </div>
+
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="message-name-1" name="message-name-1" type="text" value="{{data['message-name-1']}}" onblur="this.closest('form').submit();return false;">
+
+          <!-- Button replaced with onblur event
+          {{ button({
+            text: "Save",
+            classes: "nhsuk-button--secondary nhsuk-u-margin-left-3 nhsuk-u-margin-bottom-0 notify-button-small"
+          }) }}-->
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="message-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message plan name
+          </span>
+
+        </div>
+
+        <input type="hidden" name="messages-draft" value="1">
+
+      </form>
+
+      <dl class="nhsuk-summary-list notify-summary-list nhsuk-u-margin-bottom-7">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Routing Plan ID
+          </dt>
+          <dd class="nhsuk-summary-list__value" style="font-family: monospace; word-break: break-word;">
+            b838b13c-f98c-4def-93f0-515d4e4f4ee1
+          </dd>
+      
+        </div>
+        
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Status
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ tag({
+              text: "Draft",
+              classes: "nhsuk-tag--blue"
+            })}}
+          </dd>
+      
+        </div>
+      
+      </dl>
+
+      <ul class="notify-routing-plan">
+
+        {% if data['channel-amount'] >= '1' %}
+
+        <li class="notify-channel-block" id="first-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number" aria-hidden="true">1</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">First message</h2>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h3 class="nhsuk-heading-s">{{ data['channel-1-type'] }}</h3>
+              {% if data['channel-1-template'] %}
+
+              <p>
+                {{ data['channel-1-template'] }}<br />
+                <a href="create-message-choose-template?message-type={{ data['channel-1-type'] }}&channel-number=1">Change template</a>
+              </p>
+
+              {% else %}
+              
+              <p><a href="create-message-choose-template?message-type={{ data['channel-1-type'] }}&channel-number=1">Choose template</a></p>
+              
+              {%endif%}
+              
+            </div>
+
+          </div>
+
+        </li>
+
+        {% endif %}
+
+
+
+        {% if data['channel-amount'] >= '2' %}
+
+        {{fallback_rules_app(showChange='1',app_fallback_time=data['app-fallback-time'])}}
+
+        <li class="notify-channel-block" id="second-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number" aria-hidden="true">2</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">Second message</h2>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h3 class="nhsuk-heading-s">{{ data['channel-2-type'] }}</h3>
+
+              {% if data['channel-2-template'] %}
+
+              <p>
+                {{ data['channel-2-template'] }}<br />
+                <a href="create-message-choose-template?message-type={{ data['channel-2-type'] }}&channel-number=2">Change template</a>
+              </p>
+
+              {% else %}
+              
+              <p><a href="create-message-choose-template?message-type={{ data['channel-2-type'] }}&channel-number=2">Choose template</a></p>
+              
+              {%endif%}
+              
+            </div>
+
+          </div>
+
+        </li>
+
+        {% endif %}
+
+
+
+        {% if data['channel-amount'] >= '3' %}
+
+        {% include "../includes/fallback-rules-other-1.html" %}
+
+        <li class="notify-channel-block" id="third-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number" aria-hidden="true">3</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">Third message</h2>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h3 class="nhsuk-heading-s">{{ data['channel-3-type'] }}</h3>
+
+              {% if data['channel-3-template'] %}
+
+              <p>
+                {{ data['channel-3-template'] }}<br />
+                <a href="create-message-choose-template?message-type={{ data['channel-3-type'] }}&channel-number=3">Change template</a>
+              </p>
+
+              {% else %}
+              
+              <p><a href="create-message-choose-template?message-type={{ data['channel-3-type'] }}&channel-number=3">Choose template</a></p>
+              
+              {% endif %}
+              
+            </div>
+
+          </div>
+
+        </li>
+
+        {% endif %}
+
+
+        
+
+
+
+        {% if data['channel-amount'] >= '4' %}
+
+        {% include "../includes/fallback-rules-other-2.html" %}
+
+        <li class="notify-channel-block" id="fourth-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number" aria-hidden="true">4</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">Fourth message</h2>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h3 class="nhsuk-heading-s">Standard letter</h3>
+
+              {% if data['channel-4-template'] %}
+
+              <p>
+                {{ data['channel-4-template'] }}<br />
+                <a href="create-message-choose-template?message-type=Letter&channel-number=4">Change template</a>
+              </p>
+
+              {% else %}
+              
+              <p><a href="create-message-choose-template?message-type=Letter&channel-number=4">Choose template</a></p>
+
+              {% endif %}
+
+              {#
+              {% if data['channel-4-large-print-template'] or data['channel-4-accessible-template'] %}
+              
+              <p>
+                <strong>Accessible</strong><br />
+
+                {% if data['channel-4-large-print-template'] %}
+                  {{ data['channel-4-large-print-template'] }} <!--<a href="create-message?channel-4-large-print-template=" style="color:#d5281b;">Remove</a>--><br />
+                {% endif %}
+
+                {% if data['channel-4-accessible-template'] %}
+                  {{ data['channel-4-accessible-template'] | escape | replace(",", "<br />") }}<br />
+                {% endif %}
+
+                <a href="create-message-choose-template?message-type=Accessible&channel-number=4-large-print">Change accessible templates</a>
+              </p>
+
+              {% else %}
+
+              <p><a href="create-message-choose-template?message-type=Accessible&channel-number=4-large-print">Choose accessible templates (optional)</a></p>
+
+              {% endif %}
+
+              {% if data['channel-4-language-template'] %}
+
+              <p>
+                <strong>Other language</strong><br />
+                {{ data['channel-4-language-template'] | escape | replace(",", "<br />") }}<br />
+                <a href="create-message-choose-template?message-type=Other language&channel-number=4-language">Change other language templates</a>
+              </p>
+
+              {% else %}
+
+              <p><a href="create-message-choose-template?message-type=Other language&channel-number=4-language">Choose other language templates (optional)</a></p>
+
+              {% endif %}
+              #}
+              
+            </div>
+
+          </div>
+
+          <div class="notify-channel-accessible">
+
+              <ul class="notify-routing-plan">
+
+                {% include "../includes/fallback-rules-accessible.html" %}
+
+                <li class="notify-channel-block" id="fourth-message">
+
+                  <div class="notify-channel-block-outer">
+                    <div class="notify-channel-block-inner">
+
+                      <h3 class="nhsuk-heading-s">Large print letter (optional)</h3>
+
+                      {% if data['channel-4-large-print-template'] %}
+
+                        {{ data['channel-4-large-print-template'] }}
+                        <p><a href="create-message-choose-template?message-type=Large print&channel-number=4-large-print">Change template</a></p>
+
+                        <p><a href="?channel-4-large-print-template=" style="color: #d5281b;">Remove template</a></p>
+
+
+                      {% else %}
+
+                        <p><a href="create-message-choose-template?message-type=Large print&channel-number=4-large-print">Choose template</a></p>
+
+                      {% endif %}
+
+                    </div>
+                  </div>
+
+                </li>
+
+                <li class="notify-channel-block" id="fourth-message">
+
+                  <div class="notify-channel-block-outer">
+                    <div class="notify-channel-block-inner">
+                      <h3 class="nhsuk-heading-s">Braille letter (optional)</h3>
+
+                      {% if data['channel-4-braille-template'] %}
+
+                        {{ data['channel-4-braille-template'] }}
+                        <p><a href="create-message-choose-template?message-type=Braille&channel-number=4-braille">Change template</a></p>
+
+                        <p><a href="?channel-4-braille-template=" style="color: #d5281b;">Remove template</a></p>
+
+
+                      {% else %}
+
+                        <p><a href="create-message-choose-template?message-type=Braille&channel-number=4-braille">Choose template</a></p>
+
+                      {% endif %}
+
+                    </div>
+                  </div>
+
+                </li>
+
+                <li class="notify-channel-block" id="fourth-message">
+
+                  <div class="notify-channel-block-outer">
+                    <div class="notify-channel-block-inner">
+
+                      <h3 class="nhsuk-heading-s">Audio CD letter (optional)</h3>
+
+                      <!--<p class="nhsuk-hint">A letter that will include an audio CD for recipients who have 'audio CD' as their preferred written communication format in PDS.</p>-->
+
+                      <p><a href="">Choose template</a></p>
+
+                    </div>
+                  </div>
+
+                </li>
+
+                <li class="notify-channel-block" id="fourth-message">
+
+                  <div class="notify-channel-block-outer">
+                    <div class="notify-channel-block-inner">
+
+                      <h3 class="nhsuk-heading-s">Other language letters (optional)</h3>
+
+                      <!--<p class="nhsuk-hint">Letters for recipients who have an other language as their communication preference in PDS.</p>-->
+
+                      <p><a href="">Choose templates</a></p>
+
+                    </div>
+                  </div>
+
+                </li>
+
+              </ul>
+
+          </div>
+
+        </li>
+
+        {% endif %}
+
+
+        
+
+
+
+      </ul>
+
+      <!--<div class="notify-channel-add-fallback notify-channel-add-fallback_first nhsuk-u-margin-bottom-3">
+        <a href="{% if data['channel-amount'] != '3' %}create-message-add-fallback{% endif %}" class="nhsuk-u-font-size-19">
+          <svg class="nhsuk-icon nhsuk-icon__plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" aria-hidden="true" height="34">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M12 8v8M8 12h8"></path>
+          </svg>{% if data['channel-amount'] > 0 %}Add another message{% else %}Add a message{% endif %}
+        </a>
+      </div>
+
+      <div class="notify-channel-add-fallback notify-channel-add-fallback_second nhsuk-u-margin-bottom-7">
+        <a href="create-message-choose-channels-and-templates" class="nhsuk-u-font-size-19">
+          <svg class="nhsuk-icon nhsuk-icon__plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" aria-hidden="true" height="34">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M12 8v8M8 12h8"></path>
+          </svg><svg class="nhsuk-icon nhsuk-icon__plus notify-add-second" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" aria-hidden="true" height="34">
+            <circle cx="12" cy="12" r="10" stroke="#f0f4f5" stroke-width="1"></circle>
+            <path fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M12 8v8M8 12h8"></path>
+          </svg>Add messages by template
+        </a>
+      </div>-->
+
+      <form action="folder-messages" method="post" autocomplete="off" onsubmit="return checkFormCreateMessage();">
+
+        <div class="nhsuk-form-group notify-message-button-container">
+
+          {% if 
+            data['messages-draft'] == '1' and 
+            data['channel-amount'] == '1' or 
+            data['messages-draft'] == '1' and 
+            data['channel-amount'] == '2' or 
+            data['messages-draft'] == '1' and 
+            data['channel-amount'] == '3' or 
+            data['messages-draft'] == '1' and 
+            data['channel-amount'] == '4' 
+          %}
+
+            {% if 
+              data['channel-amount'] == '1' and 
+              data['channel-1-template'] or 
+              data['channel-amount'] == '2' and 
+              data['channel-1-template'] and 
+              data['channel-2-template'] or 
+              data['channel-amount'] == '3' and 
+              data['channel-1-template'] and 
+              data['channel-2-template'] and 
+              data['channel-3-template'] or 
+              data['channel-amount'] == '4' and 
+              data['channel-1-template'] and 
+              data['channel-2-template'] and 
+              data['channel-3-template'] and 
+              data['channel-4-template'] 
+            %}
+
+            <a href="move-message-production" class="nhsuk-button">Move to production</a>
+
+            {% else %}
+
+            <a class="nhsuk-button" onclick="showTemplateError();">Move to production</a>
+            
+            {% endif %}
+
+            {{ button({
+              text: "Save and close",
+              classes: "nhsuk-button--secondary nhsuk-u-margin-left-3"
+            }) }}
+
+          {% else %}
+
+            {{ button({
+              text: "Save and close",
+              classes: "nhsuk-button"
+            }) }}
+
+          {% endif %}
+
+        </div>
+
+        <input type="hidden" name="messages-draft" value="1">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'v13/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <!--<span class="nhsuk-caption-l">Project</span>-->
+      <h1 class="nhsuk-heading-xl">
+        Manage templates and message plans 
+      </h1>
+
+      <!--<p class="nhsuk-u-margin-bottom-7 nhsuk-body-s"><a href="/404">Rename project</a></p>-->
+
+      <div class="nhsuk-card nhsuk-card--clickable nhsuk-u-margin-bottom-4">
+        <div class="nhsuk-card__content nhsuk-card__content--primary">
+
+          <h2 class="nhsuk-card__heading nhsuk-heading-m">
+            <a class="nhsuk-card__link" href="folder-templates">Templates ({% if data['show-templates'] == '1' %}18{% else %}0{% endif %})</a>
+          </h2>
+
+          <p class="nhsuk-card__description">
+            Create templates for NHS App messages, emails, text messages and letters.
+          </p>
+  
+          <svg class="nhsuk-icon" xmlns="http://www.w3.org/2000/svg" width="27" height="27" aria-hidden="true" focusable="false">
+            <circle cx="13.333" cy="13.333" r="13.333" fill="" />
+            <g data-name="Group 1" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.667">
+              <path d="M15.438 13l-3.771 3.771" />
+              <path data-name="Path" d="M11.667 9.229L15.438 13" />
+            </g>
+          </svg>
+  
+        </div>
+      </div>
+
+
+
+      <div class="nhsuk-card nhsuk-card--clickable nhsuk-u-margin-bottom-4">
+        <div class="nhsuk-card__content nhsuk-card__content--primary">
+
+          <h2 class="nhsuk-card__heading nhsuk-heading-m">
+            <a class="nhsuk-card__link" href="folder-messages">Message plans ({% if data['messages-draft'] == '1' or data['messages-prod'] == '1' %}1{% else %}0{% endif %})</a>
+          </h2>
+
+          <p class="nhsuk-card__description">
+            Use message plans to decide how messages will be sent to your recipients.
+          </p>
+  
+          <svg class="nhsuk-icon" xmlns="http://www.w3.org/2000/svg" width="27" height="27" aria-hidden="true" focusable="false">
+            <circle cx="13.333" cy="13.333" r="13.333" fill="" />
+            <g data-name="Group 1" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.667">
+              <path d="M15.438 13l-3.771 3.771" />
+              <path data-name="Path" d="M11.667 9.229L15.438 13" />
+            </g>
+          </svg>
+  
+        </div>
+      </div>
+
+      
+
+      
+      {{ card({
+        href: "message-settings",
+        primary: "true",
+        clickable: "true",
+        heading: "Settings",
+        headingClasses: "nhsuk-heading-m nhsuk-u-margin-bottom-0",
+        classes: "nhsuk-u-margin-bottom-4"
+      }) }}
+      
+     
+    </div>
+  </div>
+{% endblock %}

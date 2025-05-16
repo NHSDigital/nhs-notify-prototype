@@ -1,0 +1,370 @@
+{% extends 'v13/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+{% from '../includes/choose-template-table-row.njk' import choose_template_row %}
+{% from '../includes/choose-template-table-row-language.njk' import choose_template_row_language %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+
+      <span class="nhsuk-caption-l">{{ data['message-name-1'] }}</span>
+      <h1 class="nhsuk-heading-xl">Choose  
+        {% if data['message-type'] == 'NHS App' %}an NHS App{%endif%}
+        {% if data['message-type'] == 'Email' %}an email{%endif%}
+        {% if data['message-type'] == 'Text message (SMS)' %}a text message (SMS){%endif%}
+        {% if data['message-type'] == 'Letter' %}a letter{%endif%}
+        {% if data['message-type'] == 'Accessible' %}accessible letter{%endif%}
+        {% if data['message-type'] == 'Other language' %}other language letter{%endif%}
+         template{% if data['message-type'] == 'Other language' or data['message-type'] == 'Accessible' %}s{%endif%}</h1>
+
+      {#
+      {% if data['show-templates'] == '1' and data['show-folders'] == '1' %}
+
+      <div class="nhsuk-form-group">
+
+        <label class="nhsuk-label" for="filter-folders">
+          Filter templates by folder
+        </label>
+
+        <select class="nhsuk-select" id="filter-folders" name="filter-folders" onchange="toggleTable();">
+          <option value="0" selected>All templates</option>
+          <option value="1">{{ data['template-folder-1-name'] }}</option>
+          <option value="2">{{ data['template-folder-2-name'] }}</option>
+        </select>
+
+      </div>
+
+      {% endif %}
+      #}
+
+      {% if data['show-templates'] == '1' %}
+
+      <form action="create-message" method="post" autocomplete="off">
+
+        {% if data['message-type'] != 'Other language' %}<p class="nhsuk-hint">Choose one option</p>{% endif %}
+
+        
+
+
+
+        {% if data['message-type'] == 'NHS App' %}
+
+        <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
+ 
+          <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+              <th role="columnheader" class="" scope="col">
+                Select
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Name
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Type
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Date and <br />time created
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+              
+            {{choose_template_row(templateName=data['template-1-name'], templateNumber='1', templateTypeName='NHS App', templateType='app', channelNumber=data["channel-number"] )}}
+
+            {{choose_template_row(templateName=data['template-2-name'], templateNumber='2', templateTypeName='NHS App', templateType='app', channelNumber=data["channel-number"] )}}
+
+            {{choose_template_row(templateName=data['template-3-name'], templateNumber='3', templateTypeName='NHS App', templateType='app', channelNumber=data["channel-number"] )}}
+
+            {% if data['show-folders'] == '1' %}
+
+            {{choose_template_row(templateName=data['template-10-name'], templateNumber='10', templateTypeName='NHS App', templateType='app', channelNumber=data["channel-number"], templateFolder='1', templateFolderName=data['template-folder-1-name'] )}}
+
+            {{choose_template_row(templateName=data['template-13-name'], templateNumber='13', templateTypeName='NHS App', templateType='app', channelNumber=data["channel-number"], templateFolder='2', templateFolderName=data['template-folder-2-name'] )}}
+
+            {% endif %}
+
+          </tbody>
+        </table>
+
+        {% endif %}
+
+
+
+
+
+
+        {% if data['message-type'] == 'Text message (SMS)' %}
+
+        <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
+ 
+          <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+              <th role="columnheader" class="" scope="col">
+                Select
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Name
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Type
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Date and <br />time created
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+
+            {{choose_template_row(templateName=data['template-4-name'], templateNumber='4', templateTypeName='Text message (SMS)', templateType='sms', channelNumber=data["channel-number"] )}}
+
+            {{choose_template_row(templateName=data['template-5-name'], templateNumber='5', templateTypeName='Text message (SMS)', templateType='sms', channelNumber=data["channel-number"] )}}
+
+            {{choose_template_row(templateName=data['template-6-name'], templateNumber='6', templateTypeName='Text message (SMS)', templateType='sms', channelNumber=data["channel-number"] )}}
+
+            {% if data['show-folders'] == '1' %}
+
+            {{choose_template_row(templateName=data['template-12-name'], templateNumber='12', templateTypeName='Text message (SMS)', templateType='sms', channelNumber=data["channel-number"], templateFolder='1', templateFolderName=data['template-folder-1-name'] )}}
+
+            {% endif %}
+
+          </tbody>
+        </table>
+
+        {% endif %}
+
+
+
+
+
+
+
+        {% if data['message-type'] == 'Email' %}
+
+        <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
+ 
+          <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+              <th role="columnheader" class="" scope="col">
+                Select
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Name
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Type
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Date and <br />time created
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+
+            {{choose_template_row(templateName=data['template-7-name'], templateNumber='7', templateTypeName='Email', templateType='email', channelNumber=data["channel-number"] )}}
+
+            {{choose_template_row(templateName=data['template-8-name'], templateNumber='8', templateTypeName='Email', templateType='email', channelNumber=data["channel-number"] )}}
+
+            {{choose_template_row(templateName=data['template-9-name'], templateNumber='9', templateTypeName='Email', templateType='email', channelNumber=data["channel-number"] )}}
+
+            {% if data['show-folders'] == '1' %}
+
+            {{choose_template_row(templateName=data['template-11-name'], templateNumber='11', templateTypeName='Email', templateType='email', channelNumber=data["channel-number"], templateFolder='1', templateFolderName=data['template-folder-1-name'] )}}
+
+            {{choose_template_row(templateName=data['template-14-name'], templateNumber='14', templateTypeName='Email', templateType='email', channelNumber=data["channel-number"], templateFolder='2', templateFolderName=data['template-folder-2-name'] )}}
+
+            {% endif %}
+
+          </tbody>
+        </table>
+
+        {% endif %}
+
+
+
+
+
+
+
+        {% if data['message-type'] == 'Letter' %}
+
+        <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
+ 
+          <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+              <th role="columnheader" class="" scope="col">
+                Select
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Name
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Type
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Date and <br />time created
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+
+            {{choose_template_row(templateName=data['template-10-name'], templateNumber='10', templateTypeName='Letter', templateType='letter', channelNumber=data["channel-number"] )}}
+
+            {{choose_template_row(templateName=data['template-11-name'], templateNumber='11', templateTypeName='Letter', templateType='letter', channelNumber=data["channel-number"] )}}
+
+            {{choose_template_row(templateName=data['template-12-name'], templateNumber='12', templateTypeName='Letter', templateType='letter', channelNumber=data["channel-number"] )}}
+
+            <!--{% if data['show-folders'] == '1' %}
+
+            {{choose_template_row(templateName=data['template-11-name'], templateNumber='11', templateTypeName='Email', templateType='email', channelNumber=data["channel-number"], templateFolder='1', templateFolderName=data['template-folder-1-name'] )}}
+
+            {{choose_template_row(templateName=data['template-14-name'], templateNumber='14', templateTypeName='Email', templateType='email', channelNumber=data["channel-number"], templateFolder='2', templateFolderName=data['template-folder-2-name'] )}}
+
+            {% endif %}-->
+
+          </tbody>
+        </table>
+
+        {% endif %}
+
+
+
+
+
+
+        {% if data['message-type'] == 'Accessible' %}
+
+        <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
+ 
+          <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+              <th role="columnheader" class="" scope="col">
+                Select
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Name
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Type
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Date and <br />time created
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+
+            {{choose_template_row(templateName=data['template-10-name'], templateNumber='10', templateTypeName='Letter', templateType='letter', channelNumber=data["channel-number"] )}}
+
+            {{choose_template_row(templateName=data['template-11-name'], templateNumber='11', templateTypeName='Letter - Braille', templateType='letter', channelNumber=data["channel-number"] )}}
+
+            {{choose_template_row(templateName=data['template-12-name'], templateNumber='12', templateTypeName='Letter - Large print', templateType='letter', channelNumber=data["channel-number"] )}}
+
+          </tbody>
+        </table>
+
+        {% endif %}
+
+
+
+
+
+
+
+        {% if data['message-type'] == 'Other language' %}
+
+        <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
+ 
+          <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+              <th role="columnheader" class="" scope="col">
+
+                <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input checkboxes" id="" name="" type="checkbox" value="" onclick="selectAll(this); toggleActionsByCheckboxes();">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for=""></label>
+                </div>
+
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Name
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Type
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Date and <br />time created
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+
+            {{choose_template_row_language(templateName=data['template-10-name'], templateNumber='10', templateTypeName='Letter - French', templateType='letter', channelNumber=data["channel-number"] )}}
+
+            {{choose_template_row_language(templateName=data['template-11-name'], templateNumber='11', templateTypeName='Letter - Italian', templateType='letter', channelNumber=data["channel-number"] )}}
+
+            {{choose_template_row_language(templateName=data['template-12-name'], templateNumber='12', templateTypeName='Letter - German', templateType='letter', channelNumber=data["channel-number"] )}}
+
+          </tbody>
+        </table>
+
+        {% endif %}
+
+
+
+
+
+
+        <div class="nhsuk-form-group">
+
+          {{ button({
+            text: 'Save and continue'
+          }) }}
+
+          <a href="create-message" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+
+        </div>
+
+      </form>
+
+      {% else%}
+
+      <p>You do not have any templates yet.</p>
+      
+      <div class="nhsuk-form-group">
+
+        <p><a href="folder-templates">Go to templates</a></p>
+
+        <p><a href="create-message">Go back</a></p>
+
+      </div>
+
+      {% endif %}
+
+    </div>
+  </div>
+{% endblock %}

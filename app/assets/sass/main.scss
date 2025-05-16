@@ -121,6 +121,20 @@ a:visited{
     }
 }
 
+
+/*
+.nhsuk-header__container:after {
+    content: "Sign out";
+    display: block;
+    color: #fff;
+    position: relative;
+    top: 10px;
+    font-size: 1rem;
+}
+*/
+
+
+
 .nhsuk-code-block{
     display: inline-block;
     padding: 0.6rem;
@@ -369,6 +383,8 @@ a:visited{
             text-align: center;
             display: inline-block;
             float: left;
+            position: relative;
+            z-index: 999;
 
             svg {
                 width: 75%;
@@ -381,6 +397,56 @@ a:visited{
         }
     }
 }
+
+
+.notify-channel-accessible{
+    margin: 70px 0 0 60px;
+
+    .notify-channel-block__rules{
+
+        &::before{
+            display: none !important;
+        }
+
+        &::after{
+            content: "";
+            height: calc(100% + 140px) !important;
+            top: -70px !important;
+        }
+
+    }
+
+    .notify-channel-block {
+
+        &::before{
+            content: "";
+            width: 42px;
+            height: 0;
+            display: block;
+            border: dashed 2px $nhsuk-link-color;
+            position: absolute;
+            top: 56px;
+            left: 18px;
+        }
+
+        &::after{
+            height: calc(100% + 66px);
+            top: 4px;
+        }
+
+        &:last-of-type::after{
+            display: block;
+            height: 50px;
+        }
+    }
+}
+
+
+
+
+
+
+
 
 .notify-channel-add-fallback{
     position: relative;

@@ -1,0 +1,140 @@
+{% extends 'v13/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+{% from '../includes/template-folder-table-row.njk' import row %}
+{% from '../includes/template-folder-table-row-letter.njk' import row_letter %}
+{% from '../includes/template-folder-table-row-folder.njk' import row_folder %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+
+      {{ backLink({
+        href: "folder-templates",
+        text: "Back to all templates and folders",
+        classes: "nhsuk-u-margin-bottom-5"
+      }) }}
+
+      <span class="nhsuk-caption-l">
+        <svg class="notify-icon-folder" version="1.0" xmlns="http://www.w3.org/2000/svg"
+          width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
+          preserveAspectRatio="xMidYMid meet">
+          <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+          fill="#4c6272" stroke="none">
+          <path d="M215 4611 c-54 -14 -112 -50 -149 -92 -71 -84 -67 33 -64 -1659 3
+          -1497 3 -1526 23 -1565 30 -62 94 -120 159 -144 l57 -21 1698 0 1698 0 34 23
+          c28 18 57 67 171 297 75 151 253 508 395 793 l258 518 0 87 c0 69 -5 97 -22
+          135 -49 105 -126 172 -241 207 -54 17 -93 20 -253 20 l-189 0 0 318 c0 367 -4
+          394 -73 469 -23 26 -62 56 -87 67 -44 21 -58 21 -904 26 l-860 5 -143 200
+          c-168 234 -193 263 -259 296 l-49 24 -585 2 c-322 1 -598 -2 -615 -6z m1203
+          -343 c37 -51 105 -145 149 -208 101 -142 128 -172 184 -202 l44 -23 865 -5
+          865 -5 3 -307 2 -308 -1237 -2 -1238 -3 -60 -24 c-43 -17 -78 -42 -120 -85
+          -57 -58 -68 -77 -197 -356 -75 -162 -165 -353 -198 -425 -34 -71 -94 -197
+          -132 -280 -38 -82 -74 -154 -79 -159 -5 -6 -9 463 -9 1231 0 984 3 1242 13
+          1246 6 3 252 6 544 6 l533 1 68 -92z m2763 -1336 c34 -18 62 -66 54 -93 -4
+          -11 -166 -342 -360 -735 l-354 -714 -1592 0 c-1269 0 -1590 3 -1586 13 3 6 72
+          156 155 332 82 176 238 509 346 740 108 231 205 428 215 439 10 10 34 22 52
+          26 19 4 711 7 1539 7 1233 -2 1510 -4 1531 -15z"/>
+          </g>
+          </svg>Folder
+      </span>
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-2">
+        {{ data['template-folder-2-name'] }}
+      </h1>
+
+      <p class="nhsuk-u-margin-bottom-7 nhsuk-body-s"><a href="/404">Rename folder</a></p>
+
+      <form action="" method="post">
+        <input type="hidden" name="show-templates" value="1">
+        {{ button({
+          'text': 'New template'
+        }) }}
+      </form>
+
+      <table role="table" class="nhsuk-table-responsive">
+
+        <thead role="rowgroup" class="nhsuk-table__head">
+          <tr role="row">
+            <th role="columnheader" class="" scope="col">
+              <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input checkboxes" id="" name="" type="checkbox" value="" onclick="selectAll(this); toggleActionsByCheckboxes();">
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for=""></label>
+              </div>
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Name
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Type
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Date and <br />time created
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+
+          {% if 
+            data['messages-prod'] == '1' and 
+            data['channel-1-template'] == data['template-13-name'] or 
+            data['messages-prod'] == '1' and 
+            data['channel-2-template'] == data['template-13-name'] or 
+            data['messages-prod'] == '1' and 
+            data['channel-3-template'] == data['template-13-name'] 
+          %}
+
+            {{row(templateName=data['template-13-name'], templateNumber='13', locked='1', templateTypeName='NHS App', templateType='app')}}
+
+          {% else %}
+
+            {{row(templateName=data['template-13-name'], templateNumber='13', locked='', templateTypeName='NHS App', templateType='app')}}
+
+          {% endif %}
+
+
+          {% if 
+            data['messages-prod'] == '1' and 
+            data['channel-1-template'] == data['template-14-name'] or 
+            data['messages-prod'] == '1' and 
+            data['channel-2-template'] == data['template-14-name'] or 
+            data['messages-prod'] == '1' and 
+            data['channel-3-template'] == data['template-14-name'] 
+          %}
+
+            {{row(templateName=data['template-14-name'], templateNumber='14', locked='1', templateTypeName='Email', templateType='email')}}
+
+          {% else %}
+
+            {{row(templateName=data['template-14-name'], templateNumber='14', locked='', templateTypeName='Email', templateType='email')}}
+
+          {% endif %}
+
+        </tbody>
+      </table>
+
+      <div class="notify-sticky-actions" id="notify-sticky-actions">
+        <div class="nhsuk-width-container">
+          <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-one-quarter">&nbsp;</div>
+            <div class="nhsuk-grid-column-three-quarters">
+
+              <a href="/404" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-bottom-0">Move to folder</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+{% endblock %}

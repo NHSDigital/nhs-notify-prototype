@@ -1,0 +1,382 @@
+{% extends 'v13/layout.html' %}
+
+{% block head %}
+
+<!-- Script to convert markdown to formatted content -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+<script>
+window.onload = function () {
+
+  var text1 = document.getElementById('sourceTA1').value;
+  var target1 = document.getElementById('targetDiv1');
+  converter1 = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
+  html1 = converter1.makeHtml(text1);
+  target1.innerHTML = html1;
+
+  var text2 = document.getElementById('sourceTA2').value;
+  var target2 = document.getElementById('targetDiv2');
+  converter2 = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
+  html2 = converter2.makeHtml(text2);
+  target2.innerHTML = html2;
+
+  var text3 = document.getElementById('sourceTA3').value;
+  var target3 = document.getElementById('targetDiv3');
+  converter3 = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
+  html3 = converter3.makeHtml(text3);
+  target3.innerHTML = html3;
+}
+</script>
+
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+{{ backLink({
+  "href": "move-message-production",
+  "text": "Go back",
+  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+{% from '../includes/fallback-rules-app.njk' import fallback_rules_app %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <span class="nhsuk-caption-l">Preview message plan</span>
+      <h1 class="nhsuk-heading-xl">
+        {{data['message-name-1']}}
+      </h1>
+
+      <dl class="nhsuk-summary-list notify-summary-list">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            routingPlanId
+          </dt>
+          <dd class="nhsuk-summary-list__value" style="font-family: monospace;">
+            b838b13c-f98c-4def-93f0-515d4e4f4ee1
+          </dd>
+      
+        </div>
+      
+      </dl>
+
+      <p><a href="#" id="templatesExpander">Open all template previews</a></p>
+
+      <ul class="notify-routing-plan">
+
+        <li class="notify-channel-block" id="first-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">1</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">First message</h2>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h3 class="nhsuk-heading-s">{{ data['channel-1-type'] }}</h3>
+
+              <p>
+                {{ data['channel-1-template'] }}
+              </p>
+
+              <details class="nhsuk-details nhsuk-u-margin-bottom-0">
+                <summary class="nhsuk-details__summary">
+                  <span class="nhsuk-details__summary-text">
+                    Preview template
+                  </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  
+                  {% if data['channel-1-type'] == "NHS App" %}
+                  <textarea id="sourceTA1" class="hidden">{{ data["template-app-message-1"] }}</textarea>
+                  <div id="targetDiv1"></div>
+                  {% endif %}
+
+                  {% if data['channel-1-type'] == "Text message (SMS)" %}
+                  <textarea id="sourceTA1" class="hidden">{{ data["template-sms-message-1"] }}</textarea>
+                  <div id="targetDiv1" class="hidden"></div>
+                  {{ data["template-sms-message-1"] }}
+                  {% endif %}
+
+                  {% if data['channel-1-type'] == "Email" %}
+                  <textarea id="sourceTA1" class="hidden">{{ data["template-email-message-1"] }}</textarea>
+                  <div id="targetDiv1"></div>
+                  {% endif %}
+              
+                </div>
+              </details>
+              
+            </div>
+          </div>
+
+        </li>
+
+
+
+        {% if data['channel-amount'] >= '2' %}
+
+        {{fallback_rules_app(showChange='')}}
+
+        <li class="notify-channel-block" id="second-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">2</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">Second message</h2>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h3 class="nhsuk-heading-s">{{ data['channel-2-type'] }}</h3>
+
+              <p>
+                {{ data['channel-2-template'] }}
+              </p>
+
+              <details class="nhsuk-details nhsuk-u-margin-bottom-0">
+                <summary class="nhsuk-details__summary">
+                  <span class="nhsuk-details__summary-text">
+                    Preview template
+                  </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  
+                  {% if data['channel-2-type'] == "NHS App" %}
+                  <textarea id="sourceTA2" class="hidden">{{ data["template-app-message-1"] }}</textarea>
+                  <div id="targetDiv2"></div>
+                  {% endif %}
+
+                  {% if data['channel-2-type'] == "Text message (SMS)" %}
+                  <textarea id="sourceTA2" class="hidden">{{ data["template-sms-message-1"] }}</textarea>
+                  <div id="targetDiv2" class="hidden"></div>
+                  {{ data["template-sms-message-1"] }}
+                  {% endif %}
+
+                  {% if data['channel-2-type'] == "Email" %}
+                  <textarea id="sourceTA2" class="hidden">{{ data["template-email-message-1"] }}</textarea>
+                  <div id="targetDiv2"></div>
+                  {% endif %}
+              
+                </div>
+              </details>
+              
+            </div>
+          </div>
+
+        </li>
+
+        {% endif %}
+
+
+
+        {% if data['channel-amount'] >= '3' %}
+
+        {% include "../includes/fallback-rules-other-1.html" %}
+
+        <li class="notify-channel-block" id="third-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">3</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">Third message</h2>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h3 class="nhsuk-heading-s">{{ data['channel-3-type'] }}</h3>
+
+              <p>
+                {{ data['channel-3-template'] }}
+              </p>
+
+              <details class="nhsuk-details nhsuk-u-margin-bottom-0">
+                <summary class="nhsuk-details__summary">
+                  <span class="nhsuk-details__summary-text">
+                    Preview template
+                  </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  
+                  {% if data['channel-3-type'] == "NHS App" %}
+                  <textarea id="sourceTA3" class="hidden">{{ data["template-app-message-1"] }}</textarea>
+                  <div id="targetDiv3"></div>
+                  {% endif %}
+
+                  {% if data['channel-3-type'] == "Text message (SMS)" %}
+                  <textarea id="sourceTA3" class="hidden">{{ data["template-sms-message-1"] }}</textarea>
+                  <div id="targetDiv3" class="hidden"></div>
+                  {{ data["template-sms-message-1"] }}
+                  {% endif %}
+
+                  {% if data['channel-3-type'] == "Email" %}
+                  <textarea id="sourceTA3" class="hidden">{{ data["template-email-message-1"] }}</textarea>
+                  <div id="targetDiv3"></div>
+                  {% endif %}
+              
+                </div>
+              </details>
+              
+            </div>
+          </div>
+
+        </li>
+
+        {% endif %}
+
+
+        {% if data['channel-amount'] >= '4' %}
+
+        {% include "../includes/fallback-rules-other-2.html" %}
+
+        <li class="notify-channel-block" id="fourth-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">3</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">Fourth message</h2>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h3 class="nhsuk-heading-s">Letter</h3>
+
+              <p>
+                <strong>Standard</strong><br />
+                <a href="/404" target="_blank">{{ data['channel-4-template'] }}</a>
+              </p>
+
+              {% if data['channel-4-large-print-template'] or data['channel-4-accessible-template'] %}
+
+              <p>
+                <strong>Accessible</strong><br />
+
+                {% if data['channel-4-large-print-template'] %}
+                <a href="/404" target="_blank">{{ data['channel-4-large-print-template'] }}</a><br />
+                {% endif %}
+
+                {% if data['channel-4-accessible-template'] %}
+                  {{ data['channel-4-accessible-template'] | escape | replace(",", "<br />") }}
+                {% endif %}
+
+              </p>
+
+              {% endif %}
+
+              {% if data['channel-4-language-template'] %}
+
+              <p>
+                <strong>Other language</strong><br />
+                <a href="/404" target="_blank">{{ data['channel-4-language-template'] | escape | replace(",", "<br />") }}</a>
+              </p>
+
+              {% endif %}
+
+              {#
+              <details class="nhsuk-details nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-4">
+                <summary class="nhsuk-details__summary">
+                  <span class="nhsuk-details__summary-text">
+                    Preview template
+                  </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  
+                  <table role="table" class="notify-template-content nhsuk-u-margin-bottom-0">
+                    <tbody class="nhsuk-table__body">
+            
+                      <tr role="row" class="nhsuk-table__row">
+                        <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
+                          Template file
+                        </th>
+                        <td role="cell" class="nhsuk-table__cell">
+                          <a href="/404">
+                            <svg class="notify-icon-file" width="20" height="26" viewBox="0 0 20 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                              <path d="M0 0V26H20V6.59375L19.7188 6.28125L13.7188 0.28125L13.4062 0H0ZM2 2H12V8H18V24H2V2ZM14 3.4375L16.5625 6H14V3.4375Z" fill="#4c6272"/>
+                            </svg>my_filename_for_my_template.pdf
+                          </a>
+                        </td>
+                      </tr>
+
+                      <tr role="row" class="nhsuk-table__row">
+                        <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
+                          Template proof file
+                        </th>
+                        <td role="cell" class="nhsuk-table__cell">
+                          <a href="/404">
+                            <svg class="notify-icon-file" width="20" height="26" viewBox="0 0 20 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                              <path d="M0 0V26H20V6.59375L19.7188 6.28125L13.7188 0.28125L13.4062 0H0ZM2 2H12V8H18V24H2V2ZM14 3.4375L16.5625 6H14V3.4375Z" fill="#4c6272"/>
+                            </svg>proof_file_name.pdf
+                          </a>
+                        </td>
+                      </tr>
+            
+                    </tbody>
+                  </table>
+              
+                </div>
+              </details>
+              #}
+              
+            </div>
+          </div>
+
+        </li>
+
+        {% endif %}
+
+
+      </ul>
+
+      <p><a href="move-message-production">Go back</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+  
+  // Reference the toggle link
+  const xa = document.getElementById('templatesExpander');
+
+  // Register link on click event
+  xa.addEventListener('click', function(e) {
+
+  /* Toggle the two classes that represent "state"
+  || determined when link is clicked
+  */
+  e.currentTarget.classList.toggle('exp');
+  e.currentTarget.classList.toggle('col');
+
+  // Collect all <details> into a NodeList
+  const details = document.querySelectorAll('details');
+
+  /* Convert NodeList into an array then iterate
+  || through it...
+  */
+  Array.from(details).forEach(function(obj, idx) {
+
+    /* If the link has the class .exp...
+    || make each <detail>'s open attribute true
+    */
+    if (e.currentTarget.classList.contains('exp')) {
+      obj.open = true;
+      // Otherwise remove [open]
+    } else {
+      obj.removeAttribute('open');
+    }
+
+  });
+
+  }, false);
+
+  </script>
+  
+  {% endblock %}

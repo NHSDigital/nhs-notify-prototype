@@ -1,0 +1,222 @@
+{% extends 'v13/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+{{ backLink({
+  href: "folder-messages",
+  text: "Back to all messages",
+  classes: "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+{% from '../includes/fallback-rules-app.njk' import fallback_rules_app %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <span class="nhsuk-caption-l">Message plan</span>
+      <h1 class="nhsuk-heading-xl">
+        {{data['message-name-1']}}
+      </h1>
+
+      <div class="nhsuk-warning-callout-nhs-notify nhsuk-u-padding-4 nhsuk-u-margin-bottom-6">
+
+        <p>You cannot edit this message plan because it's in production.</p>
+        <p class="nhsuk-u-margin-bottom-0"><a href="/404">Copy this message plan into draft</a> to create a new one with the same messages.</p>
+      
+      </div>
+
+      <dl class="nhsuk-summary-list notify-summary-list">
+
+        <!--<div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            routingPlanName
+          </dt>
+          <dd class="nhsuk-summary-list__value" style="font-family: monospace;">
+            {{ data['message-name-1'] | replace(" ", "_") | lower }}
+          </dd>
+      
+        </div>-->
+        
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Routing Plan ID
+          </dt>
+          <dd class="nhsuk-summary-list__value" style="font-family: monospace;">
+            b838b13c-f98c-4def-93f0-515d4e4f4ee1
+          </dd>
+      
+        </div>
+        
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Status
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ tag({
+              text: "Production",
+              classes: "nhsuk-tag--red"
+            })}}
+          </dd>
+      
+        </div>
+      
+      </dl>
+
+      <ul class="notify-routing-plan">
+
+        {% if data['channel-amount'] >= '1' %}
+
+        <li class="notify-channel-block" id="first-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number" aria-hidden="true">1</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">First message</h2>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h3 class="nhsuk-heading-s">{{ data['channel-1-type'] }}</h3>
+
+              <p>
+                {{ data['channel-1-template'] }}
+              </p>
+              
+            </div>
+
+          </div>
+
+        </li>
+
+        {% endif %}
+
+
+
+        {% if data['channel-amount'] >= '2' %}
+
+        {{fallback_rules_app(showChange='')}}
+
+        <li class="notify-channel-block" id="second-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number" aria-hidden="true">2</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">Second message</h2>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h3 class="nhsuk-heading-s">{{ data['channel-2-type'] }}</h3>
+
+              <p>
+                {{ data['channel-2-template'] }}
+              </p>
+              
+            </div>
+
+          </div>
+
+        </li>
+
+        {% endif %}
+
+
+
+        {% if data['channel-amount'] >= '3' %}
+
+        {% include "../includes/fallback-rules-other-1.html" %}
+
+        <li class="notify-channel-block" id="third-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number" aria-hidden="true">3</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">Third message</h2>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h3 class="nhsuk-heading-s">{{ data['channel-3-type'] }}</h3>
+
+              <p>
+                {{ data['channel-3-template'] }}
+              </p>
+              
+            </div>
+
+          </div>
+
+        </li>
+
+        {% endif %}
+
+
+        
+
+
+
+        {% if data['channel-amount'] >= '4' %}
+
+        {% include "../includes/fallback-rules-other-2.html" %}
+
+        <li class="notify-channel-block" id="fourth-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number" aria-hidden="true">4</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">Fourth message</h2>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h3 class="nhsuk-heading-s">Letter</h3>
+
+              <p>
+                <strong>Standard</strong><br />
+                {{ data['channel-4-template'] }}
+              </p>
+
+              {% if data['channel-4-large-print-template'] or data['channel-4-accessible-template'] %}
+              <p>
+                <strong>Accessible</strong><br />
+                {% if data['channel-4-large-print-template'] %}{{ data['channel-4-large-print-template'] }}<br />{% endif %}
+                {{ data['channel-4-accessible-template'] | escape | replace(",", "<br />") }}
+              </p>
+              {% endif %}
+
+              {% if data['channel-4-language-template'] %}
+              <p>
+                <strong>Other language</strong><br />
+                {{ data['channel-4-language-template'] | escape | replace(",", "<br />") }}
+              </p>
+              {% endif %}
+              
+            </div>
+
+          </div>
+
+        </li>
+
+        {% endif %}
+
+
+        
+
+
+
+      </ul>
+
+      <div class="nhsuk-form-group" style="margin-left: 60px;">
+
+        <p><a href="folder-messages">Back to all messages</a></p>
+
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

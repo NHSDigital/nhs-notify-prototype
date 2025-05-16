@@ -1,0 +1,103 @@
+{% extends 'v13/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+
+{{ backLink({
+  "href": "javascript:history.go(-1);",
+  "text": "Go back",
+  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+
+      <div class="nhsuk-u-reading-width">
+
+        <span class="nhsuk-caption-l">Template</span>
+        <h1 class="nhsuk-heading-xl">
+          {{ data['preview-template-name'] }}
+        </h1>
+
+      </div>
+
+      <table role="table" class="notify-template-content nhsuk-u-margin-bottom-4">
+        <tbody class="nhsuk-table__body">
+
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell" style="width:20%;">
+              Template ID
+            </th>
+            <td role="cell" class="nhsuk-table__cell" style="font-family: monospace;">
+              a4b171b5-431f-4a5b-9d7a-9a4903c98e66
+            </td>
+          </tr>
+
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell">
+              Type
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              Large print letter
+            </td>
+          </tr>
+
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
+              Template file
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              <a href="/404">
+                <svg class="notify-icon-file" width="20" height="26" viewBox="0 0 20 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M0 0V26H20V6.59375L19.7188 6.28125L13.7188 0.28125L13.4062 0H0ZM2 2H12V8H18V24H2V2ZM14 3.4375L16.5625 6H14V3.4375Z" fill="#4c6272"/>
+                </svg>my_filename_for_my_template.pdf
+              </a>
+            </td>
+          </tr>
+
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
+              Example personalisation file
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              <a href="/404">
+                <svg class="notify-icon-file" width="20" height="26" viewBox="0 0 20 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M0 0V26H20V6.59375L19.7188 6.28125L13.7188 0.28125L13.4062 0H0ZM2 2H12V8H18V24H2V2ZM14 3.4375L16.5625 6H14V3.4375Z" fill="#4c6272"/>
+                </svg>my_filename_for_my_test_data.csv
+              </a>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <table role="table" class="notify-template-content nhsuk-u-margin-bottom-4">
+        <tbody class="nhsuk-table__body">
+
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
+              Template proof file
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              <a href="/404">
+                <svg class="notify-icon-file" width="20" height="26" viewBox="0 0 20 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M0 0V26H20V6.59375L19.7188 6.28125L13.7188 0.28125L13.4062 0H0ZM2 2H12V8H18V24H2V2ZM14 3.4375L16.5625 6H14V3.4375Z" fill="#4c6272"/>
+                </svg>proof_file_name.pdf
+              </a>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <p><a href="javascript:history.go(-1);">Go back</a></p>
+
+    </div>
+  </div>
+{% endblock %}

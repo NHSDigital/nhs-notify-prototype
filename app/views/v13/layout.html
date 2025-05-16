@@ -1,0 +1,80 @@
+<!-- Custom Notify macros -->
+{% from './includes/sideNav.njk' import sideNav %}
+{% from './includes/sideNavItem.njk' import sideNavItem %}
+{% from './includes/sideNavSubItem.njk' import sideNavSubItem %}
+
+{% set protoVersion = 'v13' %}
+
+<!-- Extends the layout from /docs/views/template.html -->
+{% extends 'v13/template.html' %}
+
+<!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+{% endblock %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  NHS Notify prototype
+{% endblock %}
+
+<!-- Edit the header -->
+<!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
+{% block header %}
+
+{{ header({
+  service: {
+    name: "Notify"
+  },
+  homeHref: "folder",
+  showNav: "true",
+  primaryLinks: [
+      {
+        url : 'folder-templates',
+        label : 'Templates'
+      },
+      {
+        url  : 'folder-messages',
+        label : 'Message plans'
+      },
+      {
+        url  : 'message-settings',
+        label : 'Settings'
+      }
+    ]
+  })
+}}
+
+<div style="position: absolute; top: 20px; right: 0;"><a href="">Sign out</a></div>
+
+{% endblock %}
+
+<!-- Edit the footer -->
+<!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
+{% block footer %}
+  {{ footer({
+    'links': [
+      {
+        'URL': '/',
+        'label': 'Home'
+      },
+      {
+        'URL': '/examples/passing-data/clear-data',
+        'label': 'Clear data'
+      },
+      {
+        'URL': '/',
+        'label': 'Prototype version: ' + protoVersion + ''
+      }
+    ]
+  })}}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    <!-- Custom JavaScript files can be added to this file -->
+    {% include 'includes/scripts.html' %}
+    <!-- For adding page specific JavsScript -->
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}
