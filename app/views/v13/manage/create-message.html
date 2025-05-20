@@ -390,7 +390,18 @@
 
                       <!--<p class="nhsuk-hint">Letters for recipients who have an other language as their communication preference in PDS.</p>-->
 
-                      <p><a href="">Choose templates</a></p>
+                      {% if data['channel-4-language-template'] %}
+
+                      <p>
+                        {{ data['channel-4-language-template'] | escape | replace(",", "<br />") }}<br />
+                        <a href="create-message-choose-template?message-type=Other language&channel-number=4-language">Change templates</a>
+                      </p>
+
+                      {% else %}
+
+                      <p><a href="create-message-choose-template?message-type=Other language&channel-number=4-language">Choose templates</a></p>
+
+                      {% endif %}
 
                     </div>
                   </div>

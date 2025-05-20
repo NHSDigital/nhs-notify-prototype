@@ -11,9 +11,9 @@
 
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-heading-xl">Move message plans(s) to production</h1>
+      <h1 class="nhsuk-heading-xl">Move message plan to production</h1>
 
-      <table role="table" class="notify-template-content nhsuk-u-margin-bottom-9">
+      <table role="table" class="notify-template-content nhsuk-u-margin-bottom-6">
         <tbody class="nhsuk-table__body">
 
           <tr role="row" class="nhsuk-table__row">
@@ -55,6 +55,11 @@
         </tbody>
       </table>
 
+      <p>Moving message plans from draft to production means that they are ready to send.</p>
+      
+      <p>Messages will only be sent to recipients when you make a request with <a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify'>NHS Notify API</a> or <a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify-mesh'>NHS Notify MESH</a>.</p>
+
+      {#
       {{ details({
         text: "What moving messages plans to production means",
         HTML: "
@@ -62,24 +67,23 @@
         <p>Messages will only be sent to recipients when you make a request with <a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify'>NHS Notify API</a> or <a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify-mesh'>NHS Notify MESH</a>.</p>
         "
       }) }}
+      #}
 
       <h2 class="nhsuk-heading-m">Before you move message plans to production</h2>
 
       <p>Any templates used in these message plans will be locked.</p>
 
-      <p>Check that your templates are:</p>
+      <p>Make sure:</p>
       <ul class="nhsuk-list nhsuk-list--bullet">
-        <li>how you expect them to appear</li>
-        <li>free from typo's or spelling mistakes</li>
-        <li>signed off by the relevant stakeholders in your team</li>
-        <li>used in the correct message plans</li>
+        <li>the relevant stakeholders in your team have approved your templates and message plan</li>
+        <li>your templates have no errors</li>
       </ul>
 
       {{ warningCallout({
         heading: "Important",
         HTML: "
-        <p>You cannot change message plans that are in production.</p>
-        <p>If you need to edit or change a message plan that is in production, you'll need to replace it with a new message plan.</p>
+        <p>You cannot edit anything that is in production.</p>
+        <p>If you need to edit your templates or message plans, you can copy and replace them.</p>
           "
       }) }}
 

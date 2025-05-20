@@ -50,6 +50,30 @@
 
           <tr role="row" class="nhsuk-table__row">
             <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
+              Status
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              
+              {% if data['template-locked'] == '1' %}
+
+              {{ tag({
+                text: "Locked",
+                classes: "nhsuk-tag--orange"
+              })}}
+              {% else %}
+
+              {{ tag({
+                text: "Proof available",
+                classes: "nhsuk-tag--green"
+              })}}
+
+              {% endif %}
+
+            </td>
+          </tr>
+
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
               Template file
             </th>
             <td role="cell" class="nhsuk-table__cell">
