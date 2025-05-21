@@ -238,91 +238,115 @@ window.onload = function () {
         <li class="notify-channel-block" id="fourth-message">
 
           <div class="notify-channel-block-channel">
-            <div class="notify-channel-block-number">3</div>
+            <div class="notify-channel-block-number" aria-hidden="true">4</div>
             <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">Fourth message</h2>
           </div>
 
           <div class="notify-channel-block-outer">
             <div class="notify-channel-block-inner">
-              <h3 class="nhsuk-heading-s">Letter</h3>
+              <h3 class="nhsuk-heading-s">Standard letter</h3>
 
-              <p>
-                <strong>Standard</strong><br />
-                <a href="/404" target="_blank">{{ data['channel-4-template'] }}</a>
-              </p>
-
-              {% if data['channel-4-large-print-template'] or data['channel-4-accessible-template'] %}
-
-              <p>
-                <strong>Accessible</strong><br />
-
-                {% if data['channel-4-large-print-template'] %}
-                <a href="/404" target="_blank">{{ data['channel-4-large-print-template'] }}</a><br />
-                {% endif %}
-
-                {% if data['channel-4-accessible-template'] %}
-                  {{ data['channel-4-accessible-template'] | escape | replace(",", "<br />") }}
-                {% endif %}
-
-              </p>
-
-              {% endif %}
-
-              {% if data['channel-4-language-template'] %}
-
-              <p>
-                <strong>Other language</strong><br />
-                <a href="/404" target="_blank">{{ data['channel-4-language-template'] | escape | replace(",", "<br />") }}</a>
-              </p>
-
-              {% endif %}
-
-              {#
-              <details class="nhsuk-details nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-4">
-                <summary class="nhsuk-details__summary">
-                  <span class="nhsuk-details__summary-text">
-                    Preview template
-                  </span>
-                </summary>
-                <div class="nhsuk-details__text">
-                  
-                  <table role="table" class="notify-template-content nhsuk-u-margin-bottom-0">
-                    <tbody class="nhsuk-table__body">
-            
-                      <tr role="row" class="nhsuk-table__row">
-                        <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
-                          Template file
-                        </th>
-                        <td role="cell" class="nhsuk-table__cell">
-                          <a href="/404">
-                            <svg class="notify-icon-file" width="20" height="26" viewBox="0 0 20 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                              <path d="M0 0V26H20V6.59375L19.7188 6.28125L13.7188 0.28125L13.4062 0H0ZM2 2H12V8H18V24H2V2ZM14 3.4375L16.5625 6H14V3.4375Z" fill="#4c6272"/>
-                            </svg>my_filename_for_my_template.pdf
-                          </a>
-                        </td>
-                      </tr>
-
-                      <tr role="row" class="nhsuk-table__row">
-                        <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
-                          Template proof file
-                        </th>
-                        <td role="cell" class="nhsuk-table__cell">
-                          <a href="/404">
-                            <svg class="notify-icon-file" width="20" height="26" viewBox="0 0 20 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                              <path d="M0 0V26H20V6.59375L19.7188 6.28125L13.7188 0.28125L13.4062 0H0ZM2 2H12V8H18V24H2V2ZM14 3.4375L16.5625 6H14V3.4375Z" fill="#4c6272"/>
-                            </svg>proof_file_name.pdf
-                          </a>
-                        </td>
-                      </tr>
-            
-                    </tbody>
-                  </table>
-              
-                </div>
-              </details>
-              #}
+              <p><a href="/404">{{ data['channel-4-template'] }}</a></p>
               
             </div>
+
+          </div>
+
+          <div class="notify-channel-accessible">
+
+              <ul class="notify-routing-plan">
+
+                {% include "../includes/fallback-rules-accessible.html" %}
+
+                <li class="notify-channel-block" id="fourth-message">
+
+                  <div class="notify-channel-block-outer">
+                    <div class="notify-channel-block-inner">
+
+                      <h3 class="nhsuk-heading-s">Large print letter (optional)</h3>
+
+                      {% if data['channel-4-large-print-template'] %}
+
+                        <p><a href="/404">{{ data['channel-4-large-print-template'] }}</a></p>
+
+                      {% else %}
+
+                        <p>No template</p>
+
+                      {% endif %}
+
+                    </div>
+                  </div>
+
+                </li>
+
+                <li class="notify-channel-block" id="fourth-message">
+
+                  <div class="notify-channel-block-outer">
+                    <div class="notify-channel-block-inner">
+                      <h3 class="nhsuk-heading-s">Braille letter (optional)</h3>
+
+                      {% if data['channel-4-braille-template'] %}
+
+                        <p><a href="/404">{{ data['channel-4-braille-template'] }}</a></p>
+
+                      {% else %}
+
+                        <p>No template</p>
+
+                      {% endif %}
+
+                    </div>
+                  </div>
+
+                </li>
+
+                <li class="notify-channel-block" id="fourth-message">
+
+                  <div class="notify-channel-block-outer">
+                    <div class="notify-channel-block-inner">
+
+                      <h3 class="nhsuk-heading-s">Audio CD letter (optional)</h3>
+
+                      {% if data['channel-4-audio-cd-template'] %}
+
+                        <p><a href="/404">{{ data['channel-4-audio-cd-template'] }}</a></p>
+
+                      {% else %}
+
+                        <p>No template</p>
+
+                      {% endif %}
+
+                    </div>
+                  </div>
+
+                </li>
+
+                <li class="notify-channel-block" id="fourth-message">
+
+                  <div class="notify-channel-block-outer">
+                    <div class="notify-channel-block-inner">
+
+                      <h3 class="nhsuk-heading-s">Other language letters (optional)</h3>
+
+                      {% if data['channel-4-language-template'] %}
+
+                      <p><a href="/404">{{ data['channel-4-language-template'] | escape | replace(",", "<br />") }}</a></p>
+
+                      {% else %}
+
+                      <p>No templates</p>
+
+                      {% endif %}
+
+                    </div>
+                  </div>
+
+                </li>
+
+              </ul>
+
           </div>
 
         </li>

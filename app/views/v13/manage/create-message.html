@@ -265,44 +265,6 @@
               <p><a href="create-message-choose-template?message-type=Letter&channel-number=4">Choose template</a></p>
 
               {% endif %}
-
-              {#
-              {% if data['channel-4-large-print-template'] or data['channel-4-accessible-template'] %}
-              
-              <p>
-                <strong>Accessible</strong><br />
-
-                {% if data['channel-4-large-print-template'] %}
-                  {{ data['channel-4-large-print-template'] }} <!--<a href="create-message?channel-4-large-print-template=" style="color:#d5281b;">Remove</a>--><br />
-                {% endif %}
-
-                {% if data['channel-4-accessible-template'] %}
-                  {{ data['channel-4-accessible-template'] | escape | replace(",", "<br />") }}<br />
-                {% endif %}
-
-                <a href="create-message-choose-template?message-type=Accessible&channel-number=4-large-print">Change accessible templates</a>
-              </p>
-
-              {% else %}
-
-              <p><a href="create-message-choose-template?message-type=Accessible&channel-number=4-large-print">Choose accessible templates (optional)</a></p>
-
-              {% endif %}
-
-              {% if data['channel-4-language-template'] %}
-
-              <p>
-                <strong>Other language</strong><br />
-                {{ data['channel-4-language-template'] | escape | replace(",", "<br />") }}<br />
-                <a href="create-message-choose-template?message-type=Other language&channel-number=4-language">Change other language templates</a>
-              </p>
-
-              {% else %}
-
-              <p><a href="create-message-choose-template?message-type=Other language&channel-number=4-language">Choose other language templates (optional)</a></p>
-
-              {% endif %}
-              #}
               
             </div>
 
@@ -323,8 +285,10 @@
 
                       {% if data['channel-4-large-print-template'] %}
 
-                        {{ data['channel-4-large-print-template'] }}
-                        <p><a href="create-message-choose-template?message-type=Large print&channel-number=4-large-print">Change template</a></p>
+                        <p>
+                          {{ data['channel-4-large-print-template'] }}<br />
+                          <a href="create-message-choose-template?message-type=Large print&channel-number=4-large-print">Change template</a>
+                        </p>
 
                         <p><a href="?channel-4-large-print-template=" style="color: #d5281b;">Remove template</a></p>
 
@@ -348,8 +312,10 @@
 
                       {% if data['channel-4-braille-template'] %}
 
-                        {{ data['channel-4-braille-template'] }}
-                        <p><a href="create-message-choose-template?message-type=Braille&channel-number=4-braille">Change template</a></p>
+                        <p>
+                          {{ data['channel-4-braille-template'] }}<br />
+                          <a href="create-message-choose-template?message-type=Braille&channel-number=4-braille">Change template</a>
+                        </p>
 
                         <p><a href="?channel-4-braille-template=" style="color: #d5281b;">Remove template</a></p>
 

@@ -16,16 +16,6 @@ router.use((req, res, next) => {
   next()  
 })
 
-// GET SPRINT NAME - useful for relative templates  
-router.use('/', (req, res, next) => {  
-res.locals.currentURL = req.originalUrl; //current screen  
-res.locals.prevURL = req.get('Referrer'); // previous screen
-
-console.log('folder : ' + res.locals.folder + ', subfolder : ' + res.locals.subfolder  );
-
-next();  
-});
-
 // Add your routes here - above the module.exports line
 
 router.use('/v1', require('./views/v1/_routes'));
