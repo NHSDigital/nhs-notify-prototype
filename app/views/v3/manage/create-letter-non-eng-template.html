@@ -1,14 +1,12 @@
 {% extends 'v3/layout.html' %}
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
+
+{% block beforeContent %}
 
 {{ backLink({
   "href": "javascript:history.go(-1)",
-  "text": "Go back",
-  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  "text": "Go back"
 }) }}
 
 {% endblock %}
@@ -239,7 +237,7 @@
 
           {{ details({
             "text": "Inserting your signature",
-            "HTML": "
+            html: "
             <p>Use 2 curly brackets on either side of 'signature' to insert your signature image in the body text. For example:</p>
             <code class='nhsuk-code-block'>{{signature}}</code>
             "
@@ -451,7 +449,7 @@
 
           {{ details({
             "text": "Inserting your signature",
-            "HTML": "
+            html: "
             <p>Use 2 curly brackets on either side of 'signature' to insert your signature image in the body text. For example:</p>
             <code class='nhsuk-code-block'>{{signature}}</code>
             "

@@ -1,9 +1,8 @@
 {% extends 'v2_1/layout.html' %}
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
+
+{% block beforeContent %}
 
 <div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
   <a class="nhsuk-back-link__link" href="/{{ protoVersion }}/manage/template-type">
@@ -205,7 +204,7 @@
 
           {{ details({
             "text": "Inserting your signature",
-            "HTML": "
+            html: "
             <p>Use 2 curly brackets on either side of 'signature' to insert your signature image in the body text. For example:</p>
             <code class='nhsuk-code-block'>{{signature}}</code>
             "

@@ -11,7 +11,8 @@
 ///////////////////////////////////////////
 
 
-a:visited{
+a:visited,
+a:not(.nhsuk-button):not(:hover):not(:focus):not(:active):visited {
     color:$nhsuk-link-color;
 }
 

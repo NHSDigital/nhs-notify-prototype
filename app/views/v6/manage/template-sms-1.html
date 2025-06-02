@@ -1,14 +1,12 @@
 {% extends 'v6/layout.html' %}
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
+
+{% block beforeContent %}
 
 {{ backLink({
   "href": "templates",
-  "text": "Back to all templates",
-  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  "text": "Back to all templates"
 }) }}
 
 {% endblock %}
@@ -74,8 +72,8 @@
 
               {#
               {{ details({
-                "text": "Who your text message will be sent from",
-                "HTML": "
+                "summaryText": "Who your text message will be sent from",
+                html: "
                 <p>Set your text message sender name during onboarding.</p>
                 <p>If you need to set up a different text message sender name for other messages, contact our onboarding team.</p>
                 ",

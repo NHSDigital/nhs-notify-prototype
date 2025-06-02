@@ -1,6 +1,6 @@
 {% extends 'v6/layout.html' %}
 
-{% block head %}
+{% block pageScripts %}
 
 <!-- Script to convert markdown to formatted content -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
@@ -17,15 +17,13 @@ window.onload = function () {
 
 {% endblock %}
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
+
+{% block beforeContent %}
 
 {{ backLink({
   "href": "templates",
-  "text": "Back to all templates",
-  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  "text": "Back to all templates"
 }) }}
 
 {% endblock %}
@@ -91,8 +89,8 @@ window.onload = function () {
 
               {#
               {{ details({
-                "text": "Who your email will be sent from",
-                "HTML": "
+                "summaryText": "Who your email will be sent from",
+                html: "
                 <p>Set your reply-to and from email addresses during onboarding.</p>
                 <p>If you need to set up a different reply-to or from address for other messages, contact our onboarding team.</p>
                 ",

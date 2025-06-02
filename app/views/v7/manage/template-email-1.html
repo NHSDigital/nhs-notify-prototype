@@ -1,6 +1,6 @@
 {% extends 'v7/layout.html' %}
 
-{% block head %}
+{% block pageScripts %}
 
 <!-- Script to convert markdown to formatted content -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
@@ -17,15 +17,13 @@ window.onload = function () {
 
 {% endblock %}
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
+
+{% block beforeContent %}
 
 {{ backLink({
   "href": "templates",
-  "text": "Back to all templates",
-  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  "text": "Back to all templates"
 }) }}
 
 {% endblock %}
@@ -107,8 +105,8 @@ window.onload = function () {
       </table>
 
       <!--{{ details({
-        text: "Learn about sending emails",
-        HTML: "
+        summaryText: "Learn about sending emails",
+        html: "
         <p>Learn more about:</p>
         <ul>
           <li><a href='https://notify.nhs.uk/features/emails' target='_blank'>Emails</a></li>

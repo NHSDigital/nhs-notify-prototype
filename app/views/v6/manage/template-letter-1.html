@@ -2,15 +2,13 @@
 
 {% block head %}{% endblock %}
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
+
+{% block beforeContent %}
 
 {{ backLink({
   "href": "templates",
-  "text": "Back to all templates",
-  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  "text": "Back to all templates"
 }) }}
 
 {% endblock %}
@@ -89,8 +87,8 @@
 
               {#
               {{ details({
-                "text": "Who your letter will be sent from",
-                "HTML": "
+                "summaryText": "Who your letter will be sent from",
+                html: "
                 <p>The return address is set by NHS Notify's suppliers and is printed on each letter's envelope.</p>
                 <p>If you want recipients to reply to you by letter, add your address in the content of your letter. Letter templates do not have a section for a reply address.</p>
                 ",

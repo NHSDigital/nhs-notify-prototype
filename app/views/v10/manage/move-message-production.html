@@ -1,10 +1,8 @@
 {% extends 'v10/layout.html' %}
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
-{% endblock %}
+
+
 
 {% block content %}
   <div class="nhsuk-grid-row">
@@ -14,8 +12,8 @@
       <h1 class="nhsuk-heading-xl">Move message(s) to production</h1>
 
       {{ details({
-        text: "What moving messages to production means",
-        HTML: "
+        summaryText: "What moving messages to production means",
+        html: "
         <p>Moving messages from draft to production means that they are ready to send.</p>
         <p>Messages will only be sent when you make a request with <a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify'>NHS Notify API</a> or <a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify-mesh'>NHS Notify MESH</a>.</p>
         "
@@ -76,7 +74,7 @@
 
       {{ warningCallout({
         heading: "Important",
-        HTML: "
+        html: "
         <p>You cannot change messages that are in production.</p>
         <p>If you need to edit or change a message that is in production, you'll need to replace it with a new message.</p>
           "

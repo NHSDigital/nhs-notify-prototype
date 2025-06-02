@@ -2,16 +2,14 @@
 
 
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
+
+{% block beforeContent %}
 
 <!--
 {{ backLink({
   "href": data['continue-url'],
-  "text": "Go back",
-  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  "text": "Go back"
 }) }}
 -->
 
@@ -41,8 +39,8 @@
         <!--<p>If you want to change a submitted template, you must create a new template to replace it.</p>-->
 
         {{ warningCallout({
-          "heading": "Important",
-          "HTML": "<p>When you submit a template it cannot be changed. It can only be replaced by a new template.</p>"
+          heading: "Important",
+          html: "<p>When you submit a template it cannot be changed. It can only be replaced by a new template.</p>"
         }) }}
 
         <a href="{{data['continue-url']}}?show-save-banner=no" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-right-2">Go back</a>

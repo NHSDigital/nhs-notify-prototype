@@ -1,11 +1,12 @@
 {% set protoVersion = 'v13' %}
 
-<!-- Extends the layout from /docs/views/template.html -->
-{% extends 'v13/template.html' %}
+<!-- Extends the prototype kit template which in turn extends the NHS.UK frontend template -->
+{% extends "prototype-kit-template.njk" %}
 
-<!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-{% block headCSS %}
+{% block head %}
+  <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
   <link href="/css/main.css" rel="stylesheet">
+  <script src="/nhsuk-frontend/nhsuk.min.js" defer type="module"></script>
 {% endblock %}
 
 <!-- Set the page title -->
@@ -19,28 +20,42 @@
 
 {{ header({
   service: {
-    name: "Notify"
+    text: "Notify",
+    href: "folder"
   },
-  homeHref: "folder",
-  showNav: "true",
-  primaryLinks: [
+  navigation: {
+    items: [
       {
-        url : 'folder-templates',
-        label : 'Templates'
+        text: "Templates",
+        href: "folder-templates"
       },
       {
-        url  : 'folder-messages',
-        label : 'Message plans'
+        text: 'Message plans',
+        href: 'folder-messages'
       },
       {
-        url  : 'message-settings',
-        label : 'Settings'
+        text: 'Settings',
+        href: 'message-settings'
       }
     ]
+  },
+  account: {
+    items: [
+      {
+        text: "Florence Nightingale",
+        icon: "true"
+      },
+      {
+        text: "My team name"
+      },
+      {
+        text: 'Sign out',
+        href: 'login?auth='
+      }
+    ]
+  }
   })
 }}
-
-<div style="position: absolute; top: 20px; right: 0;"><a href="">Sign out</a></div>
 
 {% endblock %}
 
@@ -54,8 +69,8 @@
         'label': 'Home'
       },
       {
-        'URL': '/examples/passing-data/clear-data',
-        'label': 'Clear data'
+        "URL": "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
+        "label": "Reset data"
       },
       {
         'URL': '/',

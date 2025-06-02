@@ -1,9 +1,8 @@
 {% extends 'v2_1/layout.html' %}
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
+
+{% block beforeContent %}
 
 <div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
   <a class="nhsuk-back-link__link" href="/{{ protoVersion }}/manage/template-type">
@@ -139,8 +138,8 @@
       <h2 class="nhsuk-heading-m">Message formatting</h2>
 
       {{ details({
-        "text": "Links and URLs",
-        "HTML": "
+        "summaryText": "Links and URLs",
+        html: "
         <p>Write the URL in full, starting with https://</p>
         <p>For example:</p>
         <code class='nhsuk-code-block'>

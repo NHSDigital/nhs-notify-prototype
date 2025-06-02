@@ -1,16 +1,12 @@
 {% extends 'v13/layout.html' %}
 
 {% block beforeContent %}
-{% endblock %}
-
-{% block outerContent %}
 
 {% if data['mode'] != 'edit' %}
 
 {{ backLink({
   "href": "template-type",
-  "text": "Back to choose a template type",
-  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  "text": "Back to choose a template type"
 }) }}
 
 {% endif %}
@@ -134,8 +130,8 @@
       </ul>
 
       {{ details({
-          text: 'PDS personalisation fields',
-          HTML: '
+          summaryText: 'PDS personalisation fields',
+          html: '
           <p>NHS Notify gets data from PDS to populate certain personalisation fields.</p>
           <p>You can use the following PDS personalisation fields:</p>
           <ul>
@@ -150,8 +146,8 @@
       }) }}
 
       {{ details({
-          text: 'Custom personalisation fields',
-          HTML: '
+          summaryText: 'Custom personalisation fields',
+          html: '
           <p>You can add <a href="https://notify.nhs.uk/using-nhs-notify/personalisation#custom-personalisation-fields" target="_blank">custom personalisation fields</a> that use your own personalisation data.</p>
           <p>Include custom personalisation fields in your content. Then provide your custom personalisation data using <a href="https://notify.nhs.uk/using-nhs-notify/api" target="_blank">NHS Notify API</a> or <a href="https://notify.nhs.uk/using-nhs-notify/mesh" target="_blank">NHS Notify MESH</a>.</p>
           <p>For example, if you wanted to include GP surgery as custom personalisation data, your custom personalisation field could be:</p>
@@ -167,8 +163,8 @@
       {% include "../includes/details-headings.html" %}
 
       {{ details({
-        "text": "Bold text",
-        "HTML": "
+        summaryText: "Bold text",
+        html: "
         <p>Use 2 asterisk symbols on either side of the words you want to be bold, for example:</p>
         <code class='nhsuk-code-block'>**this is bold text**</code>
         "

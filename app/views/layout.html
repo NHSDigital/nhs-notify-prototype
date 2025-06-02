@@ -4,12 +4,12 @@
     - add custom CSS and JavaScript
 -->
 
-<!-- Extends the layout from /docs/views/template.html -->
-{% extends "template.html" %}
+{% extends "prototype-kit-template.njk" %}
 
 <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-{% block headCSS %}
+{% block head %}
   <link href="/css/main.css" rel="stylesheet">
+  <script src="/nhsuk-frontend/nhsuk.min.js" defer></script>
 {% endblock %}
 
 <!-- Set the page title -->
@@ -21,44 +21,11 @@
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
 {% block header %}
   {{ header({
-    "service": {
-        "name": "Notify",
-        "href": "/"
-      },
-      "showNav": "false",
-      "showSearch": "false",
-      "primaryLinks": [
-      {
-        'url' : '/about/',
-        'label' : 'About'
-      },
-      {
-        'url' : '/features',
-        'label' : 'Features'
-      },
-      {
-        'url'  : '/using-nhs-notify',
-        'label' : 'Using NHS Notify'
-      },
-      {
-        'url'  : '/pricing',
-        'label' : 'Pricing'
-      },
-      {
-        'url'  : '/support',
-        'label' : 'Support'
-      },
-      {
-        'url'  : '/get-started',
-        'label' : 'Get started'
-      },
-      {
-        'url' : '/login',
-        'label' : 'Log in'
-      }
-    ]
-    })
-  }}
+    service: {
+      text: "Notify",
+      href: "/"
+    }
+  })}}
 {% endblock %}
 
 <!-- Edit the footer -->
@@ -71,8 +38,12 @@
         "label": "Home"
       },
       {
-        "URL": "/examples/passing-data/clear-data",
-        "label": "Clear data"
+        "URL": "/example-templates",
+        "label": "Page templates"
+      },
+      {
+        "URL": "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
+        "label": "Reset data"
       }
     ]
   })}}

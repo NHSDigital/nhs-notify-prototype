@@ -1,6 +1,6 @@
 {% extends 'v5/layout.html' %}
 
-{% block head %}
+{% block pageScripts %}
 
 <!-- Script to convert markdown to formatted content -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
@@ -16,11 +16,9 @@ window.onload = function () {
 </script>
 {% endblock %}
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
-{% endblock %}
+
+
 
 {% block content %}
   <div class="nhsuk-grid-row">
@@ -65,8 +63,8 @@ window.onload = function () {
             <td role="cell" class="nhsuk-table__cell">
               
               {{ details({
-                "text": "Who your NHS App message will be sent from",
-                "HTML": "
+                "summaryText": "Who your NHS App message will be sent from",
+                html: "
                 <p>Set your NHS App message sender name during onboarding.</p>
                 <p>If you need to set up a different NHS App message sender name for other messages, contact our onboarding team.</p>
                 ",

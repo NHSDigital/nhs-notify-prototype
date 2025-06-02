@@ -1,6 +1,6 @@
 {% extends 'v10/layout.html' %}
 
-{% block head %}
+{% block pageScripts %}
 
 <!-- Script to convert markdown to formatted content -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
@@ -17,15 +17,13 @@ window.onload = function () {
 
 {% endblock %}
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
+
+{% block beforeContent %}
 
 {{ backLink({
   "href": "templates",
-  "text": "Back to all templates",
-  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  "text": "Back to all templates"
 }) }}
 
 {% endblock %}
@@ -198,7 +196,7 @@ window.onload = function () {
               <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-2">This template is assigned to messages in production.</p>
 
               {{ details({
-                text: "Messages this template is assigned to",
+                summaryText: "Messages this template is assigned to",
                 HTML: '
                 <ul>
                   <li>
@@ -256,8 +254,8 @@ window.onload = function () {
               </ul>
 
               {{ details({
-                text: "Show all messages",
-                HTML: "
+                summaryText: "Show all messages",
+                html: "
                 <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
                   <p>You can find your NHS number by logging in to a GP online service or on any document the NHS has sent you, such as your:</p>
                   <ul>
