@@ -1,15 +1,13 @@
 {% extends 'v12/layout.html' %}
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
+
+{% block beforeContent %}
 
 {% if data['messages-draft'] != '1' and data['messages-prod'] != '1' %}
 {{ backLink({
   href: "create-message-choose-plan",
-  text: "Back to choose a message order",
-  classes: "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  text: "Back to choose a message order"
 }) }}
 {% endif %}
 

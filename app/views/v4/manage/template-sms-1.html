@@ -2,11 +2,9 @@
 
 
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
-{% endblock %}
+
+
 
 {% block content %}
   <div class="nhsuk-grid-row">
@@ -54,8 +52,8 @@
             <td role="cell" class="nhsuk-table__cell">
 
               {{ details({
-                "text": "Who your text message will be sent from",
-                "HTML": "
+                "summaryText": "Who your text message will be sent from",
+                html: "
                 <p>Set your text message sender name during onboarding.</p>
                 <p>If you need to set up a different text message sender name for other messages, contact our onboarding team.</p>
                 ",

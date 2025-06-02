@@ -2,15 +2,13 @@
 
 
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
+
+{% block beforeContent %}
 
 {{ backLink({
   "href": data['continue-url'],
-  "text": "Go back",
-  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  "text": "Go back"
 }) }}
 
 {% endblock %}
@@ -26,8 +24,8 @@
       <form action="template-approve-confirmation">
 
         {{ warningCallout({
-          "heading": "Important",
-          "HTML": "<p>When you submit this template it cannot be changed. It can only be replaced by a new template.</p>"
+          heading: "Important",
+          html: "<p>When you submit this template it cannot be changed. It can only be replaced by a new template.</p>"
         }) }}
 
         <h2 class="nhsuk-heading-m">Before you submit</h2>

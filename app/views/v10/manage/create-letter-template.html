@@ -1,16 +1,14 @@
 {% extends 'v10/layout.html' %}
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
+
+{% block beforeContent %}
 
 {% if data['mode'] != 'edit' %}
 
 {{ backLink({
   "href": "template-type",
-  "text": "Back to choose a template type",
-  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  "text": "Back to choose a template type"
 }) }}
 
 {% endif %}
@@ -169,7 +167,7 @@
 
         <!--{{ details({
           text: "Learn more about sending letters",
-          HTML: "
+          html: "
           <p>Learn more about:</p>
           <ul>
             <li><a href='https://notify.nhs.uk/pricing/letters' target='_blank'>Letter pricing (opens in a new tab)</a></li>

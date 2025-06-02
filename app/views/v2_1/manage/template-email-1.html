@@ -1,6 +1,6 @@
 {% extends 'v2_1/layout.html' %}
 
-{% block head %}
+{% block pageScripts %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
 <script>
 window.onload = function () {
@@ -14,10 +14,9 @@ window.onload = function () {
 </script>
 {% endblock %}
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
+
+{% block beforeContent %}
 
 <div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
   <a class="nhsuk-back-link__link" href="/{{ protoVersion }}/manage/create-email-template?mode=edit">
@@ -41,7 +40,7 @@ window.onload = function () {
 
       {{ details({
         "text": "Who your email will be sent from",
-        "HTML": "
+        html: "
         <p>Set your reply-to and from email addresses during onboarding.</p>
         <p>If you need to set up a different reply-to or from address for other messages, contact our onboarding team.</p>
         "

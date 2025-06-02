@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 // Add your routes here - above the module.exports line
 
-router.post('*/route-template-type', (req, res) => {
+router.post('/{*any}/route-template-type', (req, res) => {
 
   const radio_template_type = req.session.data['radio-template-type'];
   const radio_template_type_letter = req.session.data['radio-template-type-letter'];
@@ -45,7 +45,7 @@ router.post('*/route-template-type', (req, res) => {
 });
 
 
-router.post('*/route-template-next', (req, res) => {
+router.post('/{*any}/route-template-next', (req, res) => {
 
   const template_next = req.session.data['template-next'];
 

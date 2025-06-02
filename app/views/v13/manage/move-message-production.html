@@ -1,10 +1,8 @@
 {% extends 'v11/layout.html' %}
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
-{% endblock %}
+
+
 
 {% block content %}
   <div class="nhsuk-grid-row">
@@ -61,8 +59,8 @@
 
       {#
       {{ details({
-        text: "What moving messages plans to production means",
-        HTML: "
+        summaryText: "What moving messages plans to production means",
+        html: "
         <p>Moving message plans from draft to production means that they are ready to send.</p>
         <p>Messages will only be sent to recipients when you make a request with <a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify'>NHS Notify API</a> or <a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify-mesh'>NHS Notify MESH</a>.</p>
         "
@@ -81,7 +79,7 @@
 
       {{ warningCallout({
         heading: "Important",
-        HTML: "
+        html: "
         <p>You cannot edit anything that is in production.</p>
         <p>If you need to edit your templates or message plans, you can copy and replace them.</p>
           "

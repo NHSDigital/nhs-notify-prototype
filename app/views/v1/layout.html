@@ -5,12 +5,13 @@
 
 {% set protoVersion = 'v1' %}
 
-<!-- Extends the layout from /docs/views/template.html -->
-{% extends 'template.html' %}
+<!-- Extends the prototype kit template which in turn extends the NHS.UK frontend template -->
+{% extends "prototype-kit-template.njk" %}
 
-<!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-{% block headCSS %}
+{% block head %}
+  <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
   <link href="/css/main.css" rel="stylesheet">
+  <script src="/nhsuk-frontend/nhsuk.min.js" defer></script>
 {% endblock %}
 
 <!-- Set the page title -->
@@ -21,41 +22,41 @@
 {% block header %}
   {{ header({
     'service': {
-        'name': 'Notify'
-      },
-      'homeHref': '/' + protoVersion + '/',
-      'showNav': 'true',
-      'showSearch': 'false',
-      'primaryLinks': [
-      {
-        'url' : '/' + protoVersion + '/about/',
-        'label' : 'About'
-      },
-      {
-        'url' : '/' + protoVersion + '/features/',
-        'label' : 'Features'
-      },
-      {
-        'url'  : '/' + protoVersion + '/using-nhs-notify/',
-        'label' : 'Using NHS Notify'
-      },
-      {
-        'url'  : '/' + protoVersion + '/pricing/',
-        'label' : 'Pricing'
-      },
-      {
-        'url'  : '/' + protoVersion + '/support/',
-        'label' : 'Support'
-      },
-      {
-        'url'  : '/' + protoVersion + '/get-started/',
-        'label' : 'Get started'
-      },
-      {
-        'url' : '/' + protoVersion + '/login',
-        'label' : 'Log in'
-      }
-    ]
+      'text': 'Notify',
+      'href': '/' + protoVersion + '/'
+    },
+    navigation: {
+      items: [
+        {
+          text: 'About',
+          href: '/' + protoVersion + '/about/'
+        },
+        {
+          text: 'Features',
+          href: '/' + protoVersion + '/features/'
+        },
+        {
+          text: 'Using NHS Notify',
+          href: '/' + protoVersion + '/using-nhs-notify/'
+        },
+        {
+          text: 'Pricing',
+          href: '/' + protoVersion + '/pricing/'
+        },
+        {
+          text: 'Support',
+          href: '/' + protoVersion + '/support/'
+        },
+        {
+          text: 'Get started',
+          href: '/' + protoVersion + '/get-started/'
+        },
+        {
+          text: 'Log in',
+          href: '/' + protoVersion + '/login'
+        }
+      ]
+    }
     })
   }}
 {% endblock %}
@@ -70,8 +71,8 @@
         'label': 'Home'
       },
       {
-        'URL': '/examples/passing-data/clear-data',
-        'label': 'Clear data'
+        "URL": "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
+        "label": "Reset data"
       },
       {
         'URL': '/',

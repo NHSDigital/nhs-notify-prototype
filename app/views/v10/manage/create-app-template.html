@@ -1,16 +1,14 @@
 {% extends 'v10/layout.html' %}
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
+
+{% block beforeContent %}
 
 {% if data['mode'] != 'edit' %}
 
 {{ backLink({
   "href": "template-type",
-  "text": "Back to choose a template type",
-  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  "text": "Back to choose a template type"
 }) }}
 
 {% endif %}
@@ -130,8 +128,8 @@
       {% include "../includes/details-headings.html" %}
 
       {{ details({
-        "text": "Bold text",
-        "HTML": "
+        "summaryText": "Bold text",
+        html: "
         <p>Use 2 asterisk symbols on either side of the words you want to be bold, for example:</p>
         <code class='nhsuk-code-block'>**this is bold text**</code>
         "

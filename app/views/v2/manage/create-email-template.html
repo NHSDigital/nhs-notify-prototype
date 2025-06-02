@@ -1,9 +1,8 @@
 {% extends 'v2/layout.html' %}
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
+
+{% block beforeContent %}
 
 <div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
   <a class="nhsuk-back-link__link" href="/{{ protoVersion }}/manage/template-type">
@@ -187,7 +186,7 @@
 
       {{ details({
         "text": "Personalisation fields",
-        "HTML": "
+        html: "
         <p>Use double brackets to add a personalisation field to your content. For example:</p>
         <code class='nhsuk-code-block'>Hello ((firstName)), your NHS number is ((nhsNumber))</code>
         <p class='nhsuk-u-margin-top-4'>NHS Notify gets data from PDS to populate personalisation fields.<br />You can use:</p>

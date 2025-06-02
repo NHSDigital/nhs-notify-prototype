@@ -1,14 +1,12 @@
 {% extends 'v6/layout.html' %}
 
-{% block beforeContent %}
-{% endblock %}
 
-{% block outerContent %}
+
+{% block beforeContent %}
 
 {{ backLink({
   "href": "javascript:history.go(-1)",
-  "text": "Go back",
-  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  "text": "Go back"
 }) }}
 
 {% endblock %}
@@ -127,8 +125,8 @@
       <h2 class="nhsuk-heading-m">Message formatting</h2>
 
       {{ details({
-        "text": "Links and URLs",
-        "HTML": "
+        "summaryText": "Links and URLs",
+        html: "
         <p>Write the URL in full, starting with https://</p>
         <p>For example:</p>
         <code class='nhsuk-code-block'>

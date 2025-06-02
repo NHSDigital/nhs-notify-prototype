@@ -13,13 +13,9 @@
 
 <!-- For adding a breadcrumb -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
-{% block beforeContent %}
-{% endblock %}
 
-<!-- For adding a back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
-{% block outerContent %}
-{% endblock %}
+
+
 
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
@@ -72,9 +68,14 @@
               12th May 2025
             </td>
             <td role="cell" class="nhsuk-table__cell">
+              {#
               {{ tag({
                   text: "In design",
                   classes: "nhsuk-tag--blue"
+              })}}
+              #}
+              {{ tag({
+                text: "Complete"
               })}}
             </td>
             <td role="cell" class="nhsuk-table__cell">

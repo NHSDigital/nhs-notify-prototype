@@ -1,11 +1,5 @@
 {% extends 'v13/layout.html' %}
 
-{% block beforeContent %}
-{% endblock %}
-
-{% block outerContent %}
-{% endblock %}
-
 {% block content %}
 
 {% from '../includes/template-folder-table-row.njk' import row %}
@@ -44,17 +38,17 @@
       </h1>
 
       <!--{{ details({
-        text: "Organising your templates",
-        HTML: "
+        summaryText: "Organising your templates",
+        html: "
         <p>Use folders to group related templates so it's easier to add them to your <a href='folder-messages'>message plans</a>.</p>
         <p>For example, a folder could contain the templates used in a specific message plan.</p>
         "
       }) }}-->
 
       {{ details({
-        text: "What the template statuses mean",
+        summaryText: "What the template statuses mean",
         classes: "nhsuk-u-reading-width",
-        HTML: "
+        html: "
         <h2 class='nhsuk-heading-s nhsuk-u-margin-bottom-1'>Draft</h2>
         <p>Templates you can edit. You're still working on these templates.</p>
 

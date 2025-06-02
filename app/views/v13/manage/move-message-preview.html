@@ -1,43 +1,12 @@
 {% extends 'v13/layout.html' %}
 
-{% block head %}
 
-<!-- Script to convert markdown to formatted content -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
-<script>
-window.onload = function () {
-
-  var text1 = document.getElementById('sourceTA1').value;
-  var target1 = document.getElementById('targetDiv1');
-  converter1 = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
-  html1 = converter1.makeHtml(text1);
-  target1.innerHTML = html1;
-
-  var text2 = document.getElementById('sourceTA2').value;
-  var target2 = document.getElementById('targetDiv2');
-  converter2 = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
-  html2 = converter2.makeHtml(text2);
-  target2.innerHTML = html2;
-
-  var text3 = document.getElementById('sourceTA3').value;
-  var target3 = document.getElementById('targetDiv3');
-  converter3 = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
-  html3 = converter3.makeHtml(text3);
-  target3.innerHTML = html3;
-}
-</script>
-
-{% endblock %}
 
 {% block beforeContent %}
-{% endblock %}
-
-{% block outerContent %}
 
 {{ backLink({
   "href": "move-message-production",
-  "text": "Go back",
-  "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  "text": "Go back"
 }) }}
 
 {% endblock %}
@@ -59,7 +28,7 @@ window.onload = function () {
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-            routingPlanId
+            Routing Plan ID
           </dt>
           <dd class="nhsuk-summary-list__value" style="font-family: monospace;">
             b838b13c-f98c-4def-93f0-515d4e4f4ee1
@@ -364,6 +333,31 @@ window.onload = function () {
 {% endblock %}
 
 {% block pageScripts %}
+
+<!-- Script to convert markdown to formatted content -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+<script>
+window.onload = function () {
+
+  var text1 = document.getElementById('sourceTA1').value;
+  var target1 = document.getElementById('targetDiv1');
+  converter1 = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
+  html1 = converter1.makeHtml(text1);
+  target1.innerHTML = html1;
+
+  var text2 = document.getElementById('sourceTA2').value;
+  var target2 = document.getElementById('targetDiv2');
+  converter2 = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
+  html2 = converter2.makeHtml(text2);
+  target2.innerHTML = html2;
+
+  var text3 = document.getElementById('sourceTA3').value;
+  var target3 = document.getElementById('targetDiv3');
+  converter3 = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
+  html3 = converter3.makeHtml(text3);
+  target3.innerHTML = html3;
+}
+</script>
 
 <script>
   

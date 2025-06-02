@@ -3,8 +3,9 @@ const express = require('express');
 
 const router = express.Router();
 
-// Logging session data  
-  
+// Logging session data
+
+
 router.use((req, res, next) => {    
     const log = {  
       method: req.method,  
@@ -15,6 +16,7 @@ router.use((req, res, next) => {
    
   next()  
 })
+
 
 // Add your routes here - above the module.exports line
 
