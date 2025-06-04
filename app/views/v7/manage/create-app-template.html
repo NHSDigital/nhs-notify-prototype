@@ -127,15 +127,11 @@
       
       {% include "../includes/details-headings.html" %}
 
-      {{ details({
-        "summaryText": "Bold text",
-        html: "
-        <p>Use 2 asterisk symbols on either side of the words you want to be bold, for example:</p>
-        <code class='nhsuk-code-block'>**this is bold text**</code>
-        "
-      }) }}
+      {% include "../includes/details-bold.html" %}
 
       {% include "../includes/details-bullets.html" %}
+
+      {% include "../includes/details-numbered-lists.html" %}
 
       {% include "../includes/details-links.html" %}
 
