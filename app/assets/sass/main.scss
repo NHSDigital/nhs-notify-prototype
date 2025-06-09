@@ -574,3 +574,32 @@ a:not(.nhsuk-button):not(:hover):not(:focus):not(:active):visited {
     color: #4c6272;
     display: block;
 }
+
+.nhsnotify-sort-button{
+    font-weight: 600;
+    font-size: 1.1875rem;
+    color: $nhsuk-link-color;
+    border: none;
+    background: none;
+    padding: 0;
+    text-align: left;
+
+    .sort-icon{
+        fill: $nhsuk-link-color;
+        width: 16px;
+        height: 16px;
+        //margin-left: .2rem;
+        vertical-align: middle;
+    }
+
+    
+}
+
+
+// Fix error links appearing blue.
+.nhsuk-error-summary__list a:link,
+.nhsuk-error-summary__list a:visited,
+.nhsuk-error-summary__list a:hover,
+.nhsuk-error-summary__list a:active {
+    color: $nhsuk-error-color !important;
+}

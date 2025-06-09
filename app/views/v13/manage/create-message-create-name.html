@@ -1,0 +1,48 @@
+{% extends 'v13/layout.html' %}
+
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="create-message" method="post" autocomplete="off">
+
+          <div class="nhsuk-form-group">
+
+            <h1 class="nhsuk-heading-l">
+              Enter a name for the message plan
+            </h1>
+
+          </div>
+        
+          <div class="nhsuk-form-group">
+
+            <label class="nhsuk-label nhsuk-label--s" for="template-app-name-1">
+              Message plan name
+            </label>
+            <div class="nhsuk-hint">
+              This will not be visible to recipients.
+            </div>
+
+            {% include "../includes/details-message-plan-name.html" %}
+
+            <input class="nhsuk-input" name="message-name-1" type="text" value="{{ data['message-name-1'] }}">
+
+          </div>
+        
+          <div class="nhsuk-form-group">
+
+            {{ button({
+              text: 'Save and continue'
+            }) }}
+
+            <a href="javascript:history.go(-1);" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+
+          </div>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -172,11 +172,11 @@ router.post('/{*any}/route-choose-plan', (req, res) => {
   const radio_message_plan = req.session.data['message-plan'];
 
   if (radio_message_plan === '1') {
-      res.redirect('create-message?message-name-1=&messages-draft=0&messages-prod=0&message-plan-submitted=&channel-amount=3&channel-1-type=NHS App&channel-1-template=&channel-2-type=Email&channel-2-template=&channel-3-type=Text message (SMS)&channel-3-template=&channel-4-type=&channel-4-template=&channel-4-large-print-template=&channel-4-language-template=&channel-4-accessible-template=');
+      res.redirect('create-message-create-name?message-name-1=&messages-draft=0&messages-prod=0&message-plan-submitted=&channel-amount=3&channel-1-type=NHS App&channel-1-template=&channel-2-type=Email&channel-2-template=&channel-3-type=Text message (SMS)&channel-3-template=&channel-4-type=&channel-4-template=&channel-4-large-print-template=&channel-4-language-template=&channel-4-accessible-template=');
   }
 
   if (radio_message_plan === '2') {
-    res.redirect('create-message?message-name-1=&messages-draft=0&messages-prod=0&message-plan-submitted=&channel-amount=4&channel-1-type=NHS App&channel-1-template=&channel-2-type=Email&channel-2-template=&channel-3-type=Text message (SMS)&channel-3-template=&channel-4-type=Letter&channel-4-template=&channel-4-large-print-template=&channel-4-braille-template=&channel-4-audio-cd-template=&channel-4-language-template=');
+    res.redirect('create-message-create-name?message-name-1=&messages-draft=0&messages-prod=0&message-plan-submitted=&channel-amount=4&channel-1-type=NHS App&channel-1-template=&channel-2-type=Email&channel-2-template=&channel-3-type=Text message (SMS)&channel-3-template=&channel-4-type=Letter&channel-4-template=&channel-4-large-print-template=&channel-4-braille-template=&channel-4-audio-cd-template=&channel-4-language-template=');
 }
 
   else {

@@ -20,7 +20,7 @@
     <div class="nhsuk-grid-column-three-quarters">
 
       <span class="nhsuk-caption-l">Preview message plan</span>
-      <h1 class="nhsuk-heading-xl">
+      <h1 class="nhsuk-heading-l">
         {{data['message-name-1']}}
       </h1>
 
@@ -77,8 +77,16 @@
                   {% endif %}
 
                   {% if data['channel-1-type'] == "Email" %}
+
+                  <div class="nhsuk-u-margin-bottom-6">
+                    <h4 class="nhsuk-heading-s">Subject line</h4>
+                    <p>{{data['template-email-subject-1']}}</p>
+                  </div>
+
+                  <h4 class="nhsuk-heading-s">Body</h4>
                   <textarea id="sourceTA1" class="hidden">{{ data["template-email-message-1"] }}</textarea>
                   <div id="targetDiv1"></div>
+
                   {% endif %}
               
                 </div>
@@ -130,6 +138,13 @@
                   {% endif %}
 
                   {% if data['channel-2-type'] == "Email" %}
+
+                  <div class="nhsuk-u-margin-bottom-6">
+                    <h4 class="nhsuk-heading-s">Subject line</h4>
+                    <p>{{data['template-email-subject-1']}}</p>
+                  </div>
+
+                  <h4 class="nhsuk-heading-s">Body</h4>
                   <textarea id="sourceTA2" class="hidden">{{ data["template-email-message-1"] }}</textarea>
                   <div id="targetDiv2"></div>
                   {% endif %}
@@ -185,8 +200,16 @@
                   {% endif %}
 
                   {% if data['channel-3-type'] == "Email" %}
+
+                  <div class="nhsuk-u-margin-bottom-6">
+                    <h4 class="nhsuk-heading-s">Subject line</h4>
+                    <p>{{data['template-email-subject-1']}}</p>
+                  </div>
+
+                  <h4 class="nhsuk-heading-s">Body</h4>
                   <textarea id="sourceTA3" class="hidden">{{ data["template-email-message-1"] }}</textarea>
                   <div id="targetDiv3"></div>
+                  
                   {% endif %}
               
                 </div>
