@@ -243,7 +243,7 @@
             <div class="notify-channel-block-inner">
               <h3 class="nhsuk-heading-s">Standard letter</h3>
 
-              <p><a href="/404">{{ data['channel-4-template'] }}</a></p>
+              <p><a href="create-message-preview-template-letter?preview-template-name={{ data['channel-4-template'] }}">{{ data['channel-4-template'] }}</a></p>
               
             </div>
 
@@ -264,7 +264,7 @@
 
                       {% if data['channel-4-large-print-template'] %}
 
-                        <p><a href="/404">{{ data['channel-4-large-print-template'] }}</a></p>
+                        <p><a href="create-message-preview-template-letter?preview-template-name={{ data['channel-4-large-print-template'] }}">{{ data['channel-4-large-print-template'] }}</a></p>
 
                       {% else %}
 
@@ -329,7 +329,9 @@
 
                       {% if data['channel-4-language-template'] %}
 
-                      <p><a href="/404">{{ data['channel-4-language-template'] | escape | replace(",", "<br />") }}</a></p>
+                      {% set accessible_templates = data['channel-4-language-template'] %}
+
+                      <p><a href="create-message-preview-template-letter?preview-template-name={{ accessible_templates[0] }}">{{ data['channel-4-language-template'] | escape | replace(",", "<br />") }}</a></p>
 
                       {% else %}
 

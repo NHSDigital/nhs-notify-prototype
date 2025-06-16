@@ -30,7 +30,7 @@
   </div>
 
   <div class="nhsuk-grid-row">
-    <div id="column-left" class="nhsuk-grid-column-full">
+    <div id="column-left" class="nhsuk-grid-column-two-thirds">
 
       <form action="template-app-1" onsubmit="return checkFormApp();" method="post" autocomplete="off">
 
@@ -67,7 +67,7 @@
             Message
           </label>
           
-          <p><a href="#" id="guidanceToggle">Show formatting and personalisation guidance</a>.</p>
+          <p><a href="#" id="guidanceToggle">Hide formatting and personalisation guidance</a>.</p>
 
           {% if data['mode'] == 'edit' %}
 
@@ -115,46 +115,7 @@
 
     <div id="column-right" class="nhsuk-grid-column-one-third">
 
-      <h2 class="nhsuk-heading-m" id="guidance">Personalisation</h2>
-
-      <p>Use double brackets to add a personalisation field to your content. </p>
-
-      <p>Do not include spaces in your personalisation fields. For example:</p>
-
-      <code class="nhsuk-code-block nhsuk-u-margin-bottom-4">Hello ((firstName)), your NHS number is ((nhsNumber))</code>
-
-      <!--<p>You can use:</p>
-      <ul>
-        <li>Personal Demographics Service (PDS) personalisation fields</li>
-        <li>custom personalisation fields</li>
-      </ul>-->
-
-      {{ details({
-          summaryText: 'PDS personalisation fields',
-          html: '
-          <p>NHS Notify gets data from PDS to populate certain personalisation fields.</p>
-          <p>You can use the following PDS personalisation fields:</p>
-          <ul>
-            <li>((fullName))</li>
-            <li>((firstName))</li>
-            <li>((lastName))</li>
-            <li>((nhsNumber))</li>
-            <li>((date))</li>
-          </ul>
-          <p>Make sure your personalisation fields exactly match the PDS personalisation fields. This includes using the correct order of upper and lower case letters.</p>
-          '
-      }) }}
-
-      {{ details({
-          summaryText: 'Custom personalisation fields',
-          html: '
-          <p>You can add <a href="https://notify.nhs.uk/using-nhs-notify/personalisation#custom-personalisation-fields" target="_blank">custom personalisation fields</a> that use your own personalisation data.</p>
-          <p>Include custom personalisation fields in your content. Then provide your custom personalisation data using <a href="https://notify.nhs.uk/using-nhs-notify/api" target="_blank">NHS Notify API</a> or <a href="https://notify.nhs.uk/using-nhs-notify/mesh" target="_blank">NHS Notify MESH</a>.</p>
-          <p>For example, if you wanted to include GP surgery as custom personalisation data, your custom personalisation field could be:</p>
-          <code class="nhsuk-code-block nhsuk-u-margin-bottom-4">((GP_surgery))</code>
-          <p>Remember not to include spaces in your personalisation fields.</p>
-          '
-      }) }}
+      {% include "../includes/details-personalisation-2.html" %}
 
       <h2 class="nhsuk-heading-m">Message formatting</h2>
 
@@ -168,22 +129,7 @@
 
       {% include "../includes/details-numbered-lists.html" %}
 
-      {{ details({
-        summaryText: "Links and URLs",
-        html: "
-        <p>To convert text into a link, use square brackets around the link text and round brackets around the full URL. Make sure there are no spaces between the brackets or the link will not work.</p>
-        <p>Copy this example to add a link:</p>
-        <code class='nhsuk-code-block'>
-          [Read more](https://www.nhs.uk/)
-        </code>
-
-        <p class='nhsuk-u-margin-top-4'>If you want to include the URL in full, use square brackets around the full URL to make it the link text and use round brackets around the full URL.</p>
-        <p>Copy this example to add a URL:</p>
-        <code class='nhsuk-code-block'>
-          [https://www.nhs.uk/](https://www.nhs.uk/)
-        </code>
-        "
-      }) }}
+      {% include "../includes/details-links-2.html" %}
 
       <h2 class="nhsuk-heading-m nhsuk-u-margin-top-4">More about NHS App messages</h2>
 
@@ -197,5 +143,5 @@
 {% endblock %}
 
 {% block pageScripts %}
-<script src="/js/guidanceToggle2.js" ></script>
+<script src="/js/guidanceToggle3.js" ></script>
 {% endblock %}

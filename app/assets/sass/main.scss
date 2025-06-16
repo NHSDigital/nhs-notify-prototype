@@ -161,11 +161,6 @@ a:not(.nhsuk-button):not(:hover):not(:focus):not(:active):visited {
     display: none;
 }
 
-// Hide the right-hand column on the create template pages when the page loads
-#column-right{
-    display: none;
-}
-
 
 .nhsuk-button--warning {
     background-color: #d5281b;
@@ -602,4 +597,61 @@ a:not(.nhsuk-button):not(:hover):not(:focus):not(:active):visited {
 .nhsuk-error-summary__list a:hover,
 .nhsuk-error-summary__list a:active {
     color: $nhsuk-error-color !important;
+}
+
+
+
+
+.nhsnotify-pagination{
+
+    a{
+        text-decoration: none;
+
+        &:focus {
+            outline: none;
+            background: none;
+            box-shadow: none;
+        }
+
+        &:focus span{
+            color: $nhsuk-link-color;
+            background-color: $color_nhsuk-yellow;
+            box-shadow: 0 -2px $color_nhsuk-yellow, 0 4px $color_nhsuk-black;
+        }
+    }
+
+    .nhsnotify-pagination_item{
+        width: 44px;
+        height: 44px;
+        padding-top: 5px;
+        margin-right: 5px;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 600;
+        color: $nhsuk-link-color;
+        background-color: $nhsuk-border-color;
+        border-radius: 5px;
+
+        &:hover{
+            color: $nhsuk-link-color;
+            background-color: $color_nhsuk-grey-3;
+        }
+
+    }
+
+    .nhsnotify-pagination_item_current{
+        background-color: $nhsuk-link-color;
+        color: $color_nhsuk-white;
+
+        &:hover{
+            background-color: $nhsuk-link-color;
+            color: $color_nhsuk-white;
+        }
+    }
+
+    .nhsnotify-pagination_count{
+        margin-top: 18px;
+    }
 }

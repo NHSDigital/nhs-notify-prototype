@@ -92,9 +92,9 @@
 
       {% if data['show-templates'] == '1' or data['show-folders'] == '1' %}
 
-      <table role="table" class="nhsuk-table-responsive">
+      <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-top-4">
 
-        <caption class="nhsuk-table__caption">Your 18 templates</caption>
+        <caption class="nhsuk-table__caption">18 of 36 templates</caption>
 
         <thead role="rowgroup" class="nhsuk-table__head">
           <tr role="row">
@@ -202,6 +202,21 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="nhsnotify-pagination">
+        <span class="nhsnotify-pagination_item nhsnotify-pagination_item_current">1</span>
+        <a href="/404">
+          <span class="nhsnotify-pagination_item">2</span>
+        </a>
+        <a href="/404">
+          <span class="nhsnotify-pagination_item nhsnotify-pagination_item_arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" class="nhsuk-icon nhsuk-icon__chevron-right" viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"/>
+            </svg>
+          </span>
+        </a>
+        <p class="nhsnotify-pagination_count">18 of 36 templates</p>
       </div>
 
       {% else %}

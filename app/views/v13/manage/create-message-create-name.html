@@ -6,7 +6,7 @@
 
     <div class="nhsuk-grid-column-two-thirds">
 
-        <form action="create-message" method="post" autocomplete="off">
+        <form action="create-message" method="post" autocomplete="off" onsubmit="return checkFormCreateMessage();">
 
           <div class="nhsuk-form-group">
 
@@ -27,7 +27,11 @@
 
             {% include "../includes/details-message-plan-name.html" %}
 
-            <input class="nhsuk-input" name="message-name-1" type="text" value="{{ data['message-name-1'] }}">
+            <input class="nhsuk-input" name="message-name-1" id="message-name-1" type="text" value="{{ data['message-name-1'] }}">
+
+            <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="message-name-1--error">
+              <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message plan name
+            </span>
 
           </div>
         

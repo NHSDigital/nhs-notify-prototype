@@ -1,0 +1,142 @@
+{% extends 'v13/layout.html' %}
+
+{% block beforeContent %}
+
+{% if data['mode'] != 'edit' %}
+
+{{ backLink({
+  "href": "template-type",
+  "text": "Back to choose a template type"
+}) }}
+
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Show the correct heading based on whether the page mode is set to 'create' or 'edit'-->
+      <h1 class="nhsuk-heading-xl">
+        {% if data['mode'] == 'edit' %}
+        Edit text message template
+        {% else %}
+        Create text message template
+        {% endif %}
+      </h1>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div id="column-left" class="nhsuk-grid-column-two-thirds">
+
+      <form action="template-sms-1" onsubmit="return checkFormSMS();" method="post" autocomplete="off">
+ 
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+          
+          <label class="nhsuk-label nhsuk-label--s" for="template-sms-name-1">
+            Template name
+          </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
+          </div>
+
+          {% include "../includes/details-template-name.html" %}
+
+          {% if data['mode'] == 'edit' %}
+  
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-sms-name-1" name="template-sms-name-1" type="text" value="{{data['template-sms-name-1']}}">
+
+          {% else %}
+
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-sms-name-1" name="template-sms-name-1" type="text">
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-sms-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>  
+
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-4">
+
+          <label class="nhsuk-label nhsuk-label--s" for="template-sms-message-1">
+            Message
+          </label>
+          
+          <p><a href="#" id="guidanceToggle">Hide formatting and personalisation guidance</a>.</p>
+
+          {% if data['mode'] == 'edit' %}
+
+          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-sms-message-1" name="template-sms-message-1" onkeyup="countChars(this);">{{data['template-sms-message-1']}}</textarea>
+
+          {% else %}
+
+          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-sms-message-1" name="template-sms-message-1" onkeyup="countChars(this);"></textarea>
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-sms-message-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+          </span>
+
+        </div>
+
+        <div class="nhsuk-u-margin-bottom-6">
+
+          <p>
+            <span id="charNum">0 characters</span><br />
+            This template will be charged as <span id="numMsgs">0</span> text messages.<br />
+            If you're using personalisation fields, it could be charged as more.
+          </p>
+          <p><a href="https://notify.nhs.uk/pricing/text-messages" target="_blank">Learn more about text message length and pricing (opens in a new tab)</a>.</p>
+
+          <script>
+            function countChars(obj){
+              document.getElementById("charNum").innerHTML = obj.value.length+' characters';
+              document.getElementById("numMsgs").innerHTML = Math.ceil(obj.value.length / 160);
+            }
+          </script>
+
+        </div>
+
+        <!-- Set the variables that are used on subsequent pages -->
+        <input type="hidden" name="message-type" value="sms">
+        <input type="hidden" name="continue-url" value="template-sms-1?show-save-banner=no">
+        <input type="hidden" name="folder-1-sms-templates" value="1">
+        <input type="hidden" name="template-sms-name-1-approved" value="">
+        <input type="hidden" name="show-save-banner" value="yes">
+
+        {{ button({
+          "text": "Save and preview"
+        }) }}
+
+      </form>
+
+    </div>
+
+    <div id="column-right" class="nhsuk-grid-column-one-third">
+
+      {% include "../includes/details-personalisation-2.html" %}
+
+      <h2 class="nhsuk-heading-m">Message formatting</h2>
+
+      {% include "../includes/details-links-sms.html" %}
+
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-top-4">More about text messages</h2>
+
+      <p><a href='https://notify.nhs.uk/pricing/text-messages' target='_blank'>Text message length and pricing (opens in a new tab)</a></p>
+      <p><a href='https://notify.nhs.uk/using-nhs-notify/tell-recipients-who-your-messages-are-from' target='_blank'>Sender IDs (opens in a new tab)</a></p>
+      <p><a href='https://notify.nhs.uk/using-nhs-notify/delivery-times' target='_blank'>Delivery times (opens in a new tab)</a></p>
+
+    </div>
+
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/js/guidanceToggle3.js" ></script>
+{% endblock %}
