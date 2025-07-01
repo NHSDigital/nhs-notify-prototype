@@ -1,3 +1,5 @@
+{% set page_active_dashboard = 'true'%}
+
 {% extends 'v14/layout.html' %}
 
 {% block content %}
@@ -5,6 +7,8 @@
   <div class="nhsuk-grid-row">
 
     <div class="nhsuk-grid-column-three-quarters">
+
+      {{ request.url }}
 
       <span class="nhsuk-caption-l">Project dashboard</span>
       <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-4">

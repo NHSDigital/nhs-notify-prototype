@@ -1,31 +1,6 @@
 {% extends 'v14/layout.html' %}
 
-{% block header %}
 
-{{ header({
-  service: {
-    text: "Notify",
-    href: "folders"
-  },
-  account: {
-    items: [
-      {
-        text: "Florence Nightingale",
-        icon: "true"
-      },
-      {
-        text: "My service name"
-      },
-      {
-        text: 'Sign out',
-        href: 'login?auth='
-      }
-    ]
-  }
-  })
-}}
-
-{% endblock %}
 
 {% block content %}
   <div class="nhsuk-grid-row">
@@ -39,6 +14,7 @@
 
         <input type="hidden" name="rename-project" value="">
         <input type="hidden" name="folder-name-1" value="">
+        <input type="hidden" name="rename-folder" value="">
 
         {{ button({
           'text': 'New project'
