@@ -1,0 +1,13 @@
+{% macro languageCheckbox(language,listOfLanguages) %}
+
+<div class="nhsuk-checkboxes__item">
+
+    <input class="nhsuk-checkboxes__input" id="letter-lang-{{ language }}" name="letter-additional-languages" type="checkbox" value="{{ language }}" {% if language in listOfLanguages %}checked{% endif %}>
+
+    <label class="nhsuk-label nhsuk-checkboxes__label" for="letter-lang-{{ language }}">
+        {{ language }}
+    </label>
+
+</div>
+
+{% endmacro %}

@@ -1,0 +1,124 @@
+{% extends 'v14/layout.html' %}
+
+
+
+
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <!--<span class="nhsuk-caption-l">{{ data['folder-name-1'] }}</span>-->
+      <h1 class="nhsuk-heading-xl">
+        Settings
+      </h1>
+
+      {#
+      {{ details({
+        summaryText: "What draft and production mean",
+        html: "
+        <h2 class='nhsuk-heading-s'>Draft</h2>
+        <p>Message plans that you're working on and are not ready to be sent. You can test these using our:</p>
+        <ul>
+          <li><a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify#overview--environments-and-testing' target='_blank'>API integration environment</a></li>
+          <li><a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify-mesh/sending-a-message#sending-your-request' target='_blank'>Integration MESH mailbox</a></li>
+        </ul>
+        <h2 class='nhsuk-heading-s'>Production</h2>
+        <p>Message plans that are ready to be sent using <a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify' target='blank'>NHS Notify API</a> or <a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify-mesh/' target='blank'>NHS Notify MESH</a>.</p>
+        "
+      }) }}
+      #}
+
+      <form action="" method="post">
+
+        {{ input({
+          label: {
+            text: "Client ID"
+          },
+          hint: {
+            text: "You need a Client ID to start sending messages. Contact your onboarding manager if you do not have one."
+          },
+          id: "client-id",
+          name: "client-id",
+          value: data['client-id'],
+          formGroup: {
+            classes: "nhsuk-u-margin-bottom-7"
+          }
+        }) }}
+
+        {{ input({
+          label: {
+            text: "ODS code"
+          },
+          hint: {
+            text: "Enter your service or organisation's ODS code. It is used to set up your NHS App message sender name."
+          },
+          id: "ods-code",
+          name: "ods-code",
+          value: data['ods-code'],
+          formGroup: {
+            classes: "nhsuk-u-margin-bottom-7"
+          }
+        }) }}
+
+        {#
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
+
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend">
+              Choose a fallback period for NHS App messages
+            </legend>
+
+            <div class="nhsuk-hint">
+              If an NHS App message is not read by a recipient within this time period, then the next message in the routing plan will be sent.
+            </div>
+        
+            <div class="nhsuk-radios">
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-1" name="app-fallback-time" type="radio" value="4" {% if data['app-fallback-time'] == 4 %}checked{% endif %}>
+                <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                  4 hours
+                </label>
+              </div>
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-2" name="app-fallback-time" type="radio" value="12" {% if data['app-fallback-time'] == 12 %}checked{% endif %}>
+                <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                  12 hours
+                </label>
+              </div>
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-3" name="app-fallback-time" type="radio" value="24" {% if data['app-fallback-time'] == 24 %}checked{% endif %}>
+                <label class="nhsuk-label nhsuk-radios__label" for="example-3">
+                  24 hours (default)
+                </label>
+              </div>
+        
+            </div>
+          </fieldset>
+        
+        </div>
+        #}
+
+        <div class="nhsuk-form-group">
+
+          {{ button({
+            text: 'Save settings'
+          }) }}
+
+          <!--<a href="javascript:history.go(-1)" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>-->
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+{% endblock %}

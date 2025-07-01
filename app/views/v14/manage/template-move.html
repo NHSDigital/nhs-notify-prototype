@@ -1,0 +1,62 @@
+{% extends 'v14/layout.html' %}
+
+
+
+
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {% if data['show-folders'] == '1' %}
+
+      <form action="/404" method="post" autocomplete="off">
+
+        {{ radios({
+          "name": "channel-1-type",
+          fieldset: {
+            legend: {
+              text: "Choose a folder to move this template to",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          },
+          "hint": {
+            "text": "Select one option"
+          },
+          "items": [
+            {
+              "value": "Folder 1",
+              "text": data['template-folder-1-name']
+            },
+            {
+              "value": "Folder 2",
+              "text": data['template-folder-2-name']
+            }
+          ]
+        }) }}
+
+        <div class="nhsuk-form-group">
+
+          {{ button({
+            text: 'Move template'
+          }) }}
+
+          <a href="javascript:history.go(-1);" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+
+        </div>
+
+      </form>
+
+      {% else %}
+
+      <p>There are no folders to move this template into.</p>
+
+      <p><a href="javascript:history.go(-1);">Go back</a></p>
+
+      {% endif %}
+
+    </div>
+  </div>
+{% endblock %}

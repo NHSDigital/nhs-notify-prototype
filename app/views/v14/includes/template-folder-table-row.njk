@@ -1,0 +1,85 @@
+{% macro row(templateName, templateNumber, locked, templateType, templateTypeName) %}
+
+<tr role="row" class="nhsuk-table__row">
+
+    <!--<td role="cell" class="nhsuk-table__cell">
+        
+        <div class="nhsuk-checkboxes__item">
+            <input class="nhsuk-checkboxes__input checkboxes" id="template-{{ templateNumber }}" name="" type="checkbox" value="Template {{ templateNumber }}" onclick="toggleActionsByCheckboxes()">
+            <label class="nhsuk-label nhsuk-checkboxes__label" for="template-{{ templateNumber }}"></label>
+        </div>
+       
+    </td>-->
+
+    <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Name </span>
+
+        <a href="template-{{ templateType }}?preview-template-name={{ templateName }}&preview-template-type={{ templateTypeName }}&template-locked={{ locked }}">
+        {{ templateName }}
+        </a>
+
+    </td>
+
+    <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Type </span>
+        {{ templateTypeName }}
+    </td>
+
+    <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Status </span>
+        
+        {% if locked == '1' and templateType != 'letter' %}
+        
+        <strong class="nhsuk-tag nhsuk-tag--orange">
+            Locked
+        </strong>
+
+        {% endif %}
+
+        {% if locked != '1' and templateType != 'letter' %}
+        
+        <strong class="nhsuk-tag nhsuk-tag--green">
+            Draft
+        </strong>
+
+        {% endif %}
+
+        {% if templateType == 'letter' and locked != '1' %}
+
+        <strong class="nhsuk-tag nhsuk-tag--green">
+            Proof approved
+        </strong>
+
+        {% endif %}
+
+        {% if templateType == 'letter' and locked == '1' %}
+
+        <strong class="nhsuk-tag nhsuk-tag--orange">
+            Locked
+        </strong>
+
+        {% endif %}
+
+    </td>
+    
+    <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Date and time created </span>30 Apr 2024<br />09:34
+    </td>
+
+    <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Action </span>
+
+        <!--<p class="nhsuk-u-margin-bottom-2"><a href="template-move">Move</a></p>-->
+
+        {% if templateType != 'letter' %}  
+        <p class="nhsuk-u-margin-bottom-2"><a href="/404">Copy</a></p>
+        {% endif %}
+
+        {% if locked != '1' %}
+        <p class="nhsuk-u-margin-bottom-2"><a href="/404">Delete</a></p>
+        {% endif %}
+
+    </td>
+</tr>
+
+{% endmacro %}

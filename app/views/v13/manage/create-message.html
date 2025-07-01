@@ -66,7 +66,7 @@
       <h1 class="nhsuk-heading-l">
         {{ data['message-name-1'] }}
       </h1>
-      <p class="nhsuk-body-s"><a href="create-message-create-name">Change name</a></p>
+      <p class="nhsuk-body-s"><a href="create-message-create-name?rename-message=1">Change name</a></p>
 
       {#
       <form action="create-message" method="post" autocomplete="off" onsubmit="return checkFormCreateMessage();">
@@ -326,7 +326,7 @@
 
                       {% else %}
 
-                        <p><a href="create-message-choose-template?message-type=Braille&channel-number=4-braille">Choose template</a></p>
+                        <p><a href="/404">Choose template</a></p>
 
                       {% endif %}
 
@@ -344,7 +344,7 @@
 
                       <!--<p class="nhsuk-hint">A letter that will include an audio CD for recipients who have 'audio CD' as their preferred written communication format in PDS.</p>-->
 
-                      <p><a href="">Choose template</a></p>
+                      <p><a href="/404">Choose template</a></p>
 
                     </div>
                   </div>

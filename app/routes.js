@@ -33,5 +33,6 @@ router.use('/v10', require('./views/v10/_routes'));
 router.use('/v11', require('./views/v11/_routes'));
 router.use('/v12', require('./views/v12/_routes'));
 router.use('/v13', require('./views/v13/_routes'));
+router.use('/v14', require('./views/v14/_routes'));
 
 module.exports = router;

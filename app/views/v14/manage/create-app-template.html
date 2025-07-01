@@ -1,0 +1,147 @@
+{% extends 'v14/layout.html' %}
+
+{% block beforeContent %}
+
+{% if data['mode'] != 'edit' %}
+
+{{ backLink({
+  "href": "template-type",
+  "text": "Back to choose a template type"
+}) }}
+
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">
+        <!-- Show the correct heading based on whether the page mode is set to 'create' or 'edit'-->
+        {% if data['mode'] == 'edit' %}
+        Edit NHS App message template
+        {% else %}
+        Create NHS App message template
+        {% endif %}
+      </h1>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div id="column-left" class="nhsuk-grid-column-two-thirds">
+
+      <form action="template-app-1" onsubmit="return checkFormApp();" method="post" autocomplete="off">
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+          
+          <label class="nhsuk-label nhsuk-label--s" for="template-app-name-1">
+            Template name
+          </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
+          </div>
+
+          {% include "../includes/details-template-name.html" %}
+
+          {% if data['mode'] == 'edit' %}
+  
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-app-name-1" name="template-app-name-1" type="text" value="{{data['template-app-name-1']}}">
+
+          {% else %}
+
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-app-name-1" name="template-app-name-1" type="text">
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-app-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>  
+
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-4">
+
+          <label class="nhsuk-label nhsuk-label--s" for="template-app-message-1">
+            Message
+          </label>
+          
+          <p><a href="#" id="guidanceToggle">Hide formatting and personalisation guidance</a>.</p>
+
+          {% if data['mode'] == 'edit' %}
+
+          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-app-message-1" name="template-app-message-1" onkeyup="countChars(this);" maxlength="5000">{{data['template-app-message-1']}}</textarea>
+
+          {% else %}
+
+          <textarea class="nhsuk-textarea message-body nhsuk-u-margin-bottom-2" id="template-app-message-1" name="template-app-message-1" onkeyup="countChars(this);" maxlength="5000"></textarea>
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-app-message-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a message
+          </span>
+
+        </div>
+
+        <div class="nhsuk-u-margin-bottom-6">
+
+          <p id="charNum">0 of 5000 characters</p>
+
+        </div>
+
+        <!-- Script to count the characters in the textarea and display the number in the paragraph below. -->
+        <script>
+          function countChars(obj){
+            document.getElementById("charNum").innerHTML = obj.value.length+' of 5000 characters';
+          }
+        </script>
+
+        <!-- Set the variables that are used on subsequent pages -->
+        <input type="hidden" name="message-type" value="app">
+        <input type="hidden" name="continue-url" value="template-app-1?show-save-banner=no">
+        <input type="hidden" name="folder-1-app-templates" value="1">
+        <input type="hidden" name="template-app-name-1-approved" value="">
+        <input type="hidden" name="show-save-banner" value="yes">
+
+        {{ button({
+          "text": "Save and preview"
+        }) }}
+
+      </form>
+
+    </div>
+
+    <div id="column-right" class="nhsuk-grid-column-one-third">
+
+      {% include "../includes/details-personalisation-2.html" %}
+
+      <h2 class="nhsuk-heading-m">Message formatting</h2>
+
+      {% include "../includes/details-linebreaks.html" %}
+      
+      {% include "../includes/details-headings.html" %}
+
+      {% include "../includes/details-bold.html" %}
+
+      {% include "../includes/details-bullets.html" %}
+
+      {% include "../includes/details-numbered-lists.html" %}
+
+      {% include "../includes/details-links-2.html" %}
+
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-top-4">More about NHS App messages</h2>
+
+      <p><a href='https://notify.nhs.uk/features/nhs-app-messages' target='_blank'>NHS App messages (opens in a new tab)</a></p>
+      <p><a href='https://notify.nhs.uk/using-nhs-notify/tell-recipients-who-your-messages-are-from' target='_blank'>Sender IDs (opens in a new tab)</a></p>
+      <p><a href='https://notify.nhs.uk/using-nhs-notify/delivery-times' target='_blank'>Delivery times (opens in a new tab)</a></p>
+
+    </div>
+
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/js/guidanceToggle3.js" ></script>
+{% endblock %}

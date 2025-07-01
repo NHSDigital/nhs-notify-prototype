@@ -655,3 +655,21 @@ a:not(.nhsuk-button):not(:hover):not(:focus):not(:active):visited {
         margin-top: 18px;
     }
 }
+
+.nhsnotify-subnav {
+    position: relative;
+
+    .nhsnotify-subnav-projects{
+        color: $color_nhsuk-white;    
+        text-align: right;
+        position: absolute;
+        top: -40px;
+        right: 16px;
+
+        a,
+        a:visited,
+        a:not(.nhsuk-button):not(:hover):not(:focus):not(:active):visited {
+            color: $color_nhsuk-white;   
+        }
+    }
+}

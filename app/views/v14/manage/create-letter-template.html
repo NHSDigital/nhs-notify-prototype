@@ -1,0 +1,262 @@
+{% extends 'v10/layout.html' %}
+
+
+
+{% block beforeContent %}
+
+{% if data['mode'] != 'edit' %}
+
+{{ backLink({
+  "href": "template-type",
+  "text": "Back to choose a template type"
+}) }}
+
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+{% from '../includes/languageCheckbox.njk' import languageCheckbox %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Show the correct heading based on whether the page mode is set to 'create' or 'edit'-->
+      <h1 class="nhsuk-heading-xl">
+        {% if data['mode'] == 'edit' %}
+        Edit letter template
+        {% else %}
+        Create letter template
+        {% endif %}
+      </h1>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div id="column-left" class="nhsuk-grid-column-two-thirds">
+
+      <form action="template-letter" onsubmit="return checkFormLetter();" method="post" autocomplete="off">
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+          
+          <label class="nhsuk-label nhsuk-label--s" for="template-letter-name-1">
+            Template name
+          </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
+          </div>
+
+          {% include "../includes/details-template-name.html" %}
+
+          {% if data['mode'] == 'edit' %}
+  
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-letter-name-1" name="template-letter-name-1" type="text" value="{{data['template-10-name']}}">
+
+          {% else %}
+
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-letter-name-1" name="template-letter-name-1" type="text">
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-letter-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>  
+
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+
+          <label class="nhsuk-label nhsuk-label--s" for="template-letter-message-1">
+            Link to template files
+          </label>
+          
+          {% if data['mode'] == 'edit' %}
+
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-letter-url" name="template-letter-url" type="text" value="{{data['template-letter-url']}}">
+
+          {% else %}
+
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-letter-url" name="template-letter-url" type="text">
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-letter-message-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a link to your letter template files
+          </span>
+
+        </div>
+
+
+        <div class="nhsuk-form-group">
+      
+            <label class="nhsuk-label nhsuk-label--s nhsuk-u-margin-bottom-4" for="letter-additional-languages">
+              Which additional languages do you have?
+            </label>
+      
+            <!--<div class="nhsuk-hint" id="symptoms-hint">
+              Select all the symptoms you have.
+            </div>-->
+      
+            <div class="nhsuk-checkboxes">
+      
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="letter-lang-all" name="letter-additional-languages" type="checkbox" value="all" onclick="selectAll(this); toggleActionsByCheckboxes();">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="letter-lang-all">
+                  Select all languages
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__divider">or</div>
+
+              {{ languageCheckbox(language='Albanian',listOfLanguages=data['letter-additional-languages'] | list) }}
+
+              {{ languageCheckbox(language='Arabic',listOfLanguages=data['letter-additional-languages'] | list) }}
+
+              {{ languageCheckbox(language='Bengali',listOfLanguages=data['letter-additional-languages'] | list) }}
+
+              {{ languageCheckbox(language='Bulgarian',listOfLanguages=data['letter-additional-languages'] | list) }}
+
+              {{ languageCheckbox(language='Chinese',listOfLanguages=data['letter-additional-languages'] | list) }}
+      
+              {{ languageCheckbox(language='French',listOfLanguages=data['letter-additional-languages'] | list) }}
+
+              {{ languageCheckbox(language='Modern Greek',listOfLanguages=data['letter-additional-languages'] | list) }}
+
+              {{ languageCheckbox(language='Gujarati',listOfLanguages=data['letter-additional-languages'] | list) }}
+
+              {{ languageCheckbox(language='Hindi',listOfLanguages=data['letter-additional-languages'] | list) }}
+
+              {{ languageCheckbox(language='Italian',listOfLanguages=data['letter-additional-languages'] | list) }}
+
+              {{ languageCheckbox(language='Latvian',listOfLanguages=data['letter-additional-languages'] | list) }}
+
+              {{ languageCheckbox(language='Lithuanian',listOfLanguages=data['letter-additional-languages'] | list) }}
+
+              {{ languageCheckbox(language='Nepali',listOfLanguages=data['letter-additional-languages'] | list) }}
+
+              
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="letter-lang-Punjabi" name="letter-additional-languages" type="checkbox" value="Punjabi">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="letter-lang-Punjabi">
+                  Punjabi (Indian)
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="letter-lang-Persian" name="letter-additional-languages" type="checkbox" value="Persian">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="letter-lang-Persian">
+                  Persian
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="letter-lang-Polish" name="letter-additional-languages" type="checkbox" value="Polish">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="letter-lang-Polish">
+                  Polish
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="letter-lang-Portuguese" name="letter-additional-languages" type="checkbox" value="Portuguese">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="letter-lang-Portuguese">
+                  Portuguese
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="letter-lang-Romanian" name="letter-additional-languages" type="checkbox" value="Romanian">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="letter-lang-Romanian">
+                  Romanian
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="letter-lang-Russian" name="letter-additional-languages" type="checkbox" value="Russian">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="letter-lang-Russian">
+                  Russian
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="letter-lang-Somali" name="letter-additional-languages" type="checkbox" value="Somali">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="letter-lang-Somali">
+                  Somali
+                </label>
+              </div>
+      
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="letter-lang-Spanish" name="letter-additional-languages" type="checkbox" value="Spanish">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="letter-lang-Spanish">
+                  Spanish
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="letter-lang-Tamil" name="letter-additional-languages" type="checkbox" value="Tamil">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="letter-lang-Tamil">
+                  Tamil
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="letter-lang-Turkish" name="letter-additional-languages" type="checkbox" value="Turkish">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="letter-lang-Turkish">
+                  Turkish
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="letter-lang-Urdu" name="letter-additional-languages" type="checkbox" value="Urdu">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="letter-lang-Urdu">
+                  Urdu
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="letter-lang-Tagalog" name="letter-additional-languages" type="checkbox" value="Tagalog">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="letter-lang-Tagalog">
+                  Tagalog
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="letter-lang-Ukrainian" name="letter-additional-languages" type="checkbox" value="Ukrainian">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="letter-lang-Ukrainian">
+                  Ukrainian
+                </label>
+              </div>
+              
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="letter-lang-Vietnamese" name="letter-additional-languages" type="checkbox" value="Vietnamese">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="letter-lang-Vietnamese">
+                  Vietnamese
+                </label>
+              </div>
+      
+            </div>   
+
+        </div>
+        
+
+        
+
+        <!-- Set the variables that are used on subsequent pages -->
+        <input type="hidden" name="message-type" value="letter">
+        <input type="hidden" name="continue-url" value="template-letter-1?show-save-banner=no">
+        <input type="hidden" name="folder-1-letter-templates" value="1">
+        <input type="hidden" name="template-letter-name-1-approved" value="">
+        <input type="hidden" name="show-save-banner" value="yes">
+
+        {{ button({
+          "text": "Save"
+        }) }}
+
+      </form>
+
+    </div>
+
+  </div>
+{% endblock %}

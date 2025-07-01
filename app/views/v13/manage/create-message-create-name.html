@@ -10,8 +10,12 @@
 
           <div class="nhsuk-form-group">
 
-            <h1 class="nhsuk-heading-l">
-              Enter a name for the message plan
+            <h1 class="nhsuk-heading-xl">
+              {% if data['rename-message'] == '1' %}
+                Rename message plan
+              {% else %}
+                Create a message plan
+              {% endif %}
             </h1>
 
           </div>
@@ -36,6 +40,8 @@
           </div>
         
           <div class="nhsuk-form-group">
+
+            <input type="hidden" name="messages-draft" value="1">
 
             {{ button({
               text: 'Save and continue'

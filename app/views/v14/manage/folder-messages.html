@@ -1,0 +1,308 @@
+{% extends 'v14/layout.html' %}
+
+{% block beforeContent %}
+
+<!--{{ breadcrumb({
+  items: [
+    {
+      href: "folders",
+      text: "Folders"
+    },
+    {
+      href: "folder",
+      text: data['folder-name-1']
+    }
+  ],
+  href: "folder-messages",
+  text: "Message plans",
+  classes: "nhsuk-u-margin-bottom-5"
+}) }}-->
+
+{% endblock %}
+
+
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+
+      <span class="nhsuk-caption-l">{{ data['folder-name-1'] }}</span>
+      <h1 class="nhsuk-heading-xl">
+        Message plans
+      </h1>
+
+      {{ details({
+        summaryText: "What draft and production mean",
+        classes: "nhsuk-u-reading-width",
+        html: "
+        <h2 class='nhsuk-heading-s nhsuk-u-margin-bottom-1'>Draft</h2>
+        <p>Message plans that you're working on and are not ready to be sent. You can test these using our:</p>
+        <ul>
+          <li><a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify#overview--environments-and-testing' target='_blank'>API integration environment</a></li>
+          <li><a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify-mesh/sending-a-message#sending-your-request' target='_blank'>Integration MESH mailbox</a></li>
+        </ul>
+        <h2 class='nhsuk-heading-s nhsuk-u-margin-bottom-1'>Production</h2>
+        <p>Message plans that are ready to be sent using <a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify' target='blank'>NHS Notify API</a> or <a href='https://digital.nhs.uk/developer/api-catalogue/nhs-notify-mesh/' target='blank'>NHS Notify MESH</a>.</p>
+        "
+      }) }}
+
+      <form action="create-message-choose-plan?rename-message=" method="post">
+        {{ button({
+          'text': 'New message plan'
+        }) }}
+      </form>
+
+      <details class="nhsuk-details nhsuk-expander" open id="expanderDraft">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text nhsuk-heading-s nhsuk-u-margin-bottom-0">
+            Draft ({{ data['messages-draft'] }})
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+
+          <!--<p class="nhsuk-hint">
+            Message plans that you're working on and are not ready to be sent. You can test these in your integration environment.
+          </p>-->
+          
+
+          {% if data['messages-draft'] == '1' %}
+
+          <table role="table" class="nhsuk-table-responsive">
+        
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <!--<th role="columnheader" class="" scope="col">
+
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input checkboxes" id="" name="" type="checkbox" value="" onclick="selectAll(this); toggleActionsByCheckboxes();">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for=""></label>
+                  </div>
+
+                </th>-->
+                <th role="columnheader" class="" scope="col">
+                  
+                  <button class="nhsnotify-sort-button">
+                    Name
+                    <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                      <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                      <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    </svg>
+                  </button>
+
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Routing plan ID
+                </th>
+                <th role="columnheader" class="" scope="col">
+
+                  <button class="nhsnotify-sort-button">
+                    Last edited
+                    <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                      <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                      <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    </svg>
+                  </button>
+
+                </th>
+                <th role="columnheader" class="" scope="col">
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              
+              <tr role="row" class="nhsuk-table__row">
+                <!--<td role="cell" class="nhsuk-table__cell">
+                  
+                  <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input checkboxes" id="example-1" name="example" type="checkbox" value="email" onclick="toggleActionsByCheckboxes()">
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1"></label>
+                  </div>
+
+                </td>-->
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Name </span>
+                  <a href="create-message">
+                    {{ data['message-name-1'] }}
+                  </a>
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Routing plan ID </span>
+                  b838b13c-f98c-4def-93f0-515d4e4f4ee1
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Date and time created </span>30 Apr 2024<br />09:34
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Action </span>
+
+                  {% 
+                    if data['channel-amount'] == '1' and 
+                    data['channel-1-template'] or 
+                    data['channel-amount'] == '2' and 
+                    data['channel-1-template'] and 
+                    data['channel-2-template'] or 
+                    data['channel-amount'] == '3' and 
+                    data['channel-1-template'] and 
+                    data['channel-2-template'] and 
+                    data['channel-3-template'] or 
+                    data['channel-amount'] == '4' and 
+                    data['channel-1-template'] and 
+                    data['channel-2-template'] and 
+                    data['channel-3-template'] and 
+                    data['channel-4-template'] 
+                  %}
+
+                  <p class="nhsuk-u-margin-bottom-2"><a href="move-message-production">Move to production</a></p>
+
+                  {% endif %}
+                  
+                  <p class="nhsuk-u-margin-bottom-2"><a href="/404">Copy</a></p>
+                  <p class="nhsuk-u-margin-bottom-2"><a href="/404">Delete</a></p>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+
+          {% 
+            if data['channel-amount'] == '1' and 
+            data['channel-1-template'] or 
+            data['channel-amount'] == '2' and 
+            data['channel-1-template'] and 
+            data['channel-2-template'] or 
+            data['channel-amount'] == '3' and 
+            data['channel-1-template'] and 
+            data['channel-2-template'] and 
+            data['channel-3-template'] 
+          %}
+
+          <div class="notify-sticky-actions" id="notify-sticky-actions">
+            <div class="nhsuk-width-container">
+              <div class="nhsuk-grid-row">
+                <div class="nhsuk-grid-column-one-quarter">&nbsp;</div>
+                <div class="nhsuk-grid-column-three-quarters">
+    
+                  <a href="move-message-production" class="nhsuk-button nhsuk-u-margin-bottom-0">Move to production</a>
+    
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {% endif %}
+    
+          {% else %}
+     
+          <p>You do not have any draft message plans yet.</p>
+    
+          {% endif %}
+
+
+        </div>
+      </details>
+
+
+      <details class="nhsuk-details nhsuk-expander" id="expanderProd">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text nhsuk-heading-s nhsuk-u-margin-bottom-0">
+            Production ({{ data['messages-prod'] }})
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          
+          <!--<p class="nhsuk-hint">
+            Message plans that are ready to be sent using NHS Notify API or NHS Notify MESH.
+          </p>-->
+
+          {% if data['messages-prod'] == '1' %}
+
+          <table role="table" class="nhsuk-table-responsive">
+        
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">
+                  
+                  <button class="nhsnotify-sort-button">
+                    Name
+                    <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                      <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                      <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    </svg>
+                  </button>
+
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Routing plan ID
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  
+                  <button class="nhsnotify-sort-button">
+                    Last edited
+                    <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                      <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                      <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    </svg>
+                  </button>
+
+                </th>
+                <th role="columnheader" class="" scope="col">
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Name </span>
+                  <a href="create-message-production">
+                    {{ data['message-name-1'] }}
+                  </a>
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Routing plan ID </span>
+                  b838b13c-f98c-4def-93f0-515d4e4f4ee1
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Date and time created </span>30 Apr 2024<br />09:34
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Action </span>
+                  <p class="nhsuk-u-margin-bottom-2"><a href="/404">Copy to draft</a></p>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+    
+          {% else %}
+     
+          <p>You do not have any message plans in production yet.</p>
+    
+          {% endif %}
+
+
+        </div>
+      </details>
+
+      {#
+      {{ card({
+        href: "message-settings",
+        primary: "true",
+        clickable: "true",
+        heading: "Message plan settings",
+        headingClasses: "nhsuk-heading-m nhsuk-u-margin-bottom-0",
+        classes: "nhsuk-u-margin-bottom-4"
+      }) }}
+      #}
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+<script src="/js/expanderToggle.js" ></script>
+
+{% endblock %}

@@ -38,7 +38,7 @@ module.exports = {
     "channel-4-accessible-template": "",
     
     
-    "folder-name-1": "Dashboard",
+    //"folder-name-1": "Dashboard",
 
     "template-1-name": "Covid 65+ invitation v1 (T01)", // App
     "template-2-name": "Covid 65+ invitation v2 (T02)", // App

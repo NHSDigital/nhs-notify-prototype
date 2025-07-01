@@ -1,0 +1,72 @@
+{% extends 'v14/layout.html' %}
+
+{% block header %}
+
+{{ header({
+  service: {
+    text: "Notify",
+    href: "folders"
+  },
+  account: {
+    items: [
+      {
+        text: "Florence Nightingale",
+        icon: "true"
+      },
+      {
+        text: "My service name"
+      },
+      {
+        text: 'Sign out',
+        href: 'login?auth='
+      }
+    ]
+  }
+  })
+}}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">
+        {% if data['rename-folder'] == '1' %}
+          Rename project
+        {% else %}
+          Create a project
+        {% endif %}
+      </h1>
+
+      <form action="folder" method="post" autocomplete="off">
+
+        {{ input({
+          label: {
+            text: "Project name",
+            classes: "nhsuk-label--s"
+          },
+            hint: {
+            text: "Your recipients will not see this and you can change it later."
+          },
+          name: "folder-name-1",
+          value: data['folder-name-1']
+        }) }}
+
+        <div class="nhsuk-form-group">
+
+          <input type="hidden" name="folders" value="1">
+
+          {{ button({
+            'text': 'Save and continue'
+          }) }}
+
+          <a href="folders" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'v14/layout.html' %}
+
+
+
+
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">Submit your message plan</h1>
+
+      <table role="table" class="notify-template-content">
+        <tbody class="nhsuk-table__body">
+
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell" style="width:20%;">
+              Name
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              {{ data['message-name-1'] }}
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <a href="move-message-preview">Preview</a>
+            </td>
+          </tr>
+
+          <!--<tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell" style="width:20%;">
+              Name
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              {{ data['message-name-1'] }}
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <a href="">Preview</a>
+            </td>
+          </tr>
+
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell" style="width:20%;">
+              Name
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              {{ data['message-name-1'] }}
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <a href="">Preview</a>
+            </td>
+          </tr>-->
+
+        </tbody>
+      </table>
+
+      <!--{{ details({
+        summaryText: "What submitting a message plan means",
+        html: "
+        <p>TBC...</p>
+        "
+    }) }}-->
+
+      <h2 class="nhsuk-heading-m">Before you submit a message plan</h2>
+
+      <p>Any templates used in these message plans will be locked.</p>
+
+      <p>Check that your templates are:</p>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>how you expect them to appear</li>
+        <li>free from typo's or spelling mistakes</li>
+        <li>signed off by the relevant stakeholders in your team</li>
+        <li>used in the message plan correctly</li>
+      </ul>
+
+      {{ warningCallout({
+        heading: "Important",
+        html: "
+        <p>You cannot change message plans that have been submitted.</p>
+        <p>If you need to edit or change a message plan that has been submitted, you'll need to replace it with a new message plan.</p>
+          "
+      }) }}
+
+      <div class="nhsuk-form-group">
+
+        <a href="create-message" class="nhsuk-button nhsuk-button--secondary">Go back</a>
+
+        <a href="folder-messages?message-plan-submitted=1" class="nhsuk-button nhsuk-u-margin-left-3">Submit message plan</a>
+
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

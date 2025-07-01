@@ -1,0 +1,118 @@
+{% extends 'v14/layout.html' %}
+
+{% block header %}
+
+{{ header({
+  service: {
+    text: "Notify",
+    href: "folders"
+  },
+  account: {
+    items: [
+      {
+        text: "Florence Nightingale",
+        icon: "true"
+      },
+      {
+        text: "My service name"
+      },
+      {
+        text: 'Sign out',
+        href: 'login?auth='
+      }
+    ]
+  }
+  })
+}}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1 class="nhsuk-heading-xl">
+        Projects
+      </h1>
+
+      <form action="create-folder" method="post">
+
+        <input type="hidden" name="rename-project" value="">
+        <input type="hidden" name="folder-name-1" value="">
+
+        {{ button({
+          'text': 'New project'
+        }) }}
+      </form>
+
+      {% if data['folders'] == '1' %}
+
+      <table role="table" class="nhsuk-table-responsive">
+
+        <!--<caption class="nhsuk-table__caption">List of message groups</caption>-->
+
+        <thead role="rowgroup" class="nhsuk-table__head">
+          <tr role="row">
+            <th role="columnheader" class="" scope="col">
+
+              <button class="nhsnotify-sort-button">
+                Name
+                <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                  <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                </svg>
+              </button>
+
+            </th>
+            <th role="columnheader" class="" scope="col">
+
+              <button class="nhsnotify-sort-button">
+                Created
+                <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                  <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                </svg>
+              </button>
+
+            </th>
+            <th role="columnheader" class="" scope="col">
+            </th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+          
+          <tr role="row" class="nhsuk-table__row">
+
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Name </span>
+              <a href="folder">
+                {{ data['folder-name-1'] }}
+              </a>
+            </td>
+            
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Created </span>30 Apr 2024<br />09:34
+            </td>
+
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Action </span>
+              <p class="nhsuk-u-margin-bottom-2"><a href="create-folder?rename-folder=1">Rename</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Copy</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Archive</a></p>
+            </td>
+
+          </tr>
+
+        </tbody>
+      </table>
+
+      {% else %}
+ 
+      <p>Create a project to start creating messages and planning how they'll be sent.</p>
+      <p>You can add more projects later if you need to.</p>
+
+      {% endif %}
+      
+    </div>
+  </div>
+{% endblock %}
