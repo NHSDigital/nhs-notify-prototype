@@ -14,7 +14,7 @@
         {% if data['message-type'] == 'NHS App' %}Choose an NHS App template{%endif%}
         {% if data['message-type'] == 'Email' %}Choose an email template{%endif%}
         {% if data['message-type'] == 'Text message (SMS)' %}Choose a text message (SMS) template{%endif%}
-        {% if data['message-type'] == 'Letter' %}Choose a letter template{%endif%}
+        {% if data['message-type'] == 'Letter' %}Choose a standard English letter template{%endif%}
         {% if data['message-type'] == 'Large print' %}Choose a large print letter template{%endif%}
         {% if data['message-type'] == 'Braille' %}Choose a braille letter template{%endif%}
         {% if data['message-type'] == 'Other language' %}Choose other language templates{%endif%}
@@ -345,11 +345,11 @@
           </thead>
           <tbody class="nhsuk-table__body">
 
-            {{choose_template_row(templateName=data['template-10-name'], templateNumber='10', templateTypeName='Letter', templateType='letter', channelNumber=data["channel-number"] )}}
+            {{choose_template_row(templateName=data['template-10-name'], templateNumber='10', templateTypeName='Standard letter', templateType='letter', channelNumber=data["channel-number"] )}}
 
-            {{choose_template_row(templateName=data['template-11-name'], templateNumber='11', templateTypeName='Letter', templateType='letter', channelNumber=data["channel-number"] )}}
+            {{choose_template_row(templateName=data['template-11-name'], templateNumber='11', templateTypeName='Standard letter', templateType='letter', channelNumber=data["channel-number"] )}}
 
-            {{choose_template_row(templateName=data['template-12-name'], templateNumber='12', templateTypeName='Letter', templateType='letter', channelNumber=data["channel-number"] )}}
+            {{choose_template_row(templateName=data['template-12-name'], templateNumber='12', templateTypeName='Standard letter', templateType='letter', channelNumber=data["channel-number"] )}}
 
             <!--{% if data['show-folders'] == '1' %}
 
@@ -573,11 +573,11 @@
           </thead>
           <tbody class="nhsuk-table__body">
 
-            {{choose_template_row_language(templateName=data['template-16-name'], templateNumber='16', templateTypeName='Letter - French', templateType='letter', channelNumber=data["channel-number"] )}}
+            {{choose_template_row_language(templateName=data['template-16-name'], templateNumber='16', templateTypeName='Standard letter - French', templateType='letter', channelNumber=data["channel-number"] )}}
 
-            {{choose_template_row_language(templateName=data['template-17-name'], templateNumber='17', templateTypeName='Letter - Italian', templateType='letter', channelNumber=data["channel-number"] )}}
+            {{choose_template_row_language(templateName=data['template-17-name'], templateNumber='17', templateTypeName='Standard letter - Italian', templateType='letter', channelNumber=data["channel-number"] )}}
 
-            {{choose_template_row_language(templateName=data['template-18-name'], templateNumber='18', templateTypeName='Letter - German', templateType='letter', channelNumber=data["channel-number"] )}}
+            {{choose_template_row_language(templateName=data['template-18-name'], templateNumber='18', templateTypeName='Standard letter - German', templateType='letter', channelNumber=data["channel-number"] )}}
 
           </tbody>
         </table>

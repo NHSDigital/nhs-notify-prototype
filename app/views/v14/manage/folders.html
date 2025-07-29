@@ -1,6 +1,31 @@
 {% extends 'v14/layout.html' %}
 
+{% block header %}
 
+{{ header({
+  service: {
+    text: "Notify",
+    href: "folders"
+  },
+  account: {
+    items: [
+      {
+        text: "Florence Nightingale",
+        icon: "true"
+      },
+      {
+        text: "My service name"
+      },
+      {
+        text: 'Sign out',
+        href: 'login?auth='
+      }
+    ]
+  }
+  })
+}}
+
+{% endblock %}
 
 {% block content %}
   <div class="nhsuk-grid-row">
