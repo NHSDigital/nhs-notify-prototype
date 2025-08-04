@@ -45,29 +45,29 @@
             }
           ]
         }) }}
-      {% endset -%}
+      {% endset %}
 
       {{ radios({
-        "name": "radio-template-type",
-        "hint": {
-          "text": "Select one option"
+        name: "radio-template-type",
+        hint: {
+          text: "Select one option"
         },
-        "items": [
+        items: [
           {
-            "value": "app",
-            "text": "NHS App message"
+            value: "app",
+            text: "NHS App message"
           },
           {
-            "value": "email",
-            "text": "Email"
+            value: "email",
+            text: "Email"
           },
           {
-            "value": "sms",
-            "text": "Text message (SMS)"
+            value: "sms",
+            text: "Text message (SMS)"
           },
           {
-            "value": "letter",
-            "text": "Letter",
+            value: "letter",
+            text: "Letter",
             conditional: {
               html: letterHtml
             }
@@ -78,7 +78,7 @@
       <input type="hidden" name="mode" value="">
 
       {{ button({
-        'text': 'Continue'
+        text: "Continue"
       }) }}
 
       </form>
