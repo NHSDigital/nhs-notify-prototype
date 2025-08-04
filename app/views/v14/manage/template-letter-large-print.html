@@ -3,8 +3,8 @@
 {% block beforeContent %}
 
 {{ backLink({
-  "href": "javascript:history.go(-1);",
-  "text": "Go back"
+  "href": "folder-templates",
+  "text": "Back to all templates"
 }) }}
 
 {% endblock %}
@@ -13,7 +13,19 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
 
+      {% if data['show-save-banner'] == 'yes' %}
+      <div class="notify-confirmation-panel">
+        <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-0">Template saved</h1>
+      </div>
+      {% endif %}
+
       <div class="nhsuk-u-reading-width">
+
+        {% if data['template-locked'] == '1' %}
+
+        {% include "../includes/template-locked-message.html" %}
+
+        {% endif %}
 
         <span class="nhsuk-caption-l">Template</span>
         <h1 class="nhsuk-heading-xl">
@@ -43,6 +55,30 @@
             </td>
           </tr>
 
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
+              Status
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              
+              {% if data['template-locked'] == '1' %}
+
+              {{ tag({
+                text: "Locked",
+                classes: "nhsuk-tag--orange"
+              })}}
+              {% else %}
+
+              {{ tag({
+                text: "Draft",
+                classes: "nhsuk-tag--blue"
+              })}}
+
+              {% endif %}
+
+            </td>
+          </tr>
+
         </tbody>
       </table>
 
@@ -54,7 +90,21 @@
 
       </div>
 
-      <p><a href="javascript:history.go(-1);">Go back</a></p>
+
+      {% if data['template-locked'] != '1' %}
+
+      <form action="create-letter-large-print-template?mode=edit" method="post">        
+   
+        {{ button({
+          text: "Edit template",
+          classes: "nhsuk-button--secondary"
+        }) }}
+  
+      </form>
+
+      {% endif %}
+
+      <p><a href="folder-templates">Back to all templates</a></p>
 
     </div>
   </div>

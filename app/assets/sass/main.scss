@@ -574,10 +574,15 @@ a:not(.nhsuk-button):not(:hover):not(:focus):not(:active):visited {
     font-weight: 600;
     font-size: 1.1875rem;
     color: $nhsuk-link-color;
+    text-decoration: none;
     border: none;
     background: none;
     padding: 0;
     text-align: left;
+
+    &:hover{
+        cursor: pointer;
+    }
 
     .sort-icon{
         fill: $nhsuk-link-color;
@@ -671,5 +676,16 @@ a:not(.nhsuk-button):not(:hover):not(:focus):not(:active):visited {
         a:not(.nhsuk-button):not(:hover):not(:focus):not(:active):visited {
             color: $color_nhsuk-white;   
         }
+    }
+}
+
+
+.nhsnotify-letter-preview{
+    
+    img {
+        max-width: 80%;
+        display: block;
+        margin: 0 auto 40px auto;
+        box-shadow: 0px 3px 5px $nhsuk-border-color ;
     }
 }

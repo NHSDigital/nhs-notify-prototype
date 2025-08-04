@@ -1,3 +1,6 @@
+// Get current date & time
+const { format } = require('date-fns');
+
 module.exports = function (env) { /* eslint-disable-line no-unused-vars */
   /**
    * Instantiate object used to store the methods registered as a
@@ -37,6 +40,11 @@ module.exports = function (env) { /* eslint-disable-line no-unused-vars */
     documentation.
 
   ------------------------------------------------------------------ */
+
+  // Get current date & time
+  env.addFilter('formatDate', function (date, formatStr) {
+    return format(date, formatStr);
+  });
 
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app

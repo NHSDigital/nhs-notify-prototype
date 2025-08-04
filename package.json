@@ -24,6 +24,7 @@
     "browser-sync": "^3.0.4",
     "client-sessions": "^0.8.0",
     "cookie-parser": "^1.4.7",
+    "date-fns": "^4.1.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "express-session": "^1.18.1",
@@ -40,7 +41,8 @@
     "path": "^0.12.7",
     "path-to-regexp": "^8.2.0",
     "plugin-error": "^2.0.1",
-    "sass-embedded": "1.77.5"
+    "sass-embedded": "1.77.5",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "eslint": "^8.56.0",

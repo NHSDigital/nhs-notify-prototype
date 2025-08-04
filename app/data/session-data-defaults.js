@@ -69,32 +69,20 @@ module.exports = {
 
     "template-letter-url": "https://nhs.sharepoint.com/:f:/r/sites/msteams_8af52a-Templates/Shared%20Documents/Technical%20Onboarding%20-%20Tech%20Team?csf=1&web=1&e=w8nEAR",
 
-    "app-fallback-time" : "24"
+    "app-fallback-time" : "24",
 
-/*
-    "folder-name-1": "Bowel cancer screening 2025",
-    
-    "template-1-name": "Fit kit reminder 50-65 (T01)", // App
-    "template-2-name": "Fit kit reminder 65+ (T02)", // App
-    "template-3-name": "Ceasing notification version 1 (T03)", // App
+    "template-amount": "3",
 
-    "template-4-name": "Fit kit reminder 50-65 (T04)", // SMS
-    "template-5-name": "Fit kit reminder 65+ (T05)", // SMS
-    "template-6-name": "Ceasing notification version 1 (T06)", // SMS
+    "example-template-1-name": "An example NHS app message template",
+    "example-template-1-type": "app",
+    "example-template-1-typeName": "NHS app",
 
-    "template-7-name": "Fit kit reminder 50-65 (T07)", // Email
-    "template-8-name": "Fit kit reminder 65+ (T08)", // Email
-    "template-9-name": "Ceasing notification version 1 (T09)", // Email
+    "example-template-2-name": "An example text message template",
+    "example-template-2-type": "sms",
+    "example-template-2-typeName": "Text message (SMS)",
 
-    "template-10-name": "Invitation EN version 1 (T10)", // App + folder 1
-    "template-11-name": "Invitation EN version 1 (T11)", // Email + folder 1
-    "template-12-name": "Invitation EN version 2 (T12)", // SMS + folder 1
-
-    "template-13-name": "Pre-invite EN version 1a (T13)", // App + folder 2
-    "template-14-name": "Pre-invite EN version 1a (T14)", // Email + folder 2
-    
-    "template-folder-1-name": "Screening invitations",
-    "template-folder-2-name": "Screening pre-invites"
-*/
+    "example-template-3-name": "An example email template",
+    "example-template-3-type": "email",
+    "example-template-3-typeName": "Email"
   
   }

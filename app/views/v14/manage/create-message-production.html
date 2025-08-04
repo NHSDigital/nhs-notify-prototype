@@ -243,7 +243,30 @@
             <div class="notify-channel-block-inner">
               <h3 class="nhsuk-heading-s">Standard English letter</h3>
 
-              <p><a href="create-message-preview-template-letter?preview-template-name={{ data['channel-4-template'] }}">{{ data['channel-4-template'] }}</a></p>
+              <p>{{ data['channel-4-template'] }}</p>
+
+              <details class="nhsuk-details nhsuk-u-margin-bottom-0">
+                <summary class="nhsuk-details__summary">
+                  <span class="nhsuk-details__summary-text">
+                    Preview template
+                  </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  
+                  <div class="nhsnotify-letter-preview">
+
+                    <a href="/images/letter-standard-page-1.jpg" target="_blank">
+                      <img src="/images/letter-standard-page-1.jpg" alt="">
+                    </a>
+
+                    <a href="/images/letter-standard-page-2.jpg" target="_blank">
+                      <img src="/images/letter-standard-page-2.jpg" alt="">
+                    </a>
+
+                  </div>
+              
+                </div>
+              </details>
               
             </div>
 
@@ -264,7 +287,30 @@
 
                       {% if data['channel-4-large-print-template'] %}
 
-                        <p><a href="create-message-preview-template-letter?preview-template-name={{ data['channel-4-large-print-template'] }}">{{ data['channel-4-large-print-template'] }}</a></p>
+                        <p>{{ data['channel-4-large-print-template'] }}</p>
+
+                        <details class="nhsuk-details nhsuk-u-margin-bottom-0">
+                          <summary class="nhsuk-details__summary">
+                            <span class="nhsuk-details__summary-text">
+                              Preview template
+                            </span>
+                          </summary>
+                          <div class="nhsuk-details__text">
+                            
+                            <div class="nhsnotify-letter-preview">
+
+                              <a href="/images/letter-large-page-1.jpg" target="_blank">
+                                <img src="/images/letter-large-page-1.jpg" alt="">
+                              </a>
+
+                              <a href="/images/letter-large-page-2.jpg" target="_blank">
+                                <img src="/images/letter-large-page-2.jpg" alt="">
+                              </a>
+
+                            </div>
+                        
+                          </div>
+                        </details>
 
                       {% else %}
 
@@ -329,9 +375,30 @@
 
                       {% if data['channel-4-language-template'] %}
 
-                      {% set accessible_templates = data['channel-4-language-template'] %}
+                      <p>{{ data['channel-4-language-template'] | escape | replace(",", "<br />") }} ({{ data['template-letter-language'] }})</p>
 
-                      <p><a href="create-message-preview-template-letter?preview-template-name={{ accessible_templates[0] }}">{{ data['channel-4-language-template'] | escape | replace(",", "<br />") }}</a></p>
+                      <details class="nhsuk-details nhsuk-u-margin-bottom-0">
+                        <summary class="nhsuk-details__summary">
+                          <span class="nhsuk-details__summary-text">
+                            Preview template
+                          </span>
+                        </summary>
+                        <div class="nhsuk-details__text">
+                          
+                          <div class="nhsnotify-letter-preview">
+
+                            <a href="/images/letter-greek-page-1.jpg" target="_blank">
+                              <img src="/images/letter-greek-page-1.jpg" alt="">
+                            </a>
+
+                            <a href="/images/letter-greek-page-2.jpg" target="_blank">
+                              <img src="/images/letter-greek-page-2.jpg" alt="">
+                            </a>
+
+                          </div>
+                      
+                        </div>
+                      </details>
 
                       {% else %}
 

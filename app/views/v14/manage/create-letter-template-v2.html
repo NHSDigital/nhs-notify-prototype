@@ -1,0 +1,125 @@
+{% extends 'v14/layout.html' %}
+
+{% block beforeContent %}
+
+{% if data['mode'] != 'edit' %}
+
+{{ backLink({
+  "href": "template-type",
+  "text": "Back to choose a template type"
+}) }}
+
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Show the correct heading based on whether the page mode is set to 'create' or 'edit'-->
+      <h1 class="nhsuk-heading-xl">
+        {% if data['mode'] == 'edit' %}
+        Edit standard English letter template
+        {% else %}
+        Create standard English letter template
+        {% endif %}
+      </h1>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div id="column-left" class="nhsuk-grid-column-two-thirds">
+
+      <form method="post" action="create-letter-template-v2" autocomplete="off">
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+          
+          <label class="nhsuk-label nhsuk-label--s" for="letterStandardTemplateName">
+            Template name
+          </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
+          </div>
+
+          {% include "../includes/details-template-name.html" %}
+
+          {% if data['mode'] == 'edit' %}
+  
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="letterStandardTemplateName" name="letterStandardTemplateName" type="text" value="{{ data['letterStandardTemplateName'] }}">
+
+          {% else %}
+
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="letterStandardTemplateName" name="letterStandardTemplateName" type="text">
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="letterStandardTemplateName--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>  
+
+        </div>
+
+        <div class="nhsuk-form-group">
+
+          {% if data['mode'] == 'edit' %}
+
+          <label class="nhsuk-label" for="letterStandardTemplateContent">
+            Letter content
+          </label>
+          <textarea class="nhsuk-textarea nhsuk-u-margin-bottom-2" id="letterStandardTemplateContent" name="letterStandardTemplateContent" rows="30">{{data['letterStandardTemplateContent']}}</textarea>
+
+          {% else %}
+
+          <label class="nhsuk-label" for="letterStandardTemplateContent">
+            Letter content
+          </label>
+          <textarea class="nhsuk-textarea nhsuk-u-margin-bottom-2" id="letterStandardTemplateContent" name="letterStandardTemplateContent" rows="30"></textarea>
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="letterStandardTemplateContent--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter letter content
+          </span>  
+
+        </div>
+
+        <input type="hidden" name="letterStandardTemplateType" value="Standard letter">
+        <input type="hidden" name="letterStandardTemplateLanguage" value="English">
+
+        {{ button({
+          "text": "Save and preview"
+        }) }}
+      
+      </form>
+
+    </div>
+
+    <div class="nhsuk-grid-column-one-third">
+
+      {% include "../includes/details-personalisation-2.html" %}
+
+      <h2 class="nhsuk-heading-m">Message formatting</h2>
+
+      {% include "../includes/details-linebreaks.html" %}
+      
+      {% include "../includes/details-headings.html" %}
+
+      {% include "../includes/details-bullets.html" %}
+
+      {% include "../includes/details-numbered-lists.html" %}
+
+      {% include "../includes/details-page-breaks.html" %}
+
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-top-4">More about letters</h2>
+
+      <p><a href='' target='_blank'>Link 1 (opens in a new tab)</a></p>
+      <p><a href='' target='_blank'>Link 2 (opens in a new tab)</a></p>
+      <p><a href='' target='_blank'>Link 3 (opens in a new tab)</a></p>
+
+    </div>
+
+  </div>
+{% endblock %}

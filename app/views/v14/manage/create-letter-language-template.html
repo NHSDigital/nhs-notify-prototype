@@ -1,0 +1,318 @@
+{% extends 'v14/layout.html' %}
+
+{% block beforeContent %}
+
+{% if data['mode'] != 'edit' %}
+
+{{ backLink({
+  "href": "template-type",
+  text: "Back to choose a template type"
+}) }}
+
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Show the correct heading based on whether the page mode is set to 'create' or 'edit'-->
+      <h1 class="nhsuk-heading-xl">
+        {% if data['mode'] == 'edit' %}
+        Edit other language letter template
+        {% else %}
+        Create other language letter template
+        {% endif %}
+      </h1>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div id="column-left" class="nhsuk-grid-column-two-thirds">
+
+      <form action="template-letter-language" onsubmit="return checkFormLetter();" method="post" autocomplete="off">
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+          
+          <label class="nhsuk-label nhsuk-label--s" for="template-letter-name-1">
+            Template name
+          </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
+          </div>
+
+          {% include "../includes/details-template-name.html" %}
+
+          {% if data['mode'] == 'edit' %}
+  
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-letter-name-1" name="template-letter-language-name-1" type="text" value="{{ data['template-letter-language-name-1'] }}">
+
+          {% else %}
+
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-letter-name-1" name="template-letter-language-name-1" type="text">
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-letter-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>  
+
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+          
+          <label class="nhsuk-label nhsuk-label--s" for="template-letter-language">
+            Letter language
+          </label>
+
+          {% if data['mode'] == 'edit' %}
+  
+          
+
+          {% else %}
+
+          
+
+          {% endif %}
+          
+          <select class="nhsuk-select" id="template-letter-language" name="template-letter-language">
+            <option value="">Please select</option>
+            <option value="Albanian" {% if data['template-letter-language'] == 'Albanian' %}selected{% endif %}>Albanian</option>
+            <option value="Arabic" {% if data['template-letter-language'] == 'Arabic' %}selected{% endif %}>Arabic</option>
+            <option value="Bengali"  {% if data['template-letter-language'] == 'Bengali' %}selected{% endif %}>Bengali</option>
+            <option value="Bulgarian" {% if data['template-letter-language'] == 'Bulgarian' %}selected{% endif %}>Bulgarian</option>
+            <option value="Chinese" {% if data['template-letter-language'] == 'Chinese' %}selected{% endif %}>Chinese</option>
+            <option value="French" {% if data['template-letter-language'] == 'French' %}selected{% endif %}>French</option>
+            <option value="German" {% if data['template-letter-language'] == 'German' %}selected{% endif %}>German</option>
+            <option value="Modern Greek" {% if data['template-letter-language'] == 'Modern Greek' %}selected{% endif %}>Modern Greek</option>
+            <option value="Gujarati" {% if data['template-letter-language'] == 'Gujarati' %}selected{% endif %}>Gujarati</option>
+            <option value="Hindi" {% if data['template-letter-language'] == 'Hindi' %}selected{% endif %}>Hindi</option>
+            <option value="Italian" {% if data['template-letter-language'] == 'Italian' %}selected{% endif %}>Italian</option>
+            <option value="Latvian" {% if data['template-letter-language'] == 'Latvian' %}selected{% endif %}>Latvian</option>
+            <option value="Lithuanian" {% if data['template-letter-language'] == 'Lithuanian' %}selected{% endif %}>Lithuanian</option>
+            <option value="Nepali" {% if data['template-letter-language'] == 'Nepali' %}selected{% endif %}>Nepali</option>
+            <option value="Punjabi (Indian)" {% if data['template-letter-language'] == 'Punjabi (Indian)' %}selected{% endif %}>Punjabi (Indian)</option>
+            <option value="Persian" {% if data['template-letter-language'] == 'Persian' %}selected{% endif %}>Persian</option>
+            <option value="Polish" {% if data['template-letter-language'] == 'Polish' %}selected{% endif %}>Polish</option>
+            <option value="Portuguese" {% if data['template-letter-language'] == 'Portuguese' %}selected{% endif %}>Portuguese</option>
+            <option value="Romanian" {% if data['template-letter-language'] == 'Romanian' %}selected{% endif %}>Romanian</option>
+            <option value="Russian" {% if data['template-letter-language'] == 'Russian' %}selected{% endif %}>Russian</option>
+            <option value="Somali" {% if data['template-letter-language'] == 'Somali' %}selected{% endif %}>Somali</option>
+            <option value="Spanish" {% if data['template-letter-language'] == 'Spanish' %}selected{% endif %}>Spanish</option>
+            <option value="Tamil" {% if data['template-letter-language'] == 'Tamil' %}selected{% endif %}>Tamil</option>
+            <option value="Turkish" {% if data['template-letter-language'] == 'Turkish' %}selected{% endif %}>Turkish</option>
+            <option value="Urdu" {% if data['template-letter-language'] == 'Urdu' %}selected{% endif %}>Urdu</option>
+            <option value="Tagalog" {% if data['template-letter-language'] == 'Tagalog' %}selected{% endif %}>Tagalog</option>
+            <option value="Ukrainian" {% if data['template-letter-language'] == 'Ukrainian' %}selected{% endif %}>Ukrainian</option>
+            <option value="Vietnamese" {% if data['template-letter-language'] == 'Vietnamese' %}selected{% endif %}>Vietnamese</option>
+          </select>
+
+        </div>
+          
+        {#
+        {{ select({
+          id: "template-letter-language",
+          name: "template-letter-language",
+          classes: "nhsuk-u-margin-bottom-8",
+          label: {
+            text: "Letter language"
+          },
+          items: [
+            {
+              text: "Please select"
+            },  
+            {
+              value: 1,
+              text: "Albanian"
+            },
+            {
+              value: 2,
+              text: "Arabic"
+            },
+            {
+              value: 3,
+              text: "Bengali"
+            },
+            {
+              value: 3,
+              text: "Bulgarian"
+            },
+            {
+              value: 3,
+              text: "Chinese"
+            },
+            {
+              value: 3,
+              text: "French"
+            },
+            {
+              value: 3,
+              text: "German"
+            },
+            {
+              value: 3,
+              text: "Modern Greek"
+            },
+            {
+              value: 3,
+              text: "Gujarati"
+            },
+            {
+              value: 3,
+              text: "Hindi"
+            },
+            {
+              value: 3,
+              text: "Italian"
+            },
+            {
+              value: 3,
+              text: "Latvian"
+            },
+            {
+              value: 3,
+              text: "Lithuanian"
+            },
+            {
+              value: 3,
+              text: "Nepali"
+            },
+            {
+              value: 3,
+              text: "Punjabi (Indian)"
+            },
+            {
+              value: 3,
+              text: "Persian"
+            },
+            {
+              value: 3,
+              text: "Polish"
+            },
+            {
+              value: 3,
+              text: "Portuguese"
+            },
+            {
+              value: 3,
+              text: "Romanian"
+            },
+            {
+              value: 3,
+              text: "Russian"
+            },
+            {
+              value: 3,
+              text: "Somali"
+            },
+            {
+              value: 3,
+              text: "Spanish"
+            },
+            {
+              value: 3,
+              text: "Tamil"
+            },
+            {
+              value: 3,
+              text: "Turkish"
+            },
+            {
+              value: 3,
+              text: "Urdu"
+            },
+            {
+              value: 3,
+              text: "Tagalog"
+            },
+            {
+              value: 3,
+              text: "Ukrainian"
+            },
+            {
+              value: 3,
+              text: "Vietnamese"
+            }
+          ]
+        }) }}
+        #}
+
+        <div class="nhsuk-form-group">
+
+          <label class="nhsuk-label nhsuk-label--s" for="template-letter-message-1">
+            Letter content
+          </label>
+
+          {% if data['mode'] == 'edit' %}
+
+          <textarea class="nhsuk-textarea nhsuk-u-margin-bottom-2" id="template-letter-message-1" name="template-letter-language-message-1" rows="30">{{data['template-letter-language-message-1']}}</textarea>
+
+          {% else %}
+
+          <textarea class="nhsuk-textarea nhsuk-u-margin-bottom-2" id="template-letter-message-1" name="template-letter-language-message-1" rows="30"></textarea>
+
+          {% endif %}
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-letter-message-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter letter content
+          </span>  
+
+        </div>
+
+        <!-- Set the variables that are used on subsequent pages -->
+        <!--<input type="hidden" name="message-type" value="sms">
+        <input type="hidden" name="continue-url" value="template-sms-1?show-save-banner=no">-->
+        <input type="hidden" name="folder-1-letter-language-templates" value="1">
+
+        <!-- Only increment the amount of templates if the template is new --> 
+        {% if data['folder-1-letter-language-templates'] != '1' %}
+        <input type="hidden" name="template-amount" value="{{ data['template-amount']|float + 1 }}">
+        {% endif %}
+
+        <input type="hidden" name="show-save-banner" value="yes">
+        <input type="hidden" name="radio-template-type" value="">
+        <input type="hidden" name="radio-template-type-letter" value="">
+        <input type="hidden" name="template-letter-language-editDate-1" value="{{ currentDate | formatDate('d MMM yyyy') }}">
+        <input type="hidden" name="template-letter-language-editTime-1" value="{{ currentDate | formatDate('HH:mm') }}">
+
+        {{ button({
+          text: "Save and preview"
+        }) }}
+      
+      </form>
+
+    </div>
+
+    <div class="nhsuk-grid-column-one-third">
+
+      {% include "../includes/details-personalisation-2.html" %}
+
+      <h2 class="nhsuk-heading-m">Message formatting</h2>
+
+      {% include "../includes/details-linebreaks.html" %}
+      
+      {% include "../includes/details-headings.html" %}
+
+      {% include "../includes/details-bold.html" %}
+
+      {% include "../includes/details-bullets.html" %}
+
+      {% include "../includes/details-numbered-lists.html" %}
+
+      {% include "../includes/details-page-breaks.html" %}
+
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-top-4">More about letters</h2>
+
+      <p><a href='https://notify.nhs.uk/pricing/letters' target='_blank'>Letter pricing (opens in a new tab)</a></p>
+
+      <p><a href='https://notify.nhs.uk/using-nhs-notify/letters-in-other-languages' target='_blank'>Letters in other languages (opens in a new tab)</a></p>
+
+      <p><a href='https://notify.nhs.uk/using-nhs-notify/delivery-times#letters' target='_blank'>Letter delivery times (opens in a new tab)</a></p>
+
+    </div>
+
+  </div>
+{% endblock %}

@@ -1,0 +1,265 @@
+{% extends 'v7/layout.html' %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1>
+        Message templates
+      </h1>
+
+      <details class="nhsuk-details">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          How to tell us your templates are ready
+        </span>
+      </summary>
+      <div class="nhsuk-details__text">
+
+        <h3 class='nhsuk-heading-s'>If you've not yet sent messages using NHS Notify</h3>
+
+        <p>Tell your onboarding manager once you've submitted all your templates.</p>
+
+        <p>If you replaced a template by submitting a new one, tell your onboarding manager which template you want to use.</p>
+
+        <h3 class='nhsuk-heading-s'>If you've sent messages using NHS Notify</h3>
+
+        <p><a href='https://nhsdigitallive.service-now.com/csm?id=sc_cat_item&sys_id=ce81c3ae1b1c5190892d4046b04bcb83' target='_blank'>Raise a request with the Service Desk (opens in a new tab)</a> once you've submitted all your templates.</p>
+
+        <h4 class='nhsuk-heading-xs'>How to raise a Service Now request</h4>
+
+        {% include '../includes/details-service-now.html' %}
+
+      </div>
+    </details>
+
+      <form action="/404">
+        {{ button({
+          'text': 'Create template'
+        }) }}
+      </form>
+
+      {% if data['folder-1-app-templates'] == '1' or data['folder-1-email-templates'] == '1' or data['folder-1-sms-templates'] == '1' or data['folder-1-letter-templates'] == '1'%}
+
+      <table role="table" class="nhsuk-table-responsive">
+
+        <caption class="nhsuk-table__caption">List of templates</caption>
+
+        <thead role="rowgroup" class="nhsuk-table__head">
+          <tr role="row">
+            <th role="columnheader" class="" scope="col">
+              Name
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Type
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Status
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Date and <br />time created
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+
+
+          {% if data['folder-1-app-templates'] == '1' %}
+          
+          <tr role="row" class="nhsuk-table__row">
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Name </span>
+              <a href="/404">
+                {{ data['template-app-name-1'] }}
+              </a>
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Type </span>
+              NHS App
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Status </span>
+              {% if data['template-app-name-1-approved'] == '1' %}
+
+              {{ tag({
+                text: "Submitted",
+                classes: "nhsuk-tag--grey"
+              })}}
+
+              {% else %}
+
+              {{ tag({
+                text: "Not yet submitted"
+              })}}
+
+              {% endif %}
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />09:34
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Action </span>
+              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Copy</a></p>
+              {% if data['template-app-name-1-approved'] != '1' %}
+              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Delete</a></p>
+              {% endif %}
+            </td>
+          </tr>
+
+          {% endif %}
+
+
+
+          {% if data['folder-1-email-templates'] == '1' %}
+          
+          <tr role="row" class="nhsuk-table__row">
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Name </span>
+              <a href="/404">
+                {{ data['template-email-name-1'] }}
+              </a>
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Type </span>
+              Email
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Status </span>
+              {% if data['template-email-name-1-approved'] == '1' %}
+
+              {{ tag({
+                text: "Submitted",
+                classes: "nhsuk-tag--grey"
+              })}}
+
+              {% else %}
+
+              {{ tag({
+                text: "Not yet submitted"
+              })}}
+
+              {% endif %}
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />10:07
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Action </span>
+              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Copy</a></p>
+              {% if data['template-email-name-1-approved'] != '1' %}
+              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Delete</a></p>
+              {% endif %}
+            </td>
+          </tr>
+
+          {% endif %}
+
+
+
+          {% if data['folder-1-sms-templates'] == '1' %}
+          
+          <tr role="row" class="nhsuk-table__row">
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Name </span>
+              <a href="/404">
+                {{ data['template-sms-name-1'] }}
+              </a>
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Type </span>
+              Text message
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Status </span>
+              {% if data['template-sms-name-1-approved'] == '1' %}
+
+              {{ tag({
+                text: "Submitted",
+                classes: "nhsuk-tag--grey"
+              })}}
+
+              {% else %}
+
+              {{ tag({
+                text: "Not yet submitted"
+              })}}
+
+              {% endif %}
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />11:45
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Action </span>
+              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Copy</a></p>
+              {% if data['template-sms-name-1-approved'] != '1' %}
+              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Delete</a></p>
+              {% endif %}
+            </td>
+          </tr>
+
+          {% endif %}
+
+
+
+          {% if data['folder-1-letter-templates'] == '1' %}
+          
+          <tr role="row" class="nhsuk-table__row">
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Name </span>
+              <a href="/404">
+                {{ data['template-letter-name-1'] }}
+              </a>
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Type </span>
+              Letter
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Status </span>
+              {% if data['template-letter-name-1-approved'] == '1' %}
+
+              {{ tag({
+                text: "Submitted",
+                classes: "nhsuk-tag--grey"
+              })}}
+
+              {% else %}
+
+              {{ tag({
+                text: "Not yet submitted"
+              })}}
+
+              {% endif %}
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Date and time created </span>30th Apr 2024<br />11:49
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Action </span>
+              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Copy</a></p>
+              {% if data['template-letter-name-1-approved'] != '1' %}
+              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Delete</a></p>
+              {% endif %}
+            </td>
+          </tr>
+
+          {% endif %}
+
+          
+
+        </tbody>
+      </table>
+
+      {% else %}
+ 
+      <p>You do not have any templates yet.</p>
+
+      {% endif %}
+      
+    </div>
+  </div>
+{% endblock %}

@@ -4,8 +4,6 @@ const express = require('express');
 const router = express.Router();
 
 // Logging session data
-
-
 router.use((req, res, next) => {    
     const log = {  
       method: req.method,  
@@ -16,6 +14,13 @@ router.use((req, res, next) => {
    
   next()  
 })
+
+// Get current date & time
+router.use((req, res, next) => {
+  res.locals.currentDate = new Date();
+  next();
+});
+
 
 
 // Add your routes here - above the module.exports line

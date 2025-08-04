@@ -19,9 +19,29 @@ router.post('/{*any}/route-template-type', (req, res) => {
   if (radio_template_type === 'sms') {
     res.redirect('create-sms-template');
   }
+
+  if (radio_template_type === 'many-templates') {
+    res.redirect('folder-templates?show-templates=1');
+  }
+
+  if (radio_template_type === 'letter' && radio_template_type_letter === 'letter-standard') {
+    res.redirect('create-letter-template');
+  }
+
+  if (radio_template_type === 'letter' && radio_template_type_letter === 'letter-other-language') {
+    res.redirect('create-letter-language-template');
+  }
+
+  if (radio_template_type === 'letter' && radio_template_type_letter === 'letter-large-print') {
+    res.redirect('create-letter-large-print-template');
+  }
   
-  if (radio_template_type_letter === 'letter-non-eng') {
-    res.redirect('create-letter-non-eng-template');
+  if (radio_template_type === 'letter' && radio_template_type_letter === 'letter-braille') {
+    res.redirect('create-letter-braille-template');
+  }
+
+  if (radio_template_type === 'letter' && radio_template_type_letter === 'letter-audio-cd') {
+    res.redirect('create-letter-audio-cd-template');
   }
 
   /*
@@ -39,7 +59,7 @@ router.post('/{*any}/route-template-type', (req, res) => {
   */
 
   else {
-    res.redirect('create-letter-template');
+    res.redirect('/404');
   }
 
 });
@@ -184,5 +204,33 @@ router.post('/{*any}/route-choose-plan', (req, res) => {
   }
 
 });
+
+
+
+// Add templates to the data store when a form is submitted
+const { v4: uuidv4 } = require('uuid');
+
+router.post('/{*any}/create-letter-template-v2', function (req, res) {
+  const data = req.session.data;
+
+  // Create templates array if it doesn't exist
+  if (!data.templates) {
+    data.templates = [];
+  }
+
+  const newTemplate = {
+    letterStandardTemplateId: uuidv4(),
+    letterStandardTemplateType: req.body.letterStandardTemplateType,
+    letterStandardTemplateLanguage: req.body.letterStandardTemplateLanguage,
+    letterStandardTemplateName: req.body.letterStandardTemplateName,
+    letterStandardTemplateContent: req.body.letterStandardTemplateContent
+  };
+
+  data.templates.push(newTemplate);
+
+  res.redirect('template-letter-standard-v2');
+});
+
+
 
 module.exports = router

@@ -1,0 +1,88 @@
+{% extends 'v14/layout.html' %}
+
+{% block beforeContent %}
+
+{{ backLink({
+  "href": "folder-templates",
+  "text": "Back to all templates"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">Choose a template type to create</h1>
+
+      <p><a href="https://notify.nhs.uk/features/">Learn more about message channels (opens in a new tab)</a>.</p>
+
+      <form action="route-template-type" method="post">
+
+      {% set letterHtml %}
+        {{ radios({
+          name: "radio-template-type-letter",
+          items: [
+            {
+              value: "letter-standard",
+              text: "Standard English letter"
+            },
+            {
+              value: "letter-other-language",
+              text: "Other language letter"
+            },
+            {
+              value: "letter-large-print",
+              text: "Large print letter"
+            },
+            {
+              value: "letter-braille",
+              text: "Braille letter"
+            },
+            {
+              value: "letter-audio-cd",
+              text: "Audio CD letter"
+            }
+          ]
+        }) }}
+      {% endset -%}
+
+      {{ radios({
+        "name": "radio-template-type",
+        "hint": {
+          "text": "Select one option"
+        },
+        "items": [
+          {
+            "value": "app",
+            "text": "NHS App message"
+          },
+          {
+            "value": "email",
+            "text": "Email"
+          },
+          {
+            "value": "sms",
+            "text": "Text message (SMS)"
+          },
+          {
+            "value": "letter",
+            "text": "Letter",
+            conditional: {
+              html: letterHtml
+            }
+          }
+        ]
+      }) }}
+
+      <input type="hidden" name="mode" value="">
+
+      {{ button({
+        'text': 'Continue'
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
