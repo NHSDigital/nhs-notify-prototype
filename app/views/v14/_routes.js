@@ -233,4 +233,26 @@ router.post('/{*any}/create-letter-template-v2', function (req, res) {
 
 
 
+
+
+// Route for radio buttons on standard letter preview page
+router.post('/{*any}/route-template-letter-standard', (req, res) => {
+
+  const template_letter_next = req.session.data['template-letter-next'];
+
+  if (template_letter_next === 'preview') {
+      res.redirect('template-letter-personalisation-setup');
+  }
+
+  else if (template_letter_next === 'edit') {
+    res.redirect('create-letter-template?mode=edit');
+  }
+
+  else {
+    res.redirect('/404');
+  }
+
+});
+
+
 module.exports = router

@@ -84,22 +84,141 @@
         </tbody>
       </table>
 
-      <div class="nhsnotify-letter-preview">
+      <div class="nhsnotify-letter-preview nhsuk-u-padding-top-3">
+
+        {% if data['template-letter-personalisation-field-short-1'] and data['template-locked'] != '1'  %}
+
+        {{ select({
+          id: "select-change-date",
+          name: "select-change-date",
+          label: {
+            text: "Change example personalisation data"
+          },
+          items: [
+            {
+              value: "short",
+              text: "Short example"
+            },
+            {
+              value: "medium",
+              text: "Medium example"
+            },
+            {
+              value: "long",
+              text: "Long example",
+              selected: true
+            }
+          ]
+        }) }}
+
+        {% endif %}
+
+        {% if data['template-letter-personalisation-field-short-1']%}
+
+        <div id="short">
+          
+          <img src="/images/letter-standard-page-1-short-data.jpg" alt="">
+
+          <img src="/images/letter-standard-page-2-short-data.jpg" alt="">
+
+        </div>
+
+        <div id="medium">
+          
+          <img src="/images/letter-standard-page-1-medium-data.jpg" alt="">
+
+          <img src="/images/letter-standard-page-2-medium-data.jpg" alt="">
+
+        </div>
+
+        <div id="long">
+
+          <img src="/images/letter-standard-page-1-long-data.jpg" alt="">
+
+          <img src="/images/letter-standard-page-2-long-data.jpg" alt="">
+
+        </div>
+
+        {% else %}
 
         <img src="/images/letter-standard-page-1.jpg" alt="">
 
         <img src="/images/letter-standard-page-2.jpg" alt="">
 
+        {% endif %}
+
       </div>
+
+      <script>
+          
+        const select = document.getElementById("select-change-date");
+        const short = document.getElementById("short");
+        const medium = document.getElementById("medium");
+        const long = document.getElementById("long");
+
+        // Show "long" section by default
+        short.hidden = true;
+        medium.hidden = true;
+        long.hidden = false;
+
+        select.addEventListener("change", function(e){
+
+          short.hidden = false;
+          medium.hidden = false;
+          long.hidden = false;
+
+          // Then hide the ones not selected
+          if (select.value == "short") {
+            medium.hidden = true;
+            long.hidden = true;
+          } else if (select.value == "medium") {
+            short.hidden = true;
+            long.hidden = true;
+          } else if (select.value == "long") {
+            short.hidden = true;
+            medium.hidden = true;
+          }
+
+        });
+          
+      </script>
 
 
       {% if data['template-locked'] != '1' %}
 
-      <form action="create-letter-template?mode=edit" method="post">        
+      <!--<form action="create-letter-template?mode=edit" method="post">        
    
         {{ button({
           text: "Edit template",
           classes: "nhsuk-button--secondary"
+        }) }}
+  
+      </form>-->
+
+      <form action="route-template-letter-standard" method="post">
+
+        {{ radios({
+          "name": "template-letter-next",
+          "fieldset": {
+            "legend": {
+              "text": "What would you like to do next?",
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "items": [
+          {
+            "value": "edit",
+            "text": "Edit template"
+          },
+          {
+            "value": "preview",
+            "text": "Add example personalisation data"
+          }
+          ]
+        }) }}
+  
+        {{ button({
+          "text": "Continue"
         }) }}
   
       </form>

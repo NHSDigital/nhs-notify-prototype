@@ -1,0 +1,143 @@
+{% extends 'v13/layout.html' %}
+
+{% block content %}
+
+{% from '../includes/choose-template-table-row.njk' import choose_template_row %}
+{% from '../includes/choose-template-table-row-language.njk' import choose_template_row_language %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+
+      <div class="nhsuk-u-reading-width">
+
+        {{ errorSummary({
+          titleText: "There is a problem",
+          descriptionText: "You have not chosen a template",
+          errorList: [
+            {
+              text: "Choose an NHS App template",
+              href: "#table-template-choice"
+            }
+          ]
+        }) }}
+
+        <span class="nhsuk-caption-l">{{ data['message-name-1'] }}</span>
+        <h1 class="nhsuk-heading-xl">  
+          Choose an NHS App template
+        </h1>
+
+      </div>
+
+      {% if data['show-templates'] == '1' %}
+
+      <form action="/404" method="post" autocomplete="off">
+
+        <p class="nhsuk-hint">Choose one option.</p>
+
+        <div class="nhsuk-form-group nhsuk-form-group--error">
+
+          <span class="nhsuk-error-message" id="example-error-error" style="display: block;">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Choose an NHS App template
+          </span>
+
+          <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6" id="table-template-choice">
+  
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+
+                <th role="columnheader" class="" scope="col">
+                  Select
+                </th>
+
+                <th role="columnheader" class="" scope="col">
+
+                  <button class="nhsnotify-sort-button">
+                    Name
+                    <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                      <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                      <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    </svg>
+                  </button>
+
+                </th>
+
+                <th role="columnheader" class="" scope="col">
+                  
+                  <button class="nhsnotify-sort-button">
+                    Type
+                    <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                      <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                      <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    </svg>
+                  </button>
+
+                </th>
+
+                <th role="columnheader" class="" scope="col">
+
+                  <button class="nhsnotify-sort-button">
+                    Last edited
+                    <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                      <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                      <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    </svg>
+                  </button>
+
+                </th>
+
+                <th role="columnheader" class="" scope="col">
+                </th>
+                
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+                
+              {{choose_template_row(templateName=data['template-1-name'], templateNumber='1', templateTypeName='NHS App', templateType='app', channelNumber=data["channel-number"] )}}
+
+              {{choose_template_row(templateName=data['template-2-name'], templateNumber='2', templateTypeName='NHS App', templateType='app', channelNumber=data["channel-number"] )}}
+
+              {{choose_template_row(templateName=data['template-3-name'], templateNumber='3', templateTypeName='NHS App', templateType='app', channelNumber=data["channel-number"] )}}
+
+              {% if data['show-folders'] == '1' %}
+
+              {{choose_template_row(templateName=data['template-10-name'], templateNumber='10', templateTypeName='NHS App', templateType='app', channelNumber=data["channel-number"], templateFolder='1', templateFolderName=data['template-folder-1-name'] )}}
+
+              {{choose_template_row(templateName=data['template-13-name'], templateNumber='13', templateTypeName='NHS App', templateType='app', channelNumber=data["channel-number"], templateFolder='2', templateFolderName=data['template-folder-2-name'] )}}
+
+              {% endif %}
+
+            </tbody>
+          </table>
+
+        </div>
+
+        <div class="nhsuk-form-group">
+
+          {{ button({
+            text: 'Save and continue'
+          }) }}
+
+          <a href="/404" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+
+        </div>
+
+      </form>
+
+      {% else%}
+
+      <p>You do not have any templates yet.</p>
+      
+      <div class="nhsuk-form-group">
+
+        <p><a href="folder-templates">Go to templates</a></p>
+
+        <p><a href="create-message">Go back</a></p>
+
+      </div>
+
+      {% endif %}
+
+    </div>
+  </div>
+{% endblock %}

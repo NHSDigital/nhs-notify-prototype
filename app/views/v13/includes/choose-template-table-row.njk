@@ -2,17 +2,19 @@
 
 <tr role="row" class="nhsuk-table__row {% if templateFolder %}template-folder-{{templateFolder}}{% endif %}">
 
-    <td role="cell" class="nhsuk-table__cell">
+    <!--<td role="cell" class="nhsuk-table__cell">
         <span class="nhsuk-table-responsive__heading">Select </span>
         <div class="nhsuk-radios__item">
             <input class="nhsuk-radios__input" id="template-{{templateNumber}}" name="channel-{{channelNumber}}-template" type="radio" value="{{templateName}}">
             <label class="nhsuk-label nhsuk-radios__label" for="template-{{templateNumber}}"></label>
         </div>
-    </td>
+    </td>-->
 
     <td role="cell" class="nhsuk-table__cell">
         <span class="nhsuk-table-responsive__heading">Name </span>
-        <label class="nhsuk-label nhsuk-radios__label" for="template-{{templateNumber}}">{{templateName}}</label>
+        <!--<label class="nhsuk-label nhsuk-radios__label" for="template-{{templateNumber}}">-->       
+            <a href="create-message-preview-template-{{templateType}}?preview-template-name={{templateName}}">{{templateName}}</a>
+        <!--</label>-->
         {% if templateFolder %}
         <span class="notify-body-s-grey">
             <svg class="notify-icon-folder-small" version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +52,18 @@
 
     <td role="cell" class="nhsuk-table__cell">
         <span class="nhsuk-table-responsive__heading">Action </span>
-        <p class="nhsuk-u-margin-bottom-2"><a href="create-message-preview-template-{{templateType}}?preview-template-name={{templateName}}">Preview</a></p>
+
+        <form method="post" action="create-message">
+
+            <input type="hidden" name="channel-{{channelNumber}}-template" value="{{templateName}}">
+
+            <button class="nhsuk-button nhsuk-button--secondary-solid" type="submit">
+                Choose template
+            </button>
+
+        </form>
+
+        <!--<p class="nhsuk-u-margin-bottom-2"><a href="create-message-preview-template-{{templateType}}?preview-template-name={{templateName}}">Preview</a></p>-->
     </td>
     
 </tr>
