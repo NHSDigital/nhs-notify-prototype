@@ -248,96 +248,97 @@
 
               <ul class="notify-routing-plan">
 
+                {% if 
+                  data['channel-4-large-print-template'] or 
+                  data['channel-4-braille-template'] or 
+                  data['channel-4-audio-cd-template'] or 
+                  data['channel-4-language-template'] 
+                %}
+
                 {% include "../includes/fallback-rules-accessible.html" %}
 
-                <li class="notify-channel-block" id="fourth-message">
+                {% else %}
+
+                {% endif %}
+
+                {% if data['channel-4-large-print-template'] %}
+
+                <li class="notify-channel-block">
 
                   <div class="notify-channel-block-outer">
                     <div class="notify-channel-block-inner">
 
                       <h3 class="nhsuk-heading-s">Large print letter (optional)</h3>
 
-                      {% if data['channel-4-large-print-template'] %}
-
                         <p><a href="create-message-preview-template-letter?preview-template-name={{ data['channel-4-large-print-template'] }}">{{ data['channel-4-large-print-template'] }}</a></p>
-
-                      {% else %}
-
-                        <p>No template</p>
-
-                      {% endif %}
 
                     </div>
                   </div>
 
                 </li>
 
-                <li class="notify-channel-block" id="fourth-message">
+                {% endif %}
+
+
+                {% if data['channel-4-braille-template'] %}
+
+                <li class="notify-channel-block">
 
                   <div class="notify-channel-block-outer">
                     <div class="notify-channel-block-inner">
                       <h3 class="nhsuk-heading-s">Braille letter (optional)</h3>
 
-                      {% if data['channel-4-braille-template'] %}
-
                         <p><a href="/404">{{ data['channel-4-braille-template'] }}</a></p>
-
-                      {% else %}
-
-                        <p>No template</p>
-
-                      {% endif %}
 
                     </div>
                   </div>
 
                 </li>
 
-                <li class="notify-channel-block" id="fourth-message">
+                {% endif %}
+
+
+
+                {% if data['channel-4-audio-cd-template'] %}
+
+                <li class="notify-channel-block">
 
                   <div class="notify-channel-block-outer">
                     <div class="notify-channel-block-inner">
 
                       <h3 class="nhsuk-heading-s">Audio CD letter (optional)</h3>
 
-                      {% if data['channel-4-audio-cd-template'] %}
-
                         <p><a href="/404">{{ data['channel-4-audio-cd-template'] }}</a></p>
-
-                      {% else %}
-
-                        <p>No template</p>
-
-                      {% endif %}
 
                     </div>
                   </div>
 
                 </li>
 
-                <li class="notify-channel-block" id="fourth-message">
+                {% endif %}
+
+
+
+
+                {% if data['channel-4-language-template'] %}
+
+                <li class="notify-channel-block">
 
                   <div class="notify-channel-block-outer">
                     <div class="notify-channel-block-inner">
 
                       <h3 class="nhsuk-heading-s">Other language letters (optional)</h3>
 
-                      {% if data['channel-4-language-template'] %}
-
                       {% set accessible_templates = data['channel-4-language-template'] %}
 
                       <p><a href="create-message-preview-template-letter?preview-template-name={{ accessible_templates[0] }}">{{ data['channel-4-language-template'] | escape | replace(",", "<br />") }}</a></p>
-
-                      {% else %}
-
-                      <p>No templates</p>
-
-                      {% endif %}
 
                     </div>
                   </div>
 
                 </li>
+
+                {% endif %}
 
               </ul>
 
