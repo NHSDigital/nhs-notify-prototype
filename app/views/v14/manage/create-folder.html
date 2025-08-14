@@ -39,8 +39,8 @@
         {% endif %}
       </h1>
 
-      <form action="folder" method="post" autocomplete="off">
-
+      <form action="folder" method="post" autocomplete="off" onsubmit="return checkFormFolder();">
+{#
         {{ input({
           label: {
             text: "Project name",
@@ -52,6 +52,27 @@
           name: "folder-name-1",
           value: data['folder-name-1']
         }) }}
+#}
+
+        <div class="nhsuk-form-group">
+
+          <label class="nhsuk-label nhsuk-label--s">
+            Project name
+          </label>
+
+          <div class="nhsuk-hint">
+            Your recipients will not see this and you can change it later.
+          </div>
+          
+          <input class="nhsuk-input" id="folder-name-1" name="folder-name-1" type="text">
+
+          <span class="nhsuk-error-message nhsuk-u-margin-top-2" id="folder-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a project name
+          </span>
+
+        </div>
+
+        
 
         <div class="nhsuk-form-group">
 
