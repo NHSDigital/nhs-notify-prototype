@@ -81,6 +81,18 @@
             </td>
           </tr>
 
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
+              Service level
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+
+              Standard<br />
+              <a href="/404" class="">Change service level</a>
+
+            </td>
+          </tr>
+
         </tbody>
       </table>
 
@@ -92,7 +104,7 @@
           id: "select-change-date",
           name: "select-change-date",
           label: {
-            text: "Change example personalisation data"
+            text: "Switch example personalisation"
           },
           items: [
             {
@@ -110,6 +122,12 @@
             }
           ]
         }) }}
+
+        <p><a href="template-letter-personalisation-setup">Change example personalisation</a></p>
+
+        {% else %}
+
+        <p><a href="template-letter-personalisation-setup">Preview with example personalisation</a></p>
 
         {% endif %}
 
@@ -186,14 +204,14 @@
 
       {% if data['template-locked'] != '1' %}
 
-      <!--<form action="create-letter-template?mode=edit" method="post">        
+      {#<form action="create-letter-template?mode=edit" method="post">        
    
         {{ button({
           text: "Edit template",
           classes: "nhsuk-button--secondary"
         }) }}
   
-      </form>-->
+      </form>
 
       <form action="route-template-letter-standard" method="post">
 
@@ -221,7 +239,19 @@
           "text": "Continue"
         }) }}
   
-      </form>
+      </form>#}
+      
+      <a href="create-letter-template?mode=edit" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-right-3">Edit template</a>
+
+      <a href="/404" class="nhsuk-button nhsuk-button--secondary">Download template (PDF)</a>
+
+      {#<a href="template-letter-personalisation-setup" class="nhsuk-button nhsuk-button--secondary">
+        {% if data['template-letter-personalisation-field-short-1'] %}
+        Change example personalisation
+        {% else %}
+        Add example personalisation
+        {% endif %}
+      </a>#}
 
       {% endif %}
 

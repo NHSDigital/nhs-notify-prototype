@@ -1,0 +1,269 @@
+<html>
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+            :root {
+            --base-fontsize: 16;
+            --medium-fontsize: calc(var(--base-fontsize) * 1pt);
+            --small-fontsize: calc(var(--base-fontsize) * 0.8pt);
+            --large-fontsize: calc(var(--base-fontsize) * 1.3pt);
+            --xlarge-fontsize: calc(var(--base-fontsize) * 1.6pt);
+            }
+
+            @page {
+            size: A4;
+            margin: 10mm 15mm 16mm 15mm;
+            font-family: 'Noto Sans';
+            @bottom-right {
+                content: 'Page ' counter(page) ' of ' counter(pages);
+            }
+            }
+
+            body {
+            /*margin: 10mm 15mm 16mm 15mm;*/
+            font-size: var(--medium-fontsize);
+            font-family: 'Noto Sans';
+            }
+
+            .rtl {
+            text-align: right;
+            direction: rtl;
+            }
+
+            .non-breaking-content {
+            page-break-inside: avoid;
+            }
+
+            #letterhead-band {
+            display: flex;
+            width: 100%;
+            height: 20mm;
+            overflow: hidden;
+            }
+
+            #address-band {
+            display: flex;
+            height: 65mm;
+            }
+
+            #address-window {
+            font-size: 7pt;
+            height: 26.8mm;
+            width: 95.4mm;
+            overflow: hidden;
+            margin-left: 9.6mm;
+            margin-right: 5mm;
+            margin-top: 9.5mm;
+            margin-bottom: 28.7mm;
+            }
+
+            #address-band-right {
+            overflow: hidden;
+            width: 70mm;
+            }
+
+            .link {
+            color: black;
+            font-weight: 700;
+            word-break: break-word;
+            }
+
+            #address-band-right-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 100%;
+            }
+
+            #nhs-number {
+            text-align: right;
+            font-size: var(--small-fontsize);
+            }
+
+            #date {
+            text-align: right;
+            font-size: var(--small-fontsize);
+            }
+
+            #qr-code {
+            width: 20mm;
+            height: 20mm;
+            }
+
+            #nhs-logo {
+            margin-right: 10mm;
+            margin-top: 5mm;
+            margin-left: auto;
+            }
+
+            .headed-list ul {
+            margin-top: 0.4em;
+            }
+
+            .headed-list p {
+            margin-bottom: 0.4em;
+            }
+
+            #data-protection {
+            font-size: var(--small-fontsize);
+            }
+
+            strong {
+            font-family: 'Noto Sans';
+            font-weight: 600;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div id="letterhead-band">
+            <img id="nhs-logo" src="/images/nhs-logo.svg" />
+        </div>
+        <div id="address-band">
+        <div id="address-window">
+            Mr Max Mustermann<br />
+            1 Main Road<br />
+            Manchester<br />
+            M14 6YU<br />
+        </div>
+        <div id="address-band-right">
+            <div id="address-band-right-content">
+            <div id="nhs-number"><strong>NHS number:</strong> 668 639 8797</div>
+            <div id="date"><strong>Date:</strong> 17 August 2023</div>
+            </div>
+        </div>
+        </div>
+
+        <h2>TEST Your next COVID-19 vaccination</h2>
+        <p>Dear Mr Max Mustermann</p>
+        <p>
+        I'm writing to remind you to get your COVID-19 vaccination this spring. This
+        is because either:
+        </p>
+        <ul>
+        <li>you're aged <strong>75 or over</strong> (by 30 June 2023), or</li>
+        <li>
+            your NHS record suggests you may have a
+            <strong>weakened immune system</strong> due to a health condition or medical
+            treatment.
+        </li>
+        </ul>
+        <p>
+        It's important you get this further vaccination as soon as possible, as
+        protection fades over time. Your protection may reduce more quickly than other
+        people's does. This vaccination will lower your risk of hospital admission and
+        help you to recover more quickly if you catch COVID-19 during the spring or
+        summer.
+        </p>
+        <p>
+        The final day to get your spring vaccination is 30 June 2023. Arrange your
+        vaccination as soon as possible if you don't already have an appointment
+        booked.
+        </p>
+        <div class="headed-list non-breaking-content">
+        <p><strong>To book online:</strong></p>
+        <ul>
+            <li>
+            Visit <span class="link">www.nhs.uk/get-vaccination</span> or scan the QR
+            code at the top of this invitation.
+            </li>
+        </ul>
+        </div>
+        <div class="headed-list non-breaking-content">
+        <p><strong>To book using the NHS App:</strong></p>
+        <ul>
+            <li>
+            Log in and choose ‘Book or manage a coronavirus (COVID-19)
+            vaccination'. The app is available at nhs.uk/NHSapp.
+            </li>
+        </ul>
+        </div>
+        <div class="headed-list non-breaking-content">
+        <p><strong>To find a walk-in site:</strong></p>
+        <ul>
+            <li>
+            You can also go to a <strong>walk-in vaccination site</strong> without an
+            appointment. Check before you go at
+            <span class="link">www.nhs.uk/vaccine-walk-in</span>.
+            </li>
+        </ul>
+        </div>
+        <div class="headed-list non-breaking-content">
+        <p><strong>On the phone:</strong></p>
+        <ul>
+            <li>
+            If you can't get online, phone 119 free of charge to book an appointment
+            or find a walk-in site. Someone else can phone for you. If you need an
+            interpreter, please let us know when you call.
+            </li>
+            <li>
+            You can use text phone 18001 119 or the NHS British Sign Language
+            interpreter service at
+            <span class="link">signvideo.co.uk/nhs119</span>.
+            </li>
+        </ul>
+        </div>
+        <p>
+        If you usually get your care at home, contact your GP practice. They should
+        either provide a home vaccination or arrange one with another local NHS
+        service.
+        </p>
+        <div class="non-breaking-content">
+        <p>
+            <strong>At your appointment</strong><br />
+            If you are aged under 75, please bring this invitation, an NHS letter
+            describing your condition or treatment, or a repeat prescription or medicine
+            box with your name and a recent date. You'll need to speak to someone before
+            vaccination to check that you're eligible.
+        </p>
+        </div>
+        <div class="non-breaking-content">
+        <p>
+            <strong>Pneumonia vaccination</strong><br />
+            If you're aged 65 or over, or have certain long-term health conditions, you
+            may also be eligible for a one-off pneumonia vaccination if you haven't had
+            it already. If you're eligible, and you're having your COVID-19 vaccination
+            at your GP practice, you may be able to have your pneumonia vaccination at
+            the same time. If it's not possible to have them at the same time you may be
+            able to book a separate appointment with your GP practice. For more
+            information and to check if you're eligible visit <span class="link"
+            >www.nhs.uk/conditions/vaccinations/pneumococcal-vaccination</span
+            >.
+        </p>
+        </div>
+        <p>
+        <strong>For more information</strong><br />
+        Please read the enclosed leaflet before your vaccination. The leaflet is
+        available in other languages and formats at
+        <span class="link">https://qrco.de/NHSpb</span>. Further information on the
+        vaccine is also available at
+        <span class="link">www.nhs.uk/covidvaccination</span>.
+        </p>
+        <div class="non-breaking-content">
+        <p>Yours sincerely,</p>
+        <p>
+            Dr Nikita Kanani MBE<br />
+            GP and Deputy Lead, NHS COVID-19 Vaccination Programme<br />
+            NHS England
+        </p>
+        <div id="data-protection" class="non-breaking-content">
+            <strong>Data Protection:</strong> NHS England is responsible for processing
+            your personal data for the purposes of the COVID-19 vaccination programme.
+            To find out more, you can access our privacy notice at:
+            <span class="link"
+            >https://www.england.nhs.uk/contact-us/privacy-notice/</span
+            >, or search for “NHS England Privacy Notice” in your website browser. For
+            information on updating your contact preferences, please visit
+            <span class="link">https://www.nhs.uk/covid-invite-preferences</span> or
+            phone 119 free of charge.
+        </div>
+        </div>
+
+    </body>
+
+</html>

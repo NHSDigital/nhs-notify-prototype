@@ -41,6 +41,7 @@
     "path": "^0.12.7",
     "path-to-regexp": "^8.2.0",
     "plugin-error": "^2.0.1",
+    "puppeteer": "^24.16.1",
     "sass-embedded": "1.77.5",
     "uuid": "^11.1.0"
   },

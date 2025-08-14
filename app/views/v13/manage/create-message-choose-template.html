@@ -1,12 +1,12 @@
 {% extends 'v13/layout.html' %}
 
 {% block beforeContent %}
-
+{#
 {{ backLink({
   "href": "javascript:history.go(-1);",
   "text": "Go back"
 }) }}
-
+#}
 {% endblock %}
 
 {% block content %}
@@ -51,7 +51,7 @@
 
       {% if data['show-templates'] == '1' %}
 
-      <!--<form action="create-message" method="post" autocomplete="off">-->
+      <form action="create-message" method="post" autocomplete="off">
 
 
         
@@ -67,9 +67,9 @@
           <thead role="rowgroup" class="nhsuk-table__head">
             <tr role="row">
 
-              <!--<th role="columnheader" class="" scope="col">
+              <th role="columnheader" class="" scope="col">
                 Select
-              </th>-->
+              </th>
 
               <th role="columnheader" class="" scope="col">
 
@@ -113,12 +113,33 @@
             </tr>
           </thead>
           <tbody class="nhsuk-table__body">
-              
-            {{choose_template_row(templateName=data['template-1-name'], templateNumber='1', templateTypeName='NHS App', templateType='app', channelNumber=data["channel-number"] )}}
 
-            {{choose_template_row(templateName=data['template-2-name'], templateNumber='2', templateTypeName='NHS App', templateType='app', channelNumber=data["channel-number"] )}}
+            {{choose_template_row(
+              templateName=data['template-1-name'], 
+              templateNumber='1', 
+              templateTypeName='NHS App', 
+              templateType='app', 
+              channelNumber=data['channel-number'], 
+              selectedTemplate=data['channel-1-template']
+            )}}
 
-            {{choose_template_row(templateName=data['template-3-name'], templateNumber='3', templateTypeName='NHS App', templateType='app', channelNumber=data["channel-number"] )}}
+            {{choose_template_row(
+              templateName=data['template-2-name'], 
+              templateNumber='2', 
+              templateTypeName='NHS App', 
+              templateType='app', 
+              channelNumber=data['channel-number'], 
+              selectedTemplate=data['channel-1-template']
+            )}}
+
+            {{choose_template_row(
+              templateName=data['template-3-name'], 
+              templateNumber='3', 
+              templateTypeName='NHS App', 
+              templateType='app', 
+              channelNumber=data['channel-number'], 
+              selectedTemplate=data['channel-1-template']
+            )}}
 
             {% if data['show-folders'] == '1' %}
 
@@ -147,9 +168,9 @@
           <thead role="rowgroup" class="nhsuk-table__head">
             <tr role="row">
 
-              <!--<th role="columnheader" class="" scope="col">
+              <th role="columnheader" class="" scope="col">
                 Select
-              </th>-->
+              </th>
 
               <th role="columnheader" class="" scope="col">
 
@@ -194,11 +215,32 @@
           </thead>
           <tbody class="nhsuk-table__body">
 
-            {{choose_template_row(templateName=data['template-4-name'], templateNumber='4', templateTypeName='Text message (SMS)', templateType='sms', channelNumber=data["channel-number"] )}}
+            {{choose_template_row(
+              templateName=data['template-4-name'], 
+              templateNumber='4', 
+              templateTypeName='Text message (SMS)', 
+              templateType='sms', 
+              channelNumber=data['channel-number'], 
+              selectedTemplate=data['channel-3-template']
+            )}}
 
-            {{choose_template_row(templateName=data['template-5-name'], templateNumber='5', templateTypeName='Text message (SMS)', templateType='sms', channelNumber=data["channel-number"] )}}
+            {{choose_template_row(
+              templateName=data['template-5-name'], 
+              templateNumber='5', 
+              templateTypeName='Text message (SMS)', 
+              templateType='sms', 
+              channelNumber=data['channel-number'], 
+              selectedTemplate=data['channel-3-template']
+            )}}
 
-            {{choose_template_row(templateName=data['template-6-name'], templateNumber='6', templateTypeName='Text message (SMS)', templateType='sms', channelNumber=data["channel-number"] )}}
+            {{choose_template_row(
+              templateName=data['template-6-name'], 
+              templateNumber='6', 
+              templateTypeName='Text message (SMS)', 
+              templateType='sms', 
+              channelNumber=data['channel-number'], 
+              selectedTemplate=data['channel-3-template']
+            )}}
 
             {% if data['show-folders'] == '1' %}
 
@@ -226,9 +268,9 @@
           <thead role="rowgroup" class="nhsuk-table__head">
             <tr role="row">
 
-              <!--<th role="columnheader" class="" scope="col">
+              <th role="columnheader" class="" scope="col">
                 Select
-              </th>-->
+              </th>
 
               <th role="columnheader" class="" scope="col">
 
@@ -273,11 +315,32 @@
           </thead>
           <tbody class="nhsuk-table__body">
 
-            {{choose_template_row(templateName=data['template-7-name'], templateNumber='7', templateTypeName='Email', templateType='email', channelNumber=data["channel-number"] )}}
+            {{choose_template_row(
+              templateName=data['template-7-name'], 
+              templateNumber='7', 
+              templateTypeName='Email', 
+              templateType='email', 
+              channelNumber=data['channel-number'], 
+              selectedTemplate=data['channel-2-template']
+            )}}
 
-            {{choose_template_row(templateName=data['template-8-name'], templateNumber='8', templateTypeName='Email', templateType='email', channelNumber=data["channel-number"] )}}
+            {{choose_template_row(
+              templateName=data['template-8-name'], 
+              templateNumber='8', 
+              templateTypeName='Email', 
+              templateType='email', 
+              channelNumber=data['channel-number'], 
+              selectedTemplate=data['channel-2-template']
+            )}}
 
-            {{choose_template_row(templateName=data['template-9-name'], templateNumber='9', templateTypeName='Email', templateType='email', channelNumber=data["channel-number"] )}}
+            {{choose_template_row(
+              templateName=data['template-9-name'], 
+              templateNumber='9', 
+              templateTypeName='Email', 
+              templateType='email', 
+              channelNumber=data['channel-number'], 
+              selectedTemplate=data['channel-2-template']
+            )}}
 
             {% if data['show-folders'] == '1' %}
 
@@ -307,9 +370,9 @@
           <thead role="rowgroup" class="nhsuk-table__head">
             <tr role="row">
 
-              <!--<th role="columnheader" class="" scope="col">
+              <th role="columnheader" class="" scope="col">
                 Select
-              </th>-->
+              </th>
               
               <th role="columnheader" class="" scope="col">
 
@@ -354,11 +417,32 @@
           </thead>
           <tbody class="nhsuk-table__body">
 
-            {{choose_template_row(templateName=data['template-10-name'], templateNumber='10', templateTypeName='Standard letter', templateType='letter', channelNumber=data["channel-number"] )}}
+            {{choose_template_row(
+              templateName=data['template-10-name'], 
+              templateNumber='10', 
+              templateTypeName='Standard letter', 
+              templateType='letter', 
+              channelNumber=data['channel-number'], 
+              selectedTemplate=data['channel-4-template']
+            )}}
 
-            {{choose_template_row(templateName=data['template-11-name'], templateNumber='11', templateTypeName='Standard letter', templateType='letter', channelNumber=data["channel-number"] )}}
+            {{choose_template_row(
+              templateName=data['template-11-name'], 
+              templateNumber='11', 
+              templateTypeName='Standard letter', 
+              templateType='letter', 
+              channelNumber=data['channel-number'], 
+              selectedTemplate=data['channel-4-template'] 
+            )}}
 
-            {{choose_template_row(templateName=data['template-12-name'], templateNumber='12', templateTypeName='Standard letter', templateType='letter', channelNumber=data["channel-number"] )}}
+            {{choose_template_row(
+              templateName=data['template-12-name'], 
+              templateNumber='12', 
+              templateTypeName='Standard letter', 
+              templateType='letter', 
+              channelNumber=data['channel-number'], 
+              selectedTemplate=data['channel-4-template'] 
+            )}}
 
             <!--{% if data['show-folders'] == '1' %}
 
@@ -387,9 +471,9 @@
           <thead role="rowgroup" class="nhsuk-table__head">
             <tr role="row">
 
-              <!--<th role="columnheader" class="" scope="col">
+              <th role="columnheader" class="" scope="col">
                 Select
-              </th>-->
+              </th>
               
               <th role="columnheader" class="" scope="col">
 
@@ -449,11 +533,15 @@
 
         <div class="nhsuk-form-group">
 
-          <a href="javascript:history.go(-1);" class="nhsuk-u-font-size-19 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+          {{ button({
+            text: 'Save and continue'
+          }) }}
+
+          <a href="javascript:history.go(-1);" class="nhsuk-u-font-size-19 nhsuk-u-padding-top-3 nhsuk-u-margin-left-3" style="display: inline-block;">Go back</a>
 
         </div>
 
-      <!--</form>-->
+      </form>
 
       {% else%}
 

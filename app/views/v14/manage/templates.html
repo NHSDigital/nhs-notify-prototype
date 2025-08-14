@@ -4,40 +4,44 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
 
-      <h1>
-        Message templates
-      </h1>
+      <div class="nhsuk-u-reading-width">
 
-      <details class="nhsuk-details">
-      <summary class="nhsuk-details__summary">
-        <span class="nhsuk-details__summary-text">
-          How to tell us your templates are ready
-        </span>
-      </summary>
-      <div class="nhsuk-details__text">
+        <h1>
+          Message templates
+        </h1>
 
-        <h3 class='nhsuk-heading-s'>If you've not yet sent messages using NHS Notify</h3>
+        <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            How to tell us your templates are ready
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
 
-        <p>Tell your onboarding manager once you've submitted all your templates.</p>
+          <h3 class='nhsuk-heading-s'>If you've not yet sent messages using NHS Notify</h3>
 
-        <p>If you replaced a template by submitting a new one, tell your onboarding manager which template you want to use.</p>
+          <p>Tell your onboarding manager once you've submitted all your templates.</p>
 
-        <h3 class='nhsuk-heading-s'>If you've sent messages using NHS Notify</h3>
+          <p>If you replaced a template by submitting a new one, tell your onboarding manager which template you want to use.</p>
 
-        <p><a href='https://nhsdigitallive.service-now.com/csm?id=sc_cat_item&sys_id=ce81c3ae1b1c5190892d4046b04bcb83' target='_blank'>Raise a request with the Service Desk (opens in a new tab)</a> once you've submitted all your templates.</p>
+          <h3 class='nhsuk-heading-s'>If you've sent messages using NHS Notify</h3>
 
-        <h4 class='nhsuk-heading-xs'>How to raise a Service Now request</h4>
+          <p><a href='https://nhsdigitallive.service-now.com/csm?id=sc_cat_item&sys_id=ce81c3ae1b1c5190892d4046b04bcb83' target='_blank'>Raise a request with the Service Desk (opens in a new tab)</a> once you've submitted all your templates.</p>
 
-        {% include '../includes/details-service-now.html' %}
+          <h4 class='nhsuk-heading-xs'>How to raise a Service Now request</h4>
+
+          {% include '../includes/details-service-now.html' %}
+
+        </div>
+      </details>
+
+        <form action="/404">
+          {{ button({
+            'text': 'Create template'
+          }) }}
+        </form>
 
       </div>
-    </details>
-
-      <form action="/404">
-        {{ button({
-          'text': 'Create template'
-        }) }}
-      </form>
 
       {% if data['folder-1-app-templates'] == '1' or data['folder-1-email-templates'] == '1' or data['folder-1-sms-templates'] == '1' or data['folder-1-letter-templates'] == '1'%}
 
