@@ -32,14 +32,10 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1 class="nhsuk-heading-xl">
-        {% if data['rename-folder'] == '1' %}
-          Rename project
-        {% else %}
-          Create a project
-        {% endif %}
+        Create a project
       </h1>
 
-      <form action="folder" method="post" autocomplete="off" onsubmit="return checkFormFolder();">
+      <form action="folders" method="post" autocomplete="off" onsubmit="return checkFormFolder();">
 {#
         {{ input({
           label: {
@@ -82,7 +78,7 @@
             'text': 'Save and continue'
           }) }}
 
-          <a href="folders?folder-name-1=An%20example%20project&folders=1" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+          <a href="folders?folder-name-1={{ data['folder-name-1'] }}&folders=1" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
 
         </div>
 

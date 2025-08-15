@@ -37,13 +37,10 @@
 
       <form action="create-folder" method="post">
 
-        <input type="hidden" name="rename-project" value="">
-        <input type="hidden" name="folder-name-1" value="">
-        <input type="hidden" name="rename-folder" value="">
-
         {{ button({
           'text': 'New project'
         }) }}
+        
       </form>
 
       {% if data['folders'] == '1' %}
@@ -97,7 +94,7 @@
 
             <td role="cell" class="nhsuk-table__cell">
               <span class="nhsuk-table-responsive__heading">Action </span>
-              <p class="nhsuk-u-margin-bottom-2"><a href="create-folder?rename-folder=1">Rename</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Rename</a></p>
               <p class="nhsuk-u-margin-bottom-2"><a href="/404">Copy</a></p>
               <p class="nhsuk-u-margin-bottom-2"><a href="/404">Archive</a></p>
             </td>
