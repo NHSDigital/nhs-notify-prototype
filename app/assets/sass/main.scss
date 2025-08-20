@@ -656,6 +656,24 @@ a:not(.nhsuk-button):not(:hover):not(:focus):not(:active):visited {
         }
     }
 
+    .nhsnotify-pagination_item_arrow{
+        width: auto;
+        font-size: 19px;
+        font-weight: 600;
+        display: inline-block;
+        vertical-align: middle;
+
+        svg {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
+    .nhsnotify-pagination_item_arrow_next{
+        padding-left: 12px;
+        padding-right: 5px;
+    }
+
     .nhsnotify-pagination_count{
         margin-top: 18px;
     }

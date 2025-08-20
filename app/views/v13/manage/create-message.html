@@ -147,6 +147,10 @@
                 <a href="create-message-choose-template?message-type={{ data['channel-1-type'] }}&channel-number=1">Change template</a>
               </p>
 
+              <p>
+                <a href="?channel-1-template=" style="color: #d5281b;">Remove template</a>
+              </p>
+
               {% else %}
               
               <p><a href="create-message-choose-template?message-type={{ data['channel-1-type'] }}&channel-number=1">Choose template</a></p>
@@ -185,6 +189,10 @@
                 <a href="create-message-choose-template?message-type={{ data['channel-2-type'] }}&channel-number=2">Change template</a>
               </p>
 
+              <p>
+                <a href="?channel-2-template=" style="color: #d5281b;">Remove template</a>
+              </p>
+
               {% else %}
               
               <p><a href="create-message-choose-template?message-type={{ data['channel-2-type'] }}&channel-number=2">Choose template</a></p>
@@ -221,6 +229,10 @@
               <p>
                 {{ data['channel-3-template'] }}<br />
                 <a href="create-message-choose-template?message-type={{ data['channel-3-type'] }}&channel-number=3">Change template</a>
+              </p>
+
+              <p>
+                <a href="?channel-3-template=" style="color: #d5281b;">Remove template</a>
               </p>
 
               {% else %}
@@ -264,6 +276,10 @@
                 <a href="create-message-choose-template?message-type=Letter&channel-number=4">Change template</a>
               </p>
 
+              <p>
+                <a href="?channel-4-template=" style="color: #d5281b;">Remove template</a>
+              </p>
+
               {% else %}
               
               <p><a href="create-message-choose-template?message-type=Letter&channel-number=4">Choose template</a></p>
@@ -294,7 +310,9 @@
                           <a href="create-message-choose-template?message-type=Large print&channel-number=4-large-print">Change template</a>
                         </p>
 
-                        <p><a href="?channel-4-large-print-template=" style="color: #d5281b;">Remove template</a></p>
+                        <p>
+                          <a href="?channel-4-large-print-template=" style="color: #d5281b;">Remove template</a>
+                        </p>
 
 
                       {% else %}
@@ -321,7 +339,9 @@
                           <a href="create-message-choose-template?message-type=Braille&channel-number=4-braille">Change template</a>
                         </p>
 
-                        <p><a href="?channel-4-braille-template=" style="color: #d5281b;">Remove template</a></p>
+                        <p>
+                          <a href="?channel-4-braille-template=" style="color: #d5281b;">Remove template</a>
+                        </p>
 
 
                       {% else %}

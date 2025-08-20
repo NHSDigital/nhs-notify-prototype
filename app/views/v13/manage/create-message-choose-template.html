@@ -18,16 +18,20 @@
 
     <div class="nhsuk-grid-column-full">
 
-      <span class="nhsuk-caption-l">{{ data['message-name-1'] }}</span>
-      <h1 class="nhsuk-heading-xl">  
-        {% if data['message-type'] == 'NHS App' %}Choose an NHS App template{%endif%}
-        {% if data['message-type'] == 'Email' %}Choose an email template{%endif%}
-        {% if data['message-type'] == 'Text message (SMS)' %}Choose a text message (SMS) template{%endif%}
-        {% if data['message-type'] == 'Letter' %}Choose a standard English letter template{%endif%}
-        {% if data['message-type'] == 'Large print' %}Choose a large print letter template{%endif%}
-        {% if data['message-type'] == 'Braille' %}Choose a braille letter template{%endif%}
-        {% if data['message-type'] == 'Other language' %}Choose other language templates{%endif%}
-      </h1>
+      <div class="nhsuk-u-reading-width">
+
+        <span class="nhsuk-caption-l">{{ data['message-name-1'] }}</span>
+        <h1 class="nhsuk-heading-xl">  
+          {% if data['message-type'] == 'NHS App' %}Choose an NHS App template{%endif%}
+          {% if data['message-type'] == 'Email' %}Choose an email template{%endif%}
+          {% if data['message-type'] == 'Text message (SMS)' %}Choose a text message (SMS) template{%endif%}
+          {% if data['message-type'] == 'Letter' %}Choose a standard English letter template{%endif%}
+          {% if data['message-type'] == 'Large print' %}Choose a large print letter template{%endif%}
+          {% if data['message-type'] == 'Braille' %}Choose a braille letter template{%endif%}
+          {% if data['message-type'] == 'Other language' %}Choose other language templates{%endif%}
+        </h1>
+
+      </div>
 
       {#
       {% if data['show-templates'] == '1' and data['show-folders'] == '1' %}
@@ -59,6 +63,25 @@
 
 
         {% if data['message-type'] == 'NHS App' %}
+
+        {% if data['channel-1-template'] %}
+
+        <table role="table" class="notify-template-content nhsuk-u-margin-bottom-6">
+          <tbody class="nhsuk-table__body">
+
+            <tr role="row" class="nhsuk-table__row">
+              <th role="cell" class="nhsuk-table__cell" style="width:25%;">
+                Current template
+              </th>
+              <td role="cell" class="nhsuk-table__cell">
+                {{ data['channel-1-template'] }}
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        {% endif %}
 
         <p class="nhsuk-hint">Choose one option.</p>
 
@@ -152,6 +175,32 @@
           </tbody>
         </table>
 
+        <div class="nhsuk-form-group" style="float: right;">
+          <label class="nhsuk-label" for="select-1" style="display: inline-block;">
+            Show
+          </label>
+          <select class="nhsuk-select" id="number-templates" name="number-templates" style="display: inline-block; min-width: auto;">
+            <option value="18">18</option>
+            <option value="36">36</option>
+            <option value="all">All</option>
+          </select>
+        </div>
+
+        <nav class="nhsnotify-pagination">
+          <span class="nhsnotify-pagination_item nhsnotify-pagination_item_current">1</span>
+          <a href="/404">
+            <span class="nhsnotify-pagination_item">2</span>
+          </a>
+          <a href="/404">
+            <span class="nhsnotify-pagination_item nhsnotify-pagination_item_arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" class="nhsuk-icon nhsuk-icon__chevron-right" viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
+                <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"/>
+              </svg>
+            </span>
+          </a>
+          <p class="nhsnotify-pagination_count">18 of 36 templates</p>
+        </nav>
+
         {% endif %}
 
 
@@ -160,6 +209,25 @@
 
 
         {% if data['message-type'] == 'Text message (SMS)' %}
+
+        {% if data['channel-3-template'] %}
+
+        <table role="table" class="notify-template-content nhsuk-u-margin-bottom-6">
+          <tbody class="nhsuk-table__body">
+
+            <tr role="row" class="nhsuk-table__row">
+              <th role="cell" class="nhsuk-table__cell" style="width:25%;">
+                Current template
+              </th>
+              <td role="cell" class="nhsuk-table__cell">
+                {{ data['channel-3-template'] }}
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        {% endif %}
 
         <p class="nhsuk-hint">Choose one option.</p>
 
@@ -260,6 +328,25 @@
 
 
         {% if data['message-type'] == 'Email' %}
+
+        {% if data['channel-2-template'] %}
+
+        <table role="table" class="notify-template-content nhsuk-u-margin-bottom-6">
+          <tbody class="nhsuk-table__body">
+
+            <tr role="row" class="nhsuk-table__row">
+              <th role="cell" class="nhsuk-table__cell" style="width:25%;">
+                Current template
+              </th>
+              <td role="cell" class="nhsuk-table__cell">
+                {{ data['channel-2-template'] }}
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        {% endif %}
 
         <p class="nhsuk-hint">Choose one option.</p>
 
@@ -363,6 +450,25 @@
 
         {% if data['message-type'] == 'Letter' %}
 
+        {% if data['channel-4-template'] %}
+
+        <table role="table" class="notify-template-content nhsuk-u-margin-bottom-6">
+          <tbody class="nhsuk-table__body">
+
+            <tr role="row" class="nhsuk-table__row">
+              <th role="cell" class="nhsuk-table__cell" style="width:25%;">
+                Current template
+              </th>
+              <td role="cell" class="nhsuk-table__cell">
+                {{ data['channel-4-template'] }}
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        {% endif %}
+
         <p class="nhsuk-hint">Choose one option.</p>
 
         <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
@@ -463,6 +569,25 @@
 
 
         {% if data['message-type'] == 'Large print' %}
+
+        {% if data['channel-4-large-print-template'] %}
+
+        <table role="table" class="notify-template-content nhsuk-u-margin-bottom-6">
+          <tbody class="nhsuk-table__body">
+
+            <tr role="row" class="nhsuk-table__row">
+              <th role="cell" class="nhsuk-table__cell" style="width:25%;">
+                Current template
+              </th>
+              <td role="cell" class="nhsuk-table__cell">
+                {{ data['channel-4-large-print-template'] }}
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        {% endif %}
 
         <p class="nhsuk-hint">Choose one option.</p>
 

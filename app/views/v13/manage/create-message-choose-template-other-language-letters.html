@@ -45,6 +45,25 @@
 
       {% if data['show-templates'] == '1' %}
 
+      {% if data['channel-4-language-template'] %}
+
+      <table role="table" class="notify-template-content nhsuk-u-margin-bottom-6">
+        <tbody class="nhsuk-table__body">
+
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell" style="width:25%;">
+              Current templates
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              {{ data['channel-4-language-template'] | escape | replace(",", "<br />") }}
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      {% endif %}
+
       <form action="create-message" method="post" autocomplete="off">
 
         <p class="nhsuk-hint">Choose all the templates that you want to include in this message plan.</p>
