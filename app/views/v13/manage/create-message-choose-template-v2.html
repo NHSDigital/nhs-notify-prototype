@@ -1,18 +1,17 @@
 {% extends 'v13/layout.html' %}
 
 {% block beforeContent %}
-{#
+
 {{ backLink({
   "href": "javascript:history.go(-1);",
   "text": "Go back"
 }) }}
-#}
+
 {% endblock %}
 
 {% block content %}
 
-{% from '../includes/choose-template-table-row.njk' import choose_template_row %}
-{% from '../includes/choose-template-table-row-language.njk' import choose_template_row_language %}
+{% from '../includes/choose-template-table-row-v2.njk' import choose_template_row_v2 %}
 
   <div class="nhsuk-grid-row">
 
@@ -71,8 +70,7 @@
 
             <tr role="row" class="nhsuk-table__row">
               <th role="cell" class="nhsuk-table__cell" style="width:25%;">
-                {#Current template#}
-                Previously selected template
+                Current template
               </th>
               <td role="cell" class="nhsuk-table__cell">
                 {{ data['channel-1-template'] }}
@@ -84,16 +82,16 @@
 
         {% endif %}
 
-        <p class="nhsuk-hint">Choose one option.</p>
+        {#<p class="nhsuk-hint">Choose one option.</p>#}
 
         <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
  
           <thead role="rowgroup" class="nhsuk-table__head">
             <tr role="row">
 
-              <th role="columnheader" class="" scope="col">
+              {#<th role="columnheader" class="" scope="col">
                 Select
-              </th>
+              </th>#}
 
               <th role="columnheader" class="" scope="col">
 
@@ -138,7 +136,7 @@
           </thead>
           <tbody class="nhsuk-table__body">
 
-            {{choose_template_row(
+            {{choose_template_row_v2(
               templateName=data['template-1-name'], 
               templateNumber='1', 
               templateTypeName='NHS App', 
@@ -147,7 +145,7 @@
               selectedTemplate=data['channel-1-template']
             )}}
 
-            {{choose_template_row(
+            {{choose_template_row_v2(
               templateName=data['template-2-name'], 
               templateNumber='2', 
               templateTypeName='NHS App', 
@@ -156,7 +154,7 @@
               selectedTemplate=data['channel-1-template']
             )}}
 
-            {{choose_template_row(
+            {{choose_template_row_v2(
               templateName=data['template-3-name'], 
               templateNumber='3', 
               templateTypeName='NHS App', 

@@ -67,47 +67,37 @@
           <label class="nhsuk-label nhsuk-label--s" for="template-letter-language">
             Letter language
           </label>
-
-          {% if data['mode'] == 'edit' %}
-  
-          
-
-          {% else %}
-
-          
-
-          {% endif %}
-          
+        
           <select class="nhsuk-select" id="template-letter-language" name="template-letter-language">
             <option value="">Please select</option>
-            <option value="Albanian" {% if data['template-letter-language'] == 'Albanian' %}selected{% endif %}>Albanian</option>
-            <option value="Arabic" {% if data['template-letter-language'] == 'Arabic' %}selected{% endif %}>Arabic</option>
-            <option value="Bengali"  {% if data['template-letter-language'] == 'Bengali' %}selected{% endif %}>Bengali</option>
-            <option value="Bulgarian" {% if data['template-letter-language'] == 'Bulgarian' %}selected{% endif %}>Bulgarian</option>
-            <option value="Chinese" {% if data['template-letter-language'] == 'Chinese' %}selected{% endif %}>Chinese</option>
-            <option value="French" {% if data['template-letter-language'] == 'French' %}selected{% endif %}>French</option>
-            <option value="German" {% if data['template-letter-language'] == 'German' %}selected{% endif %}>German</option>
-            <option value="Modern Greek" {% if data['template-letter-language'] == 'Modern Greek' %}selected{% endif %}>Modern Greek</option>
-            <option value="Gujarati" {% if data['template-letter-language'] == 'Gujarati' %}selected{% endif %}>Gujarati</option>
-            <option value="Hindi" {% if data['template-letter-language'] == 'Hindi' %}selected{% endif %}>Hindi</option>
-            <option value="Italian" {% if data['template-letter-language'] == 'Italian' %}selected{% endif %}>Italian</option>
-            <option value="Latvian" {% if data['template-letter-language'] == 'Latvian' %}selected{% endif %}>Latvian</option>
-            <option value="Lithuanian" {% if data['template-letter-language'] == 'Lithuanian' %}selected{% endif %}>Lithuanian</option>
-            <option value="Nepali" {% if data['template-letter-language'] == 'Nepali' %}selected{% endif %}>Nepali</option>
-            <option value="Punjabi (Indian)" {% if data['template-letter-language'] == 'Punjabi (Indian)' %}selected{% endif %}>Punjabi (Indian)</option>
-            <option value="Persian" {% if data['template-letter-language'] == 'Persian' %}selected{% endif %}>Persian</option>
-            <option value="Polish" {% if data['template-letter-language'] == 'Polish' %}selected{% endif %}>Polish</option>
-            <option value="Portuguese" {% if data['template-letter-language'] == 'Portuguese' %}selected{% endif %}>Portuguese</option>
-            <option value="Romanian" {% if data['template-letter-language'] == 'Romanian' %}selected{% endif %}>Romanian</option>
-            <option value="Russian" {% if data['template-letter-language'] == 'Russian' %}selected{% endif %}>Russian</option>
-            <option value="Somali" {% if data['template-letter-language'] == 'Somali' %}selected{% endif %}>Somali</option>
-            <option value="Spanish" {% if data['template-letter-language'] == 'Spanish' %}selected{% endif %}>Spanish</option>
-            <option value="Tamil" {% if data['template-letter-language'] == 'Tamil' %}selected{% endif %}>Tamil</option>
-            <option value="Turkish" {% if data['template-letter-language'] == 'Turkish' %}selected{% endif %}>Turkish</option>
-            <option value="Urdu" {% if data['template-letter-language'] == 'Urdu' %}selected{% endif %}>Urdu</option>
-            <option value="Tagalog" {% if data['template-letter-language'] == 'Tagalog' %}selected{% endif %}>Tagalog</option>
-            <option value="Ukrainian" {% if data['template-letter-language'] == 'Ukrainian' %}selected{% endif %}>Ukrainian</option>
-            <option value="Vietnamese" {% if data['template-letter-language'] == 'Vietnamese' %}selected{% endif %}>Vietnamese</option>
+            <option value="Albanian (al)" {% if data['template-letter-language'] == 'Albanian (al)' %}selected{% endif %}>Albanian (al)</option>
+            <option value="Arabic (ar)" {% if data['template-letter-language'] == 'Arabic (ar)' %}selected{% endif %}>Arabic (ar)</option>
+            <option value="Bengali (bn)"  {% if data['template-letter-language'] == 'Bengali (bn)' %}selected{% endif %}>Bengali (bn)</option>
+            <option value="Bulgarian (bg)" {% if data['template-letter-language'] == 'Bulgarian (bg)' %}selected{% endif %}>Bulgarian (bg)</option>
+            <option value="Chinese (zh)" {% if data['template-letter-language'] == 'Chinese (zh)' %}selected{% endif %}>Chinese (zh)</option>
+            <option value="French (fr)" {% if data['template-letter-language'] == 'French (fr)' %}selected{% endif %}>French (fr)</option>
+            <option value="German (de)" {% if data['template-letter-language'] == 'German (de)' %}selected{% endif %}>German (de)</option>
+            <option value="Greek (el)" {% if data['template-letter-language'] == 'Greek (el)' %}selected{% endif %}>Greek (el)</option>
+            <option value="Gujarati (gu)" {% if data['template-letter-language'] == 'Gujarati (gu)' %}selected{% endif %}>Gujarati (gu)</option>
+            <option value="Hindi (hi)" {% if data['template-letter-language'] == 'Hindi (hi)' %}selected{% endif %}>Hindi (hi)</option>
+            <option value="Italian (it)" {% if data['template-letter-language'] == 'Italian (it)' %}selected{% endif %}>Italian (it)</option>
+            <option value="Latvian (lv)" {% if data['template-letter-language'] == 'Latvian (lv)' %}selected{% endif %}>Latvian (lv)</option>
+            <option value="Lithuanian (lt)" {% if data['template-letter-language'] == 'Lithuanian (lt)' %}selected{% endif %}>Lithuanian (lt)</option>
+            <option value="Nepali (ne)" {% if data['template-letter-language'] == 'Nepali (ne)' %}selected{% endif %}>Nepali (ne)</option>
+            <option value="Punjabi (Indian) (pa)" {% if data['template-letter-language'] == 'Punjabi (Indian) (pa)' %}selected{% endif %}>Punjabi (Indian) (pa)</option>
+            <option value="Persian (fa)" {% if data['template-letter-language'] == 'Persian (fa)' %}selected{% endif %}>Persian (fa)</option>
+            <option value="Polish (pl)" {% if data['template-letter-language'] == 'Polish (pl)' %}selected{% endif %}>Polish (pl)</option>
+            <option value="Portuguese (pt)" {% if data['template-letter-language'] == 'Portuguese (pt)' %}selected{% endif %}>Portuguese (pt)</option>
+            <option value="Romanian (ro)" {% if data['template-letter-language'] == 'Romanian (ro)' %}selected{% endif %}>Romanian (ro)</option>
+            <option value="Russian (ru)" {% if data['template-letter-language'] == 'Russian (ru)' %}selected{% endif %}>Russian (ru)</option>
+            <option value="Somali (so)" {% if data['template-letter-language'] == 'Somali (so)' %}selected{% endif %}>Somali (so)</option>
+            <option value="Spanish (es)" {% if data['template-letter-language'] == 'Spanish (es)' %}selected{% endif %}>Spanish (es)</option>
+            <option value="Tamil (ta)" {% if data['template-letter-language'] == 'Tamil (ta)' %}selected{% endif %}>Tamil (ta)</option>
+            <option value="Turkish (tr)" {% if data['template-letter-language'] == 'Turkish (tr)' %}selected{% endif %}>Turkish (tr)</option>
+            <option value="Urdu (ur)" {% if data['template-letter-language'] == 'Urdu (ur)' %}selected{% endif %}>Urdu (ur)</option>
+            <option value="Tagalog (tl)" {% if data['template-letter-language'] == 'Tagalog (tl)' %}selected{% endif %}>Tagalog (tl)</option>
+            <option value="Ukrainian (uk)" {% if data['template-letter-language'] == 'Ukrainian (uk)' %}selected{% endif %}>Ukrainian (uk)</option>
+            <option value="Vietnamese (vi)" {% if data['template-letter-language'] == 'Vietnamese (vi)' %}selected{% endif %}>Vietnamese (vi)</option>
           </select>
 
         </div>
@@ -126,121 +116,121 @@
             },  
             {
               value: 1,
-              text: "Albanian"
+              text: "Albanian (al)"
             },
             {
               value: 2,
-              text: "Arabic"
+              text: "Arabic (ar)"
             },
             {
               value: 3,
-              text: "Bengali"
+              text: "Bengali (bn)"
             },
             {
               value: 3,
-              text: "Bulgarian"
+              text: "Bulgarian (bg)"
             },
             {
               value: 3,
-              text: "Chinese"
+              text: "Chinese (zh)"
             },
             {
               value: 3,
-              text: "French"
+              text: "French (fr)"
             },
             {
               value: 3,
-              text: "German"
+              text: "German (de)"
             },
             {
               value: 3,
-              text: "Modern Greek"
+              text: "Modern Greek (el)"
             },
             {
               value: 3,
-              text: "Gujarati"
+              text: "Gujarati (gu)"
             },
             {
               value: 3,
-              text: "Hindi"
+              text: "Hindi (hi)"
             },
             {
               value: 3,
-              text: "Italian"
+              text: "Italian (it)"
             },
             {
               value: 3,
-              text: "Latvian"
+              text: "Latvian (lv)"
             },
             {
               value: 3,
-              text: "Lithuanian"
+              text: "Lithuanian (lt)"
             },
             {
               value: 3,
-              text: "Nepali"
+              text: "Nepali (ne)"
             },
             {
               value: 3,
-              text: "Punjabi (Indian)"
+              text: "Punjabi (Indian) (pa)"
             },
             {
               value: 3,
-              text: "Persian"
+              text: "Persian (fa)"
             },
             {
               value: 3,
-              text: "Polish"
+              text: "Polish (pl)"
             },
             {
               value: 3,
-              text: "Portuguese"
+              text: "Portuguese (pt)"
             },
             {
               value: 3,
-              text: "Romanian"
+              text: "Romanian (ro)"
             },
             {
               value: 3,
-              text: "Russian"
+              text: "Russian (ru)"
             },
             {
               value: 3,
-              text: "Somali"
+              text: "Somali (so)"
             },
             {
               value: 3,
-              text: "Spanish"
+              text: "Spanish (es)"
             },
             {
               value: 3,
-              text: "Tamil"
+              text: "Tamil (ta)"
             },
             {
               value: 3,
-              text: "Turkish"
+              text: "Turkish (tr)"
             },
             {
               value: 3,
-              text: "Urdu"
+              text: "Urdu (ur)"
             },
             {
               value: 3,
-              text: "Tagalog"
+              text: "Tagalog (tl)"
             },
             {
               value: 3,
-              text: "Ukrainian"
+              text: "Ukrainian (uk)"
             },
             {
               value: 3,
-              text: "Vietnamese"
+              text: "Vietnamese (vi)"
             }
           ]
         }) }}
         #}
 
-        <div class="nhsuk-form-group">
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
 
           <label class="nhsuk-label nhsuk-label--s" for="template-letter-message-1">
             Letter content
@@ -259,6 +249,24 @@
           <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-letter-message-1--error">
             <span class="nhsuk-u-visually-hidden">Error:</span> Enter letter content
           </span>  
+
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+          
+          <label class="nhsuk-label nhsuk-label--s" for="template-letter-language-standard">
+            Standard English letter (optional)
+          </label>
+          <span class="nhsuk-hint">
+            Choose a standard English letter to go inside the same envelope as this language letter.
+          </span>
+        
+          <select class="nhsuk-select" id="template-letter-language-standard" name="template-letter-language-standard">
+            <option value="">No standard English template</option>
+            {% if data['folder-1-letter-templates'] == '1' %}
+            <option value="{{ data['template-letter-name-1'] }}">{{ data['template-letter-name-1'] }}</option>
+            {% endif %}
+          </select>
 
         </div>
 

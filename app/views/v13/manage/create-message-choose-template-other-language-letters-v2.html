@@ -1,0 +1,226 @@
+{% extends 'v13/layout.html' %}
+
+{% block beforeContent %}
+
+{{ backLink({
+  "href": "javascript:history.go(-1);",
+  "text": "Go back"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+{% from '../includes/choose-template-table-row-language-v2.njk' import choose_template_row_language_v2 %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+
+      <span class="nhsuk-caption-l">{{ data['message-name-1'] }}</span>
+      <h1 class="nhsuk-heading-xl">  
+        Choose other language templates
+      </h1>
+
+      {#
+      {% if data['show-templates'] == '1' and data['show-folders'] == '1' %}
+
+      <div class="nhsuk-form-group">
+
+        <label class="nhsuk-label" for="filter-folders">
+          Filter templates by folder
+        </label>
+
+        <select class="nhsuk-select" id="filter-folders" name="filter-folders" onchange="toggleTable();">
+          <option value="0" selected>All templates</option>
+          <option value="1">{{ data['template-folder-1-name'] }}</option>
+          <option value="2">{{ data['template-folder-2-name'] }}</option>
+        </select>
+
+      </div>
+
+      {% endif %}
+      #}
+
+      {% if data['show-templates'] == '1' %}
+
+      {% if data['channel-4-language-template'] %}
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Show current templates
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+
+          <table role="table" class="notify-template-content nhsuk-u-margin-bottom-6">
+            <tbody class="nhsuk-table__body">
+
+              <tr role="row" class="nhsuk-table__row">
+                <th role="cell" class="nhsuk-table__cell" style="width:25%;">
+                  Current templates
+                </th>
+                <td role="cell" class="nhsuk-table__cell">
+                  {{ data['channel-4-language-template'] | escape | replace(",", "<br />") }}
+                  <br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)<br />
+                  Covid 65+ invitation - DE (T18)
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+      </details>
+
+      {% endif %}
+
+      <p class="nhsuk-hint">Choose all the templates that you want to include in this message plan.</p>
+
+      <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
+
+        <thead role="rowgroup" class="nhsuk-table__head">
+          <tr role="row">
+            
+            {#<th role="columnheader" class="" scope="col">
+
+              <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input checkboxes" id="" name="" type="checkbox" value="" onclick="selectAll(this); toggleActionsByCheckboxes();">
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for=""></label>
+              </div>
+
+            </th>#}
+            
+            <th role="columnheader" class="" scope="col">
+
+              <button class="nhsnotify-sort-button">
+                Name
+                <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                  <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                </svg>
+              </button>
+
+            </th>
+
+            <th role="columnheader" class="" scope="col">
+              
+              <button class="nhsnotify-sort-button">
+                Type
+                <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                  <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                </svg>
+              </button>
+
+            </th>
+
+            <th role="columnheader" class="" scope="col">
+
+              <button class="nhsnotify-sort-button">
+                Last edited
+                <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                  <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                </svg>
+              </button>
+
+            </th>
+
+            <th role="columnheader" class="" scope="col">
+            </th>
+
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+
+          {{choose_template_row_language_v2(templateName=data['template-16-name'], templateNumber='16', templateTypeName='Standard letter - French', templateType='letter', channelNumber=data["channel-number"] )}}
+
+          {{choose_template_row_language_v2(templateName=data['template-17-name'], templateNumber='17', templateTypeName='Standard letter - Italian', templateType='letter', channelNumber=data["channel-number"] )}}
+
+          {{choose_template_row_language_v2(templateName=data['template-18-name'], templateNumber='18', templateTypeName='Standard letter - German', templateType='letter', channelNumber=data["channel-number"] )}}
+
+        </tbody>
+      </table>
+
+
+      <div class="nhsuk-form-group" style="float: right;">
+        <label class="nhsuk-label" for="select-1" style="display: inline-block;">
+          Show
+        </label>
+        <select class="nhsuk-select" id="number-templates" name="number-templates" style="display: inline-block; min-width: auto;">
+          <option value="18">18</option>
+          <option value="36">36</option>
+          <option value="all">All</option>
+        </select>
+      </div>
+
+      <nav class="nhsnotify-pagination">
+        <span class="nhsnotify-pagination_item nhsnotify-pagination_item_current">1</span>
+        <a href="/404">
+          <span class="nhsnotify-pagination_item">2</span>
+        </a>
+        <a href="/404">
+          <span class="nhsnotify-pagination_item nhsnotify-pagination_item_arrow nhsnotify-pagination_item_arrow_next">
+            Next
+            <svg class="nhsuk-icon nhsuk-icon__arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" width="34" height="34">
+              <path d="M19.6 11.66l-2.73-3A.51.51 0 0 0 16 9v2H5a1 1 0 0 0 0 2h11v2a.5.5 0 0 0 .32.46.39.39 0 0 0 .18 0 .52.52 0 0 0 .37-.16l2.73-3a.5.5 0 0 0 0-.64z"></path>
+            </svg>
+          </span>
+        </a>
+        <p class="nhsnotify-pagination_count">1 to 18 of 36 templates</p>
+      </nav>
+
+
+      <div class="nhsuk-form-group">
+
+        {{ button({
+          text: "Save and continue"
+        }) }}
+
+        <a href="javascript:history.go(-1);" class="nhsuk-u-font-size-19 nhsuk-u-padding-top-3  nhsuk-u-margin-left-3" style="display: inline-block;">Go back</a>
+
+      </div>
+
+      {% else%}
+
+      <p>You do not have any templates yet.</p>
+      
+      <div class="nhsuk-form-group">
+
+        <p><a href="folder-templates">Go to templates</a></p>
+
+        <p><a href="create-message">Go back</a></p>
+
+      </div>
+
+      {% endif %}
+
+    </div>
+  </div>
+{% endblock %}

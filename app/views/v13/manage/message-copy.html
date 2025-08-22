@@ -1,0 +1,19 @@
+{% extends 'v13/layout.html' %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">Are you sure you want to copy the message plan '{{ data['message-name-1'] }}'?</h1>
+
+      <div class="nhsuk-form-group nhsuk-u-margin-top-6">
+
+        <a href="/404" class="nhsuk-button nhsuk-u-margin-right-2">Yes, copy message plan</a>
+
+        <a href="/404" class="nhsuk-button nhsuk-button--secondary">No, go back</a>
+
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
