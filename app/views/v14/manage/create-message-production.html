@@ -398,6 +398,22 @@
                           
                           <div class="nhsnotify-letter-preview">
 
+                            {% if data['template-letter-language-standard'] %}
+
+                            <a href="/images/letter-greek-english-page-1.jpg" target="_blank">
+                              <img src="/images/letter-greek-english-page-1.jpg" alt="">
+                            </a>
+
+                            <a href="/images/letter-greek-english-page-2.jpg" target="_blank">
+                              <img src="/images/letter-greek-english-page-2.jpg" alt="">
+                            </a>
+
+                            <a href="/images/letter-greek-english-page-3.jpg" target="_blank">
+                              <img src="/images/letter-greek-english-page-3.jpg" alt="">
+                            </a>
+
+                            {% else %}
+
                             <a href="/images/letter-greek-page-1.jpg" target="_blank">
                               <img src="/images/letter-greek-page-1.jpg" alt="">
                             </a>
@@ -405,6 +421,8 @@
                             <a href="/images/letter-greek-page-2.jpg" target="_blank">
                               <img src="/images/letter-greek-page-2.jpg" alt="">
                             </a>
+
+                            {% endif %}
 
                           </div>
                       

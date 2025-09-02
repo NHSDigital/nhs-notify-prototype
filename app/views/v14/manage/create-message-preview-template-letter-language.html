@@ -48,9 +48,21 @@
 
       <div class="nhsnotify-letter-preview">
 
+        {% if data['template-letter-language-standard'] %}
+
+        <img src="/images/letter-greek-english-page-1.jpg" alt="">
+
+        <img src="/images/letter-greek-english-page-2.jpg" alt="">
+
+        <img src="/images/letter-greek-english-page-3.jpg" alt="">
+
+        {% else %}
+
         <img src="/images/letter-greek-page-1.jpg" alt="">
 
         <img src="/images/letter-greek-page-2.jpg" alt="">
+
+        {% endif %}
 
       </div>
 

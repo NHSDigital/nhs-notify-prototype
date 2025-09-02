@@ -61,7 +61,15 @@
             </th>
             <td role="cell" class="nhsuk-table__cell">
 
+              {% if data['template-letter-language-standard'] %}
+
+              3 pages, 2 sheets
+
+              {% else %}
+
               2 pages, 1 sheet
+
+              {% endif %}
 
             </td>
           </tr>
@@ -112,9 +120,21 @@
 
       <div class="nhsnotify-letter-preview">
 
+        {% if data['template-letter-language-standard'] %}
+
+        <img src="/images/letter-greek-english-page-1.jpg" alt="">
+
+        <img src="/images/letter-greek-english-page-2.jpg" alt="">
+
+        <img src="/images/letter-greek-english-page-3.jpg" alt="">
+
+        {% else %}
+
         <img src="/images/letter-greek-page-1.jpg" alt="">
 
         <img src="/images/letter-greek-page-2.jpg" alt="">
+
+        {% endif %}
 
       </div>
 
