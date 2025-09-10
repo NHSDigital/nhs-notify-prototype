@@ -63,11 +63,11 @@
 
               {% if data['template-letter-language-standard'] %}
 
-              3 pages, 2 sheets
+              3 sides, 2 sheets
 
               {% else %}
 
-              2 pages, 1 sheet
+              2 sides, 1 sheet
 
               {% endif %}
 
@@ -82,11 +82,13 @@
             </th>
             <td role="cell" class="nhsuk-table__cell">
 
-              <p>Standard</p>
+              Standard (3 business days)
 
+              {#
               <a href="https://notify.nhs.uk/using-nhs-notify/delivery-times#letters" target="_blank">Delivery times (opens in a new tab)</a><br />
 
               <a href="https://notify.nhs.uk/pricing/letters" target="_blank">Letter pricing (opens in a new tab)</a>
+              #}
 
             </td>
           </tr>
@@ -107,7 +109,7 @@
 
               {{ tag({
                 text: "Draft",
-                classes: "nhsuk-tag--blue"
+                classes: "nhsuk-tag--green"
               })}}
 
               {% endif %}

@@ -116,7 +116,7 @@
           <dd class="nhsuk-summary-list__value">
             {{ tag({
               text: "Draft",
-              classes: "nhsuk-tag--blue"
+              classes: "nhsuk-tag--green"
             })}}
           </dd>
       
@@ -381,7 +381,7 @@
                       {% if data['channel-4-language-template'] %}
 
                       <p>
-                        {{ data['channel-4-language-template'] | escape | replace(",", "<br />") }} ({{ data['template-letter-language'] }})<br />
+                        {{ data['channel-4-language-template'] | escape | replace(",", "<br />") }} - {{ data['template-letter-language'] }}<br />
                         <a href="create-message-choose-template?message-type=Other language&channel-number=4-language">Change templates</a>
                       </p>
 
