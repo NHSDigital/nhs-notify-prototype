@@ -14,37 +14,7 @@
         Choose a standard English letter template
       </h1>
 
-      {#
-      {% if data['show-templates'] == '1' and data['show-folders'] == '1' %}
-
-      <div class="nhsuk-form-group">
-
-        <label class="nhsuk-label" for="filter-folders">
-          Filter templates by folder
-        </label>
-
-        <select class="nhsuk-select" id="filter-folders" name="filter-folders" onchange="toggleTable();">
-          <option value="0" selected>All templates</option>
-          <option value="1">{{ data['template-folder-1-name'] }}</option>
-          <option value="2">{{ data['template-folder-2-name'] }}</option>
-        </select>
-
-      </div>
-
-      {% endif %}
-      #}
-
       <form action="create-letter-language-template" method="post" autocomplete="off">
-
-
-        
-
-
-
-
-
-
-
 
         {% if data['folder-1-letter-templates'] == '1' %}
 
@@ -102,7 +72,35 @@
           </thead>
           <tbody class="nhsuk-table__body">
 
-              {{choose_template_row(templateName=data['template-letter-name-1'], templateNumber=4, templateTypeName='Standard letter', templateType='letter-standard', channelNumber=5 )}}
+              <tr role="row" class="nhsuk-table__row {% if templateFolder %}template-folder-{{templateFolder}}{% endif %}">
+
+                <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Select </span>
+                    <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="template-letter-language-standard" name="template-letter-language-standard" type="radio" value="{{data['template-letter-name-1']}}">
+                        <label class="nhsuk-label nhsuk-radios__label" for="template-letter-language-standard"></label>
+                    </div>
+                </td>
+
+                <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Name </span>
+                    <label class="nhsuk-label" for="template-letter-language-standard">{{data['template-letter-name-1']}}</label>
+                </td>
+
+                <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Type </span>
+                    Standard English letter
+                    </td>
+                    <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Last edited </span>30th Apr 2024<br />09:34
+                </td>
+
+                <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Action </span>
+                    <p class="nhsuk-u-margin-bottom-2"><a href="create-message-preview-template-letter-standard?preview-template-name={{data['template-letter-name-1']}}">Preview</a></p>
+                </td>
+                
+            </tr>
 
           </tbody>
         </table>

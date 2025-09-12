@@ -261,27 +261,27 @@
             Choose a standard English letter template to go inside the same envelope as this language letter.
           </p>
 
-          {#
-          {% if data['channel-5-template'] %}
+          
+          {% if data['template-letter-language-standard'] %}
 
           <p>
-            {{data['channel-5-template']}}<br />
+            {{data['template-letter-language-standard']}}<br />
             <a href="create-template-choose-standard-letter">Change template</a>
           </p>
 
           <p>
-            <a href="?channel-5-template=" style="color: #d5281b;">Remove template</a>
+            <a href="?template-letter-language-standard=" style="color: #d5281b;">Remove template</a>
           </p>
 
           {% else %}
 
-          <p><a href="/404">Choose template</a></p>
+          <p><a href="create-template-choose-standard-letter">Choose template</a></p>
 
           {% endif %}
-          #}
-        
           
-          <select class="nhsuk-select" id="template-letter-language-standard" name="template-letter-language-standard">
+        
+          {#
+          <select class="nhsuk-select" id="template-letter-language-standard"name="template-letter-language-standard">
             <option value="">No template</option>
             {% if data['folder-1-letter-templates'] == '1' %}
             <option 
@@ -290,6 +290,7 @@
             >{{ data['template-letter-name-1'] }}</option>
             {% endif %}
           </select>
+          #}
           
 
         </div>
