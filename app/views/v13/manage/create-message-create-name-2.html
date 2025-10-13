@@ -41,19 +41,15 @@
 
           <div class="nhsuk-form-group nhsuk-u-margin-bottom-6">
 
-            <label class="nhsuk-label nhsuk-label--s" for="message-plan-campaign">
+            <label class="nhsuk-label nhsuk-label--s" for="template-app-name-1">
               Campaign
             </label>
-
-            <div class="nhsuk-hint" id="message-plan-campaign-hint">
-              Choose which campaign this message plan will link to
+            <div class="nhsuk-hint">
+              This message plan will link to your only campaign:
             </div>
 
-            <select class="nhsuk-select" id="message-plan-campaign" name="message-plan-campaign">
-              <option value=""></option>
-              <option value="Campaign 1" {% if data['message-plan-campaign'] == 'Campaign 1' %}selected{% endif %}>Campaign 1</option>
-              <option value="Campaign 2" {% if data['message-plan-campaign'] == 'Campaign 2' %}selected{% endif %}>Campaign 2</option>
-            </select>
+            <input type="hidden" name="message-plan-campaign" value="Campaign 1">
+            <p>Campaign 1</p>
 
           </div>
         

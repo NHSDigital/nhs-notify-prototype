@@ -66,7 +66,7 @@
       <h1 class="nhsuk-heading-l">
         {{ data['message-name-1'] }}
       </h1>
-      <p class="nhsuk-body-s"><a href="create-message-create-name?rename-message=1">Change name</a></p>
+      <p class="nhsuk-body-s"><a href="create-message-create-name?rename-message=1">Change name or campaign</a></p>
 
       {#
       <form action="create-message" method="post" autocomplete="off" onsubmit="return checkFormCreateMessage();">
@@ -110,6 +110,16 @@
           </dd>
       
         </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Campaign
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['message-plan-campaign'] }}
+          </dd>
+      
+        </div>
         
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
@@ -140,11 +150,20 @@
           <div class="notify-channel-block-outer">
             <div class="notify-channel-block-inner">
               <h3 class="nhsuk-heading-s">{{ data['channel-1-type'] }}</h3>
+
               {% if data['channel-1-template'] %}
 
-              <p>
-                {{ data['channel-1-template'] }}<br />
+              <p style="margin-bottom: 6px;">
+                {{ data['channel-1-template'] }}</p>
+
+                <p style="margin-bottom: 6px;">
                 <a href="create-message-choose-template?message-type={{ data['channel-1-type'] }}&channel-number=1">Change template</a>
+              </p>
+
+              <p style="margin-bottom: 6px;">
+                <a href="create-message-preview-template-app?preview-template-name={{ data['channel-1-template'] }}">Preview template</a>
+                
+                
               </p>
 
               <p>
@@ -155,7 +174,7 @@
               
               <p><a href="create-message-choose-template?message-type={{ data['channel-1-type'] }}&channel-number=1">Choose template</a></p>
               
-              {%endif%}
+              {% endif %}
               
             </div>
 
@@ -185,7 +204,12 @@
               {% if data['channel-2-template'] %}
 
               <p>
-                {{ data['channel-2-template'] }}<br />
+                <a href="create-message-preview-template-email?preview-template-name={{ data['channel-2-template'] }}">{{ data['channel-2-template'] }}</a>
+
+              </p>
+
+              <p>
+
                 <a href="create-message-choose-template?message-type={{ data['channel-2-type'] }}&channel-number=2">Change template</a>
               </p>
 
@@ -232,6 +256,8 @@
               </p>
 
               <p>
+                <a href="create-message-preview-template-sms?preview-template-name={{ data['channel-3-template'] }}">Preview template</a>
+                |
                 <a href="?channel-3-template=" style="color: #d5281b;">Remove template</a>
               </p>
 
@@ -277,6 +303,8 @@
               </p>
 
               <p>
+                <a href="create-message-preview-template-letter?preview-template-name={{ data['channel-4-template'] }}">Preview template</a>
+                |
                 <a href="?channel-4-template=" style="color: #d5281b;">Remove template</a>
               </p>
 
