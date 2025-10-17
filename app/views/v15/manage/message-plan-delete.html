@@ -1,0 +1,22 @@
+{% extends 'v15/layout.html' %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">Are you sure you want to delete the message plan '{{ data['message-name-1'] }}'?</h1>
+
+      <p>The message plan will be removed and you won't be able to recover it.</p>
+      <p>Any templates associated with this message plan will not be deleted.</p>
+
+      <div class="nhsuk-form-group">
+
+        <a href="folder-messages?message-name-1=&messages-draft=0" class="nhsuk-button nhsuk-button--warning nhsuk-u-margin-right-3">Yes, delete message plan</a>
+
+        <a href="folder-messages" class="nhsuk-button nhsuk-button--secondary">No, go back</a>
+
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

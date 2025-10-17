@@ -1,0 +1,94 @@
+{% extends 'v15/layout.html' %}
+
+{% block beforeContent %}
+
+{{ backLink({
+  "href": "folder",
+  "text": "Back to project dashboard"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l">{{data['folder-name-1']}}</span>
+      <h1 class="nhsuk-heading-xl">
+        Settings
+      </h1>
+
+      <form action="project-settings-save-confirmation" method="post">
+
+        {{ input({
+          label: {
+            text: "Project name"
+          },
+          hint: {
+            text: "Change the name of this project."
+          },
+          id: "folder-name-1",
+          name: "folder-name-1",
+          value: data['folder-name-1'],
+          formGroup: {
+            classes: "nhsuk-u-margin-bottom-7"
+          }
+        }) }}
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
+
+          <h2 class="nhsuk-heading-s">Link this project to a campaign</h2>
+
+          <p>Projects can be linked to a campaign if your service has any campaigns set up. Speak to your Onboarding Manager for more information.</p>
+
+          <label class="nhsuk-label" for="project-campaign">
+            Choose a campaign
+          </label>
+          <select class="nhsuk-select" id="project-campaign" name="project-campaign">
+            <option value="1">None</option>
+            <option value="2" {% if data['project-campaign'] == '2' %}selected{% endif %}>Campaign 1</option>
+            <option value="3" {% if data['project-campaign'] == '3' %}selected{% endif %}>Campaign 2</option>
+          </select>
+
+        </div>
+
+        <div class="nhsuk-form-group">
+
+          {{ button({
+            text: 'Save settings'
+          }) }}
+
+          <!--<a href="javascript:history.go(-1)" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>-->
+
+        </div>
+
+      </form>
+
+      <hr class="nhsuk-section-break--visible">
+
+      <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
+
+        <h2 class="nhsuk-heading-s">Archive project</h2>
+
+        <p>You can archive this project and it will move from one list to another.</p>
+
+        <form action="/404" method="post">
+
+          {{ button({
+            text: 'Archive project',
+            classes: 'nhsuk-button--secondary'
+          }) }}
+
+        </form>
+        
+
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+{% endblock %}

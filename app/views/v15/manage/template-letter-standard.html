@@ -1,0 +1,572 @@
+{% extends 'v15/layout_full_width.html' %}
+
+{% block beforeContent %}
+
+<div class="nhsuk-width-container">
+  {{ backLink({
+  "href": "folder-templates",
+  "text": "Back to all templates"
+}) }}
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+
+        {% if data['show-save-banner'] == 'yes' %}
+        <div class="notify-confirmation-panel">
+          <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-0">Template saved</h1>
+        </div>
+        {% endif %}
+
+        <div class="nhsuk-u-reading-width">
+
+          {% if data['template-locked'] == '1' %}
+
+          {% include "../includes/template-locked-message-letter.html" %}
+
+          {% endif %}
+
+          <span class="nhsuk-caption-l">Template</span>
+          <h1 class="nhsuk-heading-xl">
+            {{ data['template-letter-name-1'] }}
+          </h1>
+
+        </div>
+
+        <table role="table" class="notify-template-content nhsuk-u-margin-bottom-4">
+          <tbody class="nhsuk-table__body">
+            
+            <tr role="row" class="nhsuk-table__row">
+              <th role="cell" class="nhsuk-table__cell" style="width:20%;">
+                Template ID
+              </th>
+              <td role="cell" class="nhsuk-table__cell" style="font-family: monospace;">
+                a4b171b5-431f-4a5b-9d7a-9a4903c98e66
+              </td>
+            </tr>
+
+            <tr role="row" class="nhsuk-table__row">
+              <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
+                Type
+              </th>
+              <td role="cell" class="nhsuk-table__cell">
+                Standard English letter
+              </td>
+            </tr>
+
+
+            <tr role="row" class="nhsuk-table__row">
+              <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
+                Size
+              </th>
+              <td role="cell" class="nhsuk-table__cell">
+
+                2 sides, 1 sheet
+
+              </td>
+            </tr>
+
+            
+
+            <tr role="row" class="nhsuk-table__row">
+              <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
+                Service level
+              </th>
+              <td role="cell" class="nhsuk-table__cell">
+                <ul>
+                  <li>Print and dispatch: 2 business days</li>
+                  <li>Delivery: standard (3 business days)</li>
+                </ul>
+                <a href="/404">Change</a>
+              </td>
+            </tr>
+
+            <tr role="row" class="nhsuk-table__row">
+              <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
+                Status
+              </th>
+              <td role="cell" class="nhsuk-table__cell">
+                
+                {% if data['template-locked'] == '1' %}
+
+                {{ tag({
+                  text: "Locked",
+                  classes: "nhsuk-tag--orange"
+                })}}
+
+                {% else %}
+
+                
+
+                  {% if data['template-letter-standard-status'] == '2' %}
+                  
+                  {{ tag({
+                    text: "Approved",
+                    classes: "nhsuk-tag--green"
+                  })}}
+
+                  {% else %}
+
+                  {{ tag({
+                    text: "Waiting for approval",
+                    classes: "nhsuk-tag--yellow"
+                  })}}
+
+                  {% endif %}
+
+                {% endif %}
+
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row nhsuk-u-padding-top-6">
+
+    <div class="nhsuk-grid-column-one-half">
+
+      <h2 class="nhsuk-heading-m">Personalisation fields</h2>
+
+      <p>Check your letter proof with different examples of personalisation data.</p>
+      <p>We provide example personalisation data for PDS fields.</p>
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Copy example personalisation data from another letter template
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          
+          {{ select({
+            id: "letter-proof-copy-data",
+            name: "letter-proof-copy-data",
+            label: {
+              text: "Choose a template"
+            },
+            items: [
+              {
+                value: 0,
+                text: ""
+              },
+              {
+                value: 1,
+                text: "Letter template name 1"
+              },
+              {
+                value: 2,
+                text: "Letter template name 2"
+              },
+              {
+                value: 3,
+                text: "Letter template name 3"
+              }
+            ]
+          }) }}
+
+          <a href="" class="nhsuk-button nhsuk-button--secondary">Copy example data</a>
+
+        </div>
+      </details>
+
+      <div class="nhsuk-tabs nhsuk-u-margin-top-8" data-module="nhsuk-tabs">
+        <h2 class="nhsuk-tabs__title">
+          Contents
+        </h2>
+        <ul class="nhsuk-tabs__list">
+          <li class="nhsuk-tabs__list-item nhsuk-tabs__list-item--selected">
+            <a class="nhsuk-tabs__tab" href="#short">
+              Short examples
+            </a>
+          </li>
+          <li class="nhsuk-tabs__list-item">
+            <a class="nhsuk-tabs__tab" href="#medium">
+              Medium examples
+            </a>
+          </li>
+          <li class="nhsuk-tabs__list-item">
+            <a class="nhsuk-tabs__tab" href="#long">
+              Long examples
+            </a>
+          </li>
+        </ul>
+
+        <div class="nhsuk-tabs__panel" id="short">
+
+          {{ select({
+            id: "letter-proof-standard-pds-date",
+            name: "letter-proof-standard-pds-date",
+            label: {
+              text: "date"
+            },
+            items: [
+              {
+                value: 1,
+                text: "14th April 2025",
+                selected: true
+              },
+              {
+                value: 2,
+                text: "27th October 2025"
+              }
+            ]
+          }) }}
+
+          {{ select({
+            id: "letter-proof-standard-pds-nhsnumber",
+            name: "letter-proof-standard-pds-nhsnumber",
+            label: {
+              text: "nhsNumber"
+            },
+            items: [
+              {
+                value: 1,
+                text: "0000 0000 000",
+                selected: true
+              },
+              {
+                value: 2,
+                text: "1111 1111 11"
+              }
+            ]
+          }) }}
+
+          {{ select({
+            id: "letter-proof-standard-pds-fullname",
+            name: "letter-proof-standard-pds-fullname",
+            label: {
+              text: "fullName"
+            },
+            items: [
+              {
+                value: 1,
+                text: "Amy Cho",
+                selected: true
+              },
+              {
+                value: 2,
+                text: "Lee Smith"
+              }
+            ]
+          }) }}
+
+          {{ input({
+            label: {
+              text: "myCustomField1"
+            },
+            id: "letter-proof-standard-myCustomField1",
+            name: "letter-proof-standard-myCustomField1",
+            classes: "nhsuk-u-width-three-quarters"
+          }) }}
+
+          {{ input({
+            label: {
+              text: "myCustomField2"
+            },
+            id: "letter-proof-standard-myCustomField2",
+            name: "letter-proof-standard-myCustomField2",
+            classes: "nhsuk-u-width-three-quarters"
+          }) }}
+
+          {{ input({
+            label: {
+              text: "myCustomField3"
+            },
+            id: "letter-proof-standard-myCustomField3",
+            name: "letter-proof-standard-myCustomField3",
+            classes: "nhsuk-u-width-three-quarters"
+          }) }}
+
+          {{ input({
+            label: {
+              text: "myCustomField4"
+            },
+            id: "letter-proof-standard-myCustomField4",
+            name: "letter-proof-standard-myCustomField4",
+            classes: "nhsuk-u-width-three-quarters"
+          }) }}
+
+          <a href="" class="nhsuk-button nhsuk-button--secondary">Update preview</a>
+
+        </div>
+
+        <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="medium">
+          
+          {{ select({
+            id: "letter-proof-standard-pds-date",
+            name: "letter-proof-standard-pds-date",
+            label: {
+              text: "date"
+            },
+            items: [
+              {
+                value: 1,
+                text: "14th April 2025",
+                selected: true
+              },
+              {
+                value: 2,
+                text: "27th October 2025"
+              }
+            ]
+          }) }}
+
+          {{ select({
+            id: "letter-proof-standard-pds-nhsnumber",
+            name: "letter-proof-standard-pds-nhsnumber",
+            label: {
+              text: "nhsNumber"
+            },
+            items: [
+              {
+                value: 1,
+                text: "0000 0000 000",
+                selected: true
+              },
+              {
+                value: 2,
+                text: "1111 1111 11"
+              }
+            ]
+          }) }}
+
+          {{ select({
+            id: "letter-proof-standard-pds-fullname",
+            name: "letter-proof-standard-pds-fullname",
+            label: {
+              text: "fullName"
+            },
+            items: [
+              {
+                value: 1,
+                text: "Anthony Dickinson",
+                selected: true
+              },
+              {
+                value: 2,
+                text: "Samantha Beeston"
+              }
+            ]
+          }) }}
+
+          {{ input({
+            label: {
+              text: "myCustomField1"
+            },
+            id: "letter-proof-standard-myCustomField1",
+            name: "letter-proof-standard-myCustomField1",
+            classes: "nhsuk-u-width-three-quarters"
+          }) }}
+
+          {{ input({
+            label: {
+              text: "myCustomField2"
+            },
+            id: "letter-proof-standard-myCustomField2",
+            name: "letter-proof-standard-myCustomField2",
+            classes: "nhsuk-u-width-three-quarters"
+          }) }}
+
+          {{ input({
+            label: {
+              text: "myCustomField3"
+            },
+            id: "letter-proof-standard-myCustomField3",
+            name: "letter-proof-standard-myCustomField3",
+            classes: "nhsuk-u-width-three-quarters"
+          }) }}
+
+          {{ input({
+            label: {
+              text: "myCustomField4"
+            },
+            id: "letter-proof-standard-myCustomField4",
+            name: "letter-proof-standard-myCustomField4",
+            classes: "nhsuk-u-width-three-quarters"
+          }) }}
+
+          <a href="" class="nhsuk-button nhsuk-button--secondary">Update preview</a>
+
+        </div>
+
+        <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="long">
+          
+          {{ select({
+            id: "letter-proof-standard-pds-date",
+            name: "letter-proof-standard-pds-date",
+            label: {
+              text: "date"
+            },
+            items: [
+              {
+                value: 1,
+                text: "14th April 2025",
+                selected: true
+              },
+              {
+                value: 2,
+                text: "27th October 2025"
+              }
+            ]
+          }) }}
+
+          {{ select({
+            id: "letter-proof-standard-pds-nhsnumber",
+            name: "letter-proof-standard-pds-nhsnumber",
+            label: {
+              text: "nhsNumber"
+            },
+            items: [
+              {
+                value: 1,
+                text: "0000 0000 000",
+                selected: true
+              },
+              {
+                value: 2,
+                text: "1111 1111 11"
+              }
+            ]
+          }) }}
+
+          {{ select({
+            id: "letter-proof-standard-pds-fullname",
+            name: "letter-proof-standard-pds-fullname",
+            label: {
+              text: "fullName"
+            },
+            items: [
+              {
+                value: 1,
+                text: "Jonathan Luke Hendrie-Smythe",
+                selected: true
+              },
+              {
+                value: 2,
+                text: "Lindsay Carter Jones-Wandsworth"
+              }
+            ]
+          }) }}
+
+          {{ input({
+            label: {
+              text: "myCustomField1"
+            },
+            id: "letter-proof-standard-myCustomField1",
+            name: "letter-proof-standard-myCustomField1",
+            classes: "nhsuk-u-width-three-quarters"
+          }) }}
+
+          {{ input({
+            label: {
+              text: "myCustomField2"
+            },
+            id: "letter-proof-standard-myCustomField2",
+            name: "letter-proof-standard-myCustomField2",
+            classes: "nhsuk-u-width-three-quarters"
+          }) }}
+
+          {{ input({
+            label: {
+              text: "myCustomField3"
+            },
+            id: "letter-proof-standard-myCustomField3",
+            name: "letter-proof-standard-myCustomField3",
+            classes: "nhsuk-u-width-three-quarters"
+          }) }}
+
+          {{ input({
+            label: {
+              text: "myCustomField4"
+            },
+            id: "letter-proof-standard-myCustomField4",
+            name: "letter-proof-standard-myCustomField4",
+            classes: "nhsuk-u-width-three-quarters"
+          }) }}
+
+          <a href="" class="nhsuk-button nhsuk-button--secondary">Update preview</a>
+
+        </div>
+
+      </div>
+      
+      {#
+      <script>
+          
+        const select = document.getElementById("select-change-date");
+        const short = document.getElementById("short");
+        const medium = document.getElementById("medium");
+        const long = document.getElementById("long");
+
+        // Show "long" section by default
+        short.hidden = true;
+        medium.hidden = true;
+        long.hidden = false;
+
+        select.addEventListener("change", function(e){
+
+          short.hidden = false;
+          medium.hidden = false;
+          long.hidden = false;
+
+          // Then hide the ones not selected
+          if (select.value == "short") {
+            medium.hidden = true;
+            long.hidden = true;
+          } else if (select.value == "medium") {
+            short.hidden = true;
+            long.hidden = true;
+          } else if (select.value == "long") {
+            short.hidden = true;
+            medium.hidden = true;
+          }
+
+        });
+          
+      </script>
+      #}
+
+    </div>
+
+    <div class="nhsuk-grid-column-one-half">
+
+      <h2 class="nhsuk-heading-m">Letter preview</h2>
+
+      <iframe 
+        src="/files/example-letter-vacs.pdf"
+        style="width:100%;height:1200px;border:none;"
+        allowfullscreen
+        referrerpolicy="no-referrer"
+        class="nhsuk-u-margin-bottom-4"
+      ></iframe>
+
+      {% if data['template-letter-standard-status'] == '1' %}
+      
+      <a href="template-letter-approve-confirmation?approve-template-name={{ data['template-letter-name-1'] }}&template-letter-standard-status=2" class="nhsuk-button nhsuk-u-margin-right-3">Approve template</a>
+
+      {% endif %}
+
+    </div>
+
+    {#<div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <p><a href="folder-templates">Back to all templates</a></p>
+
+        </div>
+      </div>
+    </div>#}
+
+  </div>
+{% endblock %}

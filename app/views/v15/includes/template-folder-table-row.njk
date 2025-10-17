@@ -1,0 +1,74 @@
+{% macro row(templateName, templateNumber, locked, templateType, templateTypeName, templateEditDate, templateEditTime) %}
+
+<tr role="row" class="nhsuk-table__row">
+
+    <!--<td role="cell" class="nhsuk-table__cell">
+        
+        <div class="nhsuk-checkboxes__item">
+            <input class="nhsuk-checkboxes__input checkboxes" id="template-{{ templateNumber }}" name="" type="checkbox" value="Template {{ templateNumber }}" onclick="toggleActionsByCheckboxes()">
+            <label class="nhsuk-label nhsuk-checkboxes__label" for="template-{{ templateNumber }}"></label>
+        </div>
+       
+    </td>-->
+
+    <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Name </span>
+
+        <a href="template-{{ templateType }}?template-locked={{ locked }}&show-save-banner=">
+        {{ templateName }}
+        </a>
+
+    </td>
+
+    <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Type </span>
+        {% if templateType == 'letter-language' %}
+
+            Standard letter - {{ templateTypeName }}
+
+        {% else %}
+
+            {{ templateTypeName }}
+
+        {% endif %}
+
+    </td>
+
+    <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Status </span>
+        
+        {% if locked == '1' %}
+        
+        <strong class="nhsuk-tag nhsuk-tag--orange">
+            Locked
+        </strong>
+
+        {% else %}
+
+        <strong class="nhsuk-tag nhsuk-tag--green">
+            Draft
+        </strong>
+
+        {% endif %}
+
+    </td>
+    
+    <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Date and time created </span>{{templateEditDate | default("30 Jun 2025")}}<br />{{templateEditTime | default("09:34")}}
+    </td>
+
+    <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Action </span>
+
+        <!--<p class="nhsuk-u-margin-bottom-2"><a href="template-move">Move</a></p>-->
+
+        <p class="nhsuk-u-margin-bottom-2"><a href="/404">Copy</a></p>
+
+        {% if locked != '1' %}
+        <p class="nhsuk-u-margin-bottom-2"><a href="/404">Delete</a></p>
+        {% endif %}
+
+    </td>
+</tr>
+
+{% endmacro %}

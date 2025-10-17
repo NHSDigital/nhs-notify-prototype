@@ -1,0 +1,126 @@
+{% extends 'v15/layout.html' %}
+
+
+
+
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="route-choose-plan" method="post" autocomplete="off">
+
+        <div class="nhsuk-form-group">
+
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+              <h1 class="nhsuk-fieldset__heading">
+                Choose a message order
+              </h1>
+            </legend>
+        
+            <div class="nhsuk-radios">
+
+              <span class="nhsuk-hint">Select one option</span>
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="option-5" name="message-plan" type="radio" value="5">
+                <label class="nhsuk-label nhsuk-radios__label" for="option-5">
+                  NHS App only
+                </label>
+              </div>
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="option-3" name="message-plan" type="radio" value="3">
+                <label class="nhsuk-label nhsuk-radios__label" for="option-3">
+                  NHS App, Email
+                </label>
+              </div>
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="option-7" name="message-plan" type="radio" value="7">
+                <label class="nhsuk-label nhsuk-radios__label" for="option-7">
+                  NHS App, Text message
+                </label>
+              </div>
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="option-1" name="message-plan" type="radio" value="1">
+                <label class="nhsuk-label nhsuk-radios__label" for="option-1">
+                  NHS App, Email, Text message
+                </label>
+              </div>
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="option-4" name="message-plan" type="radio" value="4">
+                <label class="nhsuk-label nhsuk-radios__label" for="option-4">
+                  NHS App, Text message, Email
+                </label>
+              </div>
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="option-6" name="message-plan" type="radio" value="6">
+                <label class="nhsuk-label nhsuk-radios__label" for="option-6">
+                  NHS App, Text message, Letter
+                </label>
+              </div>
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="option-2" name="message-plan" type="radio" value="2">
+                <label class="nhsuk-label nhsuk-radios__label" for="option-2">
+                  NHS App, Email, Text message, Letter
+                </label>
+              </div>
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="option-8" name="message-plan" type="radio" value="8">
+                <label class="nhsuk-label nhsuk-radios__label" for="option-8">
+                  Letter only
+                </label>
+              </div>
+        
+            </div>
+          </fieldset>
+        
+        </div>
+
+        {#
+        <input type="hidden" name="message-name-1" value="">
+        <input type="hidden" name="messages-draft" value="0">
+        <input type="hidden" name="message-plan-submitted" value="">
+
+        <input type="hidden" name="channel-1-type" value="NHS App">
+        <input type="hidden" name="channel-1-template" value="">
+
+        <input type="hidden" name="channel-2-type" value="Email">
+        <input type="hidden" name="channel-2-template" value="">
+        
+        <input type="hidden" name="channel-3-type" value="Text message (SMS)">
+        <input type="hidden" name="channel-3-template" value="">
+
+        <input type="hidden" name="channel-4-type" value="Letter">
+        <input type="hidden" name="channel-4-template" value="">
+        <input type="hidden" name="channel-4-large-print-template" value="">
+        <input type="hidden" name="channel-4-braille-template" value="">
+        <input type="hidden" name="channel-4-audio-cd-template" value="">
+        <input type="hidden" name="channel-4-language-template" value="">
+
+        <input type="hidden" name="channel-amount" value="3">
+        #}
+
+        <div class="nhsuk-form-group">
+
+          {{ button({
+            text: "Continue"
+          }) }}
+
+          <a href="folder-messages" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
