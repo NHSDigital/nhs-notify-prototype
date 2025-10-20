@@ -146,6 +146,29 @@ function checkFormLetter() {
 
 
 
+
+function checkFormUploadLetter() {
+    var ok = true;
+    var template_letter_name_1 = document.getElementById("template-letter-name-1");
+    var template_letter_name_1_error = document.getElementById("template-letter-name-1--error");
+
+    if (template_letter_name_1.value == "") {
+        template_letter_name_1.classList.add("nhsuk-input--error");
+        template_letter_name_1.closest(".nhsuk-form-group").classList.add("nhsuk-form-group--error");
+        template_letter_name_1_error.style.display = "block";
+        template_letter_name_1.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+        ok = false;
+    } else {
+        template_letter_name_1.classList.remove("nhsuk-input--error");
+        template_letter_name_1.closest(".nhsuk-form-group").classList.remove("nhsuk-form-group--error");
+        template_letter_name_1_error.style.display = "none";
+    }
+
+    return ok;
+}
+
+
+
 function checkFormTestNhsNo() {
     var ok = true;
 

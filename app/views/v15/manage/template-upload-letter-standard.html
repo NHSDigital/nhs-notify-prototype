@@ -28,7 +28,7 @@
   <div class="nhsuk-grid-row">
     <div id="column-left" class="nhsuk-grid-column-two-thirds">
 
-      <form action="template-letter-standard" method="post" autocomplete="off">
+      <form action="template-letter-standard" method="post" autocomplete="off" onsubmit="return checkFormUploadLetter();">
 
         <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
           
@@ -41,15 +41,7 @@
 
           {% include "../includes/details-template-name.html" %}
 
-          {% if data['mode'] == 'edit' %}
-  
-          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-letter-name-1" name="template-letter-name-1" type="text" value="{{ data['template-letter-name-1'] }}">
-
-          {% else %}
-
           <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-letter-name-1" name="template-letter-name-1" type="text">
-
-          {% endif %}
 
           <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-letter-name-1--error">
             <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
@@ -103,11 +95,20 @@
 
       <h2 class="nhsuk-heading-m">How to create a letter template</h2>
 
-      <p><a href="">Link 1</a></p>
-
-      <p><a href="">Link 2</a></p>
-
-      <p><a href="">Link 3</a></p>
+      <ol>
+        <li class="nhsuk-u-margin-bottom-4">
+          <a href="">Download letter template file (docx)</a>
+        </li>
+        <li class="nhsuk-u-margin-bottom-4">
+          <a href="">Write and format your content (opens in a new tab)</a>
+        </li>
+        <li class="nhsuk-u-margin-bottom-4">
+          <a href="">Add your personalisation fields (opens in a new tab)</a>
+        </li>
+        <li>
+          <a href="">Save and upload your file (opens in a new tab)</a>
+        </li>
+      </ol>
       
     </div>
 

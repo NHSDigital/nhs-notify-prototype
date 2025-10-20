@@ -25,23 +25,23 @@ router.post('/{*any}/route-template-type', (req, res) => {
   }
 
   if (radio_template_type === 'letter' && radio_template_type_letter === 'letter-standard') {
-    res.redirect('upload-letter-standard');
+    res.redirect('template-upload-letter-standard');
   }
 
   if (radio_template_type === 'letter' && radio_template_type_letter === 'letter-other-language') {
-    res.redirect('create-letter-language-template');
+    res.redirect('/404');
   }
 
   if (radio_template_type === 'letter' && radio_template_type_letter === 'letter-large-print') {
-    res.redirect('create-letter-large-print-template');
+    res.redirect('/404');
   }
   
   if (radio_template_type === 'letter' && radio_template_type_letter === 'letter-braille') {
-    res.redirect('create-letter-braille-template');
+    res.redirect('/404');
   }
 
   if (radio_template_type === 'letter' && radio_template_type_letter === 'letter-audio-cd') {
-    res.redirect('create-letter-audio-cd-template');
+    res.redirect('/404');
   }
 
   /*
@@ -253,6 +253,26 @@ router.post('/{*any}/route-template-letter-standard', (req, res) => {
   }
 
 });
+
+
+
+
+// 
+router.post('/{*any}/route-template-letter-reject', (req, res) => {
+
+  const template_letter_reject = req.session.data['radio-template-letter-reject'];
+
+  if (template_letter_reject === 'no') {
+      res.redirect('folder-templates');
+  }
+
+  else {
+    res.redirect('folder-templates?folder-1-letter-templates=&template-letter-name-1=');
+  }
+
+});
+
+
 
 
 module.exports = router

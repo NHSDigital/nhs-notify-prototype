@@ -110,7 +110,18 @@
                     classes: "nhsuk-tag--green"
                   })}}
 
-                  {% else %}
+                  {% endif %}
+
+                  {% if data['template-letter-standard-status'] == '3' %}
+
+                  {{ tag({
+                    text: "Rejected",
+                    classes: "nhsuk-tag--grey"
+                  })}}
+
+                  {% endif %}
+
+                  {% if data['template-letter-standard-status'] == '1' %}
 
                   {{ tag({
                     text: "Waiting for approval",
@@ -137,8 +148,7 @@
 
       <h2 class="nhsuk-heading-m">Personalisation fields</h2>
 
-      <p>Check your letter proof with different examples of personalisation data.</p>
-      <p>We provide example personalisation data for PDS fields.</p>
+      <p>Check the personalisation fields you included in your letter using example personalisation data.</p>
 
       <details class="nhsuk-details">
         <summary class="nhsuk-details__summary">
@@ -174,7 +184,7 @@
             ]
           }) }}
 
-          <a href="" class="nhsuk-button nhsuk-button--secondary">Copy example data</a>
+          <a href="/404" class="nhsuk-button nhsuk-button--secondary">Copy example data</a>
 
         </div>
       </details>
@@ -185,23 +195,29 @@
         </h2>
         <ul class="nhsuk-tabs__list">
           <li class="nhsuk-tabs__list-item nhsuk-tabs__list-item--selected">
-            <a class="nhsuk-tabs__tab" href="#short">
+            <a class="nhsuk-tabs__tab" href="#tab-short">
               Short examples
             </a>
           </li>
           <li class="nhsuk-tabs__list-item">
-            <a class="nhsuk-tabs__tab" href="#medium">
+            <a class="nhsuk-tabs__tab" href="#tab-medium">
               Medium examples
             </a>
           </li>
           <li class="nhsuk-tabs__list-item">
-            <a class="nhsuk-tabs__tab" href="#long">
+            <a class="nhsuk-tabs__tab" href="#tab-long">
               Long examples
             </a>
           </li>
         </ul>
 
-        <div class="nhsuk-tabs__panel" id="short">
+        <div class="nhsuk-tabs__panel" id="tab-short">
+          
+          <h3 class="nhsuk-heading-s">
+            PDS fields
+          </h3>
+
+          <p>We provide example personalisation data for PDS fields.</p>
 
           {{ select({
             id: "letter-proof-standard-pds-date",
@@ -212,7 +228,7 @@
             items: [
               {
                 value: 1,
-                text: "14th April 2025",
+                text: "13th August 2025",
                 selected: true
               },
               {
@@ -231,7 +247,7 @@
             items: [
               {
                 value: 1,
-                text: "0000 0000 000",
+                text: "901 234 5678",
                 selected: true
               },
               {
@@ -250,57 +266,63 @@
             items: [
               {
                 value: 1,
-                text: "Amy Cho",
+                text: "Jo Blogs",
                 selected: true
               },
               {
                 value: 2,
-                text: "Lee Smith"
+                text: "Amy Cho"
               }
             ]
           }) }}
 
+          <h3 class="nhsuk-heading-s nhsuk-u-padding-top-6">
+            Custom fields
+          </h3>
+
+          <p>Enter your own example personalisation data.</p>
+
           {{ input({
             label: {
-              text: "myCustomField1"
+              text: "studyRegion"
             },
-            id: "letter-proof-standard-myCustomField1",
-            name: "letter-proof-standard-myCustomField1",
-            classes: "nhsuk-u-width-three-quarters"
+            id: "letter-proof-standard-studyRegion",
+            name: "letter-proof-standard-studyRegion",
+            classes: "nhsuk-u-width-three-quarters",
+            value: data['letter-proof-standard-studyRegionEmail']
           }) }}
 
           {{ input({
             label: {
-              text: "myCustomField2"
+              text: "studyRegionPhone"
             },
-            id: "letter-proof-standard-myCustomField2",
-            name: "letter-proof-standard-myCustomField2",
-            classes: "nhsuk-u-width-three-quarters"
+            id: "letter-proof-standard-studyRegionPhone",
+            name: "letter-proof-standard-studyRegionPhone",
+            classes: "nhsuk-u-width-three-quarters",
+            value: data['letter-proof-standard-studyRegionEmail']
           }) }}
 
           {{ input({
             label: {
-              text: "myCustomField3"
+              text: "studyRegionEmail"
             },
-            id: "letter-proof-standard-myCustomField3",
-            name: "letter-proof-standard-myCustomField3",
-            classes: "nhsuk-u-width-three-quarters"
+            id: "letter-proof-standard-studyRegionEmail",
+            name: "letter-proof-standard-studyRegionEmail",
+            classes: "nhsuk-u-width-three-quarters",
+            value: data['letter-proof-standard-studyRegionEmail']
           }) }}
 
-          {{ input({
-            label: {
-              text: "myCustomField4"
-            },
-            id: "letter-proof-standard-myCustomField4",
-            name: "letter-proof-standard-myCustomField4",
-            classes: "nhsuk-u-width-three-quarters"
-          }) }}
-
-          <a href="" class="nhsuk-button nhsuk-button--secondary">Update preview</a>
+          <a class="nhsuk-button nhsuk-button--secondary" id="buttonShort">Update preview</a>
 
         </div>
 
-        <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="medium">
+        <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="tab-medium">
+
+          <h3 class="nhsuk-heading-s">
+            PDS fields
+          </h3>
+
+          <p>We provide example personalisation data for PDS fields.</p>
           
           {{ select({
             id: "letter-proof-standard-pds-date",
@@ -311,7 +333,7 @@
             items: [
               {
                 value: 1,
-                text: "14th April 2025",
+                text: "13th August 2025",
                 selected: true
               },
               {
@@ -330,7 +352,7 @@
             items: [
               {
                 value: 1,
-                text: "0000 0000 000",
+                text: "901 234 5678",
                 selected: true
               },
               {
@@ -349,7 +371,7 @@
             items: [
               {
                 value: 1,
-                text: "Anthony Dickinson",
+                text: "Joseph Bloggs",
                 selected: true
               },
               {
@@ -359,47 +381,53 @@
             ]
           }) }}
 
+          <h3 class="nhsuk-heading-s nhsuk-u-padding-top-6">
+            Custom fields
+          </h3>
+
+          <p>Enter your own example personalisation data.</p>
+
           {{ input({
             label: {
-              text: "myCustomField1"
+              text: "studyRegion"
             },
-            id: "letter-proof-standard-myCustomField1",
-            name: "letter-proof-standard-myCustomField1",
-            classes: "nhsuk-u-width-three-quarters"
+            id: "letter-proof-standard-studyRegion",
+            name: "letter-proof-standard-studyRegion",
+            classes: "nhsuk-u-width-three-quarters",
+            value: data['letter-proof-standard-studyRegionEmail']
           }) }}
 
           {{ input({
             label: {
-              text: "myCustomField2"
+              text: "studyRegionPhone"
             },
-            id: "letter-proof-standard-myCustomField2",
-            name: "letter-proof-standard-myCustomField2",
-            classes: "nhsuk-u-width-three-quarters"
+            id: "letter-proof-standard-studyRegionPhone",
+            name: "letter-proof-standard-studyRegionPhone",
+            classes: "nhsuk-u-width-three-quarters",
+            value: data['letter-proof-standard-studyRegionEmail']
           }) }}
 
           {{ input({
             label: {
-              text: "myCustomField3"
+              text: "studyRegionEmail"
             },
-            id: "letter-proof-standard-myCustomField3",
-            name: "letter-proof-standard-myCustomField3",
-            classes: "nhsuk-u-width-three-quarters"
+            id: "letter-proof-standard-studyRegionEmail",
+            name: "letter-proof-standard-studyRegionEmail",
+            classes: "nhsuk-u-width-three-quarters",
+            value: data['letter-proof-standard-studyRegionEmail']
           }) }}
 
-          {{ input({
-            label: {
-              text: "myCustomField4"
-            },
-            id: "letter-proof-standard-myCustomField4",
-            name: "letter-proof-standard-myCustomField4",
-            classes: "nhsuk-u-width-three-quarters"
-          }) }}
-
-          <a href="" class="nhsuk-button nhsuk-button--secondary">Update preview</a>
+          <a class="nhsuk-button nhsuk-button--secondary" id="buttonMedium">Update preview</a>
 
         </div>
 
-        <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="long">
+        <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="tab-long">
+
+          <h3 class="nhsuk-heading-s">
+            PDS fields
+          </h3>
+
+          <p>We provide example personalisation data for PDS fields.</p>
           
           {{ select({
             id: "letter-proof-standard-pds-date",
@@ -410,7 +438,7 @@
             items: [
               {
                 value: 1,
-                text: "14th April 2025",
+                text: "13th August 2025",
                 selected: true
               },
               {
@@ -429,7 +457,7 @@
             items: [
               {
                 value: 1,
-                text: "0000 0000 000",
+                text: "901 234 5678",
                 selected: true
               },
               {
@@ -448,7 +476,7 @@
             items: [
               {
                 value: 1,
-                text: "Jonathan Luke Hendrie-Smythe",
+                text: "Joseph Anthony Hendrington-Bloggs",
                 selected: true
               },
               {
@@ -458,83 +486,49 @@
             ]
           }) }}
 
+  
+
+          <h3 class="nhsuk-heading-s nhsuk-u-padding-top-6">
+            Custom fields
+          </h3>
+
+          <p>Enter your own example personalisation data.</p>
+
           {{ input({
             label: {
-              text: "myCustomField1"
+              text: "studyRegion"
             },
-            id: "letter-proof-standard-myCustomField1",
-            name: "letter-proof-standard-myCustomField1",
-            classes: "nhsuk-u-width-three-quarters"
+            id: "letter-proof-standard-studyRegion",
+            name: "letter-proof-standard-studyRegion",
+            classes: "nhsuk-u-width-three-quarters",
+            value: data['letter-proof-standard-studyRegionEmail']
           }) }}
 
           {{ input({
             label: {
-              text: "myCustomField2"
+              text: "studyRegionPhone"
             },
-            id: "letter-proof-standard-myCustomField2",
-            name: "letter-proof-standard-myCustomField2",
-            classes: "nhsuk-u-width-three-quarters"
+            id: "letter-proof-standard-studyRegionPhone",
+            name: "letter-proof-standard-studyRegionPhone",
+            classes: "nhsuk-u-width-three-quarters",
+            value: data['letter-proof-standard-studyRegionEmail']
           }) }}
 
           {{ input({
             label: {
-              text: "myCustomField3"
+              text: "studyRegionEmail"
             },
-            id: "letter-proof-standard-myCustomField3",
-            name: "letter-proof-standard-myCustomField3",
-            classes: "nhsuk-u-width-three-quarters"
+            id: "letter-proof-standard-studyRegionEmail",
+            name: "letter-proof-standard-studyRegionEmail",
+            classes: "nhsuk-u-width-three-quarters",
+            value: data['letter-proof-standard-studyRegionEmail']
           }) }}
 
-          {{ input({
-            label: {
-              text: "myCustomField4"
-            },
-            id: "letter-proof-standard-myCustomField4",
-            name: "letter-proof-standard-myCustomField4",
-            classes: "nhsuk-u-width-three-quarters"
-          }) }}
-
-          <a href="" class="nhsuk-button nhsuk-button--secondary">Update preview</a>
+          <a class="nhsuk-button nhsuk-button--secondary" id="buttonLong">Update preview</a>
 
         </div>
 
       </div>
-      
-      {#
-      <script>
-          
-        const select = document.getElementById("select-change-date");
-        const short = document.getElementById("short");
-        const medium = document.getElementById("medium");
-        const long = document.getElementById("long");
-
-        // Show "long" section by default
-        short.hidden = true;
-        medium.hidden = true;
-        long.hidden = false;
-
-        select.addEventListener("change", function(e){
-
-          short.hidden = false;
-          medium.hidden = false;
-          long.hidden = false;
-
-          // Then hide the ones not selected
-          if (select.value == "short") {
-            medium.hidden = true;
-            long.hidden = true;
-          } else if (select.value == "medium") {
-            short.hidden = true;
-            long.hidden = true;
-          } else if (select.value == "long") {
-            short.hidden = true;
-            medium.hidden = true;
-          }
-
-        });
-          
-      </script>
-      #}
 
     </div>
 
@@ -542,17 +536,104 @@
 
       <h2 class="nhsuk-heading-m">Letter preview</h2>
 
+      <div id="initial">
+
       <iframe 
-        src="/files/example-letter-vacs.pdf"
+        src="/files/letter-template-nhs-notify-standard-example-2.pdf"
         style="width:100%;height:1200px;border:none;"
         allowfullscreen
         referrerpolicy="no-referrer"
-        class="nhsuk-u-margin-bottom-4"
+        class="nhsuk-u-margin-bottom-4 notify-letter-preview"
       ></iframe>
+
+      </div>
+
+      <div id="short">
+
+      <iframe 
+        src="/files/letter-template-nhs-notify-standard-example-short-data.pdf"
+        style="width:100%;height:1200px;border:none;"
+        allowfullscreen
+        referrerpolicy="no-referrer"
+        class="nhsuk-u-margin-bottom-4 notify-letter-preview"
+      ></iframe>
+
+      </div>
+
+      <div id="medium">
+
+      <iframe 
+        src="/files/letter-template-nhs-notify-standard-example-medium-data.pdf"
+        style="width:100%;height:1200px;border:none;"
+        allowfullscreen
+        referrerpolicy="no-referrer"
+        class="nhsuk-u-margin-bottom-4 notify-letter-preview"
+      ></iframe>
+
+      </div>
+
+      <div id="long">
+
+      <iframe 
+        src="/files/letter-template-nhs-notify-standard-example-long-data.pdf"
+        style="width:100%;height:1200px;border:none;"
+        allowfullscreen
+        referrerpolicy="no-referrer"
+        class="nhsuk-u-margin-bottom-4 notify-letter-preview"
+      ></iframe>
+
+      </div>
+
+      <script>
+          
+        const buttonShort = document.getElementById("buttonShort");
+        const buttonMedium = document.getElementById("buttonMedium");
+        const buttonLong = document.getElementById("buttonLong");
+        const initial = document.getElementById("initial");
+        const short = document.getElementById("short");
+        const medium = document.getElementById("medium");
+        const long = document.getElementById("long");
+
+        // Show "initial" section by default
+        short.hidden = true;
+        medium.hidden = true;
+        long.hidden = true;
+        initial.hidden = false;
+
+        buttonShort.addEventListener("click", function(e){
+
+          short.hidden = false;
+          medium.hidden = true;
+          long.hidden = true;
+          initial.hidden = true;
+
+        });
+
+        buttonMedium.addEventListener("click", function(e){
+
+          short.hidden = true;
+          medium.hidden = false;
+          long.hidden = true;
+          initial.hidden = true;
+
+        });
+
+        buttonLong.addEventListener("click", function(e){
+
+          short.hidden = true;
+          medium.hidden = true;
+          long.hidden = false;
+          initial.hidden = true;
+
+        });
+          
+      </script>
 
       {% if data['template-letter-standard-status'] == '1' %}
       
       <a href="template-letter-approve-confirmation?approve-template-name={{ data['template-letter-name-1'] }}&template-letter-standard-status=2" class="nhsuk-button nhsuk-u-margin-right-3">Approve template</a>
+
+      <a href="template-letter-reject-confirmation?reject-template-name={{ data['template-letter-name-1'] }}&template-letter-standard-status=3" class="nhsuk-button nhsuk-button--secondary">Reject template</a>
 
       {% endif %}
 

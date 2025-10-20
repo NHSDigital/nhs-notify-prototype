@@ -51,7 +51,17 @@
                 Approved
             </strong>
 
-            {% else %}
+            {% endif %}
+
+            {% if status == '3' %}
+
+            <strong class="nhsuk-tag nhsuk-tag--grey">
+                Rejected
+            </strong>
+
+            {% endif %}
+
+            {% if status == '1' %}
 
             <strong class="nhsuk-tag nhsuk-tag--yellow">
                 Waiting for approval
