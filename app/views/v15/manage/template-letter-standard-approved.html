@@ -17,12 +17,6 @@
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-full">
 
-        {% if data['show-save-banner'] == 'yes' %}
-        <div class="notify-confirmation-panel">
-          <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-0">Template saved</h1>
-        </div>
-        {% endif %}
-
         <div class="nhsuk-u-reading-width">
 
           {% if data['template-locked'] == '1' %}
@@ -36,19 +30,13 @@
             {{ data['template-letter-name-1'] }}
           </h1>
 
-          {#
-          {% if data['template-letter-standard-status'] != '2' %}
-          <p class="nhsuk-body-s nhsuk-u-margin-bottom-8"><a href="template-edit-letter-standard">Change name</a></p>
-          {% endif %}
-          #}
-
         </div>
 
         <table role="table" class="notify-template-content nhsuk-u-margin-bottom-4">
           <tbody class="nhsuk-table__body">
             
             <tr role="row" class="nhsuk-table__row">
-              <th role="cell" class="nhsuk-table__cell">
+              <th role="cell" class="nhsuk-table__cell" style="width:20%;">
                 Template ID
               </th>
               <td role="cell" class="nhsuk-table__cell" style="font-family: monospace;">
@@ -57,7 +45,7 @@
             </tr>
 
             <tr role="row" class="nhsuk-table__row">
-              <th role="cell" class="nhsuk-table__cell">
+              <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
                 Template type
               </th>
               <td role="cell" class="nhsuk-table__cell">
@@ -67,42 +55,33 @@
 
 
             <tr role="row" class="nhsuk-table__row">
-              <th role="cell" class="nhsuk-table__cell">
+              <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
                 Size
               </th>
               <td role="cell" class="nhsuk-table__cell">
 
-                2 sides, 1 sheet of A4
+                2 sides, 1 sheet
 
               </td>
             </tr>
 
+            
+
             <tr role="row" class="nhsuk-table__row">
-              <th role="cell" class="nhsuk-table__cell">
-                Print and dispatch
+              <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
+                Service level
               </th>
               <td role="cell" class="nhsuk-table__cell">
-                {{ data['template-letter-standard-dispatch'] | default('Standard (3 business days)', true) }}
-                {#{% if data['template-letter-standard-status'] != '2' %}
-                <a href="template-edit-letter-standard">Change</a>
-                {% endif %}#}
+                <ul>
+                  <li>Print and dispatch: 2 business days</li>
+                  <li>Delivery: standard (3 business days)</li>
+                </ul>
+                <a href="/404">Change</a>
               </td>
             </tr>
 
             <tr role="row" class="nhsuk-table__row">
-              <th role="cell" class="nhsuk-table__cell">
-                Postage
-              </th>
-              <td role="cell" class="nhsuk-table__cell">
-                {{ data['template-letter-standard-postage'] | default('Standard (3 business days)', true) }}
-                {#{% if data['template-letter-standard-status'] != '2' %}
-                <a href="template-edit-letter-standard">Change</a>
-                {% endif %}#}
-              </td>
-            </tr>
-
-            <tr role="row" class="nhsuk-table__row">
-              <th role="cell" class="nhsuk-table__cell">
+              <th role="cell" class="nhsuk-table__cell" style="width: 20%;">
                 Status
               </th>
               <td role="cell" class="nhsuk-table__cell">
@@ -163,8 +142,6 @@
 
       <p>Check how your personalisation fields will appear in your letter.</p>
 
-      {% if data['template-letter-standard-status'] != '2' %}
-
       <details class="nhsuk-details">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
@@ -206,8 +183,6 @@
         </div>
       </details>
 
-      {% endif %}
-
       <div class="nhsuk-tabs nhsuk-u-margin-top-8" data-module="nhsuk-tabs">
         <h2 class="nhsuk-tabs__title">
           Contents
@@ -237,8 +212,6 @@
             <h3 class="nhsuk-heading-s">
               PDS personalisation fields
             </h3>
-
-            {% if data['template-letter-standard-status'] != '2' %}
 
             <p>Choose example personalisation data for your PDS personalisation fields.</p>
 
@@ -299,30 +272,9 @@
               ]
             }) }}
 
-            {% else %}
-
-            <p>
-              date<br />
-              13 August 2025
-            </p>
-
-            <p>
-              nhsNumber<br />
-              901 234 5678
-            </p>
-
-            <p>
-              fullName<br />
-              Jo Blogs
-            </p>
-
-            {% endif %}
-
             <h3 class="nhsuk-heading-s nhsuk-u-padding-top-6">
               Custom personalisation fields
             </h3>
-
-            {% if data['template-letter-standard-status'] != '2' %}
 
             <p>Enter your own example personalisation data.</p>
 
@@ -356,24 +308,65 @@
               value: data['letter-proof-standard-custom-field-short-3']
             }) }}
 
-            {% else %}
+            {{ input({
+              label: {
+                text: "studyRegion"
+              },
+              id: "letter-proof-standard-custom-field-short-1",
+              name: "letter-proof-standard-custom-field-short-1",
+              classes: "nhsuk-u-width-three-quarters",
+              value: data['letter-proof-standard-custom-field-short-1']
+            }) }}
 
-            <p>
-              studyRegion<br />
-              Rutland
-            </p>
+            {{ input({
+              label: {
+                text: "studyRegionPhone"
+              },
+              id: "letter-proof-standard-custom-field-short-2",
+              name: "letter-proof-standard-custom-field-short-2",
+              classes: "nhsuk-u-width-three-quarters",
+              value: data['letter-proof-standard-custom-field-short-2']
+            }) }}
 
-            <p>
-              studyRegionPhone<br />
-              01234 567 890
-            </p>
+            {{ input({
+              label: {
+                text: "studyRegionEmail"
+              },
+              id: "letter-proof-standard-custom-field-short-3",
+              name: "letter-proof-standard-custom-field-short-3",
+              classes: "nhsuk-u-width-three-quarters",
+              value: data['letter-proof-standard-custom-field-short-3']
+            }) }}
 
-            <p>
-              studyRegionEmail<br />
-              rutland@nhs.net
-            </p>
+            {{ input({
+              label: {
+                text: "studyRegion"
+              },
+              id: "letter-proof-standard-custom-field-short-1",
+              name: "letter-proof-standard-custom-field-short-1",
+              classes: "nhsuk-u-width-three-quarters",
+              value: data['letter-proof-standard-custom-field-short-1']
+            }) }}
 
-            {% endif %}
+            {{ input({
+              label: {
+                text: "studyRegionPhone"
+              },
+              id: "letter-proof-standard-custom-field-short-2",
+              name: "letter-proof-standard-custom-field-short-2",
+              classes: "nhsuk-u-width-three-quarters",
+              value: data['letter-proof-standard-custom-field-short-2']
+            }) }}
+
+            {{ input({
+              label: {
+                text: "studyRegionEmail"
+              },
+              id: "letter-proof-standard-custom-field-short-3",
+              name: "letter-proof-standard-custom-field-short-3",
+              classes: "nhsuk-u-width-three-quarters",
+              value: data['letter-proof-standard-custom-field-short-3']
+            }) }}
 
             <input type="hidden" name="template-letter-preview-length" value="short">
             <input type="hidden" name="show-save-banner" value="">
@@ -504,8 +497,6 @@
               PDS personalisation fields
             </h3>
 
-            {% if data['template-letter-standard-status'] != '2' %}
-
             <p>Choose example personalisation data for your PDS personalisation fields.</p>
             
             {{ select({
@@ -565,31 +556,11 @@
               ]
             }) }}
 
-            {% else %}
-
-            <p>
-              date<br />
-              13 August 2025
-            </p>
-
-            <p>
-              nhsNumber<br />
-              901 234 5678
-            </p>
-
-            <p>
-              fullName<br />
-              Joseph Anthony Hendrington-Bloggs
-            </p>
-
-            {% endif %}
     
 
             <h3 class="nhsuk-heading-s nhsuk-u-padding-top-6">
               Custom personalisation fields
             </h3>
-
-            {% if data['template-letter-standard-status'] != '2' %}
 
             <p>Enter your own example personalisation data.</p>
 
@@ -623,25 +594,6 @@
               value: data['letter-proof-standard-custom-field-long-3']
             }) }}
 
-            {% else %}
-
-            <p>
-              studyRegion<br />
-              Bath and North East Somerset
-            </p>
-
-            <p>
-              studyRegionPhone<br />
-              01234 567 999
-            </p>
-
-            <p>
-              studyRegionEmail<br />
-              bath_and_north_east_somerset@nhs.net
-            </p>
-
-            {% endif %}
-
             <input type="hidden" name="template-letter-preview-length" value="long">
             <input type="hidden" name="show-save-banner" value="">
 
@@ -667,7 +619,6 @@
         allowfullscreen
         referrerpolicy="no-referrer"
         class="nhsuk-u-margin-bottom-4 notify-letter-preview"
-        id="iframe-short"
       ></iframe>
 
       {% elseif data['template-letter-preview-length'] == 'medium' %}
@@ -678,7 +629,6 @@
         allowfullscreen
         referrerpolicy="no-referrer"
         class="nhsuk-u-margin-bottom-4 notify-letter-preview"
-        id="iframe-medium"
       ></iframe>
 
       {% elseif data['template-letter-preview-length'] == 'long' %}
@@ -689,7 +639,6 @@
         allowfullscreen
         referrerpolicy="no-referrer"
         class="nhsuk-u-margin-bottom-4 notify-letter-preview"
-        id="iframe-long"
       ></iframe>
 
       {% else %}
@@ -836,7 +785,7 @@
 
           <div style="width: fit-content; margin: 0 auto;">
 
-          <a href="template-edit-letter-standard" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-right-3">Edit template</a>
+          <a href="folder-templates" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-right-3">Edit template</a>
 
           <a href="template-letter-approve?approve-template-name={{ data['template-letter-name-1'] }}" class="nhsuk-button nhsuk-u-margin-right-3">Approve template</a>
 

@@ -1,0 +1,43 @@
+{% extends 'v15/layout.html' %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">
+        Approve '{{ data['approve-template-name'] }}'
+      </h1>
+
+      <form action="template-letter-approve-confirmation">
+
+        <p class="nhsuk-body-l">After you approve a letter template it can be used in a message plan.</p>
+
+        <h2 class="nhsuk-heading-m">You should know...</h2>
+
+        <p>If personalisation data makes the letter more pages, it may increase the cost.</p>
+        <p>After you approve you won't be able to change the template name, options or try different personalisation data.</p>
+
+        {{ warningCallout({
+          heading: "Important",
+          html: "<p>Some important info.</p>"
+        }) }}
+
+        {{ button({
+          text: "Approve template",
+          classes: "nhsuk-u-margin-right-3"
+        }) }}
+
+        <a href="javascript:history.go(-1);" class="nhsuk-button nhsuk-button--secondary">Go back</a>
+
+        <input type="hidden" name="template-letter-standard-status" value="2">
+
+      </form>
+
+      <!--{{ backLink({
+        "href": data['continue-url'],
+        "text": "Go back"
+      }) }}-->
+
+    </div>
+  </div>
+{% endblock %}

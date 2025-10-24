@@ -28,7 +28,7 @@
   <div class="nhsuk-grid-row">
     <div id="column-left" class="nhsuk-grid-column-two-thirds">
 
-      <form action="template-letter-standard" method="post" autocomplete="off" onsubmit="return checkFormUploadLetter();">
+      <form action="uploading" method="post" autocomplete="off" onsubmit="return checkFormUploadLetter();">
 
         <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
           
@@ -78,14 +78,16 @@
         <input type="hidden" name="show-save-banner" value="yes">
         <input type="hidden" name="radio-template-type" value="">
         <input type="hidden" name="radio-template-type-letter" value="">
-        <input type="hidden" name="template-letter-editDate-1" value="{{ currentDate | formatDate('d MMM yyyy') }}">
-        <input type="hidden" name="template-letter-editTime-1" value="{{ currentDate | formatDate('HH:mm') }}">
+        <input type="hidden" name="template-letter-standard-status" value="1">
+        <input type="hidden" name="template-letter-preview-length" value="">
+        <input type="hidden" name="template-letter-standard-dispatch" value="">
+        <input type="hidden" name="template-letter-standard-postage" value="">
 
         {{ button({
-          "text": "Upload template"
+          text: "Upload letter template file"
         }) }}
 
-        <input type="hidden" name="template-letter-standard-status" value="1">
+        
       
       </form>
 
@@ -97,16 +99,16 @@
 
       <ol>
         <li class="nhsuk-u-margin-bottom-4">
-          <a href="">Download letter template file (docx)</a>
+          Download the relevant <a href="" target="_blank">blank letter template file (opens in a new tab)</a>.
         </li>
         <li class="nhsuk-u-margin-bottom-4">
-          <a href="">Write and format your content (opens in a new tab)</a>
+          <a href="" target="_blank">Format your letter (opens in a new tab)</a>.
         </li>
         <li class="nhsuk-u-margin-bottom-4">
-          <a href="">Add your personalisation fields (opens in a new tab)</a>
+          <a href="" target="_blank">Add any personalisation (opens in a new tab)</a>.
         </li>
         <li>
-          <a href="">Save and upload your file (opens in a new tab)</a>
+          Save your Microsoft Word file and upload it to this page.
         </li>
       </ol>
       
