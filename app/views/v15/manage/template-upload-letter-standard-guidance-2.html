@@ -1,0 +1,115 @@
+{% extends 'v15/layout.html' %}
+
+{% block beforeContent %}
+
+{% if data['mode'] != 'edit' %}
+
+{{ backLink({
+  "href": "template-upload-letter-standard",
+  "text": "Back to upload a letter template"
+}) }}
+
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1 class="nhsuk-heading-xl">
+      Personalisation
+    </h1>
+
+    <p>You can send personalised messages by adding personalisation fields to a single template.</p>
+    <p>Use single curly brackets and add "<strong>d.</strong>" before your field name to add a personalisation field to your content. Do not include spaces in your personalisation fields.</p>
+    <p>For example if you want to include the fields <strong>fullName</strong> and <strong>nhsNumber</strong>:</p>
+
+    {{ insetText({
+      html: "<p class='nhsuk-u-margin-bottom-0'>Hello {d.fullName}, your NHS Number is {d.nhsNumber}</p>"
+    }) }}
+
+    <p>You can use:</p>
+    <ul>
+      <li><a href="#personal-demographics-service-pds-personalisation-fields">Personal Demographics Service (PDS) personalisation fields</a></li>
+      <li><a href="#custom-personalisation-fields">custom personalisation fields</a></li>
+    </ul>
+    <p>You can see personalisation instructions while you're editing a template.</p>
+    
+    <h2 class="nhsuk-heading-l" id="personal-demographics-service-pds-personalisation-fields">Personal Demographics Service (PDS) personalisation fields</h2>
+    <p>NHS Notify uses the <a href="https://digital.nhs.uk/services/personal-demographics-service" target="_blank">Personal Demographics Service (PDS)</a> to find and populate certain personalisation fields for each recipient. This happens automatically when you <a href="/404">tell us who you want to message</a> using recipients&#39; NHS numbers.</p>
+    <p>To use PDS personalisation fields in your templates, choose from the following list:</p>
+    <ul>
+    <li>fullName</li>
+    <li>firstName</li>
+    <li>lastName</li>
+    <li>nhsNumber</li>
+    <li>date</li>
+    </ul>
+
+    {{ insetText({
+      html: "<p class='nhsuk-u-margin-bottom-0'>Make sure your personalisation fields exactly match the PDS personalisation fields. This includes using the correct order of upper and lower case letters.</p>"
+    }) }}
+    
+    <h2 class="nhsuk-heading-l" id="custom-personalisation-fields">Custom personalisation fields</h2>
+    <p>You can add custom personalisation fields that use your own personalisation data.</p>
+    
+    <h3 class="nhsuk-heading-m">If you&#39;re using NHS Notify API</h3>
+    <p>Include a personalisation block in your API request.</p>
+    <p>For example, if you wanted to include &#39;practice&#39; as a personalisation field, the personalisation block would be:</p>
+
+    {{ insetText({
+      html: "<p class='nhsuk-u-margin-bottom-0'>“practice”: “practiceName”,</p>"
+    }) }}
+
+    <p>Read the <a href="https://digital.nhs.uk/developer/api-catalogue/nhs-notify#post-/v1/message-batches" target="_blank">API documentation</a> to find out where to put this in your request.</p>
+    
+    <h3 class="nhsuk-heading-m">If you&#39;re using NHS Notify MESH</h3>
+    <p>Include the personalisation fields as columns in your CSV file.</p>
+    <p>The column names should start with &#39;personalisation_&#39;, followed by the same wording as the personalisation fields in your template.</p>
+    <p>For example, if you wanted to include &#39;practice&#39; as a personalisation field, the column name would be:</p>
+
+    {{ insetText({
+      html: "<p class='nhsuk-u-margin-bottom-0'>nhsNumber,requestItemRefId,personalisation_practice</p>"
+    }) }}
+    
+    <h3 class="nhsuk-heading-m">Fields to avoid for custom personalisation</h3>
+    <p>If you want to use custom personalisation, do not use the following personalisation fields:</p>
+    <ul>
+    <li><a href="#personal-demographics-service-pds-personalisation-fields">PDS personalisation fields</a></li>
+    <li>emailAddress</li>
+    <li>phoneNumber</li>
+    <li>addressLine1</li>
+    <li>addressLine2</li>
+    <li>addressLine3</li>
+    <li>addressLine4</li>
+    <li>addressLine5</li>
+    <li>addressLine6</li>
+    <li>addressLine7</li>
+    <li>middleNames</li>
+    <li>namePrefix</li>
+    <li>nameSuffix</li>
+    <li>date</li>
+    <li>clientRef</li>
+    <li>recipientContactValue</li>
+    <li>template</li>
+    </ul>
+
+    {{ insetText({
+      html: "<p class='nhsuk-u-margin-bottom-0'>Custom personalisation will not work if you use these fields. This includes any variations, for example, if you add spaces, punctuation, and upper or lower case letters.</p>"
+    }) }}
+
+
+    <p>You can include extra words in your custom personalisation fields to make them different.</p>
+    <p>For example, if you wanted to include GP practice phone number, your personalisation field could be:</p>
+
+
+    {{ insetText({
+      html: "<p class='nhsuk-u-margin-bottom-0'>{d.gpPhoneNumber}</p>"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}
