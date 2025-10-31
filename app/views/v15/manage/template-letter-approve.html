@@ -10,18 +10,27 @@
 
       <form action="template-letter-approve-confirmation">
 
-        <p class="nhsuk-body-l">After you approve a letter template it can be used in a message plan.</p>
+        <p class="nhsuk-body-l">After you approve this letter, you can use it in your message plans.</p>
 
         <h2 class="nhsuk-heading-m">Before you approve</h2>
 
-        <p>This letter is 1 sheet but personalisation may sometimes push it on to 2 sheets. <a href="">Find out more</a> about how personalisation may affect your letters.</p>
+        <p>Make sure:</p>
 
-        <p>If personalisation data makes the letter more pages, it may increase the cost.</p>
-        <p>After you approve you won't be able to change the template name, options or try different personalisation data.</p>
+        <ul class='nhsuk-list nhsuk-list--bullet'>
+          <li>the relevant stakeholders in your team have approved your letter template</li>
+          <li>your letter does not have any errors</li>
+        </ul>
+
+        <h2 class="nhsuk-heading-m">Personalisation</h2>
+
+        <p>Longer personalisation data can affect the final number of pages and price of your letter.</p>
 
         {{ warningCallout({
           heading: "Important",
-          html: "<p>Some important info.</p>"
+          html: "
+          <p>You cannot change your template settings after you approve this template.</p>
+          <p>If you need to make changes, edit your original template file on your computer then upload it as a new template.</p>
+          "
         }) }}
 
         {{ button({
