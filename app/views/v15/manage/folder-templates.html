@@ -145,6 +145,22 @@
 
 
 
+          {% if data['folder-1-letter-braille-templates'] == '1' %}
+
+            {% if data['messages-prod'] == '1' and data['template-letter-braille-name-1'] in data['channel-4-braille-template'] %}
+
+              {{row_letter(templateName=data['template-letter-braille-name-1'], templateNumber=4, locked=1, status=data['template-letter-braille-status'], templateTypeName='Braille letter', templateType='letter-braille', templateEditDate=data['template-letter-braille-editDate-1'], templateEditTime=data['template-letter-braille-editTime-1'])}}
+
+            {% else %}
+
+              {{row_letter(templateName=data['template-letter-braille-name-1'], templateNumber=4, locked='', status=data['template-letter-braille-status'], templateTypeName='Braille letter', templateType='letter-braille', templateEditDate=data['template-letter-braille-editDate-1'], templateEditTime=data['template-letter-braille-editTime-1'])}}
+
+            {% endif %}
+
+          {% endif %}
+
+
+
           {% if data['folder-1-letter-templates'] == '1' %}
 
             {% if data['messages-prod'] == '1' and data['template-letter-name-1'] in data['channel-4-template'] %}

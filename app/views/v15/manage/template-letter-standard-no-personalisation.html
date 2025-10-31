@@ -1,0 +1,177 @@
+{% extends 'v15/layout.html' %}
+
+{% block beforeContent %}
+
+<div class="nhsuk-width-container">
+  {{ backLink({
+  "href": "/404",
+  "text": "Back to all templates"
+}) }}
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+
+        {% if data['show-save-banner'] == 'yes' %}
+        <div class="notify-confirmation-panel">
+          <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-0">Template saved</h1>
+        </div>
+        {% endif %}
+
+        <div class="nhsuk-u-reading-width">
+
+          {% if data['template-locked'] == '1' %}
+
+          {% include "../includes/template-locked-message-letter.html" %}
+
+          {% endif %}
+
+          <span class="nhsuk-caption-l">Template</span>
+          <h1 class="nhsuk-heading-xl">
+            {{ data['template-letter-name-1'] }}
+          </h1>
+
+        </div>
+
+        <dl class="nhsuk-summary-list notify-summary-list-content">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Template ID
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              a4b171b5-431f-4a5b-9d7a-9a4903c98e66
+            </dd>
+            <dd class="nhsuk-summary-list__actions"></dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Template type
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Standard English letter
+            </dd>
+            <dd class="nhsuk-summary-list__actions"></dd>
+          </div>
+          {#<div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Size
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              2 sides, 1 sheet of A4
+            </dd>
+            <dd class="nhsuk-summary-list__actions"></dd>
+          </div>#}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Dispatch
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['template-letter-standard-dispatch'] | default('Standard (up to 2 business days)', true) }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              {% if data['template-letter-standard-status'] != '2' %}
+              <a href="/404">Change</a>
+              {% endif %}
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Postage
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['template-letter-standard-postage'] | default('Standard (up to 3 business days)', true) }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              {% if data['template-letter-standard-status'] != '2' %}
+              <a href="/404">Change</a>
+              {% endif %}
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Status
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if data['template-locked'] == '1' %}
+
+                {{ tag({
+                  text: "Locked",
+                  classes: "nhsuk-tag--orange"
+                })}}
+
+              {% else %}
+
+                {% if data['template-letter-standard-status'] == '2' %}
+                
+                  {{ tag({
+                    text: "Approved",
+                    classes: "nhsuk-tag--green"
+                  })}}
+
+                {% endif %}
+
+                {% if data['template-letter-standard-status'] == '3' %}
+
+                  {{ tag({
+                    text: "Rejected",
+                    classes: "nhsuk-tag--grey"
+                  })}}
+
+                {% endif %}
+
+                {% if data['template-letter-standard-status'] == '1' %}
+
+                  {{ tag({
+                    text: "Approval needed",
+                    classes: "nhsuk-tag--yellow"
+                  })}}
+
+                {% endif %}
+
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions"></dd>
+          </div>
+        </dl>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+
+      <h2 class="nhsuk-heading-m">Preview</h2>
+
+      <iframe 
+        src="/files/letter-template-nhs-notify-standard-example-no-personalisation.pdf"
+        style="width:100%;height:1200px;border:none;"
+        allowfullscreen
+        referrerpolicy="no-referrer"
+        class="nhsuk-u-margin-bottom-4 notify-letter-preview"
+      ></iframe>
+
+      {% if data['template-letter-standard-status'] == '1' %}
+
+        <div>
+
+          <a href="/404" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-right-3">Edit template</a>
+
+          <a href="/404" class="nhsuk-button nhsuk-u-margin-right-3">Approve template</a>
+
+          <p><a href="/404">Back to all templates</a></p>
+
+        </div>
+
+      {% endif %}
+      
+    </div>
+
+  </div>
+{% endblock %}

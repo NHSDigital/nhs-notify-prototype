@@ -2,14 +2,10 @@
 
 {% block beforeContent %}
 
-{% if data['mode'] != 'edit' %}
-
-{{ backLink({
-  "href": "template-upload-letter-standard",
-  "text": "Back to upload a letter template"
-}) }}
-
-{% endif %}
+  {{ backLink({
+    "href": "template-upload-letter-standard",
+    "text": "Back to upload a letter template"
+  }) }}
 
 {% endblock %}
 

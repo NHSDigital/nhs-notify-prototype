@@ -54,6 +54,21 @@ a:not(.nhsuk-button):not(:hover):not(:focus):not(:active):visited {
     }
 }
 
+
+.notify-summary-list-content{
+    background-color: $color_nhsuk-white;
+    border: 1px solid $nhsuk-border-color;
+    border-bottom-width: 2px;
+
+    .nhsuk-summary-list__key{
+        color: $nhsuk-secondary-text-color;
+    }
+
+    dt,dd{
+        padding: 1rem !important;
+    }
+}
+
 .notify-confirmation-panel{
     color: $color_nhsuk-white;
     background-color:  $color_nhsuk-green;

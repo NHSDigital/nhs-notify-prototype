@@ -32,144 +32,180 @@
           {% endif %}
 
           <span class="nhsuk-caption-l">Template</span>
-          <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-4">
-            {{ data['template-letter-name-1'] }}
+          <h1 class="nhsuk-heading-xl">
+            {{ data['template-letter-braille-name-1'] }}
           </h1>
-
-          {% if data['template-letter-standard-status'] != '2' %}
-          <p class="nhsuk-body-s nhsuk-u-margin-bottom-8"><a href="template-edit-letter-standard">Change name</a></p>
-          {% endif %}
 
         </div>
 
-        <table role="table" class="notify-template-content nhsuk-u-margin-bottom-4">
-          <tbody class="nhsuk-table__body">
-            
-            <tr role="row" class="nhsuk-table__row">
-              <th role="cell" class="nhsuk-table__cell" style="width: 25%;">
-                Template ID
-              </th>
-              <td role="cell" class="nhsuk-table__cell" style="font-family: monospace;">
-                a4b171b5-431f-4a5b-9d7a-9a4903c98e66
-              </td>
-            </tr>
-
-            <tr role="row" class="nhsuk-table__row">
-              <th role="cell" class="nhsuk-table__cell">
-                Template type
-              </th>
-              <td role="cell" class="nhsuk-table__cell">
-                Braille letter
-              </td>
-            </tr>
-
-            <tr role="row" class="nhsuk-table__row">
-              <th role="cell" class="nhsuk-table__cell">
-                Size
-              </th>
-              <td role="cell" class="nhsuk-table__cell">
-                2 sides, 1 sheet of A4
-              </td>
-            </tr>
-
-            <tr role="row" class="nhsuk-table__row">
-              <th role="cell" class="nhsuk-table__cell">
-                Print and dispatch
-              </th>
-              <td role="cell" class="nhsuk-table__cell">
-                {{ data['template-letter-standard-dispatch'] | default('Standard (3 business days)', true) }}
-                {% if data['template-letter-standard-status'] != '2' %}
-                <a href="template-edit-letter-standard">Change</a>
-                {% endif %}
-              </td>
-            </tr>
-
-            <tr role="row" class="nhsuk-table__row">
-              <th role="cell" class="nhsuk-table__cell">
-                Postage
-              </th>
-              <td role="cell" class="nhsuk-table__cell">
-                {{ data['template-letter-standard-postage'] | default('Standard (3 business days)', true) }}
-                {% if data['template-letter-standard-status'] != '2' %}
-                <a href="template-edit-letter-standard">Change</a>
-                {% endif %}
-              </td>
-            </tr>
-
-            <tr role="row" class="nhsuk-table__row">
-              <th role="cell" class="nhsuk-table__cell">
-                Status
-              </th>
-              <td role="cell" class="nhsuk-table__cell">
-                
-                {% if data['template-locked'] == '1' %}
+        <dl class="nhsuk-summary-list notify-summary-list-content">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Template ID
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              a4b171b5-431f-4a5b-9d7a-9a4903c98e66
+            </dd>
+            <dd class="nhsuk-summary-list__actions"></dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Template type
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Braille letter
+            </dd>
+            <dd class="nhsuk-summary-list__actions"></dd>
+          </div>
+          {#<div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Size
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              2 sides, 1 sheet of A4
+            </dd>
+            <dd class="nhsuk-summary-list__actions"></dd>
+          </div>#}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Dispatch
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['template-letter-braille-dispatch'] | default('Standard (up to 2 business days)', true) }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              {#{% if data['template-letter-braille-status'] != '2' %}
+              <a href="template-edit-letter-braille">Change</a>
+              {% endif %}#}
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Postage
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['template-letter-braille-postage'] | default('Free (up to 3 business days)', true) }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              {#{% if data['template-letter-braille-status'] != '2' %}
+              <a href="template-edit-letter-braille">Change</a>
+              {% endif %}#}
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Status
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if data['template-locked'] == '1' %}
 
                 {{ tag({
                   text: "Locked",
                   classes: "nhsuk-tag--orange"
                 })}}
 
-                {% else %}
+              {% else %}
 
-                  {% if data['template-letter-standard-status'] == '2' %}
-                  
+                {% if data['template-letter-braille-status'] == '2' %}
+                
                   {{ tag({
                     text: "Approved",
                     classes: "nhsuk-tag--green"
                   })}}
 
-                  {% endif %}
+                {% endif %}
 
-                  {% if data['template-letter-standard-status'] == '3' %}
+                {% if data['template-letter-braille-status'] == '3' %}
 
                   {{ tag({
                     text: "Rejected",
                     classes: "nhsuk-tag--grey"
                   })}}
 
-                  {% endif %}
+                {% endif %}
 
-                  {% if data['template-letter-standard-status'] == '1' %}
+                {% if data['template-letter-braille-status'] == '1' %}
 
                   {{ tag({
-                    text: "Waiting for approval",
+                    text: "Approval needed",
                     classes: "nhsuk-tag--yellow"
                   })}}
 
-                  {% endif %}
-
                 {% endif %}
 
-              </td>
-            </tr>
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions"></dd>
+          </div>
+        </dl>
 
-            <tr role="row" class="nhsuk-table__row">
-              <th role="cell" class="nhsuk-table__cell">
-                Braille content
-                <span class="nhsuk-hint">This is the content that will be translated into the braille insert.</span>
-              </th>
-              <td role="cell" class="nhsuk-table__cell">
-                <p>Dear ((fullName)), Invitation to Take Part in a Health Research Study. We are writing to invite you to take part in an important health research study being conducted by the NHS in partnership with Acme University. The study aims to better understand how lifestyle factors affect long-term heart health. You have been selected as someone who may be eligible to take part based on your age and local GP record. Your local study region is: ((studyRegion)) Taking part in this study could help improve future NHS care and contribute to discoveries that benefit people across the country. The study has been carefully reviewed and approved by an independent ethics committee to ensure it is safe and appropriate for participants. Participation is entirely voluntary, and all information you provide will be kept strictly confidential. If you choose to take part, you will receive more details about what the study involves and have the opportunity to ask any questions. If you are interested or would like to learn more, please contact our research team: Phone: ((studyRegionPhone)) Email: ((studyRegionEmail)) You can also visit www.nhs.uk/studies for further information. Thank you for considering this opportunity to contribute to vital NHS research. Yours sincerely, Sally Davies Director NHS Health Studies</p>
-                <p><a href="template-edit-letter-standard">Change</a></p>
-              </td>
-            </tr>
+        <dl class="nhsuk-summary-list notify-summary-list-content">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Braille content
+              <span class="nhsuk-hint">This is the content that will be translated into the braille letter for you.</span>
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['template-letter-braille-content-1'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              {% if data['template-letter-braille-status'] != '2' %}
+              <a href="template-edit-letter-braille">Edit</a>
+              {% endif %}
+            </dd>
+          </div>
+        </dl>
 
-          </tbody>
-        </table>
+        {% if data['braille-standard-letter'] %}
+        {% else %}
+
+        {% if data['template-letter-braille-status'] == '1' %}
+
+        <div>
+
+          <a href="template-edit-letter-braille" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-right-3">Edit template</a>
+
+          <a href="/404" class="nhsuk-button nhsuk-u-margin-right-3">Approve template</a>
+
+          <p><a href="folder-templates">Back to all templates</a></p>
+
+        </div>
+
+        {% endif %}
+
+        {% endif %}
 
       </div>
     </div>
   </div>
 
-  <div class="nhsuk-grid-row nhsuk-u-padding-top-4">
+
+
+  {% if data['braille-standard-letter'] %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+      <h2 class="nhsuk-heading-l">Standard letter</h2>
+
+      <p>This letter will be included in the envelope with the braille letter.</p>
+
+    </div>
+  
+  </div>
+
+  <div class="nhsuk-grid-row">
 
     <div class="nhsuk-grid-column-one-half">
 
-      <h2 class="nhsuk-heading-m">Personalisation</h2>
+      <h3 class="nhsuk-heading-m">Personalisation</h3>
 
       <p>Check how your personalisation fields will appear in your letter.</p>
+      <p><a href="/404">Learn how to check the personalisation in your letter</a>.</p>
+      <p><a href="/404">Learn how personalisation may affect the cost of your letter</a>.</p>
 
-      {% if data['template-letter-standard-status'] != '2' %}
+      {% if data['template-letter-braille-status'] != '2' %}
 
       <details class="nhsuk-details">
         <summary class="nhsuk-details__summary">
@@ -215,20 +251,15 @@
       {% endif %}
 
       <div class="nhsuk-tabs nhsuk-u-margin-top-8" data-module="nhsuk-tabs">
-        <h2 class="nhsuk-tabs__title">
-          Contents
-        </h2>
+        <h3 class="nhsuk-tabs__title">
+          Example personalisation data
+        </h3>
         <ul class="nhsuk-tabs__list">
           <li class="nhsuk-tabs__list-item nhsuk-tabs__list-item--selected">
             <a class="nhsuk-tabs__tab" href="#tab-short">
               Short examples
             </a>
           </li>
-          {#<li class="nhsuk-tabs__list-item">
-            <a class="nhsuk-tabs__tab" href="#tab-medium">
-              Medium examples
-            </a>
-          </li>#}
           <li class="nhsuk-tabs__list-item">
             <a class="nhsuk-tabs__tab" href="#tab-long">
               Long examples
@@ -240,11 +271,11 @@
 
           <form action="#tab-short" method="post">
           
-            <h3 class="nhsuk-heading-s">
+            <h4 class="nhsuk-heading-s">
               PDS personalisation fields
-            </h3>
+            </h4>
 
-            {% if data['template-letter-standard-status'] != '2' %}
+            {% if data['template-letter-braille-status'] != '2' %}
 
             <p>Choose example personalisation data for your PDS personalisation fields.</p>
 
@@ -324,11 +355,11 @@
 
             {% endif %}
 
-            <h3 class="nhsuk-heading-s nhsuk-u-padding-top-6">
+            <h4 class="nhsuk-heading-s nhsuk-u-padding-top-6">
               Custom personalisation fields
-            </h3>
+            </h4>
 
-            {% if data['template-letter-standard-status'] != '2' %}
+            {% if data['template-letter-braille-status'] != '2' %}
 
             <p>Enter your own example personalisation data.</p>
 
@@ -390,127 +421,15 @@
 
         </div>
 
-        {#<div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="tab-medium">
-
-          <form action="#tab-medium" method="post">
-
-            <h3 class="nhsuk-heading-s">
-              PDS personalisation fields
-            </h3>
-
-            <p>Choose example personalisation data for your PDS personalisation fields.</p>
-            
-            {{ select({
-              id: "letter-proof-standard-pds-date",
-              name: "letter-proof-standard-pds-date",
-              label: {
-                text: "date"
-              },
-              items: [
-                {
-                  value: 1,
-                  text: "13 August 2025",
-                  selected: true
-                },
-                {
-                  value: 2,
-                  text: "27 October 2025"
-                }
-              ]
-            }) }}
-
-            {{ select({
-              id: "letter-proof-standard-pds-nhsnumber",
-              name: "letter-proof-standard-pds-nhsnumber",
-              label: {
-                text: "nhsNumber"
-              },
-              items: [
-                {
-                  value: 1,
-                  text: "901 234 5678",
-                  selected: true
-                },
-                {
-                  value: 2,
-                  text: "1111 1111 11"
-                }
-              ]
-            }) }}
-
-            {{ select({
-              id: "letter-proof-standard-pds-fullname",
-              name: "letter-proof-standard-pds-fullname",
-              label: {
-                text: "fullName"
-              },
-              items: [
-                {
-                  value: 1,
-                  text: "Joseph Bloggs",
-                  selected: true
-                },
-                {
-                  value: 2,
-                  text: "Samantha Beeston"
-                }
-              ]
-            }) }}
-
-            <h3 class="nhsuk-heading-s nhsuk-u-padding-top-6">
-              Custom personalisation fields
-            </h3>
-
-            <p>Enter your own example personalisation data.</p>
-
-            {{ input({
-              label: {
-                text: "studyRegion"
-              },
-              id: "letter-proof-standard-custom-field-medium-1",
-              name: "letter-proof-standard-custom-field-medium-1",
-              classes: "nhsuk-u-width-three-quarters",
-              value: data['letter-proof-standard-custom-field-medium-1']
-            }) }}
-
-            {{ input({
-              label: {
-                text: "studyRegionPhone"
-              },
-              id: "letter-proof-standard-custom-field-medium-2",
-              name: "letter-proof-standard-custom-field-medium-2",
-              classes: "nhsuk-u-width-three-quarters",
-              value: data['letter-proof-standard-custom-field-medium-2']
-            }) }}
-
-            {{ input({
-              label: {
-                text: "studyRegionEmail"
-              },
-              id: "letter-proof-standard-custom-field-medium-3",
-              name: "letter-proof-standard-custom-field-medium-3",
-              classes: "nhsuk-u-width-three-quarters",
-              value: data['letter-proof-standard-custom-field-medium-3']
-            }) }}
-
-            <input type="hidden" name="template-letter-preview-length" value="medium">
-            <input type="hidden" name="show-save-banner" value="">
-
-            <button class="nhsuk-button nhsuk-button--secondary">Update preview</button>
-
-          </form>
-
-        </div>#}
-
         <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="tab-long">
 
           <form action="#tab-long" method="post">
 
-            <h3 class="nhsuk-heading-s">
+            <h4 class="nhsuk-heading-s">
               PDS personalisation fields
-            </h3>
+            </h4>
 
-            {% if data['template-letter-standard-status'] != '2' %}
+            {% if data['template-letter-braille-status'] != '2' %}
 
             <p>Choose example personalisation data for your PDS personalisation fields.</p>
             
@@ -591,11 +510,11 @@
             {% endif %}
     
 
-            <h3 class="nhsuk-heading-s nhsuk-u-padding-top-6">
+            <h4 class="nhsuk-heading-s nhsuk-u-padding-top-6">
               Custom personalisation fields
-            </h3>
+            </h4>
 
-            {% if data['template-letter-standard-status'] != '2' %}
+            {% if data['template-letter-braille-status'] != '2' %}
 
             <p>Enter your own example personalisation data.</p>
 
@@ -663,7 +582,7 @@
 
     <div class="nhsuk-grid-column-one-half">
 
-      <h2 class="nhsuk-heading-m">Preview</h2>
+      <h3 class="nhsuk-heading-m">Preview</h3>
 
       {% if data['template-letter-preview-length'] == 'short' %}
 
@@ -710,149 +629,25 @@
 
       {% endif %}
 
-
-
-      {#<div id="initial">
-
-        <iframe 
-          src="/files/letter-template-nhs-notify-standard-example-2.pdf"
-          style="width:100%;height:1200px;border:none;"
-          allowfullscreen
-          referrerpolicy="no-referrer"
-          class="nhsuk-u-margin-bottom-4 notify-letter-preview"
-        ></iframe>
-
-      </div>
-
-      <div id="short">
-
-        <iframe 
-          src="/files/letter-template-nhs-notify-standard-example-short-data.pdf"
-          style="width:100%;height:1200px;border:none;"
-          allowfullscreen
-          referrerpolicy="no-referrer"
-          class="nhsuk-u-margin-bottom-4 notify-letter-preview"
-        ></iframe>
-
-      </div>
-
-      <div id="medium">
-
-        <iframe 
-          src="/files/letter-template-nhs-notify-standard-example-medium-data.pdf"
-          style="width:100%;height:1200px;border:none;"
-          allowfullscreen
-          referrerpolicy="no-referrer"
-          class="nhsuk-u-margin-bottom-4 notify-letter-preview"
-        ></iframe>
-
-      </div>
-
-      <div id="long">
-
-        <iframe 
-          src="/files/letter-template-nhs-notify-standard-example-long-data.pdf"
-          style="width:100%;height:1200px;border:none;"
-          allowfullscreen
-          referrerpolicy="no-referrer"
-          class="nhsuk-u-margin-bottom-4 notify-letter-preview"
-        ></iframe>
-
-      </div>
-
-      <div id="spinner-container" hidden>
-
-        <section class="loading-container" id="gp-connect-0" style="display:block; min-height: 16em;">
-
-          <div class="bar_container">
-            <div id="main_container">
-              <div id="pbar" class="progress-spinner" data-percent="0">
-                <img src="/images/loader-spinner.svg" width="200px" height="200px" id="spinner" class="">
-                <div class="ppc-loading">
-                  <div class="pcc-percents-wrapper">
-                    <span id="spinner-status" class="nhsuk-body">Loading</span><span aria-hidden="true">...</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </section>
-
-      </div>
-
-
-      <script>
-          
-          const buttonShort = document.getElementById("buttonShort");
-          const buttonMedium = document.getElementById("buttonMedium");
-          const buttonLong = document.getElementById("buttonLong");
-          const initial = document.getElementById("initial");
-          const short = document.getElementById("short");
-          const medium = document.getElementById("medium");
-          const long = document.getElementById("long");
-          const spinner = document.getElementById("spinner-container");
-
-          // Show "initial" section by default
-          short.hidden = true;
-          medium.hidden = true;
-          long.hidden = true;
-          initial.hidden = false;
-          spinner.hidden = true;
-
-          function showSection(sectionToShow) {
-            // Hide all sections
-            [short, medium, long, initial].forEach(div => div.hidden = true);
-            // Show spinner
-            spinner.hidden = false;
-
-            // Wait 2 seconds, then hide spinner and show target section
-            setTimeout(() => {
-              spinner.hidden = true;
-              sectionToShow.hidden = false;
-            }, 1500);
-          }
-
-          buttonShort.addEventListener("click", () => showSection(short));
-          buttonMedium.addEventListener("click", () => showSection(medium));
-          buttonLong.addEventListener("click", () => showSection(long));
-          
-      </script>#}
-
-      {#
-      {% if data['template-letter-standard-status'] == '1' %}
+      {% if data['template-letter-braille-status'] == '1' %}
 
       <div>
-      
-        <a href="template-letter-approve?approve-template-name={{ data['template-letter-name-1'] }}" class="nhsuk-button nhsuk-u-margin-right-3">Approve template</a>
-      
+
+        <a href="template-edit-letter-braille" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-right-3">Edit template</a>
+
+        <a href="/404" class="nhsuk-button nhsuk-u-margin-right-3">Approve template</a>
+
+        <p><a href="folder-templates">Back to all templates</a></p>
+
       </div>
-              
+
       {% endif %}
-      #}
-      
 
     </div>
-
-    {% if data['template-letter-standard-status'] == '1' %}
-
-    <div class="nhsuk-width-container">
-      <div class="nhsuk-grid-row">
-        <div class="nhsuk-grid-column-full">
-
-          <div style="width: fit-content; margin: 0 auto;">
-
-          {#<a href="folder-templates" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-right-3">Edit template</a>#}
-
-          <a href="template-letter-approve?approve-template-name={{ data['template-letter-name-1'] }}" class="nhsuk-button nhsuk-u-margin-right-3">Approve template</a>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    {% endif %}
 
   </div>
+
+  {% endif %}
+
+  
 {% endblock %}

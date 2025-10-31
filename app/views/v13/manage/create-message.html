@@ -152,16 +152,11 @@
               {% if data['channel-1-template'] %}
 
               <p style="margin-bottom: 6px;">
-                {{ data['channel-1-template'] }}</p>
-
-                <p style="margin-bottom: 6px;">
-                <a href="create-message-choose-template?message-type={{ data['channel-1-type'] }}&channel-number=1">Change template</a>
+                {{ data['channel-1-template'] }}
               </p>
 
               <p style="margin-bottom: 6px;">
-                <a href="create-message-preview-template-app?preview-template-name={{ data['channel-1-template'] }}">Preview template</a>
-                
-                
+                <a href="create-message-choose-template?message-type={{ data['channel-1-type'] }}&channel-number=1">Change template</a>
               </p>
 
               <p>
@@ -201,13 +196,9 @@
 
               {% if data['channel-2-template'] %}
 
-              <p>
-                <a href="create-message-preview-template-email?preview-template-name={{ data['channel-2-template'] }}">{{ data['channel-2-template'] }}</a>
+              {{ data['channel-2-template'] }}
 
-              </p>
-
-              <p>
-
+              <p style="margin-bottom: 6px;">
                 <a href="create-message-choose-template?message-type={{ data['channel-2-type'] }}&channel-number=2">Change template</a>
               </p>
 
@@ -248,14 +239,12 @@
 
               {% if data['channel-3-template'] %}
 
-              <p>
+              <p style="margin-bottom: 6px;">
                 {{ data['channel-3-template'] }}<br />
                 <a href="create-message-choose-template?message-type={{ data['channel-3-type'] }}&channel-number=3">Change template</a>
               </p>
 
               <p>
-                <a href="create-message-preview-template-sms?preview-template-name={{ data['channel-3-template'] }}">Preview template</a>
-                |
                 <a href="?channel-3-template=" style="color: #d5281b;">Remove template</a>
               </p>
 
@@ -295,14 +284,12 @@
 
               {% if data['channel-4-template'] %}
 
-              <p>
+              <p style="margin-bottom: 6px;">
                 {{ data['channel-4-template'] }}<br />
                 <a href="create-message-choose-template?message-type=Letter&channel-number=4">Change template</a>
               </p>
 
               <p>
-                <a href="create-message-preview-template-letter?preview-template-name={{ data['channel-4-template'] }}">Preview template</a>
-                |
                 <a href="?channel-4-template=" style="color: #d5281b;">Remove template</a>
               </p>
 
@@ -331,8 +318,9 @@
 
                       {% if data['channel-4-large-print-template'] %}
 
-                        <p>
-                          {{ data['channel-4-large-print-template'] }}<br />
+                        {{ data['channel-4-large-print-template'] }}
+                        
+                        <p style="margin-bottom: 6px;">
                           <a href="create-message-choose-template?message-type=Large print&channel-number=4-large-print">Change template</a>
                         </p>
 
@@ -356,25 +344,10 @@
 
                   <div class="notify-channel-block-outer">
                     <div class="notify-channel-block-inner">
+
                       <h3 class="nhsuk-heading-s">Braille letter (optional)</h3>
 
-                      {% if data['channel-4-braille-template'] %}
-
-                        <p>
-                          {{ data['channel-4-braille-template'] }}<br />
-                          <a href="create-message-choose-template?message-type=Braille&channel-number=4-braille">Change template</a>
-                        </p>
-
-                        <p>
-                          <a href="?channel-4-braille-template=" style="color: #d5281b;">Remove template</a>
-                        </p>
-
-
-                      {% else %}
-
-                        <p><a href="/404">Choose template</a></p>
-
-                      {% endif %}
+                      <p><a href="/404">Choose template</a></p>
 
                     </div>
                   </div>
@@ -387,8 +360,6 @@
                     <div class="notify-channel-block-inner">
 
                       <h3 class="nhsuk-heading-s">Audio CD letter (optional)</h3>
-
-                      <!--<p class="nhsuk-hint">A letter that will include an audio CD for recipients who have 'audio CD' as their preferred written communication format in PDS.</p>-->
 
                       <p><a href="/404">Choose template</a></p>
 
@@ -408,8 +379,9 @@
 
                       {% if data['channel-4-language-template'] %}
 
-                      <p>
-                        {{ data['channel-4-language-template'] | escape | replace(",", "<br />") }}<br />
+                      {{ data['channel-4-language-template'] | escape | replace(",", "<br />") }}
+                      
+                      <p style="margin-bottom: 6px;">
                         <a href="create-message-choose-template-other-language-letters?channel-number=4-language">Change templates</a>
                       </p>
 
