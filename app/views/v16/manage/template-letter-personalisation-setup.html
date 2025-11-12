@@ -1,0 +1,92 @@
+{% extends 'v16/layout.html' %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l">{{ data['template-letter-name-1'] }}</span>
+      <h1 class="nhsuk-heading-xl">
+        Example personalisation data
+      </h1>
+
+      
+
+
+      {% if data['template-locked'] != '1' %}
+
+      <!--<form action="create-letter-template?mode=edit" method="post">        
+   
+        {{ button({
+          text: "Edit template",
+          classes: "nhsuk-button--secondary"
+        }) }}
+  
+      </form>-->
+
+      <form action="template-letter-standard" method="post">
+
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-1">
+          Short examples
+        </h2>
+        <span class="nhsuk-hint">For example: Jo Blogs</span>
+
+        {{ input({
+          label: {
+            text: "fullName"
+          },
+          id: "template-letter-personalisation-field-short-1",
+          name: "template-letter-personalisation-field-short-1",
+          value: data['template-letter-personalisation-field-short-1']
+        }) }}
+
+        <hr class="nhsuk-section-break--visible" />
+
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-1">
+          Medium examples
+        </h2>
+        <span class="nhsuk-hint">For example: Joseph Bloggs</span>
+
+        {{ input({
+          label: {
+            text: "fullName"
+          },
+          id: "template-letter-personalisation-field-medium-1",
+          name: "template-letter-personalisation-field-medium-1",
+          value: data['template-letter-personalisation-field-medium-1']
+        }) }}
+
+        <hr class="nhsuk-section-break--visible" />
+
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-1">
+          Long examples
+        </h2>
+        <span class="nhsuk-hint">For example: Joseph Anthony Hendrington-Bloggs</span>
+
+        {{ input({
+          label: {
+            text: "fullName"
+          },
+          id: "template-letter-personalisation-field-long-1",
+          name: "template-letter-personalisation-field-long-1",
+          value: data['template-letter-personalisation-field-long-1']
+        }) }}
+
+        <hr class="nhsuk-section-break--visible" />
+
+        <div class="nhsuk-form-group">
+
+            {{ button({
+              text: 'Save and continue'
+            }) }}
+
+            <a href="javascript:history.go(-1);" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+
+          </div>
+  
+      </form>
+
+      {% endif %}
+
+    </div>
+  </div>
+{% endblock %}

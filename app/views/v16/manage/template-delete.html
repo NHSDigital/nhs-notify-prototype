@@ -1,0 +1,18 @@
+{% extends 'v16/layout.html' %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">Are you sure you want to delete the template '{{ data['template-delete-name'] }}'?</h1>
+
+      <p>The template will be removed and you won't be able to recover it.</p>
+
+      <a href="/404" class="nhsuk-button nhsuk-button--warning nhsuk-u-margin-right-2">Yes, delete template</a>
+
+      <a href="folder-templates" class="nhsuk-button nhsuk-button--secondary">No, go back</a>
+
+
+    </div>
+  </div>
+{% endblock %}

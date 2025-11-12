@@ -1,0 +1,298 @@
+{% extends 'v16/layout.html' %}
+
+{% block beforeContent %}
+
+{% if data['mode'] != 'edit' %}
+
+{{ backLink({
+  href: "template-type",
+  text: "Back to choose a template type"
+}) }}
+
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {% if data['error'] == 'error1' %}
+
+      {{ errorSummary({
+        titleText: "There is a problem",
+        errorList: [
+          {
+            html: "<p>The file you uploaded can not be opened or may contain a virus.</p>
+            <p class='nhsuk-u-margin-bottom-0'>Try uploading a different template file.</p>",
+            href: "#upload-letter-standard-file"
+          }
+        ]
+      }) }}
+
+      {% endif %}
+
+      {% if data['error'] == 'error2' %}
+
+      {{ errorSummary({
+        titleText: "There is a problem",
+        errorList: [
+          {
+            html: "<p>The template file you uploaded does not contain the address fields.</p>
+            <p class='nhsuk-u-margin-bottom-0'>Add the address fields to the template file and upload it.</p>",
+            href: "#upload-letter-standard-file"
+          }
+        ]
+      }) }}
+
+      {% endif %}
+
+      {% if data['error'] == 'error3' %}
+
+      {{ errorSummary({
+        titleText: "There is a problem",
+        descriptionText: "The file contains fields using double brackets such as: ((fullName)). Personalisation fields in letter templates should be written like: {d.fullName}",
+        errorList: [
+          {
+            html: "<p>The template file you uploaded contains incorrect personalisation fields.</p>
+            <p class='nhsuk-u-margin-bottom-0'></p>",
+            href: "#upload-letter-standard-file"
+          }
+        ]
+      }) }}
+
+      {% endif %}
+
+      <h1 class="nhsuk-heading-xl">
+        Upload an other language letter template
+      </h1>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div id="column-left" class="nhsuk-grid-column-two-thirds">
+
+      <form action="/404" method="post" autocomplete="off" onsubmit="return checkFormUploadLetter();">
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
+          
+          <label class="nhsuk-label nhsuk-label--s" for="template-letter-name-1">
+            Template name
+          </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
+          </div>
+
+          {% include "../includes/details-template-name.html" %}
+
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-letter-name-1" name="template-letter-name-1" type="text">
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-letter-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>  
+
+        </div>
+
+        <div class="nhsuk-u-margin-bottom-7">
+        {{ select({
+          id: "template-letter-language",
+          name: "template-letter-language",
+          label: {
+            text: "Template language",
+            classes: "nhsuk-label--s"
+          },
+          hint: {
+            text: "Choose the language used in this template."
+          },
+          formGroup: {
+            classes: "nhsuk-u-margin-bottom-7"
+          },
+          items: [
+            {
+              text: "Please select"
+            },  
+            {
+              value: "Albanian",
+              text: "Albanian"
+            },
+            {
+              value: "Arabic",
+              text: "Arabic"
+            },
+            {
+              value: "Bengali",
+              text: "Bengali"
+            },
+            {
+              value: "Bulgarian",
+              text: "Bulgarian"
+            },
+            {
+              value: "Chinese",
+              text: "Chinese"
+            },
+            {
+              value: "French",
+              text: "French"
+            },
+            {
+              value: "German",
+              text: "German"
+            },
+            {
+              value: "Modern Greek",
+              text: "Modern Greek"
+            },
+            {
+              value: "Gujarati",
+              text: "Gujarati"
+            },
+            {
+              value: "Hindi",
+              text: "Hindi"
+            },
+            {
+              value: "Italian",
+              text: "Italian"
+            },
+            {
+              value: "Latvian",
+              text: "Latvian"
+            },
+            {
+              value: "Lithuanian",
+              text: "Lithuanian"
+            },
+            {
+              value: "Nepali",
+              text: "Nepali"
+            },
+            {
+              value: "Punjabi (Indian)",
+              text: "Punjabi (Indian)"
+            },
+            {
+              value: "Persian",
+              text: "Persian"
+            },
+            {
+              value: "Polish",
+              text: "Polish"
+            },
+            {
+              value: "Portuguese",
+              text: "Portuguese"
+            },
+            {
+              value: "Romanian",
+              text: "Romanian"
+            },
+            {
+              value: "Russian",
+              text: "Russian"
+            },
+            {
+              value: "Somali",
+              text: "Somali"
+            },
+            {
+              value: "Spanish",
+              text: "Spanish"
+            },
+            {
+              value: "Tamil",
+              text: "Tamil"
+            },
+            {
+              value: "Turkish",
+              text: "Turkish"
+            },
+            {
+              value: "Urdu",
+              text: "Urdu"
+            },
+            {
+              value: "Tagalog",
+              text: "Tagalog"
+            },
+            {
+              value: "Ukrainian",
+              text: "Ukrainian"
+            },
+            {
+              value: "Vietnamese",
+              text: "Vietnamese"
+            }
+          ]
+        }) }}
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
+          
+          <label class="nhsuk-label nhsuk-label--s" for="template-letter-name-1">
+            Template file
+          </label>
+          <div class="nhsuk-hint">
+            Only upload your final letter template file.<br />Make sure you use one of our blank template files to create the letter.
+          </div>
+
+          <input id="upload-letter-standard-file" class="nhsuk-input" type="file" name="upload-letter-standard-file" style="width: auto;">
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-letter-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>  
+
+        </div>
+
+        <!-- Set the variables that are used on subsequent pages -->
+        <!--<input type="hidden" name="message-type" value="sms">
+        <input type="hidden" name="continue-url" value="template-sms-1?show-save-banner=no">-->
+        <input type="hidden" name="folder-1-letter-templates" value="1">
+
+        {% if data['folder-1-letter-templates'] != '1' %}
+        <input type="hidden" name="template-amount" value="{{ data['template-amount']|float + 1 }}">
+        {% endif %}
+
+        <input type="hidden" name="show-save-banner" value="yes">
+        <input type="hidden" name="radio-template-type" value="">
+        <input type="hidden" name="radio-template-type-letter" value="">
+        <input type="hidden" name="template-letter-standard-status" value="1">
+        <input type="hidden" name="template-letter-preview-length" value="">
+        <input type="hidden" name="template-letter-standard-dispatch" value="">
+        <input type="hidden" name="template-letter-standard-postage" value="">
+
+        {{ button({
+          text: "Upload letter template file"
+        }) }}
+
+        
+      
+      </form>
+
+    </div>
+
+    <div class="nhsuk-grid-column-one-third">
+
+      <h2 class="nhsuk-heading-m">How to create a standard letter template</h2>
+
+      <ol>
+        <li class="nhsuk-u-margin-bottom-4">
+          Download the blank <a href="template-upload-letter-standard-guidance#download-our-blank-letter-template" target="_blank">standard letter template file (opens in a new tab)</a>.
+        </li>
+        <li class="nhsuk-u-margin-bottom-4">
+          Add <a href="template-upload-letter-standard-guidance#formatting-your-letter" target="_blank">formatting (opens in a new tab)</a>.
+        </li>
+        <li class="nhsuk-u-margin-bottom-4">
+          Add any <a href="template-upload-letter-standard-guidance-2" target="_blank">personalisation (opens in a new tab)</a>.
+        </li>
+        <li>
+          Save your Microsoft Word file and upload it to this page.
+        </li>
+      </ol>
+      
+    </div>
+
+  </div>
+{% endblock %}

@@ -1,0 +1,142 @@
+{% extends 'v16/layout.html' %}
+
+{% block beforeContent %}
+
+{% if data['mode'] != 'edit' %}
+
+{{ backLink({
+  "href": "template-type",
+  "text": "Back to choose a template type"
+}) }}
+
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">
+        Upload a braille letter template
+      </h1>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div id="column-left" class="nhsuk-grid-column-two-thirds">
+
+      <form action="template-letter-braille" method="post" autocomplete="off">
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+          
+          <label class="nhsuk-label nhsuk-label--s" for="template-letter-braille-name-1">
+            Template name
+          </label>
+          <div class="nhsuk-hint">
+            This will not be visible to recipients.
+          </div>
+
+          {% include "../includes/details-template-name.html" %}
+
+          <input class="nhsuk-input nhsuk-u-margin-bottom-2" id="template-letter-braille-name-1" name="template-letter-braille-name-1" type="text">
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-letter-braille-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>  
+
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+          
+          <label class="nhsuk-label nhsuk-label--s" for="template-letter-braille-content-1">
+            Braille content
+          </label>
+          <div class="nhsuk-hint">
+            This is the content that will be translated into the braille letter for you.
+          </div>
+
+          <textarea class="nhsuk-textarea" id="template-letter-braille-content-1" name="template-letter-braille-content-1" rows="15"></textarea>
+
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+
+          <h2 class="nhsuk-heading-m">Upload a standard template (optional)</h2>
+          <p>You can include a standard letter in the same envelope as your braille letter. This is optional.</p>
+          
+          <label class="nhsuk-label nhsuk-label--s" for="template-letter-name-1">
+            Template file
+          </label>
+          <div class="nhsuk-hint">
+            Only upload your final letter template file.<br />Make sure you use one of our blank template files to create the letter.
+          </div>
+
+          <input id="upload-letter-standard-file" class="nhsuk-input" type="file" name="upload-letter-standard-file" style="width: auto;">
+
+          <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="template-letter-name-1--error">
+            <span class="nhsuk-u-visually-hidden">Error:</span> Enter a template name
+          </span>  
+
+        </div>
+
+        <!-- Set the variables that are used on subsequent pages -->
+        <!--<input type="hidden" name="message-type" value="sms">
+        <input type="hidden" name="continue-url" value="template-sms-1?show-save-banner=no">-->
+        <input type="hidden" name="folder-1-letter-braille-templates" value="1">
+
+        {% if data['folder-1-letter-templates'] != '1' %}
+        <input type="hidden" name="template-amount" value="{{ data['template-amount']|float + 1 }}">
+        {% endif %}
+
+        <input type="hidden" name="show-save-banner" value="yes">
+        <input type="hidden" name="radio-template-type" value="">
+        <input type="hidden" name="radio-template-type-letter" value="">
+        <input type="hidden" name="template-letter-braille-status" value="1">
+        <input type="hidden" name="template-letter-preview-length" value="">
+        <input type="hidden" name="braille-standard-letter" value="yes">
+        
+        {{ button({
+          text: "Continue"
+        }) }}
+
+        
+      
+      </form>
+
+    </div>
+
+    <div class="nhsuk-grid-column-one-third">
+
+      <h2 class="nhsuk-heading-m">How to create a braille letter template</h2>
+
+      <ol>
+        <li class="nhsuk-u-margin-bottom-4">
+          Paste your braille content.
+        </li>
+        <li class="nhsuk-u-margin-bottom-4">
+          <a href="/404">Add any personalisation to your braille content</a>.
+        </li>
+        <li class="nhsuk-u-margin-bottom-4">
+          Decide whether to include a standard letter.
+        </li>
+        <li class="nhsuk-u-margin-bottom-4">
+          Download the blank <a href="template-upload-letter-standard-guidance#download-our-blank-letter-template">standard letter template file</a>.
+        </li>
+        <li class="nhsuk-u-margin-bottom-4">
+          <a href="template-upload-letter-standard-guidance#formatting-your-letter">Format your letter</a>.
+        </li>
+        <li class="nhsuk-u-margin-bottom-4">
+          <a href="template-upload-letter-standard-guidance-2">Add any personalisation</a>.
+        </li>
+        <li>
+          Save your Microsoft Word file and upload it to this page.
+        </li>
+      </ol>
+      
+    </div>
+
+  </div>
+{% endblock %}

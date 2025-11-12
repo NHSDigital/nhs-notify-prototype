@@ -1,0 +1,242 @@
+{% set page_active_templates = 'true' %}
+
+{% extends 'v16/layout.html' %}
+
+{% block content %}
+
+{% from '../includes/template-folder-table-row.njk' import row %}
+{% from '../includes/template-folder-table-row-letter.njk' import row_letter %}
+{% from '../includes/template-folder-table-row-folder.njk' import row_folder %}
+
+{% set templates = [
+  { number: "1", type: data['example-template-1-type'], typeName: data['example-template-1-typeName'], name: data['example-template-1-name'] },
+  
+  { number: "2", type: data['example-template-2-type'], typeName: data['example-template-2-typeName'], name: data['example-template-2-name'] },
+
+  { number: "3", type: data['example-template-3-type'], typeName: data['example-template-3-typeName'], name: data['example-template-3-name'] }
+]
+%}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+
+      <span class="nhsuk-caption-l">{{ data['folder-name-1'] }}</span>
+      <h1 class="nhsuk-heading-xl">
+        Templates
+      </h1>      
+
+      {#
+        {% include "../includes/details-template-folders.html" %}
+      #}
+
+      {% include "../includes/details-template-statuses.html" %}
+
+      <form action="template-type" method="post">
+        <!--<input type="hidden" name="show-templates" value="1">
+        <input type="hidden" name="show-folders" value="1">-->
+        {{ button({
+          text: 'New template',
+          classes: 'nhsuk-u-margin-right-2'
+        }) }}
+
+        <!--{{ button({
+          text: 'New folder'
+        }) }}-->
+      </form>
+
+      <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-top-4">
+
+        <caption class="nhsuk-table__caption">
+          {{ data['template-amount'] }} of {{ data['template-amount'] }} templates
+        </caption>
+
+        <thead role="rowgroup" class="nhsuk-table__head">
+          <tr role="row">
+            <!--<th role="columnheader" class="" scope="col">
+              {% if data['show-templates'] == '1' %}
+              <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input checkboxes" id="" name="" type="checkbox" value="" onclick="selectAll(this); toggleActionsByCheckboxes();">
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for=""></label>
+              </div>
+              {% endif %}
+            </th>-->
+            <th role="columnheader" class="" scope="col">
+
+              <a class="nhsnotify-sort-button">
+                Name
+                <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                  <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                </svg>
+              </a>
+
+            </th>
+            <th role="columnheader" class="" scope="col">
+              
+              <a class="nhsnotify-sort-button">
+                Type
+                <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                  <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                </svg>
+              </a>
+
+            </th>
+            <th role="columnheader" class="" scope="col">
+              
+              <a class="nhsnotify-sort-button">
+                Status
+                <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                  <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                </svg>
+              </a>
+
+            </th>
+            <th role="columnheader" class="" scope="col">
+
+              <a class="nhsnotify-sort-button">
+                Last edited
+                <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                  <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                </svg>
+              </a>
+
+            </th>
+            <th role="columnheader" class="" scope="col">
+              <!--Action-->
+            </th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+
+
+          {% if data['folder-1-letter-language-templates'] == '1' %}
+
+            {% if data['messages-prod'] == '1' and data['template-letter-language-name-1'] in data['channel-4-language-template'] %}
+
+              {{row_letter(templateName=data['template-letter-language-name-1'], templateNumber=4, locked=1, templateTypeName=data['template-letter-language'], templateType='letter-language', templateEditDate=data['template-letter-language-editDate-1'], templateEditTime=data['template-letter-language-editTime-1'])}}
+
+            {% else %}
+
+              {{row_letter(templateName=data['template-letter-language-name-1'], templateNumber=4, locked='', templateTypeName=data['template-letter-language'], templateType='letter-language', templateEditDate=data['template-letter-language-editDate-1'], templateEditTime=data['template-letter-language-editTime-1'])}}
+
+            {% endif %}
+
+          {% endif %}
+
+
+
+          {% if data['folder-1-letter-large-print-templates'] == '1' %}
+
+            {% if data['messages-prod'] == '1' and data['template-letter-large-print-name-1'] in data['channel-4-large-print-template'] %}
+
+              {{row_letter(templateName=data['template-letter-large-print-name-1'], templateNumber=4, locked=1, templateTypeName='Large print letter', templateType='letter-large-print', templateEditDate=data['template-letter-large-print-editDate-1'], templateEditTime=data['template-letter-large-print-editTime-1'])}}
+
+            {% else %}
+
+              {{row_letter(templateName=data['template-letter-large-print-name-1'], templateNumber=4, locked='', templateTypeName='Large print letter', templateType='letter-large-print', templateEditDate=data['template-letter-large-print-editDate-1'], templateEditTime=data['template-letter-large-print-editTime-1'])}}
+
+            {% endif %}
+
+          {% endif %}
+
+
+
+          {% if data['folder-1-letter-braille-templates'] == '1' %}
+
+            {% if data['messages-prod'] == '1' and data['template-letter-braille-name-1'] in data['channel-4-braille-template'] %}
+
+              {{row_letter(templateName=data['template-letter-braille-name-1'], templateNumber=4, locked=1, status=data['template-letter-braille-status'], templateTypeName='Braille letter', templateType='letter-braille', templateEditDate=data['template-letter-braille-editDate-1'], templateEditTime=data['template-letter-braille-editTime-1'])}}
+
+            {% else %}
+
+              {{row_letter(templateName=data['template-letter-braille-name-1'], templateNumber=4, locked='', status=data['template-letter-braille-status'], templateTypeName='Braille letter', templateType='letter-braille', templateEditDate=data['template-letter-braille-editDate-1'], templateEditTime=data['template-letter-braille-editTime-1'])}}
+
+            {% endif %}
+
+          {% endif %}
+
+
+
+          {% if data['folder-1-letter-templates'] == '1' %}
+
+            {% if data['messages-prod'] == '1' and data['template-letter-name-1'] in data['channel-4-template'] %}
+
+              {{row_letter(templateName=data['template-letter-name-1'], templateNumber=4, locked=1, status=data['template-letter-standard-status'], templateTypeName='Standard English letter', templateType='letter-standard', templateEditDate=data['template-letter-editDate-1'], templateEditTime=data['template-letter-editTime-1'])}}
+
+            {% else %}
+
+              {{row_letter(templateName=data['template-letter-name-1'], templateNumber=4, locked='', status=data['template-letter-standard-status'], templateTypeName='Standard English letter', templateType='letter-standard', templateEditDate=data['template-letter-editDate-1'], templateEditTime=data['template-letter-editTime-1'])}}
+
+            {% endif %}
+
+          {% endif %}
+
+          
+
+          {% for template in templates %}
+            
+            {% if 
+              data['messages-prod'] == '1' and 
+              template.name in data['channel-1-template'] or 
+              data['messages-prod'] == '1' and 
+              template.name in data['channel-2-template'] or 
+              data['messages-prod'] == '1' and 
+              template.name in data['channel-3-template'] or 
+              data['messages-prod'] == '1' and 
+              template.name in data['channel-4-template'] or 
+              data['messages-prod'] == '1' and 
+              template.name in data['channel-4-large-print-template'] or 
+              data['messages-prod'] == '1' and 
+              template.name in data['channel-4-language-template'] 
+            %}
+
+              {{row(templateName=template.name, templateNumber=template.number, locked=1, templateTypeName=template.typeName, templateType=template.type)}}
+
+            {% else %}
+
+              {{row(templateName=template.name, templateNumber=template.number, locked='', templateTypeName=template.typeName, templateType=template.type)}}
+
+            {% endif %}
+
+          {% endfor %}
+
+        </tbody>
+      </table>
+
+      <div class="notify-sticky-actions" id="notify-sticky-actions">
+        <div class="nhsuk-width-container">
+          <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-one-quarter">&nbsp;</div>
+            <div class="nhsuk-grid-column-three-quarters">
+
+              <a href="/404" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-bottom-0">Move to folder</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {#
+      <nav class="nhsnotify-pagination">
+        <span class="nhsnotify-pagination_item nhsnotify-pagination_item_current">1</span>
+        <a href="/404">
+          <span class="nhsnotify-pagination_item">2</span>
+        </a>
+        <a href="/404">
+          <span class="nhsnotify-pagination_item nhsnotify-pagination_item_arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" class="nhsuk-icon nhsuk-icon__chevron-right" viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"/>
+            </svg>
+          </span>
+        </a>
+        <p class="nhsnotify-pagination_count">18 of 36 templates</p>
+      </nav>
+      #}
+      
+    </div>
+  </div>
+{% endblock %}

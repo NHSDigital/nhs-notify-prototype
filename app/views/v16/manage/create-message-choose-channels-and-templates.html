@@ -1,0 +1,161 @@
+{% extends 'v16/layout.html' %}
+
+{% block content %}
+
+{% from '../includes/choose-templates-channels-table-row.njk' import choose_templates_channels_row %}
+
+{% set templates = [
+  { number: "1", type: "app", typeName: "NHS App", name: data['template-1-name'] },
+  { number: "2", type: "app", typeName: "NHS App", name: data['template-2-name'] },
+  { number: "3", type: "app", typeName: "NHS App", name: data['template-3-name'] },
+  { number: "4", type: "sms", typeName: "Text message (SMS)", name: data['template-4-name'] },
+  { number: "5", type: "sms", typeName: "Text message (SMS)", name: data['template-5-name'] },
+  { number: "6", type: "sms", typeName: "Text message (SMS)", name: data['template-6-name'] },
+  { number: "7", type: "email", typeName: "Email", name: data['template-7-name'] },
+  { number: "8", type: "email", typeName: "Email", name: data['template-8-name'] },
+  { number: "9", type: "email", typeName: "Email", name: data['template-9-name'] },
+  { number: "10", type: "letter", typeName: "Letter", name: data['template-10-name'] },
+  { number: "11", type: "letter", typeName: "Letter", name: data['template-11-name'] },
+  { number: "12", type: "letter", typeName: "Letter", name: data['template-12-name'] },
+  { number: "13", type: "letter", typeName: "Large print letter", name: data['template-13-name'] },
+  { number: "14", type: "letter", typeName: "Large print letter", name: data['template-14-name'] },
+  { number: "15", type: "letter", typeName: "Large print letter", name: data['template-15-name'] },
+  { number: "16", type: "letter", typeName: "Letter - French", name: data['template-16-name'] },
+  { number: "17", type: "letter", typeName: "Letter - Italian", name: data['template-17-name'] },
+  { number: "18", type: "letter", typeName: "Letter - German", name: data['template-18-name'] }
+]
+%}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+
+      {{ errorSummary({
+        titleText: "There is a problem",
+        descriptionText: "You have chosen more than one template of the same type.",
+        errorList: [
+          {
+            text: "You can only choose one template of each type",
+            href: "#example-error-1"
+          }
+        ]
+      }) }}
+
+      <span class="nhsuk-caption-l">{{ data['message-name-1'] }}</span>
+      <h1 class="nhsuk-heading-xl">
+        Add messages by template
+      </h1>
+
+      <p>Choose one of each type of template:</p>
+
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>NHS App</li>
+        <li>Email</li>
+        <li>Text message (SMS)</li>
+        <li>Letter</li>
+        <li>Additional language letter</li>
+      </ul>
+
+      {% if data['show-templates'] == '1' %}
+
+      <div class="nhsuk-form-group">
+
+        <label class="nhsuk-label" for="filter-folders">
+          Filter templates by folder
+        </label>
+
+        <select class="nhsuk-select" id="filter-folders" name="filter-folders" onchange="toggleTable();">
+          <option value="0" selected>All templates</option>
+          <option value="1">{{ data['template-folder-1-name'] }}</option>
+          <option value="2">{{ data['template-folder-2-name'] }}</option>
+        </select>
+
+      </div>
+
+      <form action="create-message" method="post">
+
+      <div class="nhsuk-form-group nhsuk-form-group--error" id="example-error-1">
+
+        <table role="table" class="nhsuk-table-responsive">
+
+          <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+              <th role="columnheader" class="" scope="col">
+                <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input checkboxes" id="template-{{ templateNumber }}" name="" type="checkbox" value="Template {{ templateNumber }}" onclick="selectAll(this);">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="template-{{ templateNumber }}"></label>
+                </div>
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Template name
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Type
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Last edited
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+
+            {% if data['show-templates'] == '1' %}
+
+              {% for template in templates %}
+
+                {{choose_templates_channels_row(templateName=template.name, templateNumber=template.number, templateTypeName=template.typeName, templateType=template.type)}}
+
+              {% endfor %}
+
+            {% endif %}
+
+          </tbody>
+        </table>
+
+      </div>
+
+      <div class="nhsuk-form-group">
+
+        {#
+        <input type="hidden" name="channel-1-type" value="NHS App">
+        <input type="hidden" name="channel-1-template" value="{{ data['template-10-name'] }}">
+
+        <input type="hidden" name="channel-2-type" value="Email">
+        <input type="hidden" name="channel-2-template" value="{{ data['template-11-name'] }}">
+        
+        <input type="hidden" name="channel-3-type" value="Text message (SMS)">
+        <input type="hidden" name="channel-3-template" value="{{ data['template-12-name'] }}">
+
+        <input type="hidden" name="channel-amount" value="3">
+        #}
+
+        {{ button({
+          text: 'Save and continue'
+        }) }}
+
+        <a href="create-message" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+
+      </div>
+
+      </form>
+
+      {% else %}
+ 
+      <p>You do not have any templates yet.</p>
+      
+      <div class="nhsuk-form-group">
+
+        <p><a href="folder-templates">Go to templates</a></p>
+
+        <p><a href="create-message">Go back</a></p>
+
+      </div>
+
+      {% endif %}
+      
+    </div>
+  </div>
+{% endblock %}

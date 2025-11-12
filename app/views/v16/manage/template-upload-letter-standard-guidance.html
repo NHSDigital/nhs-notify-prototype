@@ -1,0 +1,170 @@
+{% extends 'v16/layout.html' %}
+
+{% block beforeContent %}
+{#
+  {{ backLink({
+    "href": "template-upload-letter-standard",
+    "text": "Back to upload a letter template"
+  }) }}
+#}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1 class="nhsuk-heading-xl">
+      Upload a letter
+    </h1>
+
+    <p>Upload a Word letter template and we&#39;ll print and post it for you.</p>
+    <p>Your template must meet our letter specification. The page size and layout is A4 portrait (210mm x 297mm).</p>
+    <p>You&#39;ll need to:</p>
+    <ol>
+    <li>Download the relevant <a href="#download-our-blank-letter-template">blank letter template file</a>.</li>
+    <li>Add <a href="#formatting-your-letter">formatting</a>.</li>
+    <li>Add any <a href="template-upload-letter-standard-guidance-2">personalisation</a></li>
+    <li>Save your Microsoft Word file and <a href="template-upload-letter-standard">upload it</a>.</li>
+    </ol>
+
+    <h2 class="nhsuk-heading-l" id="download-our-blank-letter-template">Download our blank letter template</h2>
+    <p>Download the relevant blank letter template to set up your letter:</p>
+    <ul>
+    <li><a href="/files/letter-template-nhs-notify_.docx" download>standard letter template</a></li>
+    <li><a href="/files/letter-template-nhs-notify-large-print_.docx" download>large print letter template</a></li>
+    <li><a href="/files/letter-template-nhs-notify-other-language_.docx" download>other language letter template</a></li>
+    <li><a href="/files/letter-template-nhs-notify-other-language-right-aligned_.docx" download>other language (right-aligned) letter template</a></li>
+    <li><a href="/files/letter-template-nhs-notify-parent-or-guardian_.docx" download>parent or guardian letter template</a></li>
+    </ul>
+    <p>You&#39;ll need the desktop Microsoft Word app.</p>
+    <p>Save the template then add your message content.</p>
+
+    <h2 class="nhsuk-heading-l" id="formatting-your-letter">Formatting your letter</h2>
+    <p>Do not change the page margins in the letter template. It has the correct layout for printing.</p>
+    <p>Organise your message content using the styles in the template.</p>
+    <p>If you&#39;re copying and pasting text from another document, paste it without any formatting. Then <a href="https://support.microsoft.com/en-gb/office/apply-styles-f8b96097-4d25-4fac-8200-6139c8093109" target="_blank">apply the styles</a> in the template.</p>
+    <p>You can also use <a href="https://support.microsoft.com/en-gb/office/use-the-format-painter-4bb415a9-d4e4-42b7-b579-170adc594e40" target="_blank">Microsoft Word&#39;s format painter</a> to copy the formatting of the styles and apply it to your text.</p>
+
+    {{ insetText({
+      html: "<p class='nhsuk-u-margin-bottom-0'>Keep the comments and pre-formatted text in the template until you've finished adding your message content. They'll help you to apply the styles.</p>"
+    }) }}
+
+    <p>Find out how to use:</p>
+    <ul>
+    <li><a href="#font-and-font-size">font and font size</a><!-- markdownlint-disable-line --></li>
+    <li><a href="#personalisation">personalisation</a></li>
+    <li><a href="#headings">headings</a></li>
+    <li><a href="#paragraphs-and-body-text">paragraphs and body text</a></li>
+    <li><a href="#links-and-urls">links and URLs</a></li>
+    <li><a href="#bullet-points">bullet points</a></li>
+    <li><a href="#images">images</a></li>
+    <li><a href="#qr-codes">QR codes</a></li>
+    </ul>
+    <p>You can also find out about content you should not edit, including the:</p>
+    <ul>
+    <li><a href="#address-field">address field</a></li>
+    <li><a href="#nhs-logo">NHS logo</a></li>
+    <li><a href="#nhs-number">NHS number</a></li>
+    <li><a href="#date">date</a></li>
+    <li><a href="#page-count">page count</a></li>
+    </ul>
+
+    <h2 class="nhsuk-heading-l" id="font-and-font-size">Font and font size</h2>
+    <p>The font size for standard letters is 12 points. The font size for large print is 16 points.</p>
+    <p>NHS Notify prints letters in the font Noto Sans.</p>
+
+    <h3 class="nhsuk-heading-m">Downloading your font</h3>
+    <p>You must download and use Noto Sans as the font for all of your letters, including <a href="/404">letters in other languages</a>. If you&#39;re sending letters in other languages that use different character sets, download Noto Sans in those languages.</p>
+    <p>Go to <a href="https://fonts.google.com/noto/fonts">Noto Sans on Google Fonts</a> and choose the languages you need by selecting &#39;Get font&#39;. Then select &#39;Download all&#39; to download Noto Sans to your device as a zip file.</p>
+    <p>Noto Sans is a free font.</p>
+
+    <h2 class="nhsuk-heading-l" id="personalisation">Personalisation</h2>
+    <p><a href="template-upload-letter-standard-guidance-2">Learn how to use personalisation</a>.</p>
+    
+    <h2 class="nhsuk-heading-l" id="headings">Headings</h2>
+    <p>Use the style &#39;Heading 2, NHS letter heading&#39; in the template for headings.</p>
+    <p>Headings are in bold. They are not in italics or underlined.</p>
+    <p>Use the main heading to summarise what your letter is about.</p>
+    <p>Use headings to break your content up and to help recipients find what they need.</p>
+    
+    <h2 class="nhsuk-heading-l" id="paragraphs-and-body-text">Paragraphs and body text</h2>
+    <p>Use the style &#39;Normal&#39; in the template for body text.</p>
+    <p>Paragraphs can be split across 2 pages.</p>
+    <p>If you do not want a paragraph to run over different pages, add a page break before the paragraph.</p>
+    
+    <h2 class="nhsuk-heading-l" id="links-and-urls">Links and URLs</h2>
+    <p>Use the style &#39;Hyperlink&#39; in the template for links.</p>
+    <p>Links in letters are in bold to make them stand out. Do not use underlined text or italics.</p>
+    <p>Do not split links across different pages. Add a page break before the paragraph with the link if needed.</p>
+    <p>Learn more about <a href="/404">links and URLs</a>.</p>
+    
+    <h2 class="nhsuk-heading-l" id="bullet-points">Bullet points</h2>
+    <p>Use the style &#39;List paragraph&#39; in the template for bullet points.</p>
+    <p>You can use bullet points to make your text easier to read. Make sure that:</p>
+    <ul>
+    <li>you use a lead-in line</li>
+    <li>the bullets make sense running on from the lead-in line</li>
+    <li>you use lower case at the start of the bullet</li>
+    <li>there are no commas, full stops or semicolons at the end of bullets</li>
+    </ul>
+    
+    <h2 class="nhsuk-heading-l" id="images">Images</h2>
+    <p>Images must be black and white. Position them within the same page margins as the text.</p>
+    
+    <h2 class="nhsuk-heading-l" id="qr-codes">QR codes</h2>
+    <p>If you want to include a QR code, put it in the body of your letter. Insert it as an image.</p>
+    <p>You&#39;ll need to generate the QR code yourself.</p>
+    <p>You must also provide a short URL or written instructions for how to find your webpage. For example:</p>
+
+    {{ insetText({
+      html: "<p class='nhsuk-u-margin-bottom-0'>scan the QR code or visit <strong>https://www.notify.nhs.uk</strong></p>"
+    }) }}
+    
+    <h2 class="nhsuk-heading-l">Content you should not edit</h2>
+    <h3 class="nhsuk-heading-m" id="address-field">Address field</h3>
+    <p>The address field fits inside the address window on the envelope.</p>
+    <p>The address is a personalisation field and is set automatically.</p>
+    <p>The recipient&#39;s name is always included as the first line of the address.</p>
+    <p>If your letter is about a child, use the <a href="#download-our-blank-letter-template">parent or guardian letter template</a>. This template includes &#39;Parent or guardian of&#39; in the first line of the address.</p>
+    
+    <h3 class="nhsuk-heading-m" id="nhs-logo">NHS logo</h3>
+    <p>The NHS logo is black and white. It&#39;s positioned in the top right of the letter.</p>
+    
+    <h3 class="nhsuk-heading-m" id="nhs-number">NHS number</h3>
+    <p>The recipient&#39;s NHS number appears above the body content of the letter and is right aligned.</p>
+    <p>It&#39;s a personalisation field and is set automatically.</p>
+    
+    <h3 class="nhsuk-heading-m" id="date">Date</h3>
+    <p>The date that will be printed is the date when the letter is dispatched. It&#39;s set automatically.</p>
+    <p>It appears above the body content of the letter and is right aligned.</p>
+    
+    <h3 class="nhsuk-heading-m" id="page-count">Page count</h3>
+    <p>The page count shows the current page number and the total number of pages. For example:</p>
+
+    {{ insetText({
+      html: "<p class='nhsuk-u-margin-bottom-0'>Page 1 of 2<p>"
+    }) }}
+
+    <p>It updates automatically.</p>
+    
+    <h3 class="nhsuk-heading-m">Naming your template</h3>
+    <p>Name your template clearly so that it&#39;s easy to identify. Make sure you include the following details:</p>
+    <ul>
+    <li>organisation or service name</li>
+    <li>cohort or topic of your message</li>
+    <li>language used, including English</li>
+    <li>accessible format or standard format used</li>
+    <li>message channel - letter</li>
+    <li>version number</li>
+    </ul>
+    <p>For example:</p>
+
+    {{ insetText({
+      html: "<p class='nhsuk-u-margin-bottom-0'>vaccinations_under-16_english_standard_letter_v1</p>"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

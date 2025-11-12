@@ -1,0 +1,78 @@
+{% extends 'v16/layout.html' %}
+
+
+
+
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="create-message" method="post" autocomplete="off">
+
+        <span class="nhsuk-caption-l">{{ data['message-name-1'] }}</span>
+
+        <div class="nhsuk-form-group">
+
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+              <h1 class="nhsuk-fieldset__heading">
+                Choose a message channel
+              </h1>
+            </legend>
+        
+            <div class="nhsuk-radios">
+
+              <span class="nhsuk-hint">Select one option</span>
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-1" name="channel-{{ data['channel-amount']|float + 1 }}-type" type="radio" value="NHS App">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                  NHS App
+                </label>
+              </div>
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-2" name="channel-{{ data['channel-amount']|float + 1 }}-type" type="radio" value="Email">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                  Email
+                </label>
+              </div>
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-3" name="channel-{{ data['channel-amount']|float + 1 }}-type" type="radio" value="Text message (SMS)">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-3">
+                  Text message (SMS)
+                </label>
+              </div>
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-4" name="channel-{{ data['channel-amount']|float + 1 }}-type" type="radio" value="Letter">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-4">
+                  Letter
+                </label>
+              </div>
+        
+            </div>
+          </fieldset>
+        
+        </div>
+
+        <input type="hidden" name="channel-amount" value="{{ data['channel-amount']|float + 1 }}">
+
+        <div class="nhsuk-form-group">
+
+          {{ button({
+            text: 'Save and continue'
+          }) }}
+
+          <a href="create-message" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

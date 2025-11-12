@@ -1,0 +1,109 @@
+{% set protoVersion = 'v16' %}
+
+<!-- Extends the prototype kit template which in turn extends the NHS.UK frontend template -->
+{% extends "prototype-kit-template.njk" %}
+
+{% block head %}
+  <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+  <link href="/css/main.css" rel="stylesheet">
+  <script src="/js/nhsuk.min.js" defer type="module"></script>
+{% endblock %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  NHS Notify prototype
+{% endblock %}
+
+<!-- Edit the header -->
+<!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
+{% block header %}
+
+{{ header({
+  service: {
+    text: "Notify",
+    href: "folders"
+  },
+  navigation: {
+    items: [
+      {
+        text: "Dashboard",
+        href: "folder",
+        active: page_active_dashboard
+      },
+      {
+        text: "Templates",
+        href: "folder-templates",
+        active: page_active_templates
+      },
+      {
+        text: 'Message plans',
+        href: 'folder-messages',
+        active: page_active_message_plans
+      }
+    ]
+  },
+  account: {
+    items: [
+      {
+        text: "Florence Nightingale",
+        icon: "true"
+      },
+      {
+        text: "My service name"
+      },
+      {
+        text: 'Change service',
+        href: 'services'
+      },
+      {
+        text: 'Sign out',
+        href: 'login?auth='
+      }
+    ]
+  }
+  })
+}}
+
+<div class="nhsuk-width-container">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full nhsnotify-subnav">
+
+      <div class="nhsnotify-subnav-projects">
+        {{data['folder-name-1']}}&emsp;<a href="folders">Change project</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+<!-- Edit the footer -->
+<!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
+{% block footer %}
+  {{ footer({
+    'links': [
+      {
+        'URL': '/',
+        'label': 'Home'
+      },
+      {
+        "URL": "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
+        "label": "Reset data"
+      },
+      {
+        'URL': '/',
+        'label': 'Prototype version: ' + protoVersion + ''
+      }
+    ]
+  })}}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    <!-- Custom JavaScript files can be added to this file -->
+    {% include 'includes/scripts.html' %}
+    <!-- For adding page specific JavsScript -->
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}

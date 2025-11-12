@@ -1,0 +1,494 @@
+{% extends 'v16/layout.html' %}
+
+{% block content %}
+
+{% from '../includes/choose-template-table-row.njk' import choose_template_row %}
+{% from '../includes/choose-template-table-row-language.njk' import choose_template_row_language %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+
+      <span class="nhsuk-caption-l">{{ data['message-name-1'] }}</span>
+      <h1 class="nhsuk-heading-xl">  
+        {% if data['message-type'] == 'NHS App' %}Choose an NHS App template{%endif%}
+        {% if data['message-type'] == 'Email' %}Choose an email template{%endif%}
+        {% if data['message-type'] == 'Text message (SMS)' %}Choose a text message (SMS) template{%endif%}
+        {% if data['message-type'] == 'Letter' %}Choose a standard English letter template{%endif%}
+        {% if data['message-type'] == 'Large print' %}Choose a large print letter template{%endif%}
+        {% if data['message-type'] == 'Braille' %}Choose a braille letter template{%endif%}
+        {% if data['message-type'] == 'Other language' %}Choose other language templates{%endif%}
+      </h1>
+
+      {#
+      {% if data['show-templates'] == '1' and data['show-folders'] == '1' %}
+
+      <div class="nhsuk-form-group">
+
+        <label class="nhsuk-label" for="filter-folders">
+          Filter templates by folder
+        </label>
+
+        <select class="nhsuk-select" id="filter-folders" name="filter-folders" onchange="toggleTable();">
+          <option value="0" selected>All templates</option>
+          <option value="1">{{ data['template-folder-1-name'] }}</option>
+          <option value="2">{{ data['template-folder-2-name'] }}</option>
+        </select>
+
+      </div>
+
+      {% endif %}
+      #}
+
+      <form action="create-message" method="post" autocomplete="off">
+
+
+        {% if data['message-type'] == 'NHS App' %}
+
+        <p class="nhsuk-hint">Choose one option.</p>
+
+        <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
+ 
+          <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+
+              <th role="columnheader" class="" scope="col">
+                Select
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+
+                <a class="nhsnotify-sort-button">
+                  Name
+                  <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                    <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  </svg>
+                </a>
+
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+                
+                <a class="nhsnotify-sort-button">
+                  Type
+                  <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                    <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  </svg>
+                </a>
+
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+
+                <a class="nhsnotify-sort-button">
+                  Last edited
+                  <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                    <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  </svg>
+                </a>
+
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+              </th>
+              
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+              
+            {{choose_template_row(templateName=data['example-template-1-name'], templateNumber=1, templateTypeName=data['example-template-1-typeName'], templateType=data['example-template-1-type'], channelNumber=data["channel-number"] )}}
+
+          </tbody>
+        </table>
+
+        {% endif %}
+
+
+
+
+
+
+        {% if data['message-type'] == 'Text message (SMS)' %}
+
+        <p class="nhsuk-hint">Choose one option.</p>
+
+        <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
+ 
+          <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+
+              <th role="columnheader" class="" scope="col">
+                Select
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+
+                <a class="nhsnotify-sort-button">
+                  Name
+                  <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                    <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  </svg>
+                </a>
+
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+                
+                <a class="nhsnotify-sort-button">
+                  Type
+                  <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                    <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  </svg>
+                </a>
+
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+
+                <a class="nhsnotify-sort-button">
+                  Last edited
+                  <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                    <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  </svg>
+                </a>
+
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+              </th>
+
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+
+            {{choose_template_row(templateName=data['example-template-2-name'], templateNumber=2, templateTypeName=data['example-template-2-typeName'], templateType=data['example-template-2-type'], channelNumber=data["channel-number"] )}}
+
+          </tbody>
+        </table>
+
+        {% endif %}
+
+
+
+
+
+
+
+        {% if data['message-type'] == 'Email' %}
+
+        <p class="nhsuk-hint">Choose one option.</p>
+
+        <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
+ 
+          <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+
+              <th role="columnheader" class="" scope="col">
+                Select
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+
+                <a class="nhsnotify-sort-button">
+                  Name
+                  <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                    <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  </svg>
+                </a>
+
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+                
+                <a class="nhsnotify-sort-button">
+                  Type
+                  <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                    <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  </svg>
+                </a>
+
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+
+                <a class="nhsnotify-sort-button">
+                  Last edited
+                  <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                    <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  </svg>
+                </a>
+
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+              </th>
+
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+
+            {{choose_template_row(templateName=data['example-template-3-name'], templateNumber=3, templateTypeName=data['example-template-3-typeName'], templateType=data['example-template-3-type'], channelNumber=data["channel-number"] )}}
+
+          </tbody>
+        </table>
+
+        {% endif %}
+
+
+
+
+
+
+
+        {% if data['message-type'] == 'Letter' %}
+
+        {% if data['folder-1-letter-templates'] == '1' %}
+
+        <p class="nhsuk-hint">Choose one option.</p>
+
+        <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
+ 
+          <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+
+              <th role="columnheader" class="" scope="col">
+                Select
+              </th>
+              
+              <th role="columnheader" class="" scope="col">
+
+                <a class="nhsnotify-sort-button">
+                  Name
+                  <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                    <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  </svg>
+                </a>
+
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+                
+                <a class="nhsnotify-sort-button">
+                  Type
+                  <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                    <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  </svg>
+                </a>
+
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+
+                <a class="nhsnotify-sort-button">
+                  Last edited
+                  <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                    <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  </svg>
+                </a>
+
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+              </th>
+
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+
+              {{choose_template_row(templateName=data['template-letter-name-1'], templateNumber=4, templateTypeName='Standard letter', templateType='letter-standard', channelNumber=data["channel-number"] )}}            
+
+          </tbody>
+        </table>
+
+        {% else %}
+
+          <p>You do not have any letter templates yet.</p>
+      
+          <div class="nhsuk-form-group">
+
+            <p><a href="folder-templates">Go to templates</a></p>
+
+          </div>
+
+        {% endif %}
+
+        {% endif %}
+
+
+
+
+
+
+        {% if data['message-type'] == 'Large print' %}
+
+        <p class="nhsuk-hint">Choose one option.</p>
+
+        <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
+ 
+          <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+
+              <th role="columnheader" class="" scope="col">
+                Select
+              </th>
+              
+              <th role="columnheader" class="" scope="col">
+
+                <a class="nhsnotify-sort-button">
+                  Name
+                  <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                    <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  </svg>
+                </a>
+
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+                
+                <a class="nhsnotify-sort-button">
+                  Type
+                  <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                    <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  </svg>
+                </a>
+
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+
+                <a class="nhsnotify-sort-button">
+                  Last edited
+                  <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                    <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  </svg>
+                </a>
+
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+              </th>
+
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            
+            {% if data['folder-1-letter-large-print-templates'] == '1' %}
+
+              {{choose_template_row(templateName=data['template-letter-large-print-name-1'], templateNumber=4, templateTypeName='Large print letter', templateType='letter-large-print', channelNumber=data["channel-number"] )}}
+
+            {% endif %}
+
+          </tbody>
+        </table>
+
+        {% endif %}
+
+
+        
+
+        {% if data['message-type'] == 'Other language' %}
+
+        <p class="nhsuk-hint">Choose all the templates that you want to include in this message plan.</p>
+
+        <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-6">
+
+          <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+              <th role="columnheader" class="" scope="col">
+
+                <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input checkboxes" id="" name="" type="checkbox" value="" onclick="selectAll(this); toggleActionsByCheckboxes();">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for=""></label>
+                </div>
+
+              </th>
+              
+              <th role="columnheader" class="" scope="col">
+
+                <a class="nhsnotify-sort-button">
+                  Name
+                  <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                    <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  </svg>
+                </a>
+
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+                
+                <a class="nhsnotify-sort-button">
+                  Type
+                  <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                    <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  </svg>
+                </a>
+
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+
+                <a class="nhsnotify-sort-button">
+                  Last edited
+                  <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+                    <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                    <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
+                  </svg>
+                </a>
+
+              </th>
+
+              <th role="columnheader" class="" scope="col">
+              </th>
+
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+
+            {% if data['folder-1-letter-language-templates'] == '1' %}
+
+              {{choose_template_row_language(templateName=data['template-letter-language-name-1'], templateNumber=4, templateTypeName=data['template-letter-language'], templateType='letter-language', channelNumber=data["channel-number"] )}}
+
+            {% endif %}
+
+          </tbody>
+        </table>
+
+        {% endif %}
+
+
+
+
+
+
+        <div class="nhsuk-form-group">
+
+          {{ button({
+            text: 'Save and continue'
+          }) }}
+
+          <a href="create-message" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,517 @@
+{% extends 'v16/layout.html' %}
+
+
+
+{% block beforeContent %}
+
+{{ backLink({
+  "href": "move-message-production",
+  "text": "Go back"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+{% from '../includes/fallback-rules-app.njk' import fallback_rules_app %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <span class="nhsuk-caption-l">Preview message plan</span>
+      <h1 class="nhsuk-heading-l">
+        {{data['message-name-1']}}
+      </h1>
+
+      <dl class="nhsuk-summary-list notify-summary-list">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Routing Plan ID
+          </dt>
+          <dd class="nhsuk-summary-list__value" style="font-family: monospace;">
+            b838b13c-f98c-4def-93f0-515d4e4f4ee1
+          </dd>
+      
+        </div>
+      
+      </dl>
+
+      <p><a href="#" id="templatesExpander">Open all template previews</a></p>
+
+      <ul class="notify-routing-plan">
+
+        <li class="notify-channel-block" id="first-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">1</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">First message</h2>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h3 class="nhsuk-heading-s">{{ data['channel-1-type'] }}</h3>
+
+              <p>
+                {{ data['channel-1-template'] }}
+              </p>
+
+              <details class="nhsuk-details nhsuk-u-margin-bottom-0">
+                <summary class="nhsuk-details__summary">
+                  <span class="nhsuk-details__summary-text">
+                    Preview template
+                  </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  
+                  {% if data['channel-1-type'] == "NHS App" %}
+                  <textarea id="sourceTA1" class="hidden">{{ data["template-app-message-1"] }}</textarea>
+                  <div id="targetDiv1"></div>
+                  {% endif %}
+
+                  {% if data['channel-1-type'] == "Text message (SMS)" %}
+                  <textarea id="sourceTA1" class="hidden">{{ data["template-sms-message-1"] }}</textarea>
+                  <div id="targetDiv1" class="hidden"></div>
+                  {{ data["template-sms-message-1"] }}
+                  {% endif %}
+
+                  {% if data['channel-1-type'] == "Email" %}
+
+                  <div class="nhsuk-u-margin-bottom-6">
+                    <h4 class="nhsuk-heading-s">Subject line</h4>
+                    <p>{{data['template-email-subject-1']}}</p>
+                  </div>
+
+                  <h4 class="nhsuk-heading-s">Body</h4>
+                  <textarea id="sourceTA1" class="hidden">{{ data["template-email-message-1"] }}</textarea>
+                  <div id="targetDiv1"></div>
+
+                  {% endif %}
+              
+                </div>
+              </details>
+              
+            </div>
+          </div>
+
+        </li>
+
+
+
+        {% if data['channel-amount'] >= '2' %}
+
+        {{fallback_rules_app(showChange='')}}
+
+        <li class="notify-channel-block" id="second-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">2</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">Second message</h2>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h3 class="nhsuk-heading-s">{{ data['channel-2-type'] }}</h3>
+
+              <p>
+                {{ data['channel-2-template'] }}
+              </p>
+
+              <details class="nhsuk-details nhsuk-u-margin-bottom-0">
+                <summary class="nhsuk-details__summary">
+                  <span class="nhsuk-details__summary-text">
+                    Preview template
+                  </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  
+                  {% if data['channel-2-type'] == "NHS App" %}
+                  <textarea id="sourceTA2" class="hidden">{{ data["template-app-message-1"] }}</textarea>
+                  <div id="targetDiv2"></div>
+                  {% endif %}
+
+                  {% if data['channel-2-type'] == "Text message (SMS)" %}
+                  <textarea id="sourceTA2" class="hidden">{{ data["template-sms-message-1"] }}</textarea>
+                  <div id="targetDiv2" class="hidden"></div>
+                  {{ data["template-sms-message-1"] }}
+                  {% endif %}
+
+                  {% if data['channel-2-type'] == "Email" %}
+
+                  <div class="nhsuk-u-margin-bottom-6">
+                    <h4 class="nhsuk-heading-s">Subject line</h4>
+                    <p>{{data['template-email-subject-1']}}</p>
+                  </div>
+
+                  <h4 class="nhsuk-heading-s">Body</h4>
+                  <textarea id="sourceTA2" class="hidden">{{ data["template-email-message-1"] }}</textarea>
+                  <div id="targetDiv2"></div>
+                  {% endif %}
+              
+                </div>
+              </details>
+              
+            </div>
+          </div>
+
+        </li>
+
+        {% endif %}
+
+
+
+        {% if data['channel-amount'] >= '3' %}
+
+        {% include "../includes/fallback-rules-other-1.html" %}
+
+        <li class="notify-channel-block" id="third-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number">3</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">Third message</h2>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h3 class="nhsuk-heading-s">{{ data['channel-3-type'] }}</h3>
+
+              <p>
+                {{ data['channel-3-template'] }}
+              </p>
+
+              <details class="nhsuk-details nhsuk-u-margin-bottom-0">
+                <summary class="nhsuk-details__summary">
+                  <span class="nhsuk-details__summary-text">
+                    Preview template
+                  </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  
+                  {% if data['channel-3-type'] == "NHS App" %}
+                  <textarea id="sourceTA3" class="hidden">{{ data["template-app-message-1"] }}</textarea>
+                  <div id="targetDiv3"></div>
+                  {% endif %}
+
+                  {% if data['channel-3-type'] == "Text message (SMS)" %}
+                  <textarea id="sourceTA3" class="hidden">{{ data["template-sms-message-1"] }}</textarea>
+                  <div id="targetDiv3" class="hidden"></div>
+                  {{ data["template-sms-message-1"] }}
+                  {% endif %}
+
+                  {% if data['channel-3-type'] == "Email" %}
+
+                  <div class="nhsuk-u-margin-bottom-6">
+                    <h4 class="nhsuk-heading-s">Subject line</h4>
+                    <p>{{data['template-email-subject-1']}}</p>
+                  </div>
+
+                  <h4 class="nhsuk-heading-s">Body</h4>
+                  <textarea id="sourceTA3" class="hidden">{{ data["template-email-message-1"] }}</textarea>
+                  <div id="targetDiv3"></div>
+                  
+                  {% endif %}
+              
+                </div>
+              </details>
+              
+            </div>
+          </div>
+
+        </li>
+
+        {% endif %}
+
+
+        {% if data['channel-amount'] >= '4' %}
+
+        {% include "../includes/fallback-rules-other-2.html" %}
+
+        <li class="notify-channel-block" id="fourth-message">
+
+          <div class="notify-channel-block-channel">
+            <div class="notify-channel-block-number" aria-hidden="true">4</div>
+            <h2 class="nhsuk-heading-m nhsuk-u-padding-top-1">Fourth message</h2>
+          </div>
+
+          <div class="notify-channel-block-outer">
+            <div class="notify-channel-block-inner">
+              <h3 class="nhsuk-heading-s">Standard English letter</h3>
+
+              <p>{{ data['channel-4-template'] }}</p>
+
+              <details class="nhsuk-details nhsuk-u-margin-bottom-0">
+                <summary class="nhsuk-details__summary">
+                  <span class="nhsuk-details__summary-text">
+                    Preview template
+                  </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  
+                  <div class="nhsnotify-letter-preview">
+
+                    <a href="/images/letter-standard-page-1.jpg" target="_blank">
+                      <img src="/images/letter-standard-page-1.jpg" alt="">
+                    </a>
+
+                    <a href="/images/letter-standard-page-2.jpg" target="_blank">
+                      <img src="/images/letter-standard-page-2.jpg" alt="">
+                    </a>
+
+                  </div>
+              
+                </div>
+              </details>
+              
+            </div>
+
+          </div>
+
+          <div class="notify-channel-accessible">
+
+              <ul class="notify-routing-plan">
+                
+
+                {% if 
+                  data['channel-4-large-print-template'] or 
+                  data['channel-4-braille-template'] or 
+                  data['channel-4-audio-cd-template'] or 
+                  data['channel-4-language-template'] 
+                %}
+
+                {% include "../includes/fallback-rules-accessible.html" %}
+
+                {% else %}
+
+                {% endif %}
+
+
+
+                {% if data['channel-4-large-print-template'] %}
+
+                <li class="notify-channel-block">
+
+                  <div class="notify-channel-block-outer">
+                    <div class="notify-channel-block-inner">
+
+                      <h3 class="nhsuk-heading-s">Large print letter (optional)</h3>
+
+                        <p>{{ data['channel-4-large-print-template'] }}</p>
+
+                        <details class="nhsuk-details nhsuk-u-margin-bottom-0">
+                          <summary class="nhsuk-details__summary">
+                            <span class="nhsuk-details__summary-text">
+                              Preview template
+                            </span>
+                          </summary>
+                          <div class="nhsuk-details__text">
+                            
+                            <div class="nhsnotify-letter-preview">
+
+                              <a href="/images/letter-large-page-1.jpg" target="_blank">
+                                <img src="/images/letter-large-page-1.jpg" alt="">
+                              </a>
+
+                              <a href="/images/letter-large-page-2.jpg" target="_blank">
+                                <img src="/images/letter-large-page-2.jpg" alt="">
+                              </a>
+
+                            </div>
+                        
+                          </div>
+                        </details>
+
+                    </div>
+                  </div>
+
+                </li>
+
+                {% endif %}
+
+
+
+                {% if data['channel-4-braille-template'] %}
+
+                <li class="notify-channel-block" id="fourth-message">
+
+                  <div class="notify-channel-block-outer">
+                    <div class="notify-channel-block-inner">
+                      <h3 class="nhsuk-heading-s">Braille letter (optional)</h3>
+
+                        <p><a href="/404">{{ data['channel-4-braille-template'] }}</a></p>
+
+                    </div>
+                  </div>
+
+                </li>
+
+                {% endif %}
+
+
+
+
+                {% if data['channel-4-audio-cd-template'] %}
+
+                <li class="notify-channel-block" id="fourth-message">
+
+                  <div class="notify-channel-block-outer">
+                    <div class="notify-channel-block-inner">
+
+                      <h3 class="nhsuk-heading-s">Audio CD letter (optional)</h3>
+
+                        <p><a href="/404">{{ data['channel-4-audio-cd-template'] }}</a></p>
+
+                    </div>
+                  </div>
+
+                </li>
+
+                {% endif %}
+
+
+
+                {% if data['channel-4-language-template'] %}
+
+                <li class="notify-channel-block" id="fourth-message">
+
+                  <div class="notify-channel-block-outer">
+                    <div class="notify-channel-block-inner">
+
+                      <h3 class="nhsuk-heading-s">Other language letters (optional)</h3>
+
+                      {% set accessible_templates = data['channel-4-language-template'] %}
+
+                      <p>{{ data['channel-4-language-template'] | escape | replace(",", "<br />") }} ({{ data['template-letter-language'] }})</p>
+
+                      <details class="nhsuk-details nhsuk-u-margin-bottom-0">
+                        <summary class="nhsuk-details__summary">
+                          <span class="nhsuk-details__summary-text">
+                            Preview template
+                          </span>
+                        </summary>
+                        <div class="nhsuk-details__text">
+                          
+                          <div class="nhsnotify-letter-preview">
+
+                            {% if data['template-letter-language-standard'] %}
+
+                            <a href="/images/letter-greek-english-page-1.jpg" target="_blank">
+                              <img src="/images/letter-greek-english-page-1.jpg" alt="">
+                            </a>
+
+                            <a href="/images/letter-greek-english-page-2.jpg" target="_blank">
+                              <img src="/images/letter-greek-english-page-2.jpg" alt="">
+                            </a>
+
+                            <a href="/images/letter-greek-english-page-3.jpg" target="_blank">
+                              <img src="/images/letter-greek-english-page-3.jpg" alt="">
+                            </a>
+
+                            {% else %}
+
+                            <a href="/images/letter-greek-page-1.jpg" target="_blank">
+                              <img src="/images/letter-greek-page-1.jpg" alt="">
+                            </a>
+
+                            <a href="/images/letter-greek-page-2.jpg" target="_blank">
+                              <img src="/images/letter-greek-page-2.jpg" alt="">
+                            </a>
+
+                            {% endif %}
+
+                          </div>
+                      
+                        </div>
+                      </details>
+
+                    </div>
+                  </div>
+
+                </li>
+
+                {% endif %}
+
+              </ul>
+
+          </div>
+
+        </li>
+
+        {% endif %}
+
+
+      </ul>
+
+      <p><a href="move-message-production">Go back</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+<!-- Script to convert markdown to formatted content -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+<script>
+window.onload = function () {
+
+  var text1 = document.getElementById('sourceTA1').value;
+  var target1 = document.getElementById('targetDiv1');
+  converter1 = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
+  html1 = converter1.makeHtml(text1);
+  target1.innerHTML = html1;
+
+  var text2 = document.getElementById('sourceTA2').value;
+  var target2 = document.getElementById('targetDiv2');
+  converter2 = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
+  html2 = converter2.makeHtml(text2);
+  target2.innerHTML = html2;
+
+  var text3 = document.getElementById('sourceTA3').value;
+  var target3 = document.getElementById('targetDiv3');
+  converter3 = new showdown.Converter({noHeaderId: true, simpleLineBreaks: false, simplifiedAutoLink: true}),
+  html3 = converter3.makeHtml(text3);
+  target3.innerHTML = html3;
+}
+</script>
+
+<script>
+  
+  // Reference the toggle link
+  const xa = document.getElementById('templatesExpander');
+
+  // Register link on click event
+  xa.addEventListener('click', function(e) {
+
+  /* Toggle the two classes that represent "state"
+  || determined when link is clicked
+  */
+  e.currentTarget.classList.toggle('exp');
+  e.currentTarget.classList.toggle('col');
+
+  // Collect all <details> into a NodeList
+  const details = document.querySelectorAll('details');
+
+  /* Convert NodeList into an array then iterate
+  || through it...
+  */
+  Array.from(details).forEach(function(obj, idx) {
+
+    /* If the link has the class .exp...
+    || make each <detail>'s open attribute true
+    */
+    if (e.currentTarget.classList.contains('exp')) {
+      obj.open = true;
+      // Otherwise remove [open]
+    } else {
+      obj.removeAttribute('open');
+    }
+
+  });
+
+  }, false);
+
+  </script>
+  
+  {% endblock %}

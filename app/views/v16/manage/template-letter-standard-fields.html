@@ -1,0 +1,244 @@
+{% extends 'v16/layout.html' %}
+
+{% block beforeContent %}
+{#
+  {{ backLink({
+    "href": "folder-templates",
+    "text": "Back to all templates"
+  }) }}
+#}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-width-container">
+
+    <div class="nhsuk-grid-row">
+
+      <div class="nhsuk-grid-column-full">
+
+        <div class="nhsuk-u-reading-width">
+
+          <span class="nhsuk-caption-l">{{ data['template-letter-name-1'] }}</span>
+          <h1 class="nhsuk-heading-xl">
+            Personalisation
+          </h1>
+
+          <p>Check how your personalisation fields will appear in your letter.</p>
+
+        </div>
+
+      </div>
+
+
+
+
+
+      <div class="nhsuk-grid-column-full">
+
+        <form action="template-letter-standard#letter-preview" method="post">
+
+          <div class="nhsuk-tabs" data-module="nhsuk-tabs">
+            <h2 class="nhsuk-tabs__title">
+              Example personalisation data
+            </h2>
+            <ul class="nhsuk-tabs__list">
+              <li class="nhsuk-tabs__list-item nhsuk-tabs__list-item--selected">
+                <a class="nhsuk-tabs__tab" href="#tab-short">
+                  Short examples
+                </a>
+              </li>
+              <li class="nhsuk-tabs__list-item">
+                <a class="nhsuk-tabs__tab" href="#tab-long">
+                  Long examples
+                </a>
+              </li>
+            </ul>
+
+            <div class="nhsuk-tabs__panel" id="tab-short">
+              
+                <h3 class="nhsuk-heading-s">
+                  PDS personalisation fields
+                </h3>
+
+                <p>This is example personalisation data to show how your PDS personalisation fields might appear in your letter.</p>
+                
+                <p>
+                  <strong>date</strong><br />
+                  13 August 2025
+                </p>
+
+                <p>
+                  <strong>nhsNumber</strong><br />
+                  901 234 5678
+                </p>
+
+                <p>
+                  <strong>fullName</strong><br />
+                  Jo Blogs
+                </p>
+
+                <h3 class="nhsuk-heading-s nhsuk-u-padding-top-4">
+                  Custom personalisation fields
+                </h3>
+
+                <p>This is example personalisation data to show how your custom personalisation fields might appear in your letter.</p>
+
+                {% if data['template-letter-standard-status'] != '2' %}
+
+                <p>Enter your own example personalisation data.</p>
+
+                {{ input({
+                  label: {
+                    text: "studyRegion"
+                  },
+                  id: "letter-proof-standard-custom-field-short-1",
+                  name: "letter-proof-standard-custom-field-short-1",
+                  classes: "nhsuk-u-width-three-quarters",
+                  value: data['letter-proof-standard-custom-field-short-1']
+                }) }}
+
+                {{ input({
+                  label: {
+                    text: "studyRegionPhone"
+                  },
+                  id: "letter-proof-standard-custom-field-short-2",
+                  name: "letter-proof-standard-custom-field-short-2",
+                  classes: "nhsuk-u-width-three-quarters",
+                  value: data['letter-proof-standard-custom-field-short-2']
+                }) }}
+
+                {{ input({
+                  label: {
+                    text: "studyRegionEmail"
+                  },
+                  id: "letter-proof-standard-custom-field-short-3",
+                  name: "letter-proof-standard-custom-field-short-3",
+                  classes: "nhsuk-u-width-three-quarters",
+                  value: data['letter-proof-standard-custom-field-short-3']
+                }) }}
+
+                {% else %}
+
+                <p>
+                  <strong>studyRegion</strong><br />
+                  Rutland
+                </p>
+
+                <p>
+                  <strong>studyRegionPhone</strong><br />
+                  01234 567 890
+                </p>
+
+                <p>
+                  <strong>studyRegionEmail</strong><br />
+                  rutland@nhs.net
+                </p>
+
+                {% endif %}
+
+            </div>
+
+            <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="tab-long">
+
+                <h3 class="nhsuk-heading-s">
+                  PDS personalisation fields
+                </h3>
+
+                <p>This is example personalisation data to show how your PDS personalisation fields might appear in your letter.</p>
+
+                <p>
+                  <strong>date</strong><br />
+                  13 August 2025
+                </p>
+
+                <p>
+                  <strong>nhsNumber</strong><br />
+                  901 234 5678
+                </p>
+
+                <p>
+                  <strong>fullName</strong><br />
+                  Joseph Anthony Hendrington-Bloggs
+                </p>        
+
+                <h3 class="nhsuk-heading-s nhsuk-u-padding-top-4">
+                  Custom personalisation fields
+                </h3>
+
+                <p>This is example personalisation data to show how your custom personalisation fields might appear in your letter.</p>
+
+                {% if data['template-letter-standard-status'] != '2' %}
+
+                <p>Enter your own example personalisation data.</p>
+
+                {{ input({
+                  label: {
+                    text: "studyRegion"
+                  },
+                  id: "letter-proof-standard-custom-field-long-1",
+                  name: "letter-proof-standard-custom-field-long-1",
+                  classes: "nhsuk-u-width-three-quarters",
+                  value: data['letter-proof-standard-custom-field-long-1']
+                }) }}
+
+                {{ input({
+                  label: {
+                    text: "studyRegionPhone"
+                  },
+                  id: "letter-proof-standard-custom-field-long-2",
+                  name: "letter-proof-standard-custom-field-long-2",
+                  classes: "nhsuk-u-width-three-quarters",
+                  value: data['letter-proof-standard-custom-field-long-2']
+                }) }}
+
+                {{ input({
+                  label: {
+                    text: "studyRegionEmail"
+                  },
+                  id: "letter-proof-standard-custom-field-long-3",
+                  name: "letter-proof-standard-custom-field-long-3",
+                  classes: "nhsuk-u-width-three-quarters",
+                  value: data['letter-proof-standard-custom-field-long-3']
+                }) }}
+
+                {% else %}
+
+                <p>
+                  <strong>studyRegion</strong><br />
+                  Bath and North East Somerset
+                </p>
+
+                <p>
+                  <strong>studyRegionPhone</strong><br />
+                  01234 567 999
+                </p>
+
+                <p>
+                  <strong>studyRegionEmail</strong><br />
+                  bath_and_north_east_somerset@nhs.net
+                </p>
+
+                {% endif %}
+
+            </div>
+
+          </div>
+
+          <input type="hidden" name="show-save-banner" value="">
+          <input type="hidden" name="template-letter-preview-personalised" value="yes">
+          
+
+          <button class="nhsuk-button nhsuk-u-margin-right-3">Update preview</button>
+
+          <a href="template-letter-standard" class="nhsuk-button nhsuk-button--secondary">Go back</a>
+
+        </form>
+
+
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
