@@ -36,8 +36,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="description" content="">
 
     <title>{% block pageTitle %}NHS.UK prototype kit{% endblock %}</title>
@@ -55,7 +54,7 @@
     {% block customStyles %}
     {% endblock %}
 
-    <script src="/nhsuk-frontend/nhsuk.min.js" defer></script>
+  <!-- nhsuk frontend scripts moved to bodyEnd as module pattern -->
 
     {% block headIcons %}
     <link rel="shortcut icon" href="/nhsuk-frontend/assets/favicons/favicon.ico" type="image/x-icon">

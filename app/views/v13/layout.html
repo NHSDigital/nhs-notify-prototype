@@ -6,7 +6,6 @@
 {% block head %}
   <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
   <link href="/css/main.css" rel="stylesheet">
-  <script src="/js/nhsuk.min.js" defer type="module"></script>
 {% endblock %}
 
 <!-- Set the page title -->
@@ -61,20 +60,22 @@
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 {% block footer %}
   {{ footer({
-    'links': [
-      {
-        'URL': '/',
-        'label': 'Home'
-      },
-      {
-        "URL": "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
-        "label": "Reset data"
-      },
-      {
-        'URL': '/',
-        'label': 'Prototype version: ' + protoVersion + ''
-      }
-    ]
+    meta: {
+      items: [
+        {
+          href: '/',
+          text: 'Home'
+        },
+        {
+          href: "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
+          text: "Reset data"
+        },
+        {
+          href: '/',
+          text: 'Prototype version: ' + protoVersion + ''
+        }
+      ]
+    }
   })}}
 {% endblock %}
 
@@ -83,6 +84,11 @@
     <!-- Custom JavaScript files can be added to this file -->
     {% include 'includes/scripts.html' %}
     <!-- For adding page specific JavsScript -->
+    <script src="/nhsuk-frontend/nhsuk-frontend.min.js" type="module"></script>
+    <script type="module">
+      import { initAll } from '/nhsuk-frontend/nhsuk-frontend.min.js'
+      initAll()
+    </script>
     {% block pageScripts %}{% endblock %}
   {% endblock %}
 {% endblock %}

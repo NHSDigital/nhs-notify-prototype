@@ -95,13 +95,15 @@
 
         </div>
 
-        <div class="nhsuk-u-margin-bottom-7">
         {{ select({
           id: "template-letter-language",
           name: "template-letter-language",
           label: {
             text: "Template language",
             classes: "nhsuk-label--s"
+          },
+          formGroup: {
+            classes: "nhsuk-u-margin-bottom-7"
           },
           hint: {
             text: "Choose the language used in this template."
@@ -227,7 +229,6 @@
             }
           ]
         }) }}
-        </div>
 
         <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
           

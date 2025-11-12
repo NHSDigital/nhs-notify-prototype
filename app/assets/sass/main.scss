@@ -1,19 +1,15 @@
-// Import NHS.UK frontend library
-@import 'node_modules/nhsuk-frontend/packages/nhsuk';
-
-// Components that are not in the NHS.UK frontend library
-@import 'components/list-border';
-@import 'components/related-nav';
-@import 'components/side-nav';
+// Import NHS.UK frontend library (v10+)
+@import 'nhsuk-frontend/dist/nhsuk';
 
 ///////////////////////////////////////////
 // Add your custom CSS/Sass styles below...
 ///////////////////////////////////////////
 
 
-a:visited,
-a:not(.nhsuk-button):not(:hover):not(:focus):not(:active):visited {
-    color:$nhsuk-link-color;
+/* Scope visited link colour to main content only */
+main a:visited,
+main a:not(.nhsuk-button):visited {
+  color: $nhsuk-link-color;
 }
 
 .notify-button-blue{
@@ -916,4 +912,16 @@ a:not(.nhsuk-button):not(:hover):not(:focus):not(:active):visited {
 
 #spinner-container{
     min-height: 1200px;
+}
+
+
+// Adding colours to the icons
+
+.notify-tick{
+    color: $nhsuk-success-colour;
+}
+
+.notify-arrow-down{
+    color: $nhsuk-link-colour;
+    transform: rotate(90deg);
 }
