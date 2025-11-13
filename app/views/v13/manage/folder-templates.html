@@ -79,6 +79,12 @@
         "
       }) }}
 
+      {% if data['show-templates'] == '1' %}
+      
+      <a href="template-type" class="nhsuk-button">New template</a>
+
+      {% else %}
+
       <form action="" method="post">
         <input type="hidden" name="show-templates" value="1">
         <!--<input type="hidden" name="show-folders" value="1">-->
@@ -91,6 +97,8 @@
           text: 'New folder'
         }) }}-->
       </form>
+
+      {% endif %}
 
       {% if data['show-templates'] == '1' or data['show-folders'] == '1' %}
 

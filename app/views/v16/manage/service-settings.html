@@ -1,0 +1,93 @@
+{% extends 'v16/layout.html' %}
+
+{% block beforeContent %}
+
+{{ backLink({
+  "href": "services",
+  "text": "Back to services"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l">{{data['service-name']}}</span>
+      <h1 class="nhsuk-heading-xl">
+        Settings
+      </h1>
+
+      <form action="service-settings-save-confirmation" method="post">
+
+        {{ input({
+          label: {
+            text: "Service name",
+            classes: "nhsuk-label--s"
+          },
+          hint: {
+            text: "Change the name of this service."
+          },
+          id: "service-name",
+          name: "service-name",
+          value: data['service-name'],
+          formGroup: {
+            classes: "nhsuk-u-margin-bottom-7"
+          }
+        }) }}
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
+
+          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Client ID</h2>
+          <p>c3ad644e-111e-4cf4-a6e6-ae934562cd56</p>
+
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
+
+          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">MESH mailbox</h2>
+          <p>X26OT015</p>
+
+        </div>
+        
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
+
+          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">ODS code</h2>
+          <p>X26</p>
+
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
+
+          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">APIM app ID</h2>
+          <p>6cc642e2-d732-4756-aa6f-5de8c4d5f123</p>
+
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
+
+          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Enrichment rate limit (TPS)</h2>
+          <p>20</p>
+
+        </div>
+
+        <div class="nhsuk-form-group">
+
+          {{ button({
+            text: 'Save settings'
+          }) }}
+
+          <!--<a href="javascript:history.go(-1)" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>-->
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+{% endblock %}

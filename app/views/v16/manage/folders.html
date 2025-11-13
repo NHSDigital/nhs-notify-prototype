@@ -39,6 +39,10 @@
         Projects
       </h1>
 
+      <p>Choose a project to work on, or create a new one.</p>
+
+      <h2 class="nhsuk-heading-m">Active projects</h2>
+
       <form action="create-folder" method="post">
 
         {{ button({
@@ -58,7 +62,7 @@
             <th role="columnheader" class="" scope="col">
 
               <a class="nhsnotify-sort-button">
-                Name
+                Project name
                 <svg class="sort-icon" viewBox="0 0 12 19" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
                   <path d="M6 0l6 7.2H0L6 0zm0 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
                   <path d="M6 18.6l6-7.2H0l6 7.2zm0 3.6l6 7.2H0l6-7.2z"></path>
@@ -66,6 +70,11 @@
               </a>
 
             </th>
+
+            <th role="columnheader" class="" scope="col">
+              Type
+            </th>
+
             <th role="columnheader" class="" scope="col">
 
               <a class="nhsnotify-sort-button">
@@ -77,8 +86,7 @@
               </a>
 
             </th>
-            <th role="columnheader" class="" scope="col">
-            </th>
+
           </tr>
         </thead>
         <tbody class="nhsuk-table__body">
@@ -91,23 +99,32 @@
                 {{ data['folder-name-1'] }}
               </a>
             </td>
-            
-            <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Created </span>29th Jun 2025<br />09:34
-            </td>
 
             <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Action </span>
-              {#<p class="nhsuk-u-margin-bottom-2"><a href="/404">Rename</a></p>#}
-              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Copy</a></p>
-              {#<p class="nhsuk-u-margin-bottom-2"><a href="/404">Archive</a></p>#}
-              <p class="nhsuk-u-margin-bottom-2"><a href="project-settings">Settings</a></p>
+              <span class="nhsuk-table-responsive__heading">Type </span>
+              Campaign
             </td>
+            
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Created </span>
+              29th Jun 2025<br />09:34
+            </td>
+
+            {#<td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Action </span>
+              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Rename</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Copy</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="/404">Archive</a></p>
+              <p class="nhsuk-u-margin-bottom-2"><a href="project-settings">Settings</a></p>
+            </td>#}
 
           </tr>
 
         </tbody>
       </table>
+
+      <h2 class="nhsuk-heading-m">Archived projects</h2>
+      <p>You do not have any archived projects yet.</p>
 
       {% else %}
  

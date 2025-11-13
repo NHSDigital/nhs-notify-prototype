@@ -9,19 +9,19 @@ router.post('/{*any}/route-template-type', (req, res) => {
 
   // Take the user to the relevant 'create' page and reset the page mode to 'create'
   if (radio_template_type === 'app') {
-      res.redirect('create-app-template');
+      res.redirect('/404');
   }
   
   if (radio_template_type === 'email') {
-      res.redirect('create-email-template');
+      res.redirect('/404');
   }
   
   if (radio_template_type === 'sms') {
-    res.redirect('create-sms-template');
+    res.redirect('/404');
   }
   
   if (radio_template_type_letter === 'letter-non-eng') {
-    res.redirect('create-letter-non-eng-template');
+    res.redirect('/404');
   }
 
   /*
@@ -39,7 +39,7 @@ router.post('/{*any}/route-template-type', (req, res) => {
   */
 
   else {
-    res.redirect('create-letter-template');
+    res.redirect('/404');
   }
 
 });
