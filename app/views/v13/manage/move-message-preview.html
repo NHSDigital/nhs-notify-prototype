@@ -1,16 +1,5 @@
 {% extends 'v13/layout.html' %}
 
-
-
-{% block beforeContent %}
-
-{{ backLink({
-  "href": "move-message-production",
-  "text": "Go back"
-}) }}
-
-{% endblock %}
-
 {% block content %}
 
 {% from '../includes/fallback-rules-app.njk' import fallback_rules_app %}
@@ -19,24 +8,25 @@
 
     <div class="nhsuk-grid-column-three-quarters">
 
-      <span class="nhsuk-caption-l">Preview message plan</span>
-      <h1 class="nhsuk-heading-l">
-        {{data['message-name-1']}}
+      <span class="nhsuk-caption-xl">Step 2 of 2</span>
+      <h1 class="nhsuk-heading-xl">
+        Preview message plan before moving to production
       </h1>
 
-      <dl class="nhsuk-summary-list notify-summary-list">
+      <table role="table" class="notify-template-content nhsuk-u-margin-bottom-6">
+        <tbody class="nhsuk-table__body">
 
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Routing Plan ID
-          </dt>
-          <dd class="nhsuk-summary-list__value" style="font-family: monospace;">
-            b838b13c-f98c-4def-93f0-515d4e4f4ee1
-          </dd>
-      
-        </div>
-      
-      </dl>
+          <tr role="row" class="nhsuk-table__row">
+            <th role="cell" class="nhsuk-table__cell" style="width:20%;">
+              Name
+            </th>
+            <td role="cell" class="nhsuk-table__cell">
+              {{ data['message-name-1'] }}
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
 
       <p><a href="#" id="templatesExpander">Open all template previews</a></p>
 
@@ -351,7 +341,13 @@
 
       </ul>
 
-      <p><a href="move-message-production">Go back</a></p>
+      <div class="nhsuk-form-group">
+
+        <a href="folder-messages?messages-draft=0&messages-prod=1" class="nhsuk-button nhsuk-button--warning">Move to production</a>
+
+        <a href="folder-messages" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-left-3">Keep in draft</a>
+
+      </div>
 
     </div>
   </div>

@@ -14,13 +14,56 @@
 {% block content %}
   <div class="nhsuk-grid-row">
 
-    <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-grid-column-full">
 
       <span class="nhsuk-caption-l">{{data['folder-name-1']}}</span>
       <h1 class="nhsuk-heading-xl">
         Settings
       </h1>
 
+
+
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Project name"
+            },
+            value: {
+              text: data['folder-name-1']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/404",
+                  text: "Change",
+                  visuallyHiddenText: "Service name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Project type"
+            },
+            value: {
+              text: "Campaign"
+            }
+          },
+          {
+            key: {
+              text: "Campaign ID"
+            },
+            value: {
+              html: "fb3c1b53-b74a-4143-bfbc-5260821d1848"
+            }
+          }
+        ]
+      }) }}
+
+
+
+{#
       <form action="project-settings-save-confirmation" method="post">
 
         {{ input({
@@ -53,26 +96,6 @@
 
         </div>
 
-        
-{#
-        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
-
-          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Link this project to a campaign</h2>
-
-          <p>Projects can be linked to a campaign if your service has any campaigns set up. Speak to your Onboarding Manager for more information.</p>
-
-          <label class="nhsuk-label" for="project-campaign">
-            Choose a campaign
-          </label>
-          <select class="nhsuk-select" id="project-campaign" name="project-campaign">
-            <option value="1">None</option>
-            <option value="2" {% if data['project-campaign'] == '2' %}selected{% endif %}>Campaign 1</option>
-            <option value="3" {% if data['project-campaign'] == '3' %}selected{% endif %}>Campaign 2</option>
-          </select>
-
-        </div>
-#}
-
         <div class="nhsuk-form-group">
 
           {{ button({
@@ -85,9 +108,9 @@
 
       </form>
 
-      <hr class="nhsuk-section-break--visible">
+#}
 
-      <div class="nhsuk-form-group">
+      <div class="nhsuk-form-group nhsuk-u-reading-width">
 
         <h2 class="nhsuk-heading-s">Copy project</h2>
 
@@ -106,7 +129,7 @@
       
       <hr class="nhsuk-section-break--visible">
 
-      <div class="nhsuk-form-group">
+      <div class="nhsuk-form-group nhsuk-u-reading-width">
 
         <h2 class="nhsuk-heading-s">Archive project</h2>
 

@@ -158,49 +158,8 @@
       {% if data['template-letter-standard-status'] != '2' %}
 
       <p>Check how your personalisation fields will appear in your letter.</p>
-      {#<p><a href="/404">Learn how to check the personalisation in your letter</a>.</p>
-      <p><a href="template-upload-letter-standard-guidance-2#personalisation-data-length" target="_blank">Learn how personalisation may affect the cost of your letter (opens in a new tab)</a>.</p>
 
-      <details class="nhsuk-details">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            Copy example personalisation data from another letter template
-          </span>
-        </summary>
-        <div class="nhsuk-details__text">
-
-          <p>You can copy example data from an existing template to save time.</p>
-          
-          {{ select({
-            id: "letter-proof-copy-data",
-            name: "letter-proof-copy-data",
-            label: {
-              text: "Choose a template"
-            },
-            items: [
-              {
-                value: 0,
-                text: ""
-              },
-              {
-                value: 1,
-                text: "Letter template name 1"
-              },
-              {
-                value: 2,
-                text: "Letter template name 2"
-              },
-              {
-                value: 3,
-                text: "Letter template name 3"
-              }
-            ]
-          }) }}
-
-          <a href="/404" class="nhsuk-button nhsuk-button--secondary">Copy example data</a>
-
-        </div>
-      </details>#}
+      <p><a href="template-upload-letter-standard-guidance-2" target="_blank">Learn more about personalising your letters (opens in a new tab)</a>.</p>
 
       {% endif %}
 
@@ -225,27 +184,13 @@
 
           <form action="#tab-short" method="post">
 
-            <p><a href="#tab-short">Copy existing examples</a></p>
+            <p><a href="#" id="copy-short-examples">Copy your previous examples</a></p>
           
             <h3 class="nhsuk-heading-s">
               PDS personalisation fields
             </h3>
 
-            {#<p>This is example personalisation data to show how your PDS personalisation fields might appear in your letter.</p>#}
-
             {% if data['template-letter-standard-status'] != '2' %}
-
-            {#<p>Choose example personalisation data for your PDS personalisation fields.</p>#}
-
-            <p>
-              <strong>date</strong><br />
-              13 August 2025
-            </p>
-
-            <p>
-              <strong>nhsNumber</strong><br />
-              901 234 5678
-            </p>
 
             {{ input({
               label: {
@@ -261,16 +206,6 @@
             {% else %}
 
             <p>
-              <strong>date</strong><br />
-              13 August 2025
-            </p>
-
-            <p>
-              <strong>nhsNumber</strong><br />
-              901 234 5678
-            </p>
-
-            <p>
               <strong>fullName</strong><br />
               Jo Blogs
             </p>
@@ -281,11 +216,7 @@
               Custom personalisation fields
             </h3>
 
-            {#<p>This is example personalisation data to show how your custom personalisation fields might appear in your letter.</p>#}
-
             {% if data['template-letter-standard-status'] != '2' %}
-
-            {#<p>Enter your own example personalisation data.</p>#}
 
             {{ input({
               label: {
@@ -354,27 +285,13 @@
 
           <form action="#tab-long" method="post">
 
-            <p><a href="#tab-long">Copy existing examples</a></p>
+            <p><a href="#" id="copy-long-examples">Copy your previous examples</a></p>
 
             <h3 class="nhsuk-heading-s">
               PDS personalisation fields
             </h3>
 
-            {#<p>This is example personalisation data to show how your PDS personalisation fields might appear in your letter.</p>#}
-
             {% if data['template-letter-standard-status'] != '2' %}
-
-            {#<p>Choose example personalisation data for your PDS personalisation fields.</p>#}
-            
-            <p>
-              <strong>date</strong><br />
-              13 August 2025
-            </p>
-
-            <p>
-              <strong>nhsNumber</strong><br />
-              901 234 5678
-            </p>
 
             {{ input({
               label: {
@@ -390,16 +307,6 @@
             {% else %}
 
             <p>
-              <strong>date</strong><br />
-              13 August 2025
-            </p>
-
-            <p>
-              <strong>nhsNumber</strong><br />
-              901 234 5678
-            </p>
-
-            <p>
               <strong>fullName</strong><br />
               Joseph Anthony Hendrington-Bloggs
             </p>
@@ -411,11 +318,7 @@
               Custom personalisation fields
             </h3>
 
-            {#<p>This is example personalisation data to show how your custom personalisation fields might appear in your letter.</p>#}
-
             {% if data['template-letter-standard-status'] != '2' %}
-
-            {#<p>Enter your own example personalisation data.</p>#}
 
             {{ input({
               label: {
@@ -522,7 +425,7 @@
       {% else %}
 
       <iframe 
-        src="/files/letter-template-nhs-notify-standard-example-2.pdf"
+        src="/files/letter-template-nhs-notify-standard-example-3.pdf"
         style="width:100%;height:1200px;border:none;"
         allowfullscreen
         referrerpolicy="no-referrer"
@@ -530,127 +433,6 @@
       ></iframe>
 
       {% endif %}
-
-
-
-      {#<div id="initial">
-
-        <iframe 
-          src="/files/letter-template-nhs-notify-standard-example-2.pdf"
-          style="width:100%;height:1200px;border:none;"
-          allowfullscreen
-          referrerpolicy="no-referrer"
-          class="nhsuk-u-margin-bottom-4 notify-letter-preview"
-        ></iframe>
-
-      </div>
-
-      <div id="short">
-
-        <iframe 
-          src="/files/letter-template-nhs-notify-standard-example-short-data.pdf"
-          style="width:100%;height:1200px;border:none;"
-          allowfullscreen
-          referrerpolicy="no-referrer"
-          class="nhsuk-u-margin-bottom-4 notify-letter-preview"
-        ></iframe>
-
-      </div>
-
-      <div id="medium">
-
-        <iframe 
-          src="/files/letter-template-nhs-notify-standard-example-medium-data.pdf"
-          style="width:100%;height:1200px;border:none;"
-          allowfullscreen
-          referrerpolicy="no-referrer"
-          class="nhsuk-u-margin-bottom-4 notify-letter-preview"
-        ></iframe>
-
-      </div>
-
-      <div id="long">
-
-        <iframe 
-          src="/files/letter-template-nhs-notify-standard-example-long-data.pdf"
-          style="width:100%;height:1200px;border:none;"
-          allowfullscreen
-          referrerpolicy="no-referrer"
-          class="nhsuk-u-margin-bottom-4 notify-letter-preview"
-        ></iframe>
-
-      </div>
-
-      <div id="spinner-container" hidden>
-
-        <section class="loading-container" id="gp-connect-0" style="display:block; min-height: 16em;">
-
-          <div class="bar_container">
-            <div id="main_container">
-              <div id="pbar" class="progress-spinner" data-percent="0">
-                <img src="/images/loader-spinner.svg" width="200px" height="200px" id="spinner" class="">
-                <div class="ppc-loading">
-                  <div class="pcc-percents-wrapper">
-                    <span id="spinner-status" class="nhsuk-body">Loading</span><span aria-hidden="true">...</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </section>
-
-      </div>
-
-
-      <script>
-          
-          const buttonShort = document.getElementById("buttonShort");
-          const buttonMedium = document.getElementById("buttonMedium");
-          const buttonLong = document.getElementById("buttonLong");
-          const initial = document.getElementById("initial");
-          const short = document.getElementById("short");
-          const medium = document.getElementById("medium");
-          const long = document.getElementById("long");
-          const spinner = document.getElementById("spinner-container");
-
-          // Show "initial" section by default
-          short.hidden = true;
-          medium.hidden = true;
-          long.hidden = true;
-          initial.hidden = false;
-          spinner.hidden = true;
-
-          function showSection(sectionToShow) {
-            // Hide all sections
-            [short, medium, long, initial].forEach(div => div.hidden = true);
-            // Show spinner
-            spinner.hidden = false;
-
-            // Wait 2 seconds, then hide spinner and show target section
-            setTimeout(() => {
-              spinner.hidden = true;
-              sectionToShow.hidden = false;
-            }, 1500);
-          }
-
-          buttonShort.addEventListener("click", () => showSection(short));
-          buttonMedium.addEventListener("click", () => showSection(medium));
-          buttonLong.addEventListener("click", () => showSection(long));
-          
-      </script>#}
-
-      {#
-      {% if data['template-letter-standard-status'] == '1' %}
-
-      <div>
-      
-        <a href="template-letter-approve?approve-template-name={{ data['template-letter-name-1'] }}" class="nhsuk-button nhsuk-u-margin-right-3">Approve template</a>
-      
-      </div>
-              
-      {% endif %}
-      #}
 
       {% if data['template-letter-standard-status'] == '1' %}
 
@@ -669,4 +451,31 @@
     </div>
 
   </div>
+
+  <script>
+    // Populate short examples
+    document.getElementById('copy-short-examples')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Predetermined data for short examples
+      document.getElementById('letter-proof-standard-pds-fullname-short').value = 'Jo Blogs';
+      document.getElementById('letter-proof-standard-custom-field-short-1').value = 'Rutland';
+      document.getElementById('letter-proof-standard-custom-field-short-2').value = '01234 567 890';
+      document.getElementById('letter-proof-standard-custom-field-short-3').value = 'rutland@nhs.net';
+      
+    });
+
+    // Populate long examples
+    document.getElementById('copy-long-examples')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Predetermined data for long examples
+      document.getElementById('letter-proof-standard-pds-fullname-long').value = 'Joseph Anthony Hendrington-Bloggs';
+      document.getElementById('letter-proof-standard-custom-field-long-1').value = 'Bath and North East Somerset';
+      document.getElementById('letter-proof-standard-custom-field-long-2').value = '01234 567 999';
+      document.getElementById('letter-proof-standard-custom-field-long-3').value = 'bath_and_north_east_somerset@nhs.net';
+
+    });
+  </script>
+
 {% endblock %}

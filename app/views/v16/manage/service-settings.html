@@ -12,13 +12,80 @@
 {% block content %}
   <div class="nhsuk-grid-row">
 
-    <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-grid-column-full">
 
       <span class="nhsuk-caption-l">{{data['service-name']}}</span>
       <h1 class="nhsuk-heading-xl">
         Settings
       </h1>
 
+
+
+
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Service name"
+            },
+            value: {
+              text: data['service-name']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/404",
+                  text: "Change",
+                  visuallyHiddenText: "Service name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Client ID"
+            },
+            value: {
+              text: "c3ad644e-111e-4cf4-a6e6-ae934562cd56"
+            }
+          },
+          {
+            key: {
+              text: "MESH mailbox"
+            },
+            value: {
+              html: "X26OT015"
+            }
+          },
+          {
+            key: {
+              text: "ODS code"
+            },
+            value: {
+              html: "X26"
+            }
+          },
+          {
+            key: {
+              text: "APIM app ID"
+            },
+            value: {
+              html: "6cc642e2-d732-4756-aa6f-5de8c4d5f123"
+            }
+          },
+          {
+            key: {
+              text: "Enrichment rate limit (TPS)"
+            },
+            value: {
+              html: "20"
+            }
+          }
+        ]
+      }) }}
+
+
+{#
       <form action="service-settings-save-confirmation" method="post">
 
         {{ input({
@@ -83,6 +150,7 @@
         </div>
 
       </form>
+#}
 
     </div>
   </div>
