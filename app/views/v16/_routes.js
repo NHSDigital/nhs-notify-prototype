@@ -37,7 +37,7 @@ router.post('/{*any}/route-template-type', (req, res) => {
   }
   
   if (radio_template_type === 'letter' && radio_template_type_letter === 'letter-braille') {
-    res.redirect('/404');
+    res.redirect('template-upload-letter-braille');
   }
 
   if (radio_template_type === 'letter' && radio_template_type_letter === 'letter-audio-cd') {

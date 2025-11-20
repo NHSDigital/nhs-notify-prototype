@@ -160,6 +160,10 @@
               text: "Italian"
             },
             {
+              value: "Kurdish",
+              text: "Kurdish"
+            },
+            {
               value: "Latvian",
               text: "Latvian"
             },
@@ -230,6 +234,16 @@
           ]
         }) }}
 
+        <div id="rtl-language-notice" class="nhsuk-inset-text" style="display: none;">
+          
+          <span class="nhsuk-u-visually-hidden">Information: </span>
+          
+          <p><strong>Right-to-left language selected</strong></p>
+          
+          <p>You've selected a language that reads right-to-left. Make sure you use the <a href="/files/letter-template-nhs-notify-other-language-right-aligned_.docx" download>other language (right-aligned) letter template file</a>.</p>
+        
+        </div>
+
         <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
           
           <label class="nhsuk-label nhsuk-label--s" for="template-letter-name-1">
@@ -276,11 +290,15 @@
 
     <div class="nhsuk-grid-column-one-third">
 
-      <h2 class="nhsuk-heading-m">How to create a standard letter template</h2>
+      <h2 class="nhsuk-heading-m">How to create an other language letter template</h2>
 
-      <ol>
+      <ol class="nhsuk-list nhsuk-list--number">
         <li class="nhsuk-u-margin-bottom-4">
-          Download the blank <a href="template-upload-letter-standard-guidance#download-our-blank-letter-template" target="_blank">standard letter template file (opens in a new tab)</a>.
+          Download the relevant blank letter template:
+          <ul class="nhsuk-list nhsuk-list--bullet">
+            <li><a href="/files/letter-template-nhs-notify-other-language_.docx" download>other language letter template file</a>.</li>
+            <li><a href="/files/letter-template-nhs-notify-other-language-right-aligned_.docx" download>other language (right-aligned) letter template file</a>.</li>
+          </ul>
         </li>
         <li class="nhsuk-u-margin-bottom-4">
           Add <a href="template-upload-letter-standard-guidance#formatting-your-letter" target="_blank">formatting (opens in a new tab)</a>.
@@ -296,4 +314,24 @@
     </div>
 
   </div>
+
+  <script>
+    // Show/hide the RTL language notice based on dropdown selection
+    const languageDropdown = document.getElementById('template-letter-language');
+    const rtlNotice = document.getElementById('rtl-language-notice');
+    
+    // Languages that read right-to-left
+    const rtlLanguages = ['Arabic', 'Persian', 'Kurdish', 'Urdu'];
+    
+    languageDropdown?.addEventListener('change', function() {
+      const selectedLanguage = this.value;
+      
+      if (rtlLanguages.includes(selectedLanguage)) {
+        rtlNotice.style.display = 'block';
+      } else {
+        rtlNotice.style.display = 'none';
+      }
+    });
+  </script>
+
 {% endblock %}

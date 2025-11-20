@@ -17,7 +17,53 @@
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-full">
 
-        {% if data['show-save-banner'] == 'yes' %}
+        {% if data['error'] == 'error1' %}
+
+        {{ errorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              html: "<p>The file you uploaded can not be opened or may contain a virus.</p>
+              <p class='nhsuk-u-margin-bottom-0'>Try uploading a different template file.</p>",
+              href: "template-upload-letter-standard"
+            }
+          ]
+        }) }}
+
+        {% endif %}
+
+        {% if data['error'] == 'error2' %}
+
+        {{ errorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              html: "<p>The template file you uploaded does not contain the address fields.</p>
+              <p class='nhsuk-u-margin-bottom-0'>Add the address fields to the template file and upload it.</p>",
+              href: "template-upload-letter-standard"
+            }
+          ]
+        }) }}
+
+        {% endif %}
+
+        {% if data['error'] == 'error3' %}
+
+        {{ errorSummary({
+          titleText: "There is a problem",
+          descriptionHtml: "<p>Personalisation fields in letter templates should be written like: {d.fullName}</p>",
+          errorList: [
+            {
+              html: "<p>The template file you uploaded contains incorrect personalisation fields.</p>
+              <p class='nhsuk-u-margin-bottom-0'></p>",
+              href: "template-upload-letter-standard"
+            }
+          ]
+        }) }}
+
+        {% endif %}
+
+        {% if data['show-save-banner'] == 'yes' and data['error'] == '' %}
         <div class="notify-confirmation-panel">
           <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-0">Template saved</h1>
         </div>
@@ -112,30 +158,32 @@
 
               {% else %}
 
-                {% if data['template-letter-standard-status'] == '2' %}
+                {% if data['error'] != '' %}
+
+                  {{ tag({
+                    text: "Checks failed",
+                    classes: "nhsuk-tag--red"
+                  })}}
+
+                {% else %}
+
+                  {% if data['template-letter-standard-status'] == '1' %}
+
+                    {{ tag({
+                      text: "Approval needed",
+                      classes: "nhsuk-tag--yellow"
+                    })}}
+
+                  {% endif %}  
                 
-                  {{ tag({
-                    text: "Approved",
-                    classes: "nhsuk-tag--green"
-                  })}}
+                  {% if data['template-letter-standard-status'] == '2' %}
+                    
+                      {{ tag({
+                        text: "Approved",
+                        classes: "nhsuk-tag--green"
+                      })}}
 
-                {% endif %}
-
-                {% if data['template-letter-standard-status'] == '3' %}
-
-                  {{ tag({
-                    text: "Rejected",
-                    classes: "nhsuk-tag--grey"
-                  })}}
-
-                {% endif %}
-
-                {% if data['template-letter-standard-status'] == '1' %}
-
-                  {{ tag({
-                    text: "Approval needed",
-                    classes: "nhsuk-tag--yellow"
-                  })}}
+                  {% endif %}
 
                 {% endif %}
 
@@ -148,6 +196,12 @@
       </div>
     </div>
   </div>
+
+
+
+
+  {% if data['error'] == '' %}
+
 
   <div class="nhsuk-grid-row">
 
@@ -191,6 +245,8 @@
             </h3>
 
             {% if data['template-letter-standard-status'] != '2' %}
+
+            <p>The address, date and NHS number fields have been pre-filled with example data.</p>
 
             {{ input({
               label: {
@@ -292,6 +348,8 @@
             </h3>
 
             {% if data['template-letter-standard-status'] != '2' %}
+
+            <p>The address, date and NHS number fields have been pre-filled with example data.</p>
 
             {{ input({
               label: {
@@ -400,17 +458,6 @@
         id="iframe-short"
       ></iframe>
 
-      {% elseif data['template-letter-preview-length'] == 'medium' %}
-
-      <iframe 
-        src="/files/letter-template-nhs-notify-standard-example-medium-data.pdf"
-        style="width:100%;height:1200px;border:none;"
-        allowfullscreen
-        referrerpolicy="no-referrer"
-        class="nhsuk-u-margin-bottom-4 notify-letter-preview"
-        id="iframe-medium"
-      ></iframe>
-
       {% elseif data['template-letter-preview-length'] == 'long' %}
 
       <iframe 
@@ -477,5 +524,7 @@
 
     });
   </script>
+
+  {% endif %}
 
 {% endblock %}

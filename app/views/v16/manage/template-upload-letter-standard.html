@@ -18,52 +18,6 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      {% if data['error'] == 'error1' %}
-
-      {{ errorSummary({
-        titleText: "There is a problem",
-        errorList: [
-          {
-            html: "<p>The file you uploaded can not be opened or may contain a virus.</p>
-            <p class='nhsuk-u-margin-bottom-0'>Try uploading a different template file.</p>",
-            href: "#upload-letter-standard-file"
-          }
-        ]
-      }) }}
-
-      {% endif %}
-
-      {% if data['error'] == 'error2' %}
-
-      {{ errorSummary({
-        titleText: "There is a problem",
-        errorList: [
-          {
-            html: "<p>The template file you uploaded does not contain the address fields.</p>
-            <p class='nhsuk-u-margin-bottom-0'>Add the address fields to the template file and upload it.</p>",
-            href: "#upload-letter-standard-file"
-          }
-        ]
-      }) }}
-
-      {% endif %}
-
-      {% if data['error'] == 'error3' %}
-
-      {{ errorSummary({
-        titleText: "There is a problem",
-        descriptionText: "The file contains fields using double brackets such as: ((fullName)). Personalisation fields in letter templates should be written like: {d.fullName}",
-        errorList: [
-          {
-            html: "<p>The template file you uploaded contains incorrect personalisation fields.</p>
-            <p class='nhsuk-u-margin-bottom-0'></p>",
-            href: "#upload-letter-standard-file"
-          }
-        ]
-      }) }}
-
-      {% endif %}
-
       <h1 class="nhsuk-heading-xl">
         Upload a standard English letter template
       </h1>
@@ -143,9 +97,9 @@
 
       <h2 class="nhsuk-heading-m">How to create a standard letter template</h2>
 
-      <ol>
+      <ol class="nhsuk-list nhsuk-list--number">
         <li class="nhsuk-u-margin-bottom-4">
-          Download the blank <a href="template-upload-letter-standard-guidance#download-our-blank-letter-template" target="_blank">standard letter template file (opens in a new tab)</a>.
+          Download the blank <a href="/files/letter-template-nhs-notify_.docx" download>standard letter template file</a>.
         </li>
         <li class="nhsuk-u-margin-bottom-4">
           Add <a href="template-upload-letter-standard-guidance#formatting-your-letter" target="_blank">formatting (opens in a new tab)</a>.
