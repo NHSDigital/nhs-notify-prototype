@@ -17,7 +17,7 @@
 
       <form action="template-letter-standard" method="post" autocomplete="off" onsubmit="return checkFormUploadLetter();">
 
-        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-6">
           
           <label class="nhsuk-label nhsuk-label--s" for="template-letter-name-1">
             Template name
@@ -36,7 +36,77 @@
 
         </div>
 
-        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+        {% set selectedCampaign = data['template-letter-campaign'] %}
+
+        {{ select({
+          label: {
+            text: "Campaign",
+            classes: "nhsuk-label--s"
+          },
+          hint: {
+            text: "Choose which campaign this letter is for"
+          },
+          id: "template-letter-campaign",
+          name: "template-letter-campaign",
+          formGroup: {
+            classes: "nhsuk-u-margin-bottom-6"
+          },
+          items: [
+            { value: "", text: "" },
+            { value: "Campaign 1", text: "Campaign 1", selected: selectedCampaign == "Campaign 1" },
+            { value: "Campaign 2", text: "Campaign 2", selected: selectedCampaign == "Campaign 2" }
+          ]
+        }) }}
+
+        {% set selectedLetterSpec = data['template-letter-specification'] %}
+
+        {{ radios({
+          idPrefix: "template-letter-specification",
+          name: "template-letter-specification",
+          fieldset: {
+            legend: {
+              text: "Letter specification",
+              classes: "nhsuk-label--s"
+            }
+          },
+          hint: {
+            html: "
+            Choose which letter specification this letter will use<br />
+            <a href='/404' target='_blank'>Learn more about these letter specifications (opens in a new tab)</a>
+            "
+          },
+          formGroup: {
+            classes: "nhsuk-u-margin-bottom-6"
+          },
+          items: [
+            {
+              value: "Specification 1",
+              text: "Specification 1",
+              checked: selectedLetterSpec == "Specification 1",
+              hint: {
+                html: "Specification description goes here"
+              }
+            },
+            {
+              value: "Specification 2",
+              text: "Specification 2",
+              checked: selectedLetterSpec == "Specification 2",
+              hint: {
+                html: "Specification description goes here"
+              }
+            },
+            {
+              value: "Specification 3",
+              text: "Specification 3",
+              checked: selectedLetterSpec == "Specification 3",
+              hint: {
+                html: "Specification description goes here"
+              }
+            }
+          ]
+        }) }}
+
+        {#<div class="nhsuk-form-group nhsuk-u-margin-bottom-6">
           
           <label class="nhsuk-label nhsuk-label--s" for="template-letter-name-1">
             Dispatch time
@@ -62,7 +132,7 @@
 
         </div>
 
-        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-6">
           
           <label class="nhsuk-label nhsuk-label--s" for="template-letter-name-1">
             Postage
@@ -92,9 +162,9 @@
             </option>
           </select>
 
-        </div>
+        </div>#}
 
-        <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-6">
           
           <label class="nhsuk-label nhsuk-label--s" for="template-letter-name-1">
             Template file

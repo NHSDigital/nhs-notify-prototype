@@ -4,11 +4,12 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
+      <span class="nhsuk-caption-xl">Step 1 of 2</span>
       <h1 class="nhsuk-heading-xl">
-        Approve '{{ data['approve-template-name'] }}'
+        Get ready to approve '{{ data['approve-template-name'] }}'
       </h1>
 
-      <form action="template-letter-approve-confirmation">
+      <form action="template-letter-approve-preview" method="post">
 
         <p class="nhsuk-body-l">After you approve this letter, you can use it in your message plans.</p>
 
@@ -34,20 +35,13 @@
         }) }}
 
         {{ button({
-          text: "Approve template",
+          text: "Continue",
           classes: "nhsuk-u-margin-right-3"
         }) }}
 
         <a href="javascript:history.go(-1);" class="nhsuk-button nhsuk-button--secondary">Go back</a>
 
-        <input type="hidden" name="template-letter-standard-status" value="2">
-
       </form>
-
-      <!--{{ backLink({
-        "href": data['continue-url'],
-        "text": "Go back"
-      }) }}-->
 
     </div>
   </div>

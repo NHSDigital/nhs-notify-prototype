@@ -1,0 +1,61 @@
+{% extends 'v16/layout.html' %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <span class="nhsuk-caption-xl">Step 2 of 2</span>
+      <h1 class="nhsuk-heading-xl">
+        Review and approve '{{ data['approve-template-name'] }}'
+      </h1>
+
+      <h2 class="nhsuk-heading-l">Short example preview</h2>
+
+      <iframe 
+        src="/files/letter-template-nhs-notify-standard-example-short-data.pdf"
+        style="width:100%;height:1200px;border:none;"
+        allowfullscreen
+        referrerpolicy="no-referrer"
+        class="nhsuk-u-margin-bottom-8 notify-letter-preview"
+        id="iframe-short"
+      ></iframe>
+
+      <h2 class="nhsuk-heading-l">Long example preview</h2>
+
+      <iframe 
+        src="/files/letter-template-nhs-notify-standard-example-long-data.pdf"
+        style="width:100%;height:1200px;border:none;"
+        allowfullscreen
+        referrerpolicy="no-referrer"
+        class="nhsuk-u-margin-bottom-8 notify-letter-preview"
+        id="iframe-long"
+      ></iframe>
+
+      <div class="nhsuk-u-margin-bottom-8">
+
+        <h2 class="nhsuk-heading-l">Template settings</h2>
+        
+        <h3 class="nhsuk-heading-xs nhsuk-u-margin-bottom-0">Campaign</h3>
+        <p>{{ data['template-letter-campaign'] }}</p>
+
+        <h3 class="nhsuk-heading-xs nhsuk-u-margin-bottom-0">Letter specification</h3>
+        <p>{{ data['template-letter-specification'] }}</p>
+
+      </div>
+
+      <form action="template-letter-approve-confirmation" method="post">
+
+        {{ button({
+          text: "Approve letter template",
+          classes: "nhsuk-u-margin-right-3"
+        }) }}
+
+        <a href="javascript:history.go(-1);" class="nhsuk-button nhsuk-button--secondary">Go back</a>
+
+        <input type="hidden" name="template-letter-standard-status" value="2">
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

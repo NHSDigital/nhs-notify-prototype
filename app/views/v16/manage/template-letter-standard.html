@@ -111,14 +111,42 @@
           </div>
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
+              Campaign
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['template-letter-campaign'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              {% if data['template-letter-standard-status'] != '2' %}
+              <a href="template-edit-letter-standard">Change</a>
+              {% endif %}
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
               Size
             </dt>
             <dd class="nhsuk-summary-list__value">
               2 sides, 1 sheet of A4
             </dd>
-            <dd class="nhsuk-summary-list__actions"></dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="/404">Learn more</a>
+            </dd>
           </div>
           <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Specification
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['template-letter-specification'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              {% if data['template-letter-standard-status'] != '2' %}
+              <a href="template-edit-letter-standard">Change</a>
+              {% endif %}
+            </dd>
+          </div>
+          {#<div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               Dispatch time
             </dt>
@@ -143,7 +171,7 @@
               <a href="template-edit-letter-standard">Change</a>
               {% endif %}
             </dd>
-          </div>
+          </div>#}
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               Status
@@ -189,7 +217,9 @@
 
               {% endif %}
             </dd>
-            <dd class="nhsuk-summary-list__actions"></dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="/404">Learn more</a>
+            </dd>
           </div>
         </dl>
 
@@ -238,7 +268,9 @@
 
           <form action="#tab-short" method="post">
 
+            {% if data['template-letter-standard-status'] != '2' %}
             <p><a href="#" id="copy-short-examples">Copy your previous examples</a></p>
+            {% endif %}
           
             <h3 class="nhsuk-heading-s">
               PDS personalisation fields
@@ -248,6 +280,32 @@
 
             <p>The address, date and NHS number fields have been pre-filled with example data.</p>
 
+            {% set selectedShortName = data['letter-proof-standard-pds-fullname-short'] %}
+
+            {{ select({
+              label: {
+                text: "fullName",
+                classes: "nhsuk-label--s"
+              },
+              id: "letter-proof-standard-pds-fullname-short",
+              name: "letter-proof-standard-pds-fullname-short",
+              items: [
+                { value: "", text: "" },
+                { value: "Jo Blogs", text: "Jo Blogs", selected: selectedShortName == "Jo Blogs" },  
+                { value: "Dr Li Wei", text: "Dr Li Wei", selected: selectedShortName == "Dr Li Wei" },
+                { value: "Mx Ana Kim", text: "Mx Ana Kim", selected: selectedShortName == "Mx Ana Kim" },
+                { value: "Sir Raj Om", text: "Sir Raj Om", selected: selectedShortName == "Sir Raj Om" },
+                { value: "Dr Eli Ora", text: "Dr Eli Ora", selected: selectedShortName == "Dr Eli Ora" },
+                { value: "Rev Mia Dao", text: "Rev Mia Dao", selected: selectedShortName == "Rev Mia Dao" },
+                { value: "Prof Ola Fye", text: "Prof Ola Fye", selected: selectedShortName == "Prof Ola Fye" },
+                { value: "Mx Yun Ho", text: "Mx Yun Ho", selected: selectedShortName == "Mx Yun Ho" },
+                { value: "Dame Tia Vox", text: "Dame Tia Vox", selected: selectedShortName == "Dame Tia Vox" },
+                { value: "Dr Tom Lee", text: "Dr Tom Lee", selected: selectedShortName == "Dr Tom Lee" },
+                { value: "Capt Amy Ray", text: "Capt Amy Ray", selected: selectedShortName == "Capt Amy Ray" }
+              ]
+            }) }}
+
+{#
             {{ input({
               label: {
                 text: "fullName",
@@ -258,7 +316,7 @@
               classes: "nhsuk-u-width-three-quarters",
               value: data['letter-proof-standard-pds-fullname-short']
             }) }}
-
+#}
             {% else %}
 
             <p>
@@ -341,7 +399,9 @@
 
           <form action="#tab-long" method="post">
 
+            {% if data['template-letter-standard-status'] != '2' %}
             <p><a href="#" id="copy-long-examples">Copy your previous examples</a></p>
+            {% endif %}
 
             <h3 class="nhsuk-heading-s">
               PDS personalisation fields
@@ -351,6 +411,32 @@
 
             <p>The address, date and NHS number fields have been pre-filled with example data.</p>
 
+            {% set selectedLongName = data['letter-proof-standard-pds-fullname-long'] %}
+
+            {{ select({
+              label: {
+                text: "fullName",
+                classes: "nhsuk-label--s"
+              },
+              id: "letter-proof-standard-pds-fullname-long",
+              name: "letter-proof-standard-pds-fullname-long",
+              items: [
+                { value: "", text: "" },
+                { value: "Joseph Anthony Hendrington-Bloggs", text: "Joseph Anthony Hendrington-Bloggs", selected: selectedLongName == "Joseph Anthony Hendrington-Bloggs" },
+                { value: "Dr Alejandro Ruiz Fernandez", text: "Dr Alejandro Ruiz Fernandez", selected: selectedLongName == "Dr Alejandro Ruiz Fernandez" },
+                { value: "Prof Catherine Montgomery", text: "Prof Catherine Montgomery", selected: selectedLongName == "Prof Catherine Montgomery" },
+                { value: "Rev Suresh Chandrasekaran", text: "Rev Suresh Chandrasekaran", selected: selectedLongName == "Rev Suresh Chandrasekaran" },
+                { value: "Dame Aminatou Diallo Kouyaté", text: "Dame Aminatou Diallo Kouyaté", selected: selectedLongName == "Dame Aminatou Diallo Kouyaté" },
+                { value: "Capt Hiroshi Takamura Daichi", text: "Capt Hiroshi Takamura Daichi", selected: selectedLongName == "Capt Hiroshi Takamura Daichi" },
+                { value: "Dr Isabella Romano De Luca", text: "Dr Isabella Romano De Luca", selected: selectedLongName == "Dr Isabella Romano De Luca" },
+                { value: "Sir Emmanuel Kwabena Adomako", text: "Sir Emmanuel Kwabena Adomako", selected: selectedLongName == "Sir Emmanuel Kwabena Adomako" },
+                { value: "Prof Franziska Vogel-Bernhardt", text: "Prof Franziska Vogel-Bernhardt", selected: selectedLongName == "Prof Franziska Vogel-Bernhardt" },
+                { value: "Rev Marceline Dupont Charbonneau", text: "Rev Marceline Dupont Charbonneau", selected: selectedLongName == "Rev Marceline Dupont Charbonneau" },
+                { value: "Dr Christopher James Harrington", text: "Dr Christopher James Harrington", selected: selectedLongName == "Dr Christopher James Harrington" }
+              ]
+            }) }}
+
+{#
             {{ input({
               label: {
                 text: "fullName",
@@ -361,6 +447,7 @@
               classes: "nhsuk-u-width-three-quarters",
               value: data['letter-proof-standard-pds-fullname-long']
             }) }}
+#}
 
             {% else %}
 
