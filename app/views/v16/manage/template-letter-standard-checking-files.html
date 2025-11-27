@@ -1,0 +1,71 @@
+{% extends 'v16/layout_full_width.html' %}
+
+{% block beforeContent %}
+
+<div class="nhsuk-width-container">
+  {{ backLink({
+  "href": "folder-templates",
+  "text": "Back to all templates"
+}) }}
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+
+        <div class="nhsuk-u-reading-width">
+
+          <span class="nhsuk-caption-l">Template</span>
+          <h1 class="nhsuk-heading-xl">
+            {{ data['template-letter-name-1'] }}
+          </h1>
+
+        </div>
+
+        <dl class="nhsuk-summary-list notify-summary-list-content">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Template ID
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              a4b171b5-431f-4a5b-9d7a-9a4903c98e66
+            </dd>
+            <dd class="nhsuk-summary-list__actions"></dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Template type
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Standard English letter
+            </dd>
+            <dd class="nhsuk-summary-list__actions"></dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Status
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+
+              {{ tag({
+                text: "Checking files",
+                classes: "nhsuk-tag--blue"
+              })}}
+              <p class="nhsuk-body-s nhsuk-u-margin-top-2 nhsuk-u-secondary-text-colour">Refresh the page to update the status</p>
+
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="/404">Learn more</a>
+            </dd>
+          </div>
+        </dl>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

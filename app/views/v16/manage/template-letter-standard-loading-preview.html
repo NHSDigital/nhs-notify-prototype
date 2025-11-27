@@ -1,0 +1,531 @@
+{% extends 'v16/layout_full_width.html' %}
+
+{% block beforeContent %}
+
+<div class="nhsuk-width-container">
+  {{ backLink({
+  "href": "folder-templates",
+  "text": "Back to all templates"
+}) }}
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+
+        <div class="nhsuk-u-reading-width">
+
+          <span class="nhsuk-caption-l">Template</span>
+          <h1 class="nhsuk-heading-xl">
+            {{ data['template-letter-name-1'] }}
+          </h1>
+
+        </div>
+
+        <dl class="nhsuk-summary-list notify-summary-list-content">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Template ID
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              a4b171b5-431f-4a5b-9d7a-9a4903c98e66
+            </dd>
+            <dd class="nhsuk-summary-list__actions"></dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Template type
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Standard English letter
+            </dd>
+            <dd class="nhsuk-summary-list__actions"></dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Campaign
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['template-letter-campaign'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              {% if data['template-letter-standard-status'] != '2' %}
+              <a href="template-edit-letter-standard">Change</a>
+              {% endif %}
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Size
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              2 sides, 1 sheet of A4
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="/404">Learn more</a>
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Specification
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['template-letter-specification'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              {% if data['template-letter-standard-status'] != '2' %}
+              <a href="template-edit-letter-standard">Change</a>
+              {% endif %}
+            </dd>
+          </div>
+          {#<div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Dispatch time
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['template-letter-standard-dispatch'] | default('Standard (up to 2 business days)', true) }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              {% if data['template-letter-standard-status'] != '2' %}
+              <a href="template-edit-letter-standard">Change</a>
+              {% endif %}
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Postage
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['template-letter-standard-postage'] | default('Standard (up to 3 business days)', true) }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              {% if data['template-letter-standard-status'] != '2' %}
+              <a href="template-edit-letter-standard">Change</a>
+              {% endif %}
+            </dd>
+          </div>#}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Status
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if data['template-locked'] == '1' %}
+
+                {{ tag({
+                  text: "Locked",
+                  classes: "nhsuk-tag--orange"
+                })}}
+
+              {% else %}
+
+                {% if data['error'] != '' %}
+
+                  {{ tag({
+                    text: "Checks failed",
+                    classes: "nhsuk-tag--red"
+                  })}}
+
+                {% else %}
+
+                  {% if data['template-letter-standard-status'] == '1' %}
+
+                    {{ tag({
+                      text: "Approval needed",
+                      classes: "nhsuk-tag--yellow"
+                    })}}
+
+                  {% endif %}  
+                
+                  {% if data['template-letter-standard-status'] == '2' %}
+                    
+                      {{ tag({
+                        text: "Approved",
+                        classes: "nhsuk-tag--green"
+                      })}}
+
+                  {% endif %}
+
+                {% endif %}
+
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="/404">Learn more</a>
+            </dd>
+          </div>
+        </dl>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-one-half">
+
+      <h2 class="nhsuk-heading-m">Personalisation</h2>
+
+      {% if data['template-letter-standard-status'] != '2' %}
+
+      <p>Check how your personalisation fields will appear in your letter.</p>
+
+      <p><a href="template-upload-letter-standard-guidance-2" target="_blank">Learn more about personalising your letters (opens in a new tab)</a>.</p>
+
+      {% endif %}
+
+      <div class="nhsuk-tabs nhsuk-u-margin-top-6" data-module="nhsuk-tabs">
+        <h2 class="nhsuk-tabs__title">
+          Example personalisation data
+        </h2>
+        <ul class="nhsuk-tabs__list">
+          <li class="nhsuk-tabs__list-item nhsuk-tabs__list-item--selected">
+            <a class="nhsuk-tabs__tab" href="#tab-short">
+              Short examples
+            </a>
+          </li>
+          <li class="nhsuk-tabs__list-item">
+            <a class="nhsuk-tabs__tab" href="#tab-long">
+              Long examples
+            </a>
+          </li>
+        </ul>
+
+        <div class="nhsuk-tabs__panel" id="tab-short">
+
+          <form action="#tab-short" method="post">
+
+            {% if data['template-letter-standard-status'] != '2' %}
+            <p><a href="#" id="copy-short-examples">Copy your previous examples</a></p>
+            {% endif %}
+          
+            <h3 class="nhsuk-heading-s">
+              PDS personalisation fields
+            </h3>
+
+            {% if data['template-letter-standard-status'] != '2' %}
+
+            <p>The address, date and NHS number fields have been pre-filled with example data.</p>
+
+            {% set selectedShortName = data['letter-proof-standard-pds-fullname-short'] %}
+
+            {{ select({
+              label: {
+                text: "fullName",
+                classes: "nhsuk-label--s"
+              },
+              id: "letter-proof-standard-pds-fullname-short",
+              name: "letter-proof-standard-pds-fullname-short",
+              items: [
+                { value: "", text: "" },
+                { value: "Jo Blogs", text: "Jo Blogs", selected: selectedShortName == "Jo Blogs" },  
+                { value: "Dr Li Wei", text: "Dr Li Wei", selected: selectedShortName == "Dr Li Wei" },
+                { value: "Mx Ana Kim", text: "Mx Ana Kim", selected: selectedShortName == "Mx Ana Kim" },
+                { value: "Sir Raj Om", text: "Sir Raj Om", selected: selectedShortName == "Sir Raj Om" },
+                { value: "Dr Eli Ora", text: "Dr Eli Ora", selected: selectedShortName == "Dr Eli Ora" },
+                { value: "Rev Mia Dao", text: "Rev Mia Dao", selected: selectedShortName == "Rev Mia Dao" },
+                { value: "Prof Ola Fye", text: "Prof Ola Fye", selected: selectedShortName == "Prof Ola Fye" },
+                { value: "Mx Yun Ho", text: "Mx Yun Ho", selected: selectedShortName == "Mx Yun Ho" },
+                { value: "Dame Tia Vox", text: "Dame Tia Vox", selected: selectedShortName == "Dame Tia Vox" },
+                { value: "Dr Tom Lee", text: "Dr Tom Lee", selected: selectedShortName == "Dr Tom Lee" },
+                { value: "Capt Amy Ray", text: "Capt Amy Ray", selected: selectedShortName == "Capt Amy Ray" }
+              ]
+            }) }}
+
+{#
+            {{ input({
+              label: {
+                text: "fullName",
+                classes: "nhsuk-label--s"
+              },
+              id: "letter-proof-standard-pds-fullname-short",
+              name: "letter-proof-standard-pds-fullname-short",
+              classes: "nhsuk-u-width-three-quarters",
+              value: data['letter-proof-standard-pds-fullname-short']
+            }) }}
+#}
+            {% else %}
+
+            <p>
+              <strong>fullName</strong><br />
+              Jo Blogs
+            </p>
+
+            {% endif %}
+
+            <h3 class="nhsuk-heading-s nhsuk-u-padding-top-4">
+              Custom personalisation fields
+            </h3>
+
+            {% if data['template-letter-standard-status'] != '2' %}
+
+            {{ input({
+              label: {
+                text: "studyRegion",
+                classes: "nhsuk-label--s"
+              },
+              id: "letter-proof-standard-custom-field-short-1",
+              name: "letter-proof-standard-custom-field-short-1",
+              classes: "nhsuk-u-width-three-quarters",
+              value: data['letter-proof-standard-custom-field-short-1']
+            }) }}
+
+            {{ input({
+              label: {
+                text: "studyRegionPhone",
+                classes: "nhsuk-label--s"
+              },
+              id: "letter-proof-standard-custom-field-short-2",
+              name: "letter-proof-standard-custom-field-short-2",
+              classes: "nhsuk-u-width-three-quarters",
+              value: data['letter-proof-standard-custom-field-short-2']
+            }) }}
+
+            {{ input({
+              label: {
+                text: "studyRegionEmail",
+                classes: "nhsuk-label--s"
+              },
+              id: "letter-proof-standard-custom-field-short-3",
+              name: "letter-proof-standard-custom-field-short-3",
+              classes: "nhsuk-u-width-three-quarters",
+              value: data['letter-proof-standard-custom-field-short-3']
+            }) }}
+
+            {% else %}
+
+            <p>
+              <strong>studyRegion</strong><br />
+              Rutland
+            </p>
+
+            <p>
+              <strong>studyRegionPhone</strong><br />
+              01234 567 890
+            </p>
+
+            <p>
+              <strong>studyRegionEmail</strong><br />
+              rutland@nhs.net
+            </p>
+
+            {% endif %}
+
+            <input type="hidden" name="template-letter-preview-length" value="short">
+            <input type="hidden" name="show-save-banner" value="">
+
+            <button class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-right-3">Update preview</button>
+
+          </form>
+
+        </div>
+
+        
+
+        <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="tab-long">
+
+          <form action="#tab-long" method="post">
+
+            {% if data['template-letter-standard-status'] != '2' %}
+            <p><a href="#" id="copy-long-examples">Copy your previous examples</a></p>
+            {% endif %}
+
+            <h3 class="nhsuk-heading-s">
+              PDS personalisation fields
+            </h3>
+
+            {% if data['template-letter-standard-status'] != '2' %}
+
+            <p>The address, date and NHS number fields have been pre-filled with example data.</p>
+
+            {% set selectedLongName = data['letter-proof-standard-pds-fullname-long'] %}
+
+            {{ select({
+              label: {
+                text: "fullName",
+                classes: "nhsuk-label--s"
+              },
+              id: "letter-proof-standard-pds-fullname-long",
+              name: "letter-proof-standard-pds-fullname-long",
+              items: [
+                { value: "", text: "" },
+                { value: "Joseph Anthony Hendrington-Bloggs", text: "Joseph Anthony Hendrington-Bloggs", selected: selectedLongName == "Joseph Anthony Hendrington-Bloggs" },
+                { value: "Dr Alejandro Ruiz Fernandez", text: "Dr Alejandro Ruiz Fernandez", selected: selectedLongName == "Dr Alejandro Ruiz Fernandez" },
+                { value: "Prof Catherine Montgomery", text: "Prof Catherine Montgomery", selected: selectedLongName == "Prof Catherine Montgomery" },
+                { value: "Rev Suresh Chandrasekaran", text: "Rev Suresh Chandrasekaran", selected: selectedLongName == "Rev Suresh Chandrasekaran" },
+                { value: "Dame Aminatou Diallo Kouyaté", text: "Dame Aminatou Diallo Kouyaté", selected: selectedLongName == "Dame Aminatou Diallo Kouyaté" },
+                { value: "Capt Hiroshi Takamura Daichi", text: "Capt Hiroshi Takamura Daichi", selected: selectedLongName == "Capt Hiroshi Takamura Daichi" },
+                { value: "Dr Isabella Romano De Luca", text: "Dr Isabella Romano De Luca", selected: selectedLongName == "Dr Isabella Romano De Luca" },
+                { value: "Sir Emmanuel Kwabena Adomako", text: "Sir Emmanuel Kwabena Adomako", selected: selectedLongName == "Sir Emmanuel Kwabena Adomako" },
+                { value: "Prof Franziska Vogel-Bernhardt", text: "Prof Franziska Vogel-Bernhardt", selected: selectedLongName == "Prof Franziska Vogel-Bernhardt" },
+                { value: "Rev Marceline Dupont Charbonneau", text: "Rev Marceline Dupont Charbonneau", selected: selectedLongName == "Rev Marceline Dupont Charbonneau" },
+                { value: "Dr Christopher James Harrington", text: "Dr Christopher James Harrington", selected: selectedLongName == "Dr Christopher James Harrington" }
+              ]
+            }) }}
+
+{#
+            {{ input({
+              label: {
+                text: "fullName",
+                classes: "nhsuk-label--s"
+              },
+              id: "letter-proof-standard-pds-fullname-long",
+              name: "letter-proof-standard-pds-fullname-long",
+              classes: "nhsuk-u-width-three-quarters",
+              value: data['letter-proof-standard-pds-fullname-long']
+            }) }}
+#}
+
+            {% else %}
+
+            <p>
+              <strong>fullName</strong><br />
+              Joseph Anthony Hendrington-Bloggs
+            </p>
+
+            {% endif %}
+    
+
+            <h3 class="nhsuk-heading-s nhsuk-u-padding-top-4">
+              Custom personalisation fields
+            </h3>
+
+            {% if data['template-letter-standard-status'] != '2' %}
+
+            {{ input({
+              label: {
+                text: "studyRegion",
+                classes: "nhsuk-label--s"
+              },
+              id: "letter-proof-standard-custom-field-long-1",
+              name: "letter-proof-standard-custom-field-long-1",
+              classes: "nhsuk-u-width-three-quarters",
+              value: data['letter-proof-standard-custom-field-long-1']
+            }) }}
+
+            {{ input({
+              label: {
+                text: "studyRegionPhone",
+                classes: "nhsuk-label--s"
+              },
+              id: "letter-proof-standard-custom-field-long-2",
+              name: "letter-proof-standard-custom-field-long-2",
+              classes: "nhsuk-u-width-three-quarters",
+              value: data['letter-proof-standard-custom-field-long-2']
+            }) }}
+
+            {{ input({
+              label: {
+                text: "studyRegionEmail",
+                classes: "nhsuk-label--s"
+              },
+              id: "letter-proof-standard-custom-field-long-3",
+              name: "letter-proof-standard-custom-field-long-3",
+              classes: "nhsuk-u-width-three-quarters",
+              value: data['letter-proof-standard-custom-field-long-3']
+            }) }}
+
+            {% else %}
+
+            <p>
+              <strong>studyRegion</strong><br />
+              Bath and North East Somerset
+            </p>
+
+            <p>
+              <strong>studyRegionPhone</strong><br />
+              01234 567 999
+            </p>
+
+            <p>
+              <strong>studyRegionEmail</strong><br />
+              bath_and_north_east_somerset@nhs.net
+            </p>
+
+            {% endif %}
+
+            <input type="hidden" name="template-letter-preview-length" value="long">
+            <input type="hidden" name="show-save-banner" value="">
+
+            <button class="nhsuk-button nhsuk-button--secondary">Update preview</button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="nhsuk-grid-column-one-half">
+
+      <h2 class="nhsuk-heading-m">Preview</h2>
+
+      <section class="loading-container" style="display:block; min-height: 1200px;">
+
+        <div class="bar_container">
+          <div id="main_container">
+            <div id="pbar" class="progress-spinner" data-percent="0">
+              <img src="/images/loader-spinner.svg" width="200px" height="200px" id="spinner" class="">
+              <div class="ppc-loading">
+                <div class="pcc-percents-wrapper">
+                  <span id="spinner-status" class="nhsuk-body">Loading</span><span aria-hidden="true">...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      {% if data['template-letter-standard-status'] == '1' %}
+
+        <div>
+
+          <a href="template-edit-letter-standard" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-right-3">Edit template settings</a>
+
+          <a href="template-letter-approve?approve-template-name={{ data['template-letter-name-1'] }}" class="nhsuk-button nhsuk-u-margin-right-3">Approve template</a>
+
+          <p><a href="folder-templates">Back to all templates</a></p>
+
+        </div>
+
+      {% endif %}
+      
+    </div>
+
+  </div>
+
+  <script>
+    // Populate short examples
+    document.getElementById('copy-short-examples')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Predetermined data for short examples
+      document.getElementById('letter-proof-standard-pds-fullname-short').value = 'Jo Blogs';
+      document.getElementById('letter-proof-standard-custom-field-short-1').value = 'Rutland';
+      document.getElementById('letter-proof-standard-custom-field-short-2').value = '01234 567 890';
+      document.getElementById('letter-proof-standard-custom-field-short-3').value = 'rutland@nhs.net';
+      
+    });
+
+    // Populate long examples
+    document.getElementById('copy-long-examples')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Predetermined data for long examples
+      document.getElementById('letter-proof-standard-pds-fullname-long').value = 'Joseph Anthony Hendrington-Bloggs';
+      document.getElementById('letter-proof-standard-custom-field-long-1').value = 'Bath and North East Somerset';
+      document.getElementById('letter-proof-standard-custom-field-long-2').value = '01234 567 999';
+      document.getElementById('letter-proof-standard-custom-field-long-3').value = 'bath_and_north_east_somerset@nhs.net';
+
+    });
+  </script>
+
+{% endblock %}
