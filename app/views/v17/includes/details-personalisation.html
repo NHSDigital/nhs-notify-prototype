@@ -1,0 +1,25 @@
+{{ details({
+    summaryText: "Personalisation fields",
+    html: "
+    <p>Use double brackets to add a personalisation field to your content. For example:</p>
+    <code class='nhsuk-code-block'>Hello ((firstName)), your NHS number is ((nhsNumber))</code>
+    <p class='nhsuk-u-margin-top-4'>NHS Notify gets data from PDS to populate personalisation fields.<br />You can use:</p>
+    <ul>
+      <li>((fullName))</li>
+      <li>((firstName))</li>
+      <li>((middleNames))</li>
+      <li>((lastName))</li>
+      <li>((nhsNumber))</li>
+      <li>((birthDate))</li>
+      <li>((namePrefix))</li>
+      <li>((nameSuffix))</li>
+      <li>((address_line_1))</li>
+      <li>((address_line_2))</li>
+      <li>((address_line_3))</li>
+      <li>((address_line_4))</li>
+      <li>((address_line_5))</li>
+      <li>((address_line_6))</li>
+      <li>((address_line_7))</li>
+    </ul>
+    "
+}) }}

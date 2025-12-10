@@ -1,0 +1,129 @@
+{% set protoVersion = 'v17' %}
+
+<!-- Extends the prototype kit template which in turn extends the NHS.UK frontend template -->
+{% extends "prototype-kit-template.njk" %}
+
+{% block head %}
+  <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+  <link href="/css/main.css" rel="stylesheet">
+{% endblock %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  NHS Notify prototype
+{% endblock %}
+
+<!-- Edit the header -->
+<!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
+{% block header %}
+
+{{ header({
+  service: {
+    text: "Notify",
+    href: "folders"
+  },
+  navigation: {
+    items: [
+      {
+        text: "Dashboard",
+        href: "folder",
+        active: page_active_dashboard
+      },
+      {
+        text: "Templates",
+        href: "folder-templates",
+        active: page_active_templates
+      },
+      {
+        text: 'Message plans',
+        href: 'folder-messages',
+        active: page_active_message_plans
+      },
+      {
+        text: 'Settings',
+        href: 'project-settings',
+        active: page_active_project_settings
+      }
+    ]
+  },
+  account: {
+    items: [
+      {
+        text: "Florence Nightingale",
+        icon: "true"
+      },
+      {
+        text: "My service name"
+      },
+      {
+        text: 'Change service',
+        href: 'services'
+      },
+      {
+        text: 'Sign out',
+        href: 'login?auth='
+      }
+    ]
+  }
+  })
+}}
+
+<div class="nhsuk-width-container">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full nhsnotify-subnav">
+
+      <div class="nhsnotify-subnav-projects">
+        {{data['folder-name-1']}}&emsp;<a href="folders">Change project</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block main %}
+  <div class="nhsuk-width-container-fluid {%- if containerClasses %} {{ containerClasses }}{% endif %}">
+    {% block beforeContent %}{% endblock %}
+    <main class="nhsuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="maincontent">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+{% endblock %}
+
+<!-- Edit the footer -->
+<!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
+{% block footer %}
+  {{ footer({
+    meta: {
+      items: [
+        {
+          href: '/',
+          text: 'Home'
+        },
+        {
+          href: "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
+          text: "Reset data"
+        },
+        {
+          href: '/',
+          text: 'Prototype version: ' + protoVersion + ''
+        }
+      ]
+    }
+  })}}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    <!-- Custom JavaScript files can be added to this file -->
+    {% include 'includes/scripts.html' %}
+    <!-- For adding page specific JavsScript -->
+    <script src="/nhsuk-frontend/nhsuk-frontend.min.js" type="module"></script>
+    <script type="module">
+      import { initAll } from '/nhsuk-frontend/nhsuk-frontend.min.js'
+      initAll()
+    </script>
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}

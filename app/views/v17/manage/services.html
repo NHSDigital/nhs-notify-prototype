@@ -1,0 +1,113 @@
+{% extends 'v17/layout.html' %}
+
+{% block header %}
+
+{{ header({
+  service: {
+    text: "Notify",
+    href: "folders"
+  },
+  account: {
+    items: [
+      {
+        text: "Florence Nightingale",
+        icon: "true"
+      },
+      {
+        text: "My service name"
+      },
+      {
+        text: 'Change service',
+        href: 'services'
+      },
+      {
+        text: 'Sign out',
+        href: 'login?auth='
+      }
+    ]
+  }
+  })
+}}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1 class="nhsuk-heading-xl">
+        Your services
+      </h1>
+
+      <p>If you need access to another service, use <a href="/404">Service Now</a> to send a request.</p>
+
+      <p>Choose a service you want to work on.</p>
+
+      <table role="table" class="nhsuk-table-responsive">
+
+        <thead role="rowgroup" class="nhsuk-table__head">
+          <tr role="row">
+            <th role="columnheader" class="" scope="col">
+              Service name
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Client ID
+            </th>
+            <th role="columnheader" class="" scope="col">
+            </th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+          
+          <tr role="row" class="nhsuk-table__row">
+
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Name </span>
+              <a href="folders">
+                My service name
+              </a>
+            </td>
+
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Client ID </span>
+              c3ad644e-111e-4cf4-a6e6-ae934562cd56
+            </td>
+
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Name </span>
+              <a href="service-settings?service-name=My service name">
+                Settings
+              </a>
+            </td>
+
+          </tr>
+
+          <tr role="row" class="nhsuk-table__row">
+
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Name </span>
+              <a href="/404">
+                Another service I can access
+              </a>
+            </td>
+
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Client ID </span>
+              fb3c1b53-b74a-4143-bfbc-5260821d1848
+            </td>
+
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Name </span>
+              <a href="/404">
+                Settings
+              </a>
+            </td>
+
+          </tr>
+
+        </tbody>
+      </table>
+      
+    </div>
+  </div>
+{% endblock %}
