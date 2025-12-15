@@ -1,0 +1,33 @@
+{% extends 'v17/layout.html' %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {% if data['message-type'] == 'sms' %}
+
+        {{ panel({
+          titleText: "Mobile number verified",
+          text: "You can now send a test text message (SMS) to your mobile number."
+        }) }}
+
+        <p><a href="template-{{data['message-type']}}">Continue</a></p>
+
+      {%endif%}
+
+      {% if data['message-type'] == 'email' %}
+
+        {{ panel({
+          titleText: "Email address verified",
+          text: "You can now send a test email to your email address."
+        }) }}
+
+        <p><a href="template-{{data['message-type']}}">Continue</a></p>
+
+      {%endif%}
+
+      
+
+    </div>
+  </div>
+{% endblock %}

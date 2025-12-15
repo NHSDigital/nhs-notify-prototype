@@ -1,13 +1,11 @@
-{% extends 'v8/layout.html' %}
-
-
+{% extends 'v17/layout.html' %}
 
 {% block beforeContent %}
 
   {{ backLink({
-    "href": "javascript:history.go(-1)",
-    "text": "Back to template",
-    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+    href: "template-" + data['message-type'],
+    text: "Back to template",
+    classes: "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
   }) }}
 
 {% endblock %}
@@ -27,12 +25,12 @@
 
       <p>If you do not have a test NHS App account, contact NHS Notify to get one.</p>
 
-      <form action="template-test-confirmation" method="post" onsubmit="return checkFormTestNhsNo();" autocomplete="off">
+      <form action="template-test-confirmation" method="post" autocomplete="off">
 
         <div class="nhsuk-form-group">
 
           <label class="nhsuk-label nhsuk-label--s" for="test-nhsno-1">
-            Test patient NHS number
+            Test NHS number
           </label>
           <span class="nhsuk-hint">This is the NHS number from the test NHS App account</span>
 
@@ -44,42 +42,60 @@
 
         </div>
 
-        <p><a href="https://www-onboardingaos.nhsapp.service.nhs.uk/login" target="_blank">Log in to the NHS App (opens in a new tab)</a> with the test NHS App account to preview your test message.</p>
+{#
+        <p><a href="https://www-onboardingaos.nhsapp.service.nhs.uk/login" target="_blank">Log in to the NHS App (opens in a new tab)</a> with the test NHS App account to preview your test message.</p>   
+#}
 
-        <div class="nhsuk-form-group nhsuk-u-padding-top-4">
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6">Personalisation</h2>
 
-          <h2 class="nhsuk-heading-m">Personalisation fields</h2>
+        <p>Check how your personalisation fields will appear in your NHS app message by entering some example data.</p>
+      
+{#
+        <h3 class="nhsuk-heading-s">
+          PDS personalisation fields
+        </h3>
 
-          {{ details({
-            summaryText: "If you've included personalisation fields from PDS",
-            html: "
-            <p>These personalisation fields will be populated with data from your test NHS app account.</p>
-            "
-          }) }}
+        <p>These personalisation fields will be populated with data from your test NHS app account.</p>
 
-          <p class="nhsuk-u-margin-top-7">Enter test data for your own personalisation fields to see how they will appear in your NHS App messages.</p>
+        <h3 class="nhsuk-heading-s nhsuk-u-padding-top-4">
+          Custom personalisation fields
+        </h3>
+#}
 
-          {{ input({
-            label: {
-              text: "fieldName1",
-              classes: "nhsuk-label--s"
-            },
-            id: "fieldName1",
-            name: "fieldName1",
-            value: data['fieldName1']
-          }) }}
+        <p><a href="#" id="copy-app-examples">Copy your previous examples</a></p>
 
-          {{ input({
-            label: {
-              text: "fieldName2",
-              classes: "nhsuk-label--s"
-            },
-            id: "fieldName2",
-            name: "fieldName2",
-            value: data['fieldName2']
-          }) }}
+        {{ input({
+          label: {
+            text: "studyRegion",
+            classes: "nhsuk-label--s"
+          },
+          id: "app-proof-standard-custom-field-1",
+          name: "app-proof-standard-custom-field-1",
+          classes: "nhsuk-u-width-three-quarters",
+          value: data['app-proof-standard-custom-field-1']
+        }) }}
 
-        </div>
+        {{ input({
+          label: {
+            text: "studyRegionPhone",
+            classes: "nhsuk-label--s"
+          },
+          id: "app-proof-standard-custom-field-2",
+          name: "app-proof-standard-custom-field-2",
+          classes: "nhsuk-u-width-three-quarters",
+          value: data['app-proof-standard-custom-field-2']
+        }) }}
+
+        {{ input({
+          label: {
+            text: "studyRegionEmail",
+            classes: "nhsuk-label--s"
+          },
+          id: "app-proof-standard-custom-field-3",
+          name: "app-proof-standard-custom-field-3",
+          classes: "nhsuk-u-width-three-quarters",
+          value: data['app-proof-standard-custom-field-3']
+        }) }}
 
         {{ button({
           "text": "Send"
@@ -101,59 +117,99 @@
 
       <p>This test text message will be sent to: 07711223344</p>
 
-      <form action="template-test-confirmation" method="post" onsubmit="return checkFormTestNhsNo();" autocomplete="off">
+      <form action="template-test-confirmation" method="post" autocomplete="off">
 
-        <div class="nhsuk-u-padding-top-4">
+        <h2 class="nhsuk-heading-m">Personalisation</h2>
 
-          <h2 class="nhsuk-heading-m">Personalisation fields that use PDS</h2>
+        <p>Check how your personalisation fields will appear in your text message by entering some example data.</p>
 
-          <p>Populate personalisation fields that use PDS by entering a test patient's NHS number.</p>
+        <p><a href="#" id="copy-sms-examples">Copy your previous examples</a></p>
+      
+        <h3 class="nhsuk-heading-s">
+          PDS personalisation fields
+        </h3>
 
-          <p>If you do not have a test patient, contact NHS Notify to get one.</p>
+        {% set selectedSmsFullName = data['sms-proof-standard-pds-fullname'] %}
 
-          <div class="nhsuk-form-group">
+        {{ select({
+          label: {
+            text: "fullName",
+            classes: "nhsuk-label--s"
+          },
+          id: "sms-proof-standard-pds-fullname",
+          name: "sms-proof-standard-pds-fullname",
+          items: [
+            { value: "", text: "" },
+            { value: "Capt Amy Ray", text: "Capt Amy Ray", selected: selectedSmsFullName == "Capt Amy Ray" },
+            { value: "Dr Li Wei", text: "Dr Li Wei", selected: selectedSmsFullName == "Dr Li Wei" },
+            { value: "Mx Ana Kim", text: "Mx Ana Kim", selected: selectedSmsFullName == "Mx Ana Kim" },
+            { value: "Sir Raj Om", text: "Sir Raj Om", selected: selectedSmsFullName == "Sir Raj Om" },
+            { value: "Dr Eli Ora", text: "Dr Eli Ora", selected: selectedSmsFullName == "Dr Eli Ora" },
+            { value: "Rev Mia Dao", text: "Rev Mia Dao", selected: selectedSmsFullName == "Rev Mia Dao" },
+            { value: "Prof Ola Fye", text: "Prof Ola Fye", selected: selectedSmsFullName == "Prof Ola Fye" },
+            { value: "Mx Yun Ho", text: "Mx Yun Ho", selected: selectedSmsFullName == "Mx Yun Ho" },
+            { value: "Dame Tia Vox", text: "Dame Tia Vox", selected: selectedSmsFullName == "Dame Tia Vox" },
+            { value: "Dr Tom Lee", text: "Dr Tom Lee", selected: selectedSmsFullName == "Dr Tom Lee" },
+            { value: "Dr Christopher James Harrington", text: "Dr Christopher James Harrington", selected: selectedSmsFullName == "Dr Christopher James Harrington" },
+            { value: "Dr Alejandro Ruiz Fernandez", text: "Dr Alejandro Ruiz Fernandez", selected: selectedSmsFullName == "Dr Alejandro Ruiz Fernandez" },
+            { value: "Prof Catherine Montgomery", text: "Prof Catherine Montgomery", selected: selectedSmsFullName == "Prof Catherine Montgomery" },
+            { value: "Rev Suresh Chandrasekaran", text: "Rev Suresh Chandrasekaran", selected: selectedSmsFullName == "Rev Suresh Chandrasekaran" },
+            { value: "Dame Aminatou Diallo Kouyaté", text: "Dame Aminatou Diallo Kouyaté", selected: selectedSmsFullName == "Dame Aminatou Diallo Kouyaté" },
+            { value: "Capt Hiroshi Takamura Daichi", text: "Capt Hiroshi Takamura Daichi", selected: selectedSmsFullName == "Capt Hiroshi Takamura Daichi" },
+            { value: "Dr Isabella Romano De Luca", text: "Dr Isabella Romano De Luca", selected: selectedSmsFullName == "Dr Isabella Romano De Luca" },
+            { value: "Sir Emmanuel Kwabena Adomako", text: "Sir Emmanuel Kwabena Adomako", selected: selectedSmsFullName == "Sir Emmanuel Kwabena Adomako" },
+            { value: "Prof Franziska Vogel-Bernhardt", text: "Prof Franziska Vogel-Bernhardt", selected: selectedSmsFullName == "Prof Franziska Vogel-Bernhardt" },
+            { value: "Rev Marceline Dupont Charbonneau", text: "Rev Marceline Dupont Charbonneau", selected: selectedSmsFullName == "Rev Marceline Dupont Charbonneau" }
+          ]
+        }) }}
 
-            <label class="nhsuk-label nhsuk-label--s" for="test-nhsno-1">
-              Test patient NHS number
-            </label>
-  
-            <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="test-nhsno-1--error">
-              <span class="nhsuk-u-visually-hidden">Error:</span> Enter the NHS number for a test patient
-            </span>
-  
-            <input class="nhsuk-input" id="test-nhsno-1" name="test-nhsno-1" type="text" value="{{ data['test-nhsno-1'] }}">
-  
-          </div>
+        {{ input({
+          label: {
+            text: "firstName",
+            classes: "nhsuk-label--s"
+          },
+          id: "sms-proof-standard-pds-firstName",
+          name: "sms-proof-standard-pds-firstName",
+          classes: "nhsuk-u-width-three-quarters",
+          value: data['sms-proof-standard-pds-firstName']
+        }) }}
 
-        </div>
+        <h3 class="nhsuk-heading-s nhsuk-u-padding-top-4">
+          Custom personalisation fields
+        </h3>
 
-        <div class="nhsuk-u-padding-top-4">
+        {{ input({
+          label: {
+            text: "studyRegion",
+            classes: "nhsuk-label--s"
+          },
+          id: "sms-proof-standard-custom-field-1",
+          name: "sms-proof-standard-custom-field-1",
+          classes: "nhsuk-u-width-three-quarters",
+          value: data['sms-proof-standard-custom-field-1']
+        }) }}
 
-          <h2 class="nhsuk-heading-m">Custom personalisation fields</h2>
+        {{ input({
+          label: {
+            text: "studyRegionPhone",
+            classes: "nhsuk-label--s"
+          },
+          id: "sms-proof-standard-custom-field-2",
+          name: "sms-proof-standard-custom-field-2",
+          classes: "nhsuk-u-width-three-quarters",
+          value: data['sms-proof-standard-custom-field-2']
+        }) }}
 
-          <p>Enter test data for your own personalisation fields to see how they will appear in your test messages.</p>
-
-          {{ input({
-            label: {
-              text: "fieldName1",
-              classes: "nhsuk-label--s"
-            },
-            id: "fieldName1",
-            name: "fieldName1",
-            value: data['fieldName1']
-          }) }}
-
-          {{ input({
-            label: {
-              text: "fieldName2",
-              classes: "nhsuk-label--s"
-            },
-            id: "fieldName2",
-            name: "fieldName2",
-            value: data['fieldName2']
-          }) }}
-
-        </div>
+        {{ input({
+          label: {
+            text: "studyRegionEmail",
+            classes: "nhsuk-label--s"
+          },
+          id: "sms-proof-standard-custom-field-3",
+          name: "sms-proof-standard-custom-field-3",
+          classes: "nhsuk-u-width-three-quarters",
+          value: data['sms-proof-standard-custom-field-3']
+        }) }}
 
         {{ button({
           "text": "Send"
@@ -175,59 +231,99 @@
 
       <p>This test email will be sent to: mary.poppins5@nhs.net</p>
 
-      <form action="template-test-confirmation" method="post" onsubmit="return checkFormTestNhsNo();" autocomplete="off">
+      <form action="template-test-confirmation" method="post" autocomplete="off">
 
-        <div class="nhsuk-u-padding-top-4">
+        <h2 class="nhsuk-heading-m">Personalisation</h2>
 
-          <h2 class="nhsuk-heading-m">Personalisation fields that use PDS</h2>
+        <p>Check how your personalisation fields will appear in your email by entering some example data.</p>
 
-          <p>Populate personalisation fields that use PDS by entering a test patient's NHS number.</p>
+        <p><a href="#" id="copy-email-examples">Copy your previous examples</a></p>
+      
+        <h3 class="nhsuk-heading-s">
+          PDS personalisation fields
+        </h3>
 
-          <p>If you do not have a test patient, contact NHS Notify to get one.</p>
+        {% set selectedEmailFullName = data['email-proof-standard-pds-fullname'] %}
 
-          <div class="nhsuk-form-group">
+        {{ select({
+          label: {
+            text: "fullName",
+            classes: "nhsuk-label--s"
+          },
+          id: "email-proof-standard-pds-fullname",
+          name: "email-proof-standard-pds-fullname",
+          items: [
+            { value: "", text: "" },
+            { value: "Capt Amy Ray", text: "Capt Amy Ray", selected: selectedEmailFullName == "Capt Amy Ray" },
+            { value: "Dr Li Wei", text: "Dr Li Wei", selected: selectedEmailFullName == "Dr Li Wei" },
+            { value: "Mx Ana Kim", text: "Mx Ana Kim", selected: selectedEmailFullName == "Mx Ana Kim" },
+            { value: "Sir Raj Om", text: "Sir Raj Om", selected: selectedEmailFullName == "Sir Raj Om" },
+            { value: "Dr Eli Ora", text: "Dr Eli Ora", selected: selectedEmailFullName == "Dr Eli Ora" },
+            { value: "Rev Mia Dao", text: "Rev Mia Dao", selected: selectedEmailFullName == "Rev Mia Dao" },
+            { value: "Prof Ola Fye", text: "Prof Ola Fye", selected: selectedEmailFullName == "Prof Ola Fye" },
+            { value: "Mx Yun Ho", text: "Mx Yun Ho", selected: selectedEmailFullName == "Mx Yun Ho" },
+            { value: "Dame Tia Vox", text: "Dame Tia Vox", selected: selectedEmailFullName == "Dame Tia Vox" },
+            { value: "Dr Tom Lee", text: "Dr Tom Lee", selected: selectedEmailFullName == "Dr Tom Lee" },
+            { value: "Dr Christopher James Harrington", text: "Dr Christopher James Harrington", selected: selectedEmailFullName == "Dr Christopher James Harrington" },
+            { value: "Dr Alejandro Ruiz Fernandez", text: "Dr Alejandro Ruiz Fernandez", selected: selectedEmailFullName == "Dr Alejandro Ruiz Fernandez" },
+            { value: "Prof Catherine Montgomery", text: "Prof Catherine Montgomery", selected: selectedEmailFullName == "Prof Catherine Montgomery" },
+            { value: "Rev Suresh Chandrasekaran", text: "Rev Suresh Chandrasekaran", selected: selectedEmailFullName == "Rev Suresh Chandrasekaran" },
+            { value: "Dame Aminatou Diallo Kouyaté", text: "Dame Aminatou Diallo Kouyaté", selected: selectedEmailFullName == "Dame Aminatou Diallo Kouyaté" },
+            { value: "Capt Hiroshi Takamura Daichi", text: "Capt Hiroshi Takamura Daichi", selected: selectedEmailFullName == "Capt Hiroshi Takamura Daichi" },
+            { value: "Dr Isabella Romano De Luca", text: "Dr Isabella Romano De Luca", selected: selectedEmailFullName == "Dr Isabella Romano De Luca" },
+            { value: "Sir Emmanuel Kwabena Adomako", text: "Sir Emmanuel Kwabena Adomako", selected: selectedEmailFullName == "Sir Emmanuel Kwabena Adomako" },
+            { value: "Prof Franziska Vogel-Bernhardt", text: "Prof Franziska Vogel-Bernhardt", selected: selectedEmailFullName == "Prof Franziska Vogel-Bernhardt" },
+            { value: "Rev Marceline Dupont Charbonneau", text: "Rev Marceline Dupont Charbonneau", selected: selectedEmailFullName == "Rev Marceline Dupont Charbonneau" }
+          ]
+        }) }}
 
-            <label class="nhsuk-label nhsuk-label--s" for="test-nhsno-1">
-              Test patient NHS number
-            </label>
-  
-            <span class="nhsuk-error-message nhsuk-u-margin-bottom-2" id="test-nhsno-1--error">
-              <span class="nhsuk-u-visually-hidden">Error:</span> Enter the NHS number for a test patient
-            </span>
-  
-            <input class="nhsuk-input" id="test-nhsno-1" name="test-nhsno-1" type="text" value="{{ data['test-nhsno-1'] }}">
-  
-          </div>
+        {{ input({
+          label: {
+            text: "firstName",
+            classes: "nhsuk-label--s"
+          },
+          id: "email-proof-standard-pds-firstName",
+          name: "email-proof-standard-pds-firstName",
+          classes: "nhsuk-u-width-three-quarters",
+          value: data['email-proof-standard-pds-firstName']
+        }) }}
 
-        </div>
+        <h3 class="nhsuk-heading-s nhsuk-u-padding-top-4">
+          Custom personalisation fields
+        </h3>
 
-        <div class="nhsuk-u-padding-top-4">
+        {{ input({
+          label: {
+            text: "studyRegion",
+            classes: "nhsuk-label--s"
+          },
+          id: "email-proof-standard-custom-field-1",
+          name: "email-proof-standard-custom-field-1",
+          classes: "nhsuk-u-width-three-quarters",
+          value: data['email-proof-standard-custom-field-1']
+        }) }}
 
-          <h2 class="nhsuk-heading-m">Custom personalisation fields</h2>
+        {{ input({
+          label: {
+            text: "studyRegionPhone",
+            classes: "nhsuk-label--s"
+          },
+          id: "email-proof-standard-custom-field-2",
+          name: "email-proof-standard-custom-field-2",
+          classes: "nhsuk-u-width-three-quarters",
+          value: data['email-proof-standard-custom-field-2']
+        }) }}
 
-          <p>Enter test data for your own personalisation fields to see how they will appear in your test messages.</p>
-
-          {{ input({
-            label: {
-              text: "fieldName1",
-              classes: "nhsuk-label--s"
-            },
-            id: "fieldName1",
-            name: "fieldName1",
-            value: data['fieldName1']
-          }) }}
-
-          {{ input({
-            label: {
-              text: "fieldName2",
-              classes: "nhsuk-label--s"
-            },
-            id: "fieldName2",
-            name: "fieldName2",
-            value: data['fieldName2']
-          }) }}
-
-        </div>
+        {{ input({
+          label: {
+            text: "studyRegionEmail",
+            classes: "nhsuk-label--s"
+          },
+          id: "email-proof-standard-custom-field-3",
+          name: "email-proof-standard-custom-field-3",
+          classes: "nhsuk-u-width-three-quarters",
+          value: data['email-proof-standard-custom-field-3']
+        }) }}
 
         {{ button({
           "text": "Send"
@@ -237,10 +333,46 @@
 
       {% endif %}
 
-
-
-      
-
     </div>
   </div>
+
+  <script>
+    // Populate app examples
+    document.getElementById('copy-app-examples')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Predetermined data for app examples
+      document.getElementById('app-proof-standard-custom-field-1').value = 'Rutland';
+      document.getElementById('app-proof-standard-custom-field-2').value = '01234 567 890';
+      document.getElementById('app-proof-standard-custom-field-3').value = 'rutland@nhs.net';
+      
+    });
+
+    // Populate SMS examples
+    document.getElementById('copy-sms-examples')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Predetermined data for SMS examples
+      document.getElementById('sms-proof-standard-pds-fullname').value = 'Capt Amy Ray';
+      document.getElementById('sms-proof-standard-pds-firstName').value = 'Amy';
+      document.getElementById('sms-proof-standard-custom-field-1').value = 'Rutland';
+      document.getElementById('sms-proof-standard-custom-field-2').value = '01234 567 890';
+      document.getElementById('sms-proof-standard-custom-field-3').value = 'rutland@nhs.net';
+      
+    });
+
+    // Populate email examples
+    document.getElementById('copy-email-examples')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Predetermined data for email examples
+      document.getElementById('email-proof-standard-pds-fullname').value = 'Capt Amy Ray';
+      document.getElementById('email-proof-standard-pds-firstName').value = 'Amy';
+      document.getElementById('email-proof-standard-custom-field-1').value = 'Rutland';
+      document.getElementById('email-proof-standard-custom-field-2').value = '01234 567 890';
+      document.getElementById('email-proof-standard-custom-field-3').value = 'rutland@nhs.net';
+      
+    });
+  </script>
+
 {% endblock %}

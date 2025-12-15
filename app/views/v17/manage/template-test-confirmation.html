@@ -22,7 +22,16 @@
         {%endif%}
       </p>
 
-      {% if data['message-type'] == 'app' %}<p>To preview your test message, <a href="https://www-onboardingaos.nhsapp.service.nhs.uk/login" target="_blank">log in to the NHS App (opens in a new tab)</a> using your test NHS App account details.</p>{%endif%}
+      {% if data['message-type'] == 'app' %}
+      
+      <p>To preview your test message, use your test NHS App account details to log in to either the:
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li><a href="https://www-onboardingaos.nhsapp.service.nhs.uk/login" target="_blank">NHS App online (opens in a new tab)</a>.</li>
+          <li><a href="/404" target="_blank">NHS App on your mobile device (opens in a new tab)</a>.</li>
+        </ul>
+      </p>
+      
+      {%endif%}
 
       {% if data['message-type'] == 'app' %}
         <a href="template-app" class="nhsuk-button">Continue</a>

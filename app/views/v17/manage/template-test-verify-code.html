@@ -1,0 +1,97 @@
+{% extends 'v17/layout.html' %}
+
+{% block beforeContent %}
+
+  {{ backLink({
+    href: "template-" + data['message-type'],
+    text: "Back to template",
+    classes: "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+
+      {% if data['message-type'] == "sms" %}
+
+      <form action="template-test-verify-confirmation" method="post" autocomplete="off">
+
+        {% call fieldset({
+          legend: {
+            text: "Enter the verification code",
+            classes: "nhsuk-fieldset__legend--xl nhsuk-u-margin-bottom-6",
+            isPageHeading: true
+          }
+        }) %}
+
+          {{ input({
+            label: {
+              text: "Verification code",
+              classes: "nhsuk-label--s"
+            },
+            hint: {
+              text: "Enter the code sent to your mobile number by text message."
+            },
+            id: "sms-proof-mobilePhoneCode",
+            name: "sms-proof-mobilePhoneCode",
+            classes: "nhsuk-u-width-three-quarters"
+          }) }}
+
+        {% endcall %}
+
+        <p><a href="/404">I didn't receive a code</a></p>
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+      {% endif %}
+
+
+
+      {% if data['message-type'] == "email" %}
+
+      <form action="template-test-verify-confirmation" method="post" autocomplete="off">
+
+        {% call fieldset({
+          legend: {
+            text: "Enter the verification code",
+            classes: "nhsuk-fieldset__legend--xl nhsuk-u-margin-bottom-6",
+            isPageHeading: true
+          }
+        }) %}
+
+          {{ input({
+            label: {
+              text: "Verification code",
+              classes: "nhsuk-label--s"
+            },
+            hint: {
+              text: "Enter the code sent to your email address."
+            },
+            id: "email-proof-emailAddressCode",
+            name: "email-proof-emailAddressCode",
+            classes: "nhsuk-u-width-three-quarters"
+          }) }}
+
+        {% endcall %}
+
+        <p><a href="/404">I didn't receive a code</a></p>
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+      {% endif %}
+
+    </div>
+  </div>
+
+{% endblock %}

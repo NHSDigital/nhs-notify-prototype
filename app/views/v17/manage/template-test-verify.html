@@ -1,0 +1,85 @@
+{% extends 'v17/layout.html' %}
+
+{% block beforeContent %}
+
+  {{ backLink({
+    href: "template-" + data['message-type'],
+    text: "Back to template",
+    classes: "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+
+      {% if data['message-type'] == "sms" %}
+
+      <h1>
+        Verify your mobile number
+      </h1>
+
+      <p>To send a test text message you first need to verify your mobile number.</p>
+
+      <form action="template-test-verify-code" method="post" autocomplete="off">
+
+        {{ input({
+          label: {
+            text: "Mobile number",
+            classes: "nhsuk-label--s"
+          },
+          hint: {
+            text: "Enter your mobile number to receive a verification code."
+          },
+          id: "sms-proof-mobileNumber",
+          name: "sms-proof-mobileNumber",
+          classes: "nhsuk-u-width-three-quarters"
+        }) }}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+      {% endif %}
+
+
+
+      {% if data['message-type'] == "email" %}
+
+      <h1>
+        Verify your email address
+      </h1>
+
+      <p>To send a test email you first need to verify your email address.</p>
+
+      <form action="template-test-verify-code" method="post" autocomplete="off">
+
+        {{ input({
+          label: {
+            text: "Email address",
+            classes: "nhsuk-label--s"
+          },
+          hint: {
+            text: "Enter your email address to receive a verification code."
+          },
+          id: "email-proof-emailAddress",
+          name: "email-proof-emailAddress",
+          classes: "nhsuk-u-width-three-quarters"
+        }) }}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+      {% endif %}
+
+    </div>
+  </div>
+
+{% endblock %}
