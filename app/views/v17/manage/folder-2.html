@@ -1,0 +1,29 @@
+{% set page_active_dashboard = 'true'%}
+
+{% extends 'v17/layout.html' %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <span class="nhsuk-caption-l">Another project</span>
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-4">
+        Dashboard
+      </h1>
+
+      {{ card({
+        href: "project-settings-2",
+        primary: "true",
+        clickable: "true",
+        heading: "Settings",
+        description: "",
+        headingClasses: "nhsuk-heading-m nhsuk-u-margin-bottom-0",
+        classes: "nhsuk-u-margin-bottom-4"
+      }) }}
+      
+     
+    </div>
+  </div>
+{% endblock %}

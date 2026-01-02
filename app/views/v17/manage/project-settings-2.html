@@ -1,0 +1,164 @@
+{% set page_active_project_settings = 'true'%}
+
+{% extends 'v17/layout.html' %}
+
+{% block beforeContent %}
+{#
+{{ backLink({
+  "href": "folder",
+  "text": "Back to project dashboard"
+}) }}
+#}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+
+      <span class="nhsuk-caption-l">Another project</span>
+      <h1 class="nhsuk-heading-xl">
+        Settings
+      </h1>
+
+
+
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Project name"
+            },
+            value: {
+              text: "Another project"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/404",
+                  text: "Change",
+                  visuallyHiddenText: "Service name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Project type"
+            },
+            value: {
+              text: "Direct Message"
+            }
+          },
+          {
+            key: {
+              text: "Some other setting"
+            },
+            value: {
+              text: "Current setting"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/404",
+                  text: "Change",
+                  visuallyHiddenText: "Service name"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+
+
+{#
+      <form action="project-settings-save-confirmation" method="post">
+
+        {{ input({
+          label: {
+            text: "Project name",
+            classes: "nhsuk-label--s"
+          },
+          hint: {
+            text: "Change the name of this project."
+          },
+          id: "folder-name-1",
+          name: "folder-name-1",
+          value: data['folder-name-1'],
+          formGroup: {
+            classes: "nhsuk-u-margin-bottom-7"
+          }
+        }) }}
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
+
+          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Project type</h2>
+          <p>Campaign</p>
+
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
+
+          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Campaign ID</h2>
+          <p>fb3c1b53-b74a-4143-bfbc-5260821d1848</p>
+
+        </div>
+
+        <div class="nhsuk-form-group">
+
+          {{ button({
+            text: 'Save settings'
+          }) }}
+
+          <!--<a href="javascript:history.go(-1)" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>-->
+
+        </div>
+
+      </form>
+
+#}
+
+      <div class="nhsuk-form-group nhsuk-u-reading-width">
+
+        <h2 class="nhsuk-heading-s">Copy project</h2>
+
+        <p>Create a copy of this project containing the same templates and message plans.</p>
+
+        <form action="/404" method="post">
+
+          {{ button({
+            text: 'Copy project',
+            classes: 'nhsuk-button--secondary'
+          }) }}
+
+        </form>
+        
+      </div>
+      
+      <hr class="nhsuk-section-break--visible">
+
+      <div class="nhsuk-form-group nhsuk-u-reading-width">
+
+        <h2 class="nhsuk-heading-s">Archive project</h2>
+
+        <p>Archive this project to move it from the list of active projects into the list of archived projects.</p>
+
+        <form action="/404" method="post">
+
+          {{ button({
+            text: 'Archive project',
+            classes: 'nhsuk-button--secondary'
+          }) }}
+
+        </form>
+        
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+{% endblock %}

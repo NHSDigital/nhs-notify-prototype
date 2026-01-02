@@ -19,9 +19,6 @@
         Settings
       </h1>
 
-
-
-
       {{ summaryList({
         rows: [
           {
@@ -47,6 +44,14 @@
             },
             value: {
               text: "c3ad644e-111e-4cf4-a6e6-ae934562cd56"
+            }
+          },
+          {
+            key: {
+              text: "Default campaign ID"
+            },
+            value: {
+              text: data['service-name'] | lower | replace(' ', '_')
             }
           },
           {
@@ -84,73 +89,98 @@
         ]
       }) }}
 
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-top-8">Message settings</h2>
 
-{#
-      <form action="service-settings-save-confirmation" method="post">
+      <p>All messages will have these settings unless over-ridden by specific project settings.</p>
 
-        {{ input({
-          label: {
-            text: "Service name",
-            classes: "nhsuk-label--s"
-          },
-          hint: {
-            text: "Change the name of this service."
-          },
-          id: "service-name",
-          name: "service-name",
-          value: data['service-name'],
-          formGroup: {
-            classes: "nhsuk-u-margin-bottom-7"
+      <h2 class="nhsuk-heading-s">NHS App message settings</h2>
+
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Sender name"
+            },
+            value: {
+              text: "NHS Test Service"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/404",
+                  text: "Change",
+                  visuallyHiddenText: "Service name"
+                }
+              ]
+            }
           }
-        }) }}
+        ]
+      }) }}
 
-        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
+      <h2 class="nhsuk-heading-s">Email settings</h2>
 
-          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Client ID</h2>
-          <p>c3ad644e-111e-4cf4-a6e6-ae934562cd56</p>
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "From address"
+            },
+            value: {
+              text: "my-service@nhs.net"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/404",
+                  text: "Change",
+                  visuallyHiddenText: "From address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Reply-to address"
+            },
+            value: {
+              text: "my-service@nhs.net"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/404",
+                  text: "Change",
+                  visuallyHiddenText: "Reply-to address"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
 
-        </div>
+      <h2 class="nhsuk-heading-s">Text message (SMS) settings</h2>
 
-        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
-
-          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">MESH mailbox</h2>
-          <p>X26OT015</p>
-
-        </div>
-        
-        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
-
-          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">ODS code</h2>
-          <p>X26</p>
-
-        </div>
-
-        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
-
-          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">APIM app ID</h2>
-          <p>6cc642e2-d732-4756-aa6f-5de8c4d5f123</p>
-
-        </div>
-
-        <div class="nhsuk-form-group nhsuk-u-margin-bottom-7">
-
-          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Enrichment rate limit (TPS)</h2>
-          <p>20</p>
-
-        </div>
-
-        <div class="nhsuk-form-group">
-
-          {{ button({
-            text: 'Save settings'
-          }) }}
-
-          <!--<a href="javascript:history.go(-1)" class="nhsuk-u-font-size-19 nhsuk-u-margin-left-3 nhsuk-u-padding-top-3" style="display: inline-block;">Go back</a>-->
-
-        </div>
-
-      </form>
-#}
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Sender ID"
+            },
+            value: {
+              text: "NHS Test Service"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/404",
+                  text: "Change",
+                  visuallyHiddenText: "Service name"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
 
     </div>
   </div>
